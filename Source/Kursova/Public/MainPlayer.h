@@ -3,8 +3,13 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "Camera/CameraComponent.h"
+#include "Components/WidgetComponent.h"
+#include "Engine/StaticMeshActor.h"
 #include "GameFramework/Character.h"
 #include "MainPlayer.generated.h"
+
+DECLARE_DELEGATE(FRackDelegate)
 
 UCLASS()
 class KURSOVA_API AMainPlayer : public ACharacter
@@ -14,6 +19,14 @@ class KURSOVA_API AMainPlayer : public ACharacter
 public:
 	// Sets default values for this character's properties
 	AMainPlayer();
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
+	UCameraComponent* CameraComponent;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
+	float InteractDistance = 200.f;
+
+	TSubclassOf<AActor*> RackClass;
 
 protected:
 	// Called when the game starts or when spawned
@@ -29,4 +42,9 @@ public:
 	void MoveForward(float Scale);
 
 	void MoveRight(float Scale);
+
+	UFUNCTION()
+	void Interact();
+
+	FRackDelegate RackDelegate;
 };
