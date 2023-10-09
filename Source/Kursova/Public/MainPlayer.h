@@ -4,8 +4,6 @@
 
 #include "CoreMinimal.h"
 #include "Camera/CameraComponent.h"
-#include "Components/WidgetComponent.h"
-#include "Engine/StaticMeshActor.h"
 #include "GameFramework/Character.h"
 #include "MainPlayer.generated.h"
 
@@ -28,6 +26,15 @@ public:
 
 	TSubclassOf<AActor*> RackClass;
 
+	FVector PreviousActorLocation;
+	FRotator PreviousActorRotation;
+
+	FVector WeaponChooseLocation = FVector(200.f, -810.f, 152.f);
+	FRotator WeaponChooseRotation = FRotator(0.f, -90.f, 0.f);
+	
+	UPROPERTY(BlueprintReadOnly)
+	bool bShowCrosshair = true;
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -43,8 +50,11 @@ public:
 
 	void MoveRight(float Scale);
 
-	UFUNCTION()
+	UFUNCTION(BlueprintCallable)
 	void Interact();
+
+	UFUNCTION(BlueprintCallable)
+	void ContinueGameplay();
 
 	FRackDelegate RackDelegate;
 };

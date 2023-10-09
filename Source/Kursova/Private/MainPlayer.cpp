@@ -3,6 +3,10 @@
 
 #include "MainPlayer.h"
 
+#include "GameFramework/CharacterMovementComponent.h"
+#include "GameFramework/HUD.h"
+#include "Kismet/KismetSystemLibrary.h"
+
 // Sets default values
 AMainPlayer::AMainPlayer()
 {
@@ -39,6 +43,7 @@ void AMainPlayer::SetupPlayerInputComponent(UInputComponent* PlayerInputComponen
 	PlayerInputComponent->BindAxis(TEXT("LookRight"), this, &APawn::AddControllerYawInput);
 	
 	PlayerInputComponent->BindAction(TEXT("Interact"), IE_Pressed, this, &AMainPlayer::Interact);
+	PlayerInputComponent->BindAction(TEXT("Escape"), IE_Pressed, this, &AMainPlayer::ContinueGameplay);
 }
 
 void AMainPlayer::MoveForward(float Scale)
@@ -59,5 +64,41 @@ void AMainPlayer::MoveRight(float Scale)
 
 void AMainPlayer::Interact()
 {
+	FHitResult HitResult;
+	FVector StartTrace = CameraComponent->GetComponentLocation();
+	FVector EndTrace = CameraComponent->GetComponentLocation() + CameraComponent->GetComponentRotation().Vector() * 150.f;
 	
+	UKismetSystemLibrary::SphereTraceSingle(GetWorld(), StartTrace, EndTrace, 50.f,
+		UEngineTypes::ConvertToTraceType(ECC_GameTraceChannel1), false, { },
+		EDrawDebugTrace::ForDuration, HitResult, true, FColor::Red, FColor::Green,
+		1.f);
+
+	if(HitResult.bBlockingHit)
+	{
+		PreviousActorLocation = GetActorLocation();
+		PreviousActorRotation = CameraComponent->GetComponentRotation();
+
+		SetActorLocation(WeaponChooseLocation);
+		CameraComponent->SetWorldRotation(WeaponChooseRotation);
+
+		CameraComponent->bUsePawnControlRotation = false;
+		bUseControllerRotationYaw = false;
+
+		GetCharacterMovement()->DisableMovement();
+
+		bShowCrosshair = false;
+	}
+}
+
+void AMainPlayer::ContinueGameplay()
+{
+	SetActorLocation(PreviousActorLocation);
+	CameraComponent->SetWorldRotation(PreviousActorRotation);
+
+	GetCharacterMovement()->SetMovementMode(MOVE_Walking);
+
+	CameraComponent->bUsePawnControlRotation = true;
+	bUseControllerRotationYaw = true;
+	
+	bShowCrosshair = true;
 }
