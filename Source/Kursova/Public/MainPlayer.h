@@ -24,6 +24,9 @@ public:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
 	float InteractDistance = 200.f;
 
+	UPROPERTY(BlueprintReadOnly)
+	bool bContinuable = false;
+
 	TSubclassOf<AActor*> RackClass;
 
 	FVector PreviousActorLocation;

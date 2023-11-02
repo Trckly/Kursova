@@ -42,7 +42,7 @@ void AMainPlayer::SetupPlayerInputComponent(UInputComponent* PlayerInputComponen
 	PlayerInputComponent->BindAxis(TEXT("LookUp"), this, &APawn::AddControllerPitchInput);
 	PlayerInputComponent->BindAxis(TEXT("LookRight"), this, &APawn::AddControllerYawInput);
 	
-	PlayerInputComponent->BindAction(TEXT("Interact"), IE_Pressed, this, &AMainPlayer::Interact);
+	// PlayerInputComponent->BindAction(TEXT("Interact"), IE_Pressed, this, &AMainPlayer::Interact);
 	PlayerInputComponent->BindAction(TEXT("Escape"), IE_Pressed, this, &AMainPlayer::ContinueGameplay);
 }
 
@@ -70,7 +70,7 @@ void AMainPlayer::Interact()
 	
 	UKismetSystemLibrary::SphereTraceSingle(GetWorld(), StartTrace, EndTrace, 50.f,
 		UEngineTypes::ConvertToTraceType(ECC_GameTraceChannel1), false, { },
-		EDrawDebugTrace::ForDuration, HitResult, true, FColor::Red, FColor::Green,
+		EDrawDebugTrace::None, HitResult, true, FColor::Red, FColor::Green,
 		1.f);
 
 	if(HitResult.bBlockingHit)
@@ -78,15 +78,17 @@ void AMainPlayer::Interact()
 		PreviousActorLocation = GetActorLocation();
 		PreviousActorRotation = CameraComponent->GetComponentRotation();
 
-		SetActorLocation(WeaponChooseLocation);
-		CameraComponent->SetWorldRotation(WeaponChooseRotation);
-
+		SetActorLocation(WeaponChooseLocation, false, nullptr, ETeleportType::TeleportPhysics);
+		SetActorRotation(WeaponChooseRotation);
+		CameraComponent->SetWorldRotation(FRotator(0.f, -90.f, 0.f));
+		
 		CameraComponent->bUsePawnControlRotation = false;
 		bUseControllerRotationYaw = false;
 
 		GetCharacterMovement()->DisableMovement();
 
 		bShowCrosshair = false;
+		bContinuable = true;
 	}
 }
 
@@ -101,4 +103,5 @@ void AMainPlayer::ContinueGameplay()
 	bUseControllerRotationYaw = true;
 	
 	bShowCrosshair = true;
+	bContinuable = false;
 }
