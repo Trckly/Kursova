@@ -2,7 +2,7 @@
 
 #pragma once
 
-#include "WeaponClass.h"
+#include "UWeaponClass.h"
 #include "CoreMinimal.h"
 #include "Blueprint/UserWidget.h"
 #include "WeaponMenuWidget.generated.h"
