@@ -18,3 +18,4 @@ class KURSOVA_API UWeaponMenuWidget : public UUserWidget
 protected:
 	virtual void NativeConstruct() override;
 };
+
