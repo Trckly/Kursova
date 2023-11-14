@@ -1,0 +1,15 @@
+CZ-P-10-C Pistol Semi-automatic 20 Česká-zbrojovka 9x19 187 740 1054
+Glock-18 Pistol Automatic 17 Glock-Ges.m.b.H. 9x19 204 620 1600
+AWM Sniper-rifle Bolt-action 5 Accuracy-International-AWM 8.6x70 1270 6900 8750
+Beretta-M9 Pistol Semi-automatic 15 Beretta-USA 9x19 125 944 649
+M16A2 Rifle Automatic 30 Colt's-Manufacturing-Company 5.56x45 1006 3400 1992
+M16A4 Rifle Automatic 30 Colt's-Manufacturing-Company 5.56x45 1000 4000 2000
+Remington-M700 Sniper-rifle Bolt-action 5 Remington-Arms 10.57x72 1050 4080 1900
+Makarov Pistol Semi-automatic 8 Kalashnikov-Concern 9x18 161.5 730 475
+HK-MP5 SMG Automatic 30 Heckler-&-Koch 9x19 680 2540 2350
+HK-MP7 SMG Automatic 30 Heckler-&-Koch 4.6x30 638 2100 2450
+Remington-M870 Shotgun Pump-action 8 Remington-Arms 12-gauge 670 3200 408
+SIG-SG-550 Carbine Automatic 20 SIG-Sauer-AG 5.56x45 1000 4100 970
+TEC-9 Pistol Semi-automatic 12 Intratec 9x19 317 1230 453
+HK416 Carbine Automatic 30 Heckler-&-Koch 5.56x45 1030 3850 4030
+Benelli-M4 Shotgun Semi-automatic 8 Benelli-Armi-SPA 12-gauge 889 3820 1600
