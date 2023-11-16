@@ -3,9 +3,9 @@
 
 #include "WeaponMenuWidget.h"
 
+#include "MainPlayer.h"
+
 void UWeaponMenuWidget::NativeConstruct()
 {
 	Super::NativeConstruct();
-
-	
 }

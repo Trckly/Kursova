@@ -9,11 +9,11 @@
 /**
  * 
  */
-USTRUCT()
+USTRUCT(BlueprintType)
 struct FWeaponUnit : public FTableRowBase
 {
 	GENERATED_BODY()
-
+	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	FString Model;
 
@@ -40,4 +40,7 @@ struct FWeaponUnit : public FTableRowBase
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	int Price;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UStaticMesh* Mesh;
 };

@@ -2,7 +2,6 @@
 
 #pragma once
 
-#include "UWeaponClass.h"
 #include "CoreMinimal.h"
 #include "Blueprint/UserWidget.h"
 #include "WeaponMenuWidget.generated.h"
@@ -17,5 +16,7 @@ class KURSOVA_API UWeaponMenuWidget : public UUserWidget
 
 protected:
 	virtual void NativeConstruct() override;
+
+	
 };
 
