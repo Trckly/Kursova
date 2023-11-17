@@ -67,5 +67,7 @@ public:
 
 	void ProcessHitWeapon(AWeaponClass* WeaponActor);
 
+	TArray<AWeaponClass*> GetAllPickedWeapons();
+
 	FRackDelegate RackDelegate;
 };
