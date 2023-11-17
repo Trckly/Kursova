@@ -6,7 +6,7 @@
 #include "Animation/AnimNode_TransitionPoseEvaluator.h"
 
 AWeaponClass::AWeaponClass(FString Model, FString MainType, FString Subtype, int Capacity,FString Manufacturer,
-	FString Caliber, int Length, int Weight, int Price)
+	float Caliber, int Length, int Weight, int Price)
 {
 	WeaponUnit.Model = Model;
 	WeaponUnit.MainType = MainType;
@@ -17,7 +17,6 @@ AWeaponClass::AWeaponClass(FString Model, FString MainType, FString Subtype, int
 	WeaponUnit.Length = Length;
 	WeaponUnit.Weight = Weight;
 	WeaponUnit.Price = Price;
-	WeaponUnit.Mesh = nullptr;
 }
 
 void AWeaponClass::InitWithStruct(const FWeaponUnit& StructItem)
@@ -31,7 +30,6 @@ void AWeaponClass::InitWithStruct(const FWeaponUnit& StructItem)
 	WeaponUnit.Length = StructItem.Length;
 	WeaponUnit.Weight = StructItem.Weight;
 	WeaponUnit.Price = StructItem.Price;
-	WeaponUnit.Mesh = StructItem.Mesh;
 }
 
 FWeaponUnit AWeaponClass::GetStructure()
@@ -55,8 +53,9 @@ std::ofstream& operator<<(std::ofstream& Fout, const AWeaponClass& Weapon)
 	FString Result;
 		Result += Weapon.WeaponUnit.Model + ' ' + Weapon.WeaponUnit.MainType + ' ' + Weapon.WeaponUnit.Subtype + ' ' +
 			FString::FromInt(Weapon.WeaponUnit.Capacity) + ' '+ Weapon.WeaponUnit.Manufacturer + ' ' +
-				Weapon.WeaponUnit.Caliber + ' ' + FString::FromInt(Weapon.WeaponUnit.Length) + ' ' +
-					FString::FromInt(Weapon.WeaponUnit.Weight) + ' ' + FString::FromInt(Weapon.WeaponUnit.Price) + '\n';
+				FString(std::to_string(Weapon.WeaponUnit.Caliber).c_str()) + ' ' +
+					FString::FromInt(Weapon.WeaponUnit.Length) + ' ' + FString::FromInt(Weapon.WeaponUnit.Weight) + ' '
+						+ FString::FromInt(Weapon.WeaponUnit.Price) + '\n';
 	Fout << *Result;
 	return Fout;
 }
@@ -81,7 +80,7 @@ std::ifstream& operator>>(std::ifstream& Fin, AWeaponClass& Weapon) {
 		Weapon.WeaponUnit.Subtype = Temp[2].c_str();
 		Weapon.WeaponUnit.Capacity = std::atoi(Temp[3].c_str());
 		Weapon.WeaponUnit.Manufacturer = Temp[4].c_str();
-		Weapon.WeaponUnit.Caliber = Temp[5].c_str();
+		Weapon.WeaponUnit.Caliber = std::atof(Temp[5].c_str());
 		Weapon.WeaponUnit.Length = std::atoi(Temp[6].c_str());
 		Weapon.WeaponUnit.Weight = std::atoi(Temp[7].c_str());
 		Weapon.WeaponUnit.Price = std::atoi(Temp[8].c_str());

@@ -30,7 +30,7 @@ struct FWeaponUnit : public FTableRowBase
 	FString Manufacturer;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	FString Caliber;
+	float Caliber;
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	int Length;
@@ -40,7 +40,4 @@ struct FWeaponUnit : public FTableRowBase
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	int Price;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	UStaticMesh* Mesh;
 };

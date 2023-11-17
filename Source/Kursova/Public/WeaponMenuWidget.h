@@ -3,7 +3,9 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "WeaponDataWidget.h"
 #include "Blueprint/UserWidget.h"
+#include "Components/TextBlock.h"
 #include "WeaponMenuWidget.generated.h"
 
 /**
@@ -17,6 +19,7 @@ class KURSOVA_API UWeaponMenuWidget : public UUserWidget
 protected:
 	virtual void NativeConstruct() override;
 
-	
+	UPROPERTY(EditDefaultsOnly)
+	TSubclassOf<UWeaponDataWidget> WeaponDataWidgetClass;
 };
 

@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "AWeaponClass.h"
 #include "Camera/CameraComponent.h"
 #include "GameFramework/Character.h"
 #include "MainPlayer.generated.h"
@@ -14,7 +15,7 @@ class KURSOVA_API AMainPlayer : public ACharacter
 {
 	GENERATED_BODY()
 
-public:
+protected:
 	// Sets default values for this character's properties
 	AMainPlayer();
 
@@ -38,6 +39,9 @@ public:
 	UPROPERTY(BlueprintReadOnly)
 	bool bShowCrosshair = true;
 
+	UPROPERTY(BlueprintReadOnly)
+	TArray<AWeaponClass*> PickedWeapons;
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -58,6 +62,10 @@ public:
 
 	UFUNCTION(BlueprintCallable)
 	void ContinueGameplay();
+
+	void ProcessHitRack();
+
+	void ProcessHitWeapon(AWeaponClass* WeaponActor);
 
 	FRackDelegate RackDelegate;
 };

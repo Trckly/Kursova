@@ -3,6 +3,9 @@
 
 #include "MainPlayer.h"
 
+#include "AWeaponClass.h"
+#include "GenericGameInstance.h"
+#include "ParticleHelper.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "GameFramework/HUD.h"
 #include "Kismet/KismetSystemLibrary.h"
@@ -70,25 +73,21 @@ void AMainPlayer::Interact()
 	
 	UKismetSystemLibrary::SphereTraceSingle(GetWorld(), StartTrace, EndTrace, 50.f,
 		UEngineTypes::ConvertToTraceType(ECC_GameTraceChannel1), false, { },
-		EDrawDebugTrace::None, HitResult, true, FColor::Red, FColor::Green,
+		EDrawDebugTrace::ForDuration	, HitResult, true, FColor::Red, FColor::Green,
 		1.f);
 
 	if(HitResult.bBlockingHit)
 	{
-		PreviousActorLocation = GetActorLocation();
-		PreviousActorRotation = CameraComponent->GetComponentRotation();
-
-		SetActorLocation(WeaponChooseLocation, false, nullptr, ETeleportType::TeleportPhysics);
-		SetActorRotation(WeaponChooseRotation);
-		CameraComponent->SetWorldRotation(FRotator(0.f, -90.f, 0.f));
+		AActor* ReturnedActor = HitResult.GetActor();
+		if(Cast<AWeaponClass>(ReturnedActor))
+		{
+			ProcessHitWeapon(Cast<AWeaponClass>(ReturnedActor));
+		}
+		else
+		{
+			ProcessHitRack();
+		}
 		
-		CameraComponent->bUsePawnControlRotation = false;
-		bUseControllerRotationYaw = false;
-
-		GetCharacterMovement()->DisableMovement();
-
-		bShowCrosshair = false;
-		bContinuable = true;
 	}
 }
 
@@ -104,4 +103,28 @@ void AMainPlayer::ContinueGameplay()
 	
 	bShowCrosshair = true;
 	bContinuable = false;
+}
+
+void AMainPlayer::ProcessHitRack()
+{
+	PreviousActorLocation = GetActorLocation();
+	PreviousActorRotation = CameraComponent->GetComponentRotation();
+
+	SetActorLocation(WeaponChooseLocation, false, nullptr, ETeleportType::TeleportPhysics);
+	SetActorRotation(WeaponChooseRotation);
+	CameraComponent->SetWorldRotation(FRotator(0.f, -90.f, 0.f));
+		
+	CameraComponent->bUsePawnControlRotation = false;
+	bUseControllerRotationYaw = false;
+
+	GetCharacterMovement()->DisableMovement();
+
+	bShowCrosshair = false;
+	bContinuable = true;
+}
+
+void AMainPlayer::ProcessHitWeapon(AWeaponClass* WeaponActor)
+{
+	WeaponActor->SetActorHiddenInGame(true);
+	PickedWeapons.Push(WeaponActor);
 }
