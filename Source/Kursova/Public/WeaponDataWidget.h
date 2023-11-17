@@ -11,37 +11,46 @@
 /**
  * 
  */
+constexpr int StringClippingLength = 12;
+
 UCLASS()
 class KURSOVA_API UWeaponDataWidget : public UUserWidget
 {
 	GENERATED_BODY()
 
-public:
+protected:
+	virtual void NativeConstruct() override;
+	
+	UPROPERTY(meta=(BindWidget))
+	UTextBlock* ModelText;
+	
+	UPROPERTY(meta=(BindWidget))
+	UTextBlock* MainTypeText;
+	
+	UPROPERTY(meta=(BindWidget))
+	UTextBlock* SubtypeText;
+	
+	UPROPERTY(meta=(BindWidget))
+	UTextBlock* CapacityText;
+	
+	UPROPERTY(meta=(BindWidget))
+	UTextBlock* ManufacturerText;
+	
+	UPROPERTY(meta=(BindWidget))
+	UTextBlock* CaliberText;
+	
+	UPROPERTY(meta=(BindWidget))
+	UTextBlock* LengthText;
+	
+	UPROPERTY(meta=(BindWidget))
+	UTextBlock* WeightText;
+	
+	UPROPERTY(meta=(BindWidget))
+	UTextBlock* PriceText;
 
-	// UPROPERTY(meta=(BindWidget))
-	// UTextBlock* ModelText;
-	//
-	// UPROPERTY(meta=(BindWidget))
-	// UTextBlock* MainTypeText;
-	//
-	// UPROPERTY(meta=(BindWidget))
-	// UTextBlock* SubtypeText;
-	//
-	// UPROPERTY(meta=(BindWidget))
-	// UTextBlock* CapacityText;
-	//
-	// UPROPERTY(meta=(BindWidget))
-	// UTextBlock* ManufacturerText;
-	//
-	// UPROPERTY(meta=(BindWidget))
-	// UTextBlock* ModelText;
-	//
-	// UPROPERTY(meta=(BindWidget))
-	// UTextBlock* ModelText;
-	//
-	// UPROPERTY(meta=(BindWidget))
-	// UTextBlock* ModelText;
-	//
-	// UPROPERTY(meta=(BindWidget))
-	// UTextBlock* ModelText;
+public:
+	void InitWithData(const FWeaponUnit& WeaponUnit);
+
+	UFUNCTION(BlueprintImplementableEvent)
+	void StartAnimation();
 };

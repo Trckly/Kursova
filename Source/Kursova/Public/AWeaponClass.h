@@ -17,7 +17,7 @@
  */
 
 UCLASS()
-class KURSOVA_API AWeaponClass : public AActor
+class KURSOVA_API AWeaponClass : public AActor, public FWeaponUnit
 {
 	GENERATED_BODY()
 		

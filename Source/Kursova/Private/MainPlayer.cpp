@@ -125,6 +125,11 @@ void AMainPlayer::ProcessHitRack()
 
 void AMainPlayer::ProcessHitWeapon(AWeaponClass* WeaponActor)
 {
-	WeaponActor->SetActorHiddenInGame(true);
+	WeaponActor->Destroy();
 	PickedWeapons.Push(WeaponActor);
+}
+
+TArray<AWeaponClass*> AMainPlayer::GetAllPickedWeapons()
+{
+	return PickedWeapons;
 }
