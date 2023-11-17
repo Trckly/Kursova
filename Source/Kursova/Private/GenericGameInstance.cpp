@@ -22,6 +22,5 @@ void UGenericGameInstance::Init()
 {
 	UE_LOG(LogTemp, Warning, TEXT("Made it to Init"));
 	Super::Init();
-	
 }
 

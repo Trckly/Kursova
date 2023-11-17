@@ -22,7 +22,7 @@ class KURSOVA_API AWeaponClass : public AActor
 	GENERATED_BODY()
 		
 protected:
-	UPROPERTY()
+	UPROPERTY(EditDefaultsOnly)
 	FWeaponUnit WeaponUnit;
 	
 public:
@@ -30,7 +30,7 @@ public:
 	///	Constructors/Destructors
 	///
 	AWeaponClass() = default;
-	AWeaponClass(FString Model, FString MainType, FString Subtype, int Capacity, FString Manufacturer, FString Caliber,
+	AWeaponClass(FString Model, FString MainType, FString Subtype, int Capacity, FString Manufacturer, float Caliber,
 	             int Length, int Weight, int Price);
 	
 	//Copy constructor

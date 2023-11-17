@@ -22,13 +22,7 @@ protected:
 	// UFUNCTION(BlueprintCallable)
 	virtual void Init() override;
 
-	UPROPERTY(BlueprintReadWrite)
-	TMap<int, AWeaponClass*> WeaponHolder;
-
-	UPROPERTY()
-	TArray<FString> DataTableKeys = {"CZP10C", "Glock18", "AWM", "Beretta", "M16A2", "M16A4", "M700", "Makarov", "MP5",
-		"MP7", "M870", "SIG", "TEC", "HK416", "Benelli"};
-
+public:
 	UPROPERTY()
 	UDataTable* WeaponDataTable;
 };
