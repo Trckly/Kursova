@@ -6,9 +6,11 @@
 #include "AWeaponClass.h"
 #include "Camera/CameraComponent.h"
 #include "GameFramework/Character.h"
+#include "../ServerLogic/UI/ServerWidget.h"
 #include "MainPlayer.generated.h"
 
-DECLARE_DELEGATE(FRackDelegate)
+DECLARE_DELEGATE(FRackDelegate);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnCharacterJoinSession, FBlueprintSessionResult, SessionResult, const FString&, Password);
 
 UCLASS()
 class KURSOVA_API AMainPlayer : public ACharacter
@@ -70,4 +72,40 @@ public:
 	TArray<AWeaponClass*> GetAllPickedWeapons();
 
 	FRackDelegate RackDelegate;
+	
+	///
+	/// ServerLogic
+	///
+
+	UPROPERTY(EditAnywhere)
+	TSubclassOf<UServerWidget> ServerWidgetClass;
+
+	UPROPERTY(EditAnywhere)
+	UServerWidget* ServerWidget;	
+
+	
+	UFUNCTION()
+	void CreateSession(FString Name, bool IsPrivate, FString Password, int NumberOfPlayers);
+
+	UFUNCTION(BlueprintImplementableEvent)
+	void CreateS(int NumberOfPlayers,const FString& SessionName, bool IsPrivate, const FString& Password);
+
+	UFUNCTION(BlueprintImplementableEvent)
+	void FindS();
+
+	UPROPERTY(BlueprintAssignable)
+	FOnCharacterJoinSession OnCharacterJoinSession;
+
+	UFUNCTION()
+	void AddServerWidgetToViewPort();
+
+	UFUNCTION()
+	void ConnectToService();
+
+	UFUNCTION()
+	void JoinSession(FBlueprintSessionResult SessionResult, const FString& Password);
+
+	UFUNCTION(BlueprintCallable)
+	void SetSessionsToWidget(TArray<FBlueprintSessionResult> BlueprintSessionResults);
+	
 };

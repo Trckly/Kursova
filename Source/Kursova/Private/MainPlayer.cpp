@@ -26,6 +26,25 @@ AMainPlayer::AMainPlayer()
 void AMainPlayer::BeginPlay()
 {
 	Super::BeginPlay();
+
+	///
+	/// Server Logic
+	///
+	APlayerController* PlayerController = GetController<APlayerController>();
+	if(ServerWidgetClass)
+	{
+		if(PlayerController)
+		{
+			ServerWidget = CreateWidget<UServerWidget>(PlayerController, ServerWidgetClass);
+			
+			if(ServerWidget)
+			{
+				ServerWidget->SetServerSettings.BindDynamic(this, &AMainPlayer::CreateSession);
+				ServerWidget->OnFindSession.BindDynamic(this, &AMainPlayer::ConnectToService);
+				ServerWidget->OnJoinToSession.BindDynamic(this, &AMainPlayer::JoinSession);
+			}
+		}
+	}
 }
 
 // Called every frame
@@ -47,6 +66,11 @@ void AMainPlayer::SetupPlayerInputComponent(UInputComponent* PlayerInputComponen
 	
 	// PlayerInputComponent->BindAction(TEXT("Interact"), IE_Pressed, this, &AMainPlayer::Interact);
 	PlayerInputComponent->BindAction(TEXT("Escape"), IE_Pressed, this, &AMainPlayer::ContinueGameplay);
+
+	///
+	/// Server Logic
+	///
+	PlayerInputComponent->BindAction("OpenServerMenu", IE_Pressed, this, &AMainPlayer::AddServerWidgetToViewPort);
 }
 
 void AMainPlayer::MoveForward(float Scale)
@@ -132,4 +156,56 @@ void AMainPlayer::ProcessHitWeapon(AWeaponClass* WeaponActor)
 TArray<AWeaponClass*> AMainPlayer::GetAllPickedWeapons()
 {
 	return PickedWeapons;
+}
+
+///
+/// Server Logic
+///
+
+void AMainPlayer::CreateSession(FString Name, bool Privacy, FString Password, int InputNumberOfPlayers)
+{
+	if(ServerWidget && ServerWidget->IsInViewport())
+	{
+		ServerWidget->RemoveFromViewport();
+	}
+	GetController<APlayerController>()->SetShowMouseCursor(false);
+	GetController<APlayerController>()->SetInputMode(FInputModeGameOnly());
+
+	CreateS(InputNumberOfPlayers, Name, Privacy, Password);
+}
+
+void AMainPlayer::AddServerWidgetToViewPort()
+{
+	if(ServerWidget)
+	{
+		ServerWidget->AddToViewport();
+		
+		GetController<APlayerController>()->SetShowMouseCursor(true);
+		GetController<APlayerController>()->SetInputMode(FInputModeUIOnly());
+		
+	}
+}
+
+void AMainPlayer::ConnectToService()
+{
+	FindS();
+}
+
+void AMainPlayer::JoinSession(FBlueprintSessionResult SessionResult, const FString& Password)
+{
+	if (ServerWidget && ServerWidget->IsInViewport())
+	{
+		ServerWidget->RemoveFromViewport();
+	}
+	GetController<APlayerController>()->SetShowMouseCursor(false);
+	GetController<APlayerController>()->SetInputMode(FInputModeGameOnly());
+	OnCharacterJoinSession.Broadcast(SessionResult, Password);
+}
+
+void AMainPlayer::SetSessionsToWidget(TArray<FBlueprintSessionResult> BlueprintSessionResults)
+{
+	if(ServerWidget && ServerWidget->IsInViewport())
+	{
+		ServerWidget->SetSessions(BlueprintSessionResults);
+	}
 }
