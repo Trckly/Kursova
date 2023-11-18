@@ -124,6 +124,9 @@ void AMainPlayer::ContinueGameplay()
 
 	CameraComponent->bUsePawnControlRotation = true;
 	bUseControllerRotationYaw = true;
+
+	GetWorld()->GetFirstPlayerController()->SetInputMode(FInputModeGameOnly());
+	GetWorld()->GetFirstPlayerController()->SetShowMouseCursor(false);
 	
 	bShowCrosshair = true;
 	bContinuable = false;
@@ -142,6 +145,9 @@ void AMainPlayer::ProcessHitRack()
 	bUseControllerRotationYaw = false;
 
 	GetCharacterMovement()->DisableMovement();
+
+	GetWorld()->GetFirstPlayerController()->SetInputMode(FInputModeGameAndUI());
+	GetWorld()->GetFirstPlayerController()->SetShowMouseCursor(true);
 
 	bShowCrosshair = false;
 	bContinuable = true;

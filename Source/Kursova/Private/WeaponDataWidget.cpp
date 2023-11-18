@@ -7,7 +7,7 @@ void UWeaponDataWidget::NativeConstruct()
 {
 	Super::NativeConstruct();
 	FString Manufacturer =  ManufacturerText->GetText().ToString();
-	if(Manufacturer.Len() > StringClippingLength)
+	if(Manufacturer.Len() > GString_Clipping_Len)
 	{
 		StartAnimation();
 	}
@@ -24,5 +24,11 @@ void UWeaponDataWidget::InitWithData(const FWeaponUnit& WeaponUnit)
 	LengthText->SetText(FText::FromString(FString::FromInt(WeaponUnit.Length)));
 	WeightText->SetText(FText::FromString(FString::FromInt(WeaponUnit.Weight)));
 	PriceText->SetText(FText::FromString(FString::FromInt(WeaponUnit.Price)));
+}
+
+float UWeaponDataWidget::GetCaliber()
+{
+	return FCString::Atof(*CaliberText->GetText().ToString());
+	
 }
 

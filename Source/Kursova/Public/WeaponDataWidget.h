@@ -11,7 +11,7 @@
 /**
  * 
  */
-constexpr int StringClippingLength = 12;
+constexpr int GString_Clipping_Len = 12;
 
 UCLASS()
 class KURSOVA_API UWeaponDataWidget : public UUserWidget
@@ -53,4 +53,6 @@ public:
 
 	UFUNCTION(BlueprintImplementableEvent)
 	void StartAnimation();
+
+	float GetCaliber();
 };
