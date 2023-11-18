@@ -293,7 +293,7 @@ void USessionSubsystem::JoinGameSession(const FBlueprintSessionResult& SessionRe
 		SessionResult.OnlineResult.Session.SessionSettings.Get(FName(TEXT("Password")), SessionPassword);
 		if(SessionPassword != Password)
 		{
-			OnJoinGameSessionCompleteEvent.Broadcast(static_cast<EBPOnJoinSessionCompleteResult>(EOnJoinSessionCompleteResult::WrongPassword));
+			OnJoinGameSessionCompleteEvent.Broadcast(static_cast<EBPOnJoinSessionCompleteResult>(EOnJoinSessionCompleteResult::UnknownError));
 			return;
 		}
 	}
