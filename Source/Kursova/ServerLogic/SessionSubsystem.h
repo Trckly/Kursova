@@ -6,7 +6,6 @@
 #include "Interfaces/OnlineSessionInterface.h"
 #include "FindSessionsCallbackProxy.h"
 #include "Subsystems/GameInstanceSubsystem.h"
-#include "OnlineSessionSettings.h"
 #include "SessionSubsystem.generated.h"
 
 /**
@@ -40,13 +39,13 @@ class USessionSubsystem : public UGameInstanceSubsystem
 public:
 	USessionSubsystem();
 
-	UFUNCTION(BlueprintCallable) void CreateSession(int32 NumPublicConnections, bool IsLANMatch);
+	UFUNCTION(BlueprintCallable) void CreateSession(int32 NumPublicConnections, bool IsLANMatch, FString SessionName, bool IsPrivate = false, FString SessionPassword = "");
 	UFUNCTION(BlueprintCallable) void UpdateSession();
 	UFUNCTION(BlueprintCallable) void StartSession();
 	UFUNCTION(BlueprintCallable) void EndSession();
 	UFUNCTION(BlueprintCallable) void DestroySession();
 	UFUNCTION(BlueprintCallable) void FindSessions(int32 MaxSearchResults, bool IsLANQuery);
-	UFUNCTION(BlueprintCallable) void JoinGameSession(const FBlueprintSessionResult& SessionResult);
+	UFUNCTION(BlueprintCallable) void JoinGameSession(const FBlueprintSessionResult& SessionResult, const FString& Password);
 	UFUNCTION(BlueprintCallable) bool SessionHasBeenStarted();
 	
 	UPROPERTY(BlueprintAssignable) FCSOnCreateSessionComplete OnCreateSessionCompleteEvent;
