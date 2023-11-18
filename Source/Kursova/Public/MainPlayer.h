@@ -44,7 +44,13 @@ protected:
 	UPROPERTY(BlueprintReadOnly)
 	TArray<AWeaponClass*> PickedWeapons;
 
-protected:
+	///
+	/// Andrii Kursova
+	///
+	FString SPlayerName;
+
+	FString SCity;
+	
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
@@ -108,4 +114,14 @@ public:
 	UFUNCTION(BlueprintCallable)
 	void SetSessionsToWidget(TArray<FBlueprintSessionResult> BlueprintSessionResults);
 	
+	///
+	/// Andrii Kursova
+	///
+	void SetName(FString Name);
+	
+	FString GetName();
+
+	void SetCity(FString City);
+	
+	FString GetCity();
 };

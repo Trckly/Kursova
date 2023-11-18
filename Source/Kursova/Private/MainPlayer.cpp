@@ -66,6 +66,7 @@ void AMainPlayer::SetupPlayerInputComponent(UInputComponent* PlayerInputComponen
 	
 	// PlayerInputComponent->BindAction(TEXT("Interact"), IE_Pressed, this, &AMainPlayer::Interact);
 	PlayerInputComponent->BindAction(TEXT("Escape"), IE_Pressed, this, &AMainPlayer::ContinueGameplay);
+	PlayerInputComponent->BindAction(TEXT("Jump"), IE_Pressed, this, &ACharacter::Jump);
 
 	///
 	/// Server Logic
@@ -208,4 +209,27 @@ void AMainPlayer::SetSessionsToWidget(TArray<FBlueprintSessionResult> BlueprintS
 	{
 		ServerWidget->SetSessions(BlueprintSessionResults);
 	}
+}
+
+///
+/// Andrii Kursova
+///
+void AMainPlayer::SetName(FString Name)
+{
+	SPlayerName = Name;
+}
+
+FString AMainPlayer::GetName()
+{
+	return SPlayerName;
+}
+
+void AMainPlayer::SetCity(FString City)
+{
+	SCity = City;
+}
+
+FString AMainPlayer::GetCity()
+{
+	return SCity;
 }
