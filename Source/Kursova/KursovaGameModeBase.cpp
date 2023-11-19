@@ -13,6 +13,8 @@ AKursovaGameModeBase::AKursovaGameModeBase()
 	{
 		DefaultPawnClass = PlayerPawnBPClass.Class;
 	}
+
+	PlayerIndex = 0;
 }
 
 void AKursovaGameModeBase::PostLogin(APlayerController* NewPlayer)
@@ -23,5 +25,17 @@ void AKursovaGameModeBase::PostLogin(APlayerController* NewPlayer)
 	{
 		NewPlayer->SetShowMouseCursor(false);
 		NewPlayer->SetInputMode(FInputModeGameOnly());
+
+		AMainPlayer* Player = Cast<AMainPlayer>(NewPlayer->GetCharacter());
+		if(Player)
+		{
+			Player->SetPlayerIndex(PlayerIndex++);
+			ArrayOfPlayers.Add(Player);
+		}
 	}
+}
+
+TArray<AMainPlayer*>& AKursovaGameModeBase::GetPlayers()
+{
+	return ArrayOfPlayers;
 }

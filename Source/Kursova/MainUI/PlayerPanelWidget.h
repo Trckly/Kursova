@@ -4,44 +4,39 @@
 
 #include "CoreMinimal.h"
 #include "Blueprint/UserWidget.h"
-#include "Components/Button.h"
-#include "Components/EditableText.h"
+#include "Components/CheckBox.h"
 #include "Components/TextBlock.h"
-#include "MainMenuWidget.generated.h"
+#include "PlayerPanelWidget.generated.h"
 
-DECLARE_DYNAMIC_DELEGATE_TwoParams(FSetUserInfo, FString, PlayerName, FString, PlayerCity);
+class AMainPlayer;
 
 /**
  * 
  */
 UCLASS()
-class KURSOVA_API UMainMenuWidget : public UUserWidget
+class KURSOVA_API UPlayerPanelWidget : public UUserWidget
 {
 	GENERATED_BODY()
-
+	
 protected:
-
 	UPROPERTY(BlueprintReadWrite, meta=(BindWidget))
-	UEditableText* EName;
-
+	UTextBlock* TName;
+	
 	UPROPERTY(BlueprintReadWrite, meta=(BindWidget))
-	UEditableText* ECity;
-
+	UTextBlock* TCity;
+	
 	UPROPERTY(BlueprintReadWrite, meta=(BindWidget))
-	UTextBlock* TNameError;
-
+	UTextBlock* THitPoints;
+	
 	UPROPERTY(BlueprintReadWrite, meta=(BindWidget))
-	UTextBlock* TCityError;
+	UCheckBox* CIsInGodMode;
 
-	UPROPERTY(BlueprintReadWrite, meta=(BindWidget))
-	UButton* BConfirm;
-
-public:
 	UPROPERTY()
-	FSetUserInfo SetUserInfo;
+	AMainPlayer* Player;
 	
+public:
 	virtual void NativeConstruct() override;
-	
+
 	UFUNCTION()
-	void ConfirmRegistration();
+	void SetWidget(AMainPlayer const * MainPlayer);
 };

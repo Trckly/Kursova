@@ -2,6 +2,8 @@
 
 
 #include "ServerWidget.h"
+#include "Kursova/MainUI/AdminManagerWidget.h"
+#include "Kursova/KursovaGameModeBase.h"
 
 void UServerWidget::NativeConstruct()
 {
@@ -12,6 +14,12 @@ void UServerWidget::NativeConstruct()
 	CreateServer->OnClicked.AddDynamic(this, &UServerWidget::Create);
 	ConnectToServer->OnClicked.AddDynamic(this, &UServerWidget::Find);
 	BackToGame->OnClicked.AddDynamic(this, &UServerWidget::CloseWidget);
+	BManageServer->OnClicked.AddDynamic(this, &UServerWidget::OpenAdminMenu);
+
+	if(GetWorld()->GetAuthGameMode())
+	{
+		BManageServer->SetVisibility(ESlateVisibility::Visible);
+	}
 }
 
 void UServerWidget::ShowErrorMessage(FString Message)
@@ -89,6 +97,32 @@ void UServerWidget::SetSessions(TArray<FBlueprintSessionResult> BlueprintSession
 			ServerPanelWidgets.Last()->Set(Name, Privacy, BlueprintSessionResult);
 			SessionsList->AddChild(ServerPanelWidgets.Last());
 			ServerPanelWidgets.Last()->OnSessionJoin.BindDynamic(this, &UServerWidget::Join);
+		}
+	}
+}
+
+///
+/// New Functionality
+///
+void UServerWidget::OpenAdminMenu()
+{
+	AKursovaGameModeBase* GameMode = Cast<AKursovaGameModeBase>(GetWorld()->GetAuthGameMode());
+
+	if(!GameMode)
+	{
+		return;
+	}
+
+	APlayerController* Controller = Cast<APlayerController>(GetOwningPlayer());
+
+	if(Controller && AdminManagerWidgetClass)
+	{
+		AdminManagerWidget = CreateWidget<UAdminManagerWidget>(Controller, AdminManagerWidgetClass);
+
+		if(AdminManagerWidget)
+		{
+			AdminManagerWidget->SetPlayers(GameMode->GetPlayers());
+			AdminManagerWidget->AddToViewport();
 		}
 	}
 }

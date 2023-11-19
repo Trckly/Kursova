@@ -6,6 +6,7 @@
 #include "AWeaponClass.h"
 #include "GenericGameInstance.h"
 #include "ParticleHelper.h"
+#include "../ServerLogic/UI/ServerWidget.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "GameFramework/HUD.h"
 #include "Kismet/KismetSystemLibrary.h"
@@ -20,6 +21,10 @@ AMainPlayer::AMainPlayer()
 	CameraComponent->SetRelativeLocation(CameraComponent->GetUpVector() * 90.f);
 	CameraComponent->bUsePawnControlRotation = true;
 	CameraComponent->SetupAttachment(RootComponent);
+
+	IsInGodMode = false;
+	BehaviorSet = {true, true, true};
+	Health = 100.f;
 }
 
 // Called when the game starts or when spawned
@@ -128,6 +133,7 @@ void AMainPlayer::ContinueGameplay()
 	
 	bShowCrosshair = true;
 	bContinuable = false;
+	Health = 100.f;
 }
 
 void AMainPlayer::ProcessHitRack()
@@ -219,7 +225,7 @@ void AMainPlayer::SetName(FString Name)
 	SPlayerName = Name;
 }
 
-FString AMainPlayer::GetName()
+FString AMainPlayer::GetPlayerName() const
 {
 	return SPlayerName;
 }
@@ -229,7 +235,44 @@ void AMainPlayer::SetCity(FString City)
 	SCity = City;
 }
 
-FString AMainPlayer::GetCity()
+FString AMainPlayer::GetCity() const
 {
 	return SCity;
+}
+
+FBehaviorSet AMainPlayer::GetBehaviorSet() const
+{
+	return BehaviorSet;
+}
+
+void AMainPlayer::SetBehaviorSet(bool PCanMove, bool PCanJump, bool PCanShoot)
+{
+	BehaviorSet.CanMove = PCanMove;
+	BehaviorSet.CanJump = PCanJump;
+	BehaviorSet.CanShoot = PCanShoot;
+}
+
+bool AMainPlayer::GetGodModeState() const
+{
+	return IsInGodMode;
+}
+
+void AMainPlayer::SetGodModeState(bool HasGodMode)
+{
+	IsInGodMode = HasGodMode;
+}
+
+float AMainPlayer::GetHealth() const
+{
+	return Health;
+}
+
+int AMainPlayer::GetPlayerIndex() const
+{
+	return PlayerIndex;
+}
+
+void AMainPlayer::SetPlayerIndex(int Index)
+{
+	PlayerIndex = Index;
 }

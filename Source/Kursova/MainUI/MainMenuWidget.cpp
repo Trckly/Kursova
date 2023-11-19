@@ -7,7 +7,10 @@ void UMainMenuWidget::NativeConstruct()
 {
 	Super::NativeConstruct();
 
-	BConfirm->OnClicked.AddDynamic(this, &UMainMenuWidget::ConfirmRegistration);
+	if(!BConfirm->OnClicked.IsBound())
+	{
+		BConfirm->OnClicked.AddDynamic(this, &UMainMenuWidget::ConfirmRegistration);
+	}
 }
 
 void UMainMenuWidget::ConfirmRegistration()

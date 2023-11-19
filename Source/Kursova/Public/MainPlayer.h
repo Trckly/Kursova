@@ -6,11 +6,20 @@
 #include "AWeaponClass.h"
 #include "Camera/CameraComponent.h"
 #include "GameFramework/Character.h"
-#include "../ServerLogic/UI/ServerWidget.h"
+#include "../ServerLogic/SessionSubsystem.h"
 #include "MainPlayer.generated.h"
+
+class UServerWidget;
 
 DECLARE_DELEGATE(FRackDelegate);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnCharacterJoinSession, FBlueprintSessionResult, SessionResult, const FString&, Password);
+
+typedef struct FBehaviorSet
+{
+	bool CanMove;
+	bool CanJump;
+	bool CanShoot;
+} FBehaviorSet;
 
 UCLASS()
 class KURSOVA_API AMainPlayer : public ACharacter
@@ -50,6 +59,14 @@ protected:
 	FString SPlayerName;
 
 	FString SCity;
+
+	bool IsInGodMode;
+	
+	FBehaviorSet BehaviorSet;
+
+	float Health;
+
+	int PlayerIndex;
 	
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -119,9 +136,23 @@ public:
 	///
 	void SetName(FString Name);
 	
-	FString GetName();
+	FString GetPlayerName() const;
 
 	void SetCity(FString City);
 	
-	FString GetCity();
+	FString GetCity() const;
+
+	FBehaviorSet GetBehaviorSet() const;
+
+	void SetBehaviorSet(bool PCanMove, bool PCanJump, bool PCanShoot);
+
+	bool GetGodModeState() const;
+
+	void SetGodModeState(bool HasGodMode);
+
+	float GetHealth() const;
+
+	int GetPlayerIndex() const;
+
+	void SetPlayerIndex(int Index);
 };
