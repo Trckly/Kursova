@@ -4,11 +4,9 @@
 #include "MainPlayer.h"
 
 #include "AWeaponClass.h"
-#include "GenericGameInstance.h"
-#include "ParticleHelper.h"
 #include "GameFramework/CharacterMovementComponent.h"
-#include "GameFramework/HUD.h"
 #include "Kismet/KismetSystemLibrary.h"
+#include "Kursova/UMG/CrosshairWidget.h"
 
 // Sets default values
 AMainPlayer::AMainPlayer()
@@ -45,6 +43,16 @@ void AMainPlayer::BeginPlay()
 			}
 		}
 	}
+
+	///
+	///	Creating crosshair
+	///
+	auto CreatedCrosshair = CreateWidget<UCrosshairWidget>(GetWorld(), CrosshairWidgetClass);
+	if(CreatedCrosshair)
+	{
+		CrosshairWidget = CreatedCrosshair;
+		CrosshairWidget->AddToViewport();
+	}
 }
 
 // Called every frame
@@ -64,7 +72,7 @@ void AMainPlayer::SetupPlayerInputComponent(UInputComponent* PlayerInputComponen
 	PlayerInputComponent->BindAxis(TEXT("LookUp"), this, &APawn::AddControllerPitchInput);
 	PlayerInputComponent->BindAxis(TEXT("LookRight"), this, &APawn::AddControllerYawInput);
 	
-	// PlayerInputComponent->BindAction(TEXT("Interact"), IE_Pressed, this, &AMainPlayer::Interact);
+	PlayerInputComponent->BindAction(TEXT("Interact"), IE_Pressed, this, &AMainPlayer::Interact);
 	PlayerInputComponent->BindAction(TEXT("Escape"), IE_Pressed, this, &AMainPlayer::ContinueGameplay);
 
 	///
@@ -111,25 +119,33 @@ void AMainPlayer::Interact()
 		{
 			ProcessHitRack();
 		}
-		
 	}
 }
 
 void AMainPlayer::ContinueGameplay()
 {
-	SetActorLocation(PreviousActorLocation);
-	CameraComponent->SetWorldRotation(PreviousActorRotation);
+	if(bContinuable)
+	{
+		SetActorLocation(PreviousActorLocation);
+		CameraComponent->SetWorldRotation(PreviousActorRotation);
 
-	GetCharacterMovement()->SetMovementMode(MOVE_Walking);
+		GetCharacterMovement()->SetMovementMode(MOVE_Walking);
 
-	CameraComponent->bUsePawnControlRotation = true;
-	bUseControllerRotationYaw = true;
+		CameraComponent->bUsePawnControlRotation = true;
+		bUseControllerRotationYaw = true;
 
-	GetWorld()->GetFirstPlayerController()->SetInputMode(FInputModeGameOnly());
-	GetWorld()->GetFirstPlayerController()->SetShowMouseCursor(false);
-	
-	bShowCrosshair = true;
-	bContinuable = false;
+		GetWorld()->GetFirstPlayerController()->SetInputMode(FInputModeGameOnly());
+		GetWorld()->GetFirstPlayerController()->SetShowMouseCursor(false);
+		
+		bContinuable = false;
+
+		///
+		/// Widgets Handling
+		///
+		CrosshairWidget->AddToViewport();
+
+		WeaponMenuWidget->RemoveFromParent();
+	}
 }
 
 void AMainPlayer::ProcessHitRack()
@@ -148,9 +164,17 @@ void AMainPlayer::ProcessHitRack()
 
 	GetWorld()->GetFirstPlayerController()->SetInputMode(FInputModeGameAndUI());
 	GetWorld()->GetFirstPlayerController()->SetShowMouseCursor(true);
-
-	bShowCrosshair = false;
+	
 	bContinuable = true;
+	
+	CrosshairWidget->RemoveFromViewport();
+	auto CreatedWeaponMenu = CreateWidget<UWeaponMenuWidget>(GetWorld(), WeaponMenuWidgetClass);
+	if(CreatedWeaponMenu)
+	{
+		WeaponMenuWidget = CreatedWeaponMenu;
+		WeaponMenuWidget->SetActorPickedWeapons(PickedWeapons);
+		WeaponMenuWidget->AddToViewport();
+	}
 }
 
 void AMainPlayer::ProcessHitWeapon(AWeaponClass* WeaponActor)

@@ -3,10 +3,8 @@
 
 #include "AWeaponClass.h"
 
-#include "Animation/AnimNode_TransitionPoseEvaluator.h"
-
 AWeaponClass::AWeaponClass(FString Model, FString MainType, FString Subtype, int Capacity,FString Manufacturer,
-	float Caliber, int Length, int Weight, int Price)
+                           float Caliber, int Length, int Weight, int Price)
 {
 	WeaponUnit.Model = Model;
 	WeaponUnit.MainType = MainType;
@@ -32,9 +30,22 @@ void AWeaponClass::InitWithStruct(const FWeaponUnit& StructItem)
 	WeaponUnit.Price = StructItem.Price;
 }
 
-FWeaponUnit AWeaponClass::GetStructure()
+const FWeaponUnit& AWeaponClass::GetStructure()
 {
 	return WeaponUnit;
+}
+
+void AWeaponClass::EditStructure(const TArray<FText>& NewProperties)
+{
+	WeaponUnit.Model = NewProperties[0].ToString();
+	WeaponUnit.MainType = NewProperties[1].ToString();
+	WeaponUnit.Subtype = NewProperties[2].ToString();
+	WeaponUnit.Capacity = FCString::Atoi(*NewProperties[3].ToString());
+	WeaponUnit.Manufacturer = NewProperties[4].ToString();
+	WeaponUnit.Caliber = FCString::Atof(*NewProperties[5].ToString());
+	WeaponUnit.Length = FCString::Atoi(*NewProperties[6].ToString());
+	WeaponUnit.Weight = FCString::Atoi(*NewProperties[7].ToString());
+	WeaponUnit.Price = FCString::Atoi(*NewProperties[8].ToString());
 }
 
 // UWeaponClass::UWeaponClass(const UWeaponClass& Other)

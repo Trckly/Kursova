@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "AWeaponClass.h"
 #include "WeaponDataWidget.h"
 #include "Blueprint/UserWidget.h"
 #include "Components/Button.h"
@@ -39,13 +40,32 @@ protected:
 	UPROPERTY()
 	TArray<UWeaponDataWidget*> ChildRowWidgets;
 
+	UPROPERTY()
+	UWeaponDataWidget* SelectedWidget;
+
+	UPROPERTY()
+	UWeaponEditWidget* EditWidget;
+
+	UPROPERTY()
+	TArray<AWeaponClass*> ActorPickedWeapons;
+
 public:
+	virtual void RemoveFromParent() override;
+	
 	UFUNCTION()
 	void SortByCaliber();
 
 	UFUNCTION()
-	void EditProperties();
+	void CreatePropertiesEditor();
+
+	UFUNCTION()
+	void EditWeaponUnitProperties(const TArray<FText>& ChangedValues, const FString& OriginalModelName);
+
+	UFUNCTION()
+	void HandleSelectedRowWidget(const FString& ModelName);
 
 	void ShellSort(TArray<UWeaponDataWidget*>& Children);
+
+	void SetActorPickedWeapons(const TArray<AWeaponClass*>& PickedWeapons);
 };
 
