@@ -11,6 +11,8 @@
 /**
  * 
  */
+DECLARE_DYNAMIC_DELEGATE_TwoParams(FAcceptedDelegate, const TArray<FText>&, ChangedValues, const FString&, OriginalModelName);
+
 UCLASS()
 class KURSOVA_API UWeaponEditWidget : public UUserWidget
 {
@@ -52,12 +54,17 @@ virtual void NativeConstruct() override;
 	UPROPERTY(meta=(BindWidget))
 	UButton* CancelButton;
 
+	UPROPERTY()
+	FString PreviousModelName;
+
 public:
-	void SetupInputBoxes();
+	void SetupInputBoxes(const TArray<FText>& PropertiesArray);
 
 	UFUNCTION()
 	void Proceed();
 
 	UFUNCTION()
 	void Cancel();
+
+	FAcceptedDelegate OnAcceptedEvent;
 };

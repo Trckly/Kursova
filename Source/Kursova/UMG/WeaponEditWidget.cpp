@@ -12,12 +12,35 @@ void UWeaponEditWidget::NativeConstruct()
 	CancelButton->OnClicked.AddDynamic(this, &UWeaponEditWidget::UWeaponEditWidget::Cancel);
 }
 
-void UWeaponEditWidget::SetupInputBoxes()
+void UWeaponEditWidget::SetupInputBoxes(const TArray<FText>& PropertiesArray)
 {
+	ModelEditBox->SetText(PropertiesArray[0]);
+	MainTypeEditBox->SetText(PropertiesArray[1]);
+	SubtypeEditBox->SetText(PropertiesArray[2]);
+	CapacityEditBox->SetText(PropertiesArray[3]);
+	ManufacturerEditBox->SetText(PropertiesArray[4]);
+	CaliberEditBox->SetText(PropertiesArray[5]);
+	LengthEditBox->SetText(PropertiesArray[6]);
+	WeightEditBox->SetText(PropertiesArray[7]);
+	PriceEditBox->SetText(PropertiesArray[8]);
+
+	PreviousModelName = PropertiesArray[0].ToString();
 }
 
 void UWeaponEditWidget::Proceed()
 {
+	TArray<FText> Result;
+	Result.Push(ModelEditBox->GetText());
+	Result.Push(MainTypeEditBox->GetText());
+	Result.Push(SubtypeEditBox->GetText());
+	Result.Push(CapacityEditBox->GetText());
+	Result.Push(ManufacturerEditBox->GetText());
+	Result.Push(CaliberEditBox->GetText());
+	Result.Push(LengthEditBox->GetText());
+	Result.Push(WeightEditBox->GetText());
+	Result.Push(PriceEditBox->GetText());
+	
+	OnAcceptedEvent.Execute(Result, PreviousModelName);
 	RemoveFromParent();
 }
 

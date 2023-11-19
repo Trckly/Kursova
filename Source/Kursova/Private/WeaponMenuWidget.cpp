@@ -2,38 +2,22 @@
 
 
 #include "WeaponMenuWidget.h"
-#include "Kursova/Miscellaneous/Algorithms.h"
-#include "MainPlayer.h"
 
 void UWeaponMenuWidget::NativeConstruct()
 {
 	Super::NativeConstruct();
 
 	SortButton->OnClicked.AddDynamic(this, &UWeaponMenuWidget::SortByCaliber);
-	EditButton->OnClicked.AddDynamic(this, &UWeaponMenuWidget::EditProperties);
+	EditButton->OnClicked.AddDynamic(this, &UWeaponMenuWidget::CreatePropertiesEditor);
+}
 
-	AMainPlayer* CurrentPlayer = Cast<AMainPlayer>(GetWorld()->GetFirstPlayerController()->GetCharacter());
-	if(!CurrentPlayer)
+void UWeaponMenuWidget::RemoveFromParent()
+{
+	Super::RemoveFromParent();
+
+	if(EditWidget)
 	{
-		UE_LOG(LogTemp, Warning, TEXT("Main player cast failed!"));
-	}
-	else
-	{
-		TArray<AWeaponClass*> ActorPickedWeapons = CurrentPlayer->GetAllPickedWeapons();
-		for (auto WeaponInstance : ActorPickedWeapons)
-		{
-			auto WidgetCreated = CreateWidget<UWeaponDataWidget>(this, WeaponDataWidgetClass);
-			if(WidgetCreated)
-			{
-				WidgetCreated->InitWithData(WeaponInstance->GetStructure());
-				ChildRowWidgets.Push(WidgetCreated);
-				WeaponContent->AddChild(WidgetCreated);
-				if(!WidgetCreated->IsInViewport() && !WidgetCreated->IsVisible())
-				{
-					WidgetCreated->AddToViewport();
-				}
-			}
-		}
+		EditWidget->RemoveFromParent();
 	}
 }
 
@@ -56,10 +40,62 @@ void UWeaponMenuWidget::SortByCaliber()
 	
 }
 
-void UWeaponMenuWidget::EditProperties()
+void UWeaponMenuWidget::CreatePropertiesEditor()
 {
-	UWeaponEditWidget* CreatedWidget = CreateWidget<UWeaponEditWidget>(this, WeaponEditWidgetClass);
-	CreatedWidget->AddToViewport();
+	if(SelectedWidget)
+	{
+		UWeaponEditWidget* CreatedWidget = CreateWidget<UWeaponEditWidget>(this, WeaponEditWidgetClass);
+		if(CreatedWidget)
+		{
+			EditWidget = CreatedWidget;
+			EditWidget->OnAcceptedEvent.BindDynamic(this, & UWeaponMenuWidget::EditWeaponUnitProperties);
+			EditWidget->SetupInputBoxes(SelectedWidget->GetAllProperties());
+			EditWidget->AddToViewport();
+			
+		}
+	}
+}
+
+void UWeaponMenuWidget::EditWeaponUnitProperties(const TArray<FText>& ChangedValues, const FString& OriginalModelName)
+{
+	for (int i = 0; i < ActorPickedWeapons.Num(); ++i)
+	{
+		if(ActorPickedWeapons[i]->GetStructure().Model == OriginalModelName)
+		{
+			ActorPickedWeapons[i]->EditStructure(ChangedValues);
+		}
+	}
+
+	WeaponContent->ClearChildren();
+	ChildRowWidgets.Empty();
+	for (auto WeaponInstance : ActorPickedWeapons)
+	{
+		auto WidgetCreated = CreateWidget<UWeaponDataWidget>(this, WeaponDataWidgetClass);
+		if(WidgetCreated)
+		{
+			WidgetCreated->InitWithData(WeaponInstance->GetStructure());
+			WeaponContent->AddChild(WidgetCreated);
+				
+			ChildRowWidgets.Push(WidgetCreated);
+			WidgetCreated->OnRowClicked.BindDynamic(this, &UWeaponMenuWidget::HandleSelectedRowWidget);
+		}
+	}
+}
+
+void UWeaponMenuWidget::HandleSelectedRowWidget(const FString& ModelName)
+{
+	for (auto Child : ChildRowWidgets)
+	{
+		if(ModelName == Child->GetModelName())
+		{
+			SelectedWidget = Child;
+			SelectedWidget->SetButtonEnabledColor();
+		}
+		else
+		{
+			Child->SetButtonDisabledColor();
+		}
+	}
 }
 
 void UWeaponMenuWidget::ShellSort(TArray<UWeaponDataWidget*>& Children)
@@ -75,6 +111,27 @@ void UWeaponMenuWidget::ShellSort(TArray<UWeaponDataWidget*>& Children)
 				Children[j] = Children[j-Gap];
 			
 			Children[j] = Temp;
+		}
+	}
+}
+
+void UWeaponMenuWidget::SetActorPickedWeapons(const TArray<AWeaponClass*>& PickedWeapons)
+{
+	for (auto Weapon : PickedWeapons)
+	{
+		ActorPickedWeapons.Push(Weapon);
+	}
+
+	for (auto WeaponInstance : ActorPickedWeapons)
+	{
+		auto WidgetCreated = CreateWidget<UWeaponDataWidget>(this, WeaponDataWidgetClass);
+		if(WidgetCreated)
+		{
+			WidgetCreated->InitWithData(WeaponInstance->GetStructure());
+			WeaponContent->AddChild(WidgetCreated);
+				
+			ChildRowWidgets.Push(WidgetCreated);
+			WidgetCreated->OnRowClicked.BindDynamic(this, &UWeaponMenuWidget::HandleSelectedRowWidget);
 		}
 	}
 }

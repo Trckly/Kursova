@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "AWeaponClass.h"
+#include "WeaponMenuWidget.h"
 #include "Camera/CameraComponent.h"
 #include "GameFramework/Character.h"
 #include "../ServerLogic/UI/ServerWidget.h"
@@ -43,6 +44,18 @@ protected:
 
 	UPROPERTY(BlueprintReadOnly)
 	TArray<AWeaponClass*> PickedWeapons;
+
+	UPROPERTY(EditDefaultsOnly)
+	TSubclassOf<UUserWidget> CrosshairWidgetClass;
+
+	UPROPERTY(EditDefaultsOnly)
+	TSubclassOf<UWeaponMenuWidget> WeaponMenuWidgetClass;
+
+	UPROPERTY()
+	UUserWidget* CrosshairWidget;
+
+	UPROPERTY()
+	UWeaponMenuWidget* WeaponMenuWidget;
 
 protected:
 	// Called when the game starts or when spawned
