@@ -42,7 +42,9 @@ public:
 	void InitWithStruct(const FWeaponUnit& StructItem);
 
 	UFUNCTION(BlueprintCallable)
-	FWeaponUnit GetStructure();
+	const FWeaponUnit& GetStructure();
+
+	void EditStructure(const TArray<FText>& NewProperties);
 	
 	///
 	///	Overloaded file read/write operators

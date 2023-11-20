@@ -293,7 +293,7 @@ void USessionSubsystem::JoinGameSession(const FBlueprintSessionResult& SessionRe
 		SessionResult.OnlineResult.Session.SessionSettings.Get(FName(TEXT("Password")), SessionPassword);
 		if(SessionPassword != Password)
 		{
-			OnJoinGameSessionCompleteEvent.Broadcast(static_cast<EBPOnJoinSessionCompleteResult>(EOnJoinSessionCompleteResult::WrongPassword));
+			OnJoinGameSessionCompleteEvent.Broadcast(static_cast<EBPOnJoinSessionCompleteResult>(EOnJoinSessionCompleteResult::UnknownError));
 			return;
 		}
 	}
@@ -333,11 +333,11 @@ bool USessionSubsystem::TryTravelToCurrentSession()
 		return false;
 	}
 
-	FString ConnectString;
-	if (!SessionInterface->GetResolvedConnectString(NAME_GameSession, ConnectString))
-	{
-		return false;
-	}
+	FString ConnectString("TestLevel?listen");
+	// if (!SessionInterface->GetResolvedConnectString(NAME_GameSession, ConnectString))
+	// {
+	// 	return false;
+	// }
 
 	APlayerController* playerController = GetWorld()->GetFirstPlayerController();
 	playerController->ClientTravel(ConnectString, TRAVEL_Absolute);

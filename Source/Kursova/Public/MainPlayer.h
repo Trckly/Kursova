@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "AWeaponClass.h"
+#include "WeaponMenuWidget.h"
 #include "Camera/CameraComponent.h"
 #include "GameFramework/Character.h"
 #include "../ServerLogic/SessionSubsystem.h"
@@ -55,7 +56,7 @@ protected:
 
 	UPROPERTY(BlueprintReadOnly)
 	TArray<AWeaponClass*> PickedWeapons;
-
+	
 	///
 	/// Andrii Kursova
 	///
@@ -74,7 +75,20 @@ protected:
 	float Health;
 
 	int PlayerIndex;
-	
+
+	UPROPERTY(EditDefaultsOnly)
+	TSubclassOf<UUserWidget> CrosshairWidgetClass;
+
+	UPROPERTY(EditDefaultsOnly)
+	TSubclassOf<UWeaponMenuWidget> WeaponMenuWidgetClass;
+
+	UPROPERTY()
+	UUserWidget* CrosshairWidget;
+
+	UPROPERTY()
+	UWeaponMenuWidget* WeaponMenuWidget;
+
+protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 	
@@ -85,9 +99,6 @@ protected:
 	UMainMenuWidget* MainMenuWidget;
 
 public:
-	// Called every frame
-	virtual void Tick(float DeltaTime) override;
-
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
