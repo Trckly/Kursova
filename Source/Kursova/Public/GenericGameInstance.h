@@ -7,6 +7,7 @@
 #include "Engine/GameInstance.h"
 #include "GenericGameInstance.generated.h"
 
+class AMainPlayer;
 /**
  * 
  */
@@ -21,7 +22,7 @@ protected:
 	
 	// UFUNCTION(BlueprintCallable)
 	virtual void Init() override;
-
+	
 public:
 	UPROPERTY()
 	UDataTable* WeaponDataTable;

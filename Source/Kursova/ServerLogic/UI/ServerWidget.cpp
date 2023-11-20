@@ -106,13 +106,6 @@ void UServerWidget::SetSessions(TArray<FBlueprintSessionResult> BlueprintSession
 ///
 void UServerWidget::OpenAdminMenu()
 {
-	AKursovaGameModeBase* GameMode = Cast<AKursovaGameModeBase>(GetWorld()->GetAuthGameMode());
-
-	if(!GameMode)
-	{
-		return;
-	}
-
 	APlayerController* Controller = Cast<APlayerController>(GetOwningPlayer());
 
 	if(Controller && AdminManagerWidgetClass)
@@ -121,7 +114,7 @@ void UServerWidget::OpenAdminMenu()
 
 		if(AdminManagerWidget)
 		{
-			AdminManagerWidget->SetPlayers(GameMode->GetPlayers());
+			AdminManagerWidget->SetPlayers();
 			AdminManagerWidget->AddToViewport();
 		}
 	}

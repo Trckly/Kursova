@@ -4,6 +4,7 @@
 #include "AdminManagerWidget.h"
 #include "../Public/MainPlayer.h"
 #include "PlayerPanelWidget.h"
+#include "Kismet/GameplayStatics.h"
 
 void UAdminManagerWidget::NativeConstruct()
 {
@@ -27,8 +28,11 @@ void UAdminManagerWidget::NativeConstruct()
 	PlayerIndex = 0;
 }
 
-void UAdminManagerWidget::SetPlayers(TArray<AMainPlayer*> ArrOfPlayers)
+void UAdminManagerWidget::SetPlayers()
 {
+	TArray<AActor*> PlayersArr;
+	UGameplayStatics::GetAllActorsOfClass(GetWorld(), AMainPlayer::StaticClass(), PlayersArr);
+	
 	APlayerController* Controller = Cast<APlayerController>(GetOwningPlayer());
 	if(!Controller)
 	{
@@ -36,14 +40,16 @@ void UAdminManagerWidget::SetPlayers(TArray<AMainPlayer*> ArrOfPlayers)
 		return;
 	}
 
-	for(AMainPlayer* Player : ArrOfPlayers)
+	for(AActor* Player : PlayersArr)
 	{
+		AMainPlayer* MainPlayer = Cast<AMainPlayer>(Player);
 		UPlayerPanelWidget* PanelWidget = CreateWidget<UPlayerPanelWidget>(Controller, PlayerPanelWidgetClass);
 
 		if(PanelWidget)
 		{
-			PanelWidget->SetWidget(Player);
-			MapOfPlayers.Add(Player->GetPlayerIndex(), PanelWidget);
+			PanelWidget->SetWidget(MainPlayer);
+			MainPlayer->SetPlayerIndex(PlayerIndex++);
+			MapOfPlayers.Add(MainPlayer->GetPlayerIndex(), PanelWidget);
 			SListOfPlayers->AddChild(PanelWidget);
 		}
 	}

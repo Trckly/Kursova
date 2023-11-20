@@ -4,8 +4,8 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/PlayerController.h"
-#include "Kursova/MainUI/MainMenuWidget.h"
 #include "CustomPlayerController.generated.h"
+
 
 /**
  * 
@@ -15,15 +15,7 @@ class KURSOVA_API ACustomPlayerController : public APlayerController
 {
 	GENERATED_BODY()
 
+	UFUNCTION(Reliable, Client)
 	virtual void BeginPlay() override;
 	
-public:
-	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
-	TSubclassOf<UMainMenuWidget> MainMenuWidgetClass;
-	
-	UPROPERTY()
-	UMainMenuWidget* MainMenuWidget;
-
-	UFUNCTION()
-	void SetCurrentPlayerInfo(FString PlayerName, FString PlayerCity);
 };

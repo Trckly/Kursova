@@ -46,7 +46,7 @@ public:
 	virtual void NativeConstruct() override;
 
 	UFUNCTION()
-	void SetPlayers(TArray<AMainPlayer*> ArrOfPlayers);
+	void SetPlayers();
 
 	UFUNCTION()
 	void FindByName();

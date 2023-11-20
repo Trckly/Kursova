@@ -9,10 +9,13 @@
 #include "../ServerLogic/SessionSubsystem.h"
 #include "MainPlayer.generated.h"
 
+class UMainMenuWidget;
 class UServerWidget;
+class AMainPlayer;
 
 DECLARE_DELEGATE(FRackDelegate);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnCharacterJoinSession, FBlueprintSessionResult, SessionResult, const FString&, Password);
+DECLARE_DYNAMIC_DELEGATE_OneParam(FSetStats, AMainPlayer*, Self);
 
 typedef struct FBehaviorSet
 {
@@ -56,22 +59,32 @@ protected:
 	///
 	/// Andrii Kursova
 	///
+	UPROPERTY(Replicated, EditAnywhere, BlueprintReadWrite)
 	FString SPlayerName;
 
+	UPROPERTY(Replicated, EditAnywhere, BlueprintReadWrite)
 	FString SCity;
 
+	UPROPERTY(Replicated)
 	bool IsInGodMode;
-	
+
 	FBehaviorSet BehaviorSet;
 
+    UPROPERTY(Replicated)
 	float Health;
 
 	int PlayerIndex;
 	
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
+	
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
+	TSubclassOf<UMainMenuWidget> MainMenuWidgetClass;
+	
+	UPROPERTY()
+	UMainMenuWidget* MainMenuWidget;
 
-public:	
+public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
@@ -106,6 +119,8 @@ public:
 	UPROPERTY(EditAnywhere)
 	UServerWidget* ServerWidget;	
 
+	UPROPERTY()
+	FSetStats SetStats;
 	
 	UFUNCTION()
 	void CreateSession(FString Name, bool IsPrivate, FString Password, int NumberOfPlayers);
@@ -155,4 +170,15 @@ public:
 	int GetPlayerIndex() const;
 
 	void SetPlayerIndex(int Index);
+
+	UFUNCTION(Server, Reliable)
+	void ServerSetNameAndCity(FString const& Name, FString const& City);
+
+	UFUNCTION()
+	void SetNameAndCity(FString const& Name, FString const& City);
+
+	UFUNCTION(NetMulticast, Reliable)
+	void MulticastSetNameAndCity(FString const& Name, FString const& City);
+
+	virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
 };

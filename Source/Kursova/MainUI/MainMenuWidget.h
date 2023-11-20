@@ -9,7 +9,7 @@
 #include "Components/TextBlock.h"
 #include "MainMenuWidget.generated.h"
 
-DECLARE_DYNAMIC_DELEGATE_TwoParams(FSetUserInfo, FString, PlayerName, FString, PlayerCity);
+DECLARE_DYNAMIC_DELEGATE_TwoParams(FSetUserInfo, FString const&, PlayerName, FString const&, PlayerCity);
 
 /**
  * 
