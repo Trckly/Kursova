@@ -9,6 +9,9 @@ void UWeaponMenuWidget::NativeConstruct()
 
 	SortButton->OnClicked.AddDynamic(this, &UWeaponMenuWidget::SortByCaliber);
 	EditButton->OnClicked.AddDynamic(this, &UWeaponMenuWidget::CreatePropertiesEditor);
+	FilterTextBox->OnTextChanged.AddDynamic(this, &UWeaponMenuWidget::FilterFunc);
+
+	bSortFlipFlop = true;
 }
 
 void UWeaponMenuWidget::RemoveFromParent()
@@ -31,7 +34,7 @@ void UWeaponMenuWidget::SortByCaliber()
 		Children.Push(Cast<UWeaponDataWidget>(Child));
 	}
 	
-	ShellSort(Children);
+	ShellSort(Children, bSortFlipFlop );
 
 	for(auto Child : Children)
 	{
@@ -98,21 +101,79 @@ void UWeaponMenuWidget::HandleSelectedRowWidget(const FString& ModelName)
 	}
 }
 
-void UWeaponMenuWidget::ShellSort(TArray<UWeaponDataWidget*>& Children)
+void UWeaponMenuWidget::FilterFunc(const FText& TypedText)
 {
-	for (int Gap = Children.Num() / 2; Gap > 0; Gap /= 2)
+	if(TypedText.ToString().Len() == 0)
 	{
-		for (int i = Gap; i < Children.Num(); ++i)
+		WeaponContent->ClearChildren();
+		for(auto Child : ChildRowWidgets)
 		{
-			auto Temp = Children[i];
-
-			int j;
-			for(j = i; j >= Gap && Children[j-Gap]->GetCaliber() > Temp->GetCaliber(); j -= Gap)
-				Children[j] = Children[j-Gap];
-			
-			Children[j] = Temp;
+			WeaponContent->AddChild(Child);
 		}
 	}
+	else
+	{
+		int FilterType = FilterComboBox->GetSelectedIndex();
+
+		switch (FilterType)
+		{
+		case ModelFilter:
+			FilterByModel(TypedText);
+			break;
+
+		case MainTypeFilter:
+			FilterByMainType(TypedText);
+			break;
+			
+		case SubtypeFilter:
+			FilterBySubtype(TypedText);
+			break;
+
+		case ManufacturerFilter:
+			FilterByManufacturer(TypedText);
+			break;
+
+		default:
+			UE_LOG(LogTemp, Warning, TEXT("Filter combo box failure!"));	
+		}
+	}
+}
+
+void UWeaponMenuWidget::ShellSort(TArray<UWeaponDataWidget*>& Children, bool& bAscending)
+{
+	if(bAscending)
+	{
+		for (int Gap = Children.Num() / 2; Gap > 0; Gap /= 2)
+		{
+			for (int i = Gap; i < Children.Num(); ++i)
+			{
+				auto Temp = Children[i];
+
+				int j;
+				for(j = i; j >= Gap && Children[j-Gap]->GetCaliber() > Temp->GetCaliber(); j -= Gap)
+					Children[j] = Children[j-Gap];
+			
+				Children[j] = Temp;
+			}
+		}
+	}
+	else
+	{
+		for (int Gap = Children.Num() / 2; Gap > 0; Gap /= 2)
+		{
+			for (int i = Gap; i < Children.Num(); ++i)
+			{
+				auto Temp = Children[i];
+
+				int j;
+				for(j = i; j >= Gap && Children[j-Gap]->GetCaliber() < Temp->GetCaliber(); j -= Gap)
+					Children[j] = Children[j-Gap];
+			
+				Children[j] = Temp;
+			}
+		}
+	}
+	bAscending = !bAscending;
 }
 
 void UWeaponMenuWidget::SetActorPickedWeapons(const TArray<AWeaponClass*>& PickedWeapons)
@@ -132,6 +193,74 @@ void UWeaponMenuWidget::SetActorPickedWeapons(const TArray<AWeaponClass*>& Picke
 				
 			ChildRowWidgets.Push(WidgetCreated);
 			WidgetCreated->OnRowClicked.BindDynamic(this, &UWeaponMenuWidget::HandleSelectedRowWidget);
+		}
+	}
+}
+
+void UWeaponMenuWidget::FilterByModel(const FText& NewModelName)
+{
+	WeaponContent->ClearChildren();
+
+	for(auto Child : ChildRowWidgets)
+	{
+		FString ModelName = Child->GetModelName();
+		FString NoSpacesModelName = ModelName;
+		NoSpacesModelName.RemoveSpacesInline();
+		if(ModelName.Contains(NewModelName.ToString()) ||
+			NoSpacesModelName.Contains(NewModelName.ToString()))
+		{
+			WeaponContent->AddChild(Child);
+		}
+	}
+}
+
+void UWeaponMenuWidget::FilterByMainType(const FText& NewMainTypeName)
+{
+	WeaponContent->ClearChildren();
+
+	for(auto Child : ChildRowWidgets)
+	{
+		FString MainTypeName = Child->GetMainTypeName();
+		FString NoSpacesMainTypeName = MainTypeName;
+		NoSpacesMainTypeName.RemoveSpacesInline();
+		if(MainTypeName.Contains(NewMainTypeName.ToString()) ||
+			NoSpacesMainTypeName.Contains(NewMainTypeName.ToString()))
+		{
+			WeaponContent->AddChild(Child);
+		}
+	}
+}
+
+void UWeaponMenuWidget::FilterBySubtype(const FText& NewSubtypeName)
+{
+	WeaponContent->ClearChildren();
+
+	for(auto Child : ChildRowWidgets)
+	{
+		FString SubtypeName = Child->GetSubtypeName();
+		FString NoSpacesSubtypeName = SubtypeName;
+		NoSpacesSubtypeName.RemoveSpacesInline();
+		if(SubtypeName.Contains(NewSubtypeName.ToString()) ||
+			NoSpacesSubtypeName.Contains(NewSubtypeName.ToString()))
+		{
+			WeaponContent->AddChild(Child);
+		}
+	}
+}
+
+void UWeaponMenuWidget::FilterByManufacturer(const FText& NewManufacturerName)
+{
+	WeaponContent->ClearChildren();
+
+	for(auto Child : ChildRowWidgets)
+	{
+		FString ManufacturerName = Child->GetManufacturerName();
+		FString NoSpacesManufacturerName = ManufacturerName;
+		NoSpacesManufacturerName.RemoveSpacesInline();
+		if(ManufacturerName.Contains(NewManufacturerName.ToString()) ||
+			NoSpacesManufacturerName.Contains(NewManufacturerName.ToString()))
+		{
+			WeaponContent->AddChild(Child);
 		}
 	}
 }

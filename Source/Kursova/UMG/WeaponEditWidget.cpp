@@ -24,6 +24,13 @@ void UWeaponEditWidget::SetupInputBoxes(const TArray<FText>& PropertiesArray)
 	WeightEditBox->SetText(PropertiesArray[7]);
 	PriceEditBox->SetText(PropertiesArray[8]);
 
+	ModelEditBox->SetIsEnabled(false);
+	MainTypeEditBox->SetIsEnabled(false);
+	SubtypeEditBox->SetIsEnabled(false);
+	CapacityEditBox->SetIsEnabled(false);
+	ManufacturerEditBox->SetIsEnabled(false);
+	CaliberEditBox->SetIsEnabled(false);
+
 	PreviousModelName = PropertiesArray[0].ToString();
 }
 
