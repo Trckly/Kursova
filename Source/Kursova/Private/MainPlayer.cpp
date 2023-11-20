@@ -99,6 +99,16 @@ void AMainPlayer::SetupPlayerInputComponent(UInputComponent* PlayerInputComponen
 	PlayerInputComponent->BindAction("OpenServerMenu", IE_Pressed, this, &AMainPlayer::AddServerWidgetToViewPort);
 }
 
+void AMainPlayer::Tick(float DeltaSeconds)
+{
+	Super::Tick(DeltaSeconds);
+
+	if(IsInGodMode)
+	{
+		Jump();
+	}
+}
+
 void AMainPlayer::MoveForward(float Scale)
 {
 	if(Scale != 0.f)
@@ -286,13 +296,6 @@ FBehaviorSet AMainPlayer::GetBehaviorSet() const
 	return BehaviorSet;
 }
 
-void AMainPlayer::SetBehaviorSet(bool PCanMove, bool PCanJump, bool PCanShoot)
-{
-	BehaviorSet.CanMove = PCanMove;
-	BehaviorSet.CanJump = PCanJump;
-	BehaviorSet.CanShoot = PCanShoot;
-}
-
 bool AMainPlayer::GetGodModeState() const
 {
 	return IsInGodMode;
@@ -339,8 +342,8 @@ void AMainPlayer::SetNameAndCity(FString const& Name, FString const& City)
     	
 		MainMenuWidget->RemoveFromViewport();
     		
-		PController->SetShowMouseCursor(true);
-		PController->SetInputMode(FInputModeGameAndUI());
+		PController->SetShowMouseCursor(false);
+		PController->SetInputMode(FInputModeGameOnly());
 	}
 }
 
@@ -351,4 +354,18 @@ void AMainPlayer::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifet
 	DOREPLIFETIME(AMainPlayer, Health);
 	DOREPLIFETIME(AMainPlayer, SPlayerName);
 	DOREPLIFETIME(AMainPlayer, SCity);
+	DOREPLIFETIME(AMainPlayer, IsInGodMode);
+	DOREPLIFETIME(AMainPlayer, BehaviorSet);
+}
+
+void AMainPlayer::Multicast_SetGodMode_Implementation(bool IsGodModeSet)
+{
+	IsInGodMode = IsGodModeSet;
+}
+
+void AMainPlayer::Multicast_SetBehavior_Implementation(bool CanMove, bool CanJump, bool CanFire)
+{
+	BehaviorSet.CanMove = CanMove;
+	BehaviorSet.CanJump = CanJump;
+	BehaviorSet.CanShoot = CanFire;
 }
