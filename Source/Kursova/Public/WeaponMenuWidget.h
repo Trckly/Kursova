@@ -7,6 +7,7 @@
 #include "WeaponDataWidget.h"
 #include "Blueprint/UserWidget.h"
 #include "Components/Button.h"
+#include "Components/ComboBoxString.h"
 #include "Components/VerticalBox.h"
 #include "Kursova/UMG/WeaponEditWidget.h"
 #include "WeaponMenuWidget.generated.h"
@@ -20,6 +21,14 @@ class KURSOVA_API UWeaponMenuWidget : public UUserWidget
 	GENERATED_BODY()
 
 protected:
+	enum EComboBoxValues
+	{
+		ModelFilter,
+		MainTypeFilter,
+		SubtypeFilter,
+		ManufacturerFilter
+	};
+	
 	virtual void NativeConstruct() override;
 
 	UPROPERTY(meta=(BindWidget))
@@ -30,6 +39,12 @@ protected:
 
 	UPROPERTY(meta=(BindWidget))
 	UButton* EditButton;
+
+	UPROPERTY(meta=(BindWidget))
+	UComboBoxString* FilterComboBox;
+	
+	UPROPERTY(meta=(BindWidget))
+	UEditableTextBox* FilterTextBox;
 
 	UPROPERTY(EditDefaultsOnly)
 	TSubclassOf<UWeaponDataWidget> WeaponDataWidgetClass;
@@ -49,6 +64,8 @@ protected:
 	UPROPERTY()
 	TArray<AWeaponClass*> ActorPickedWeapons;
 
+	bool bSortFlipFlop;
+
 public:
 	virtual void RemoveFromParent() override;
 	
@@ -64,8 +81,19 @@ public:
 	UFUNCTION()
 	void HandleSelectedRowWidget(const FString& ModelName);
 
-	void ShellSort(TArray<UWeaponDataWidget*>& Children);
+	UFUNCTION()
+	void FilterFunc(const FText& TypedText);
+
+	void ShellSort(TArray<UWeaponDataWidget*>& Children, bool& bAscending);
 
 	void SetActorPickedWeapons(const TArray<AWeaponClass*>& PickedWeapons);
+
+	void FilterByModel(const FText& NewModelName);
+
+	void FilterByMainType(const FText& NewMainTypeName);
+
+	void FilterBySubtype(const FText& NewSubtypeName);
+
+	void FilterByManufacturer(const FText& NewManufacturerName);
 };
 

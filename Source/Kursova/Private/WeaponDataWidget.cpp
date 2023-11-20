@@ -45,6 +45,21 @@ FString UWeaponDataWidget::GetModelName()
 	return ModelText->GetText().ToString();
 }
 
+FString UWeaponDataWidget::GetMainTypeName()
+{
+	return MainTypeText->GetText().ToString();
+}
+
+FString UWeaponDataWidget::GetSubtypeName()
+{
+	return SubtypeText->GetText().ToString();
+}
+
+FString UWeaponDataWidget::GetManufacturerName()
+{
+	return ManufacturerText->GetText().ToString();
+}
+
 TArray<FText> UWeaponDataWidget::GetAllProperties()
 {
 	TArray<FText> Result;

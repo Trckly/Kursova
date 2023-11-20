@@ -63,6 +63,9 @@ public:
 	float GetCaliber();
 
 	FString GetModelName();
+	FString GetMainTypeName();
+	FString GetSubtypeName();
+	FString GetManufacturerName();
 
 	TArray<FText> GetAllProperties();
 
