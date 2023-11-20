@@ -333,11 +333,11 @@ bool USessionSubsystem::TryTravelToCurrentSession()
 		return false;
 	}
 
-	FString ConnectString;
-	if (!SessionInterface->GetResolvedConnectString(NAME_GameSession, ConnectString))
-	{
-		return false;
-	}
+	FString ConnectString("TestLevel?listen");
+	// if (!SessionInterface->GetResolvedConnectString(NAME_GameSession, ConnectString))
+	// {
+	// 	return false;
+	// }
 
 	APlayerController* playerController = GetWorld()->GetFirstPlayerController();
 	playerController->ClientTravel(ConnectString, TRAVEL_Absolute);

@@ -13,6 +13,7 @@ UCLASS()
 class KURSOVA_API AKursovaGameModeBase : public AGameModeBase
 {
 	GENERATED_BODY()
+	
 public:
 	AKursovaGameModeBase();
 

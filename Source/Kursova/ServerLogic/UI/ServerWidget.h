@@ -15,6 +15,8 @@
 #include "Kismet/KismetStringLibrary.h"
 #include "ServerWidget.generated.h"
 
+class UAdminManagerWidget;
+
 DECLARE_DYNAMIC_DELEGATE_FourParams(FSendSettingsToPlayer, FString, Name, bool, IsPrivate, FString, Password, int, NumberOfPlayers);
 DECLARE_DYNAMIC_DELEGATE(FOnFindSession);
 DECLARE_DYNAMIC_DELEGATE_TwoParams(FOnJoinToSession, FBlueprintSessionResult, SessionResult, const FString&, Password);
@@ -89,4 +91,19 @@ public:
 
 	UFUNCTION()
 	void SetSessions(TArray<FBlueprintSessionResult> BlueprintSessionResults);
+
+	///
+	/// New Functionality
+	///
+	UPROPERTY(BlueprintReadWrite, meta=(BindWidget))
+	UButton* BManageServer;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
+	TSubclassOf<UAdminManagerWidget> AdminManagerWidgetClass;
+
+	UPROPERTY()
+	UAdminManagerWidget* AdminManagerWidget;
+	
+	UFUNCTION()
+	void OpenAdminMenu();
 };

@@ -7,11 +7,23 @@
 #include "WeaponMenuWidget.h"
 #include "Camera/CameraComponent.h"
 #include "GameFramework/Character.h"
-#include "../ServerLogic/UI/ServerWidget.h"
+#include "../ServerLogic/SessionSubsystem.h"
 #include "MainPlayer.generated.h"
+
+class UMainMenuWidget;
+class UServerWidget;
+class AMainPlayer;
 
 DECLARE_DELEGATE(FRackDelegate);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnCharacterJoinSession, FBlueprintSessionResult, SessionResult, const FString&, Password);
+DECLARE_DYNAMIC_DELEGATE_OneParam(FSetStats, AMainPlayer*, Self);
+
+typedef struct FBehaviorSet
+{
+	bool CanMove;
+	bool CanJump;
+	bool CanShoot;
+} FBehaviorSet;
 
 UCLASS()
 class KURSOVA_API AMainPlayer : public ACharacter
@@ -44,6 +56,25 @@ protected:
 
 	UPROPERTY(BlueprintReadOnly)
 	TArray<AWeaponClass*> PickedWeapons;
+	
+	///
+	/// Andrii Kursova
+	///
+	UPROPERTY(Replicated, EditAnywhere, BlueprintReadWrite)
+	FString SPlayerName;
+
+	UPROPERTY(Replicated, EditAnywhere, BlueprintReadWrite)
+	FString SCity;
+
+	UPROPERTY(Replicated)
+	bool IsInGodMode;
+
+	FBehaviorSet BehaviorSet;
+
+    UPROPERTY(Replicated)
+	float Health;
+
+	int PlayerIndex;
 
 	UPROPERTY(EditDefaultsOnly)
 	TSubclassOf<UUserWidget> CrosshairWidgetClass;
@@ -60,11 +91,14 @@ protected:
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
+	
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
+	TSubclassOf<UMainMenuWidget> MainMenuWidgetClass;
+	
+	UPROPERTY()
+	UMainMenuWidget* MainMenuWidget;
 
-public:	
-	// Called every frame
-	virtual void Tick(float DeltaTime) override;
-
+public:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
@@ -96,6 +130,8 @@ public:
 	UPROPERTY(EditAnywhere)
 	UServerWidget* ServerWidget;	
 
+	UPROPERTY()
+	FSetStats SetStats;
 	
 	UFUNCTION()
 	void CreateSession(FString Name, bool IsPrivate, FString Password, int NumberOfPlayers);
@@ -121,4 +157,39 @@ public:
 	UFUNCTION(BlueprintCallable)
 	void SetSessionsToWidget(TArray<FBlueprintSessionResult> BlueprintSessionResults);
 	
+	///
+	/// Andrii Kursova
+	///
+	void SetName(FString Name);
+	
+	FString GetPlayerName() const;
+
+	void SetCity(FString City);
+	
+	FString GetCity() const;
+
+	FBehaviorSet GetBehaviorSet() const;
+
+	void SetBehaviorSet(bool PCanMove, bool PCanJump, bool PCanShoot);
+
+	bool GetGodModeState() const;
+
+	void SetGodModeState(bool HasGodMode);
+
+	float GetHealth() const;
+
+	int GetPlayerIndex() const;
+
+	void SetPlayerIndex(int Index);
+
+	UFUNCTION(Server, Reliable)
+	void ServerSetNameAndCity(FString const& Name, FString const& City);
+
+	UFUNCTION()
+	void SetNameAndCity(FString const& Name, FString const& City);
+
+	UFUNCTION(NetMulticast, Reliable)
+	void MulticastSetNameAndCity(FString const& Name, FString const& City);
+
+	virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
 };

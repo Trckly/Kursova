@@ -2,7 +2,6 @@
 
 
 #include "KursovaGameModeBase.h"
-#include "MainPlayer.h"
 #include "UObject/ConstructorHelpers.h"
 
 AKursovaGameModeBase::AKursovaGameModeBase()

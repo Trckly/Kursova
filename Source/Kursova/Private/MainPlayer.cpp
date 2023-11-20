@@ -2,10 +2,12 @@
 
 
 #include "MainPlayer.h"
-
-#include "AWeaponClass.h"
+#include "../ServerLogic/UI/ServerWidget.h"
 #include "GameFramework/CharacterMovementComponent.h"
+#include "Kursova/MainUI/MainMenuWidget.h"
 #include "Kismet/KismetSystemLibrary.h"
+#include "Kursova/Core/CustomPlayerController.h"
+#include "Net/UnrealNetwork.h"
 #include "Kursova/UMG/CrosshairWidget.h"
 
 // Sets default values
@@ -18,6 +20,11 @@ AMainPlayer::AMainPlayer()
 	CameraComponent->SetRelativeLocation(CameraComponent->GetUpVector() * 90.f);
 	CameraComponent->bUsePawnControlRotation = true;
 	CameraComponent->SetupAttachment(RootComponent);
+
+	IsInGodMode = false;
+	BehaviorSet = {true, true, true};
+	Health = 100.f;
+	bReplicates = true;
 }
 
 // Called when the game starts or when spawned
@@ -43,7 +50,24 @@ void AMainPlayer::BeginPlay()
 			}
 		}
 	}
+	
+	ACustomPlayerController* PController = Cast<ACustomPlayerController>(GetOwner());
+	if(PController)
+	{
+		if(MainMenuWidgetClass)
+		{
+			MainMenuWidget = CreateWidget<UMainMenuWidget>(PController, MainMenuWidgetClass);
 
+			if(MainMenuWidget)
+			{
+				MainMenuWidget->SetUserInfo.BindDynamic(this, &AMainPlayer::SetNameAndCity);
+				MainMenuWidget->AddToViewport();
+			
+				PController->SetShowMouseCursor(true);
+				PController->SetInputMode(FInputModeGameAndUI());
+			}
+		}
+	}
 	///
 	///	Creating crosshair
 	///
@@ -53,13 +77,6 @@ void AMainPlayer::BeginPlay()
 		CrosshairWidget = CreatedCrosshair;
 		CrosshairWidget->AddToViewport();
 	}
-}
-
-// Called every frame
-void AMainPlayer::Tick(float DeltaTime)
-{
-	Super::Tick(DeltaTime);
-
 }
 
 // Called to bind functionality to input
@@ -74,6 +91,7 @@ void AMainPlayer::SetupPlayerInputComponent(UInputComponent* PlayerInputComponen
 	
 	PlayerInputComponent->BindAction(TEXT("Interact"), IE_Pressed, this, &AMainPlayer::Interact);
 	PlayerInputComponent->BindAction(TEXT("Escape"), IE_Pressed, this, &AMainPlayer::ContinueGameplay);
+	PlayerInputComponent->BindAction(TEXT("Jump"), IE_Pressed, this, &ACharacter::Jump);
 
 	///
 	/// Server Logic
@@ -130,7 +148,7 @@ void AMainPlayer::ContinueGameplay()
 		CameraComponent->SetWorldRotation(PreviousActorRotation);
 
 		GetCharacterMovement()->SetMovementMode(MOVE_Walking);
-
+		
 		CameraComponent->bUsePawnControlRotation = true;
 		bUseControllerRotationYaw = true;
 
@@ -238,4 +256,99 @@ void AMainPlayer::SetSessionsToWidget(TArray<FBlueprintSessionResult> BlueprintS
 	{
 		ServerWidget->SetSessions(BlueprintSessionResults);
 	}
+}
+
+///
+/// Andrii Kursova
+///
+void AMainPlayer::SetName(FString Name)
+{
+	SPlayerName = Name;
+}
+
+FString AMainPlayer::GetPlayerName() const
+{
+	return SPlayerName;
+}
+
+void AMainPlayer::SetCity(FString City)
+{
+	SCity = City;
+}
+
+FString AMainPlayer::GetCity() const
+{
+	return SCity;
+}
+
+FBehaviorSet AMainPlayer::GetBehaviorSet() const
+{
+	return BehaviorSet;
+}
+
+void AMainPlayer::SetBehaviorSet(bool PCanMove, bool PCanJump, bool PCanShoot)
+{
+	BehaviorSet.CanMove = PCanMove;
+	BehaviorSet.CanJump = PCanJump;
+	BehaviorSet.CanShoot = PCanShoot;
+}
+
+bool AMainPlayer::GetGodModeState() const
+{
+	return IsInGodMode;
+}
+
+void AMainPlayer::SetGodModeState(bool HasGodMode)
+{
+	IsInGodMode = HasGodMode;
+}
+
+float AMainPlayer::GetHealth() const
+{
+	return Health;
+}
+
+int AMainPlayer::GetPlayerIndex() const
+{
+	return PlayerIndex;
+}
+
+void AMainPlayer::SetPlayerIndex(int Index)
+{
+	PlayerIndex = Index;
+}
+
+void AMainPlayer::ServerSetNameAndCity_Implementation(FString const& Name, FString const& City)
+{
+	MulticastSetNameAndCity(Name, City);
+}
+void AMainPlayer::MulticastSetNameAndCity_Implementation(FString const& Name, FString const& City)
+{
+	SPlayerName = Name;
+	SCity = City;
+	
+}
+
+void AMainPlayer::SetNameAndCity(FString const& Name, FString const& City)
+{
+	ServerSetNameAndCity(Name, City);
+	
+	ACustomPlayerController* PController = Cast<ACustomPlayerController>(GetOwner());
+	if(PController)
+	{
+    	
+		MainMenuWidget->RemoveFromViewport();
+    		
+		PController->SetShowMouseCursor(true);
+		PController->SetInputMode(FInputModeGameAndUI());
+	}
+}
+
+void AMainPlayer::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
+{
+	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
+
+	DOREPLIFETIME(AMainPlayer, Health);
+	DOREPLIFETIME(AMainPlayer, SPlayerName);
+	DOREPLIFETIME(AMainPlayer, SCity);
 }
