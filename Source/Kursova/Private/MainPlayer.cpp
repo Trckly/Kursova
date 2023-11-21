@@ -202,7 +202,7 @@ void AMainPlayer::Multicast_LookUp_Implementation(float Rate)
 void AMainPlayer::Interact()
 {
 	FHitResult HitResult;
-	FVector StartTrace = CameraComponent->GetComponentLocation() + CameraComponent->GetComponentRotation().Vector();
+	FVector StartTrace = CameraComponent->GetComponentLocation();
 	FVector EndTrace = CameraComponent->GetComponentLocation() + CameraComponent->GetComponentRotation().Vector() * 150.f;
 	
 	UKismetSystemLibrary::SphereTraceSingle(GetWorld(), StartTrace, EndTrace, 50.f,
@@ -304,7 +304,7 @@ void AMainPlayer::Multicast_Shoot_Implementation()
 	
 	FHitResult HitResult;
 	FVector StartTrace = CameraComponent->GetComponentLocation();
-	FVector EndTrace = CameraComponent->GetComponentLocation() + CameraComponent->GetComponentRotation().Vector() * 10000.f;
+	FVector EndTrace = CameraComponent->GetComponentLocation() + GetActorForwardVector() * 10000.f;
 
 	UKismetSystemLibrary::LineTraceSingle(GetWorld(), StartTrace, EndTrace,
 		UEngineTypes::ConvertToTraceType(ECC_GameTraceChannel2), false, {this},
@@ -512,3 +512,49 @@ void AMainPlayer::Multicast_SetBehavior_Implementation(bool CanMove, bool CanJum
 	BehaviorSet.CanShoot = CanFire;
 }
 
+
+
+std::ostream& operator<<(std::ostream& OStream, const AMainPlayer& MPlayer)
+{
+	FString Output;
+	Output += MPlayer.SPlayerName + ' '
+			+ MPlayer.SCity + ' '
+			+ (MPlayer.BehaviorSet.CanMove ? FString("true") : FString("false")) + ' '
+			+ (MPlayer.BehaviorSet.CanJump ? FString("true") : FString("false")) + ' '
+			+ (MPlayer.BehaviorSet.CanShoot ? FString("true") : FString("false")) + ' '
+			+ (MPlayer.IsInGodMode ? FString("true") : FString("false"));
+	OStream << *Output;
+	return OStream;
+}
+
+std::istream& operator>>(std::istream& IStream, AMainPlayer& MPlayer)
+{
+	std::string LogString;
+    
+	// Read a line from the file
+
+	if (std::getline(IStream, LogString))
+	{
+		std::istringstream IsRealString(LogString);
+		TArray<std::string> ArrOfStrings;
+		ArrOfStrings.SetNum(6);
+		if (!(IsRealString >> ArrOfStrings[0] >> ArrOfStrings[1] >> ArrOfStrings[2] >> ArrOfStrings[3] >> ArrOfStrings[4] >> ArrOfStrings[5]))
+		{
+			//throw ExceptionWeaponOutput("Corrupted file! Missing data!");
+		}
+		
+		// Weapon.WeaponUnit.Model = ArrOfStrings[0].c_str();
+		MPlayer.SPlayerName = FString(ArrOfStrings[0].c_str());
+		MPlayer.SCity = FString(ArrOfStrings[1].c_str());
+		MPlayer.BehaviorSet.CanMove = ArrOfStrings[2] == "true" ? true : false;
+		MPlayer.BehaviorSet.CanJump = ArrOfStrings[3] == "true" ? true : false;
+		MPlayer.BehaviorSet.CanShoot = ArrOfStrings[4] == "true" ? true : false;
+		MPlayer.IsInGodMode = ArrOfStrings[5] == "true" ? true : false;
+	}
+	else
+	{
+		//throw ExceptionWeaponOutput("Cannot read data from file!");
+	}
+
+	return IStream;
+}
