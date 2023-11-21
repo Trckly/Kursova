@@ -8,8 +8,13 @@
 #include "Camera/CameraComponent.h"
 #include "GameFramework/Character.h"
 #include "../ServerLogic/SessionSubsystem.h"
+#include <iostream>
+#include <sstream>
+#include <fstream>
+#include <string>
 #include "MainPlayer.generated.h"
 
+class UPlayerHUD;
 class UMainMenuWidget;
 class UServerWidget;
 class AMainPlayer;
@@ -36,8 +41,12 @@ class KURSOVA_API AMainPlayer : public ACharacter
 protected:
 	// Sets default values for this character's properties
 	AMainPlayer();
+
+	AMainPlayer(AMainPlayer& OtherPlayer);
 	
-	~AMainPlayer() = default;
+	AMainPlayer(bool GodMode, FBehaviorSet Behavior, float HP);
+	
+	virtual ~AMainPlayer() override = default;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
 	UCameraComponent* CameraComponent;
@@ -61,6 +70,12 @@ protected:
 
 	UPROPERTY(BlueprintReadOnly)
 	TArray<AWeaponClass*> PickedWeapons;
+
+	UPROPERTY(Replicated)
+	float TurnRate;
+
+	UPROPERTY(Replicated)
+	float LookUpRate;
 	
 	///
 	/// Andrii Kursova
@@ -117,6 +132,20 @@ public:
 
 	void MoveRight(float Scale);
 
+	virtual void Jump() override;
+
+	UFUNCTION(Server, Reliable)
+	void Server_Turn(float Rate);
+
+	UFUNCTION(NetMulticast, Reliable)
+	void Multicast_Turn(float Rate);
+
+	UFUNCTION(Server, Reliable)
+	void Server_LookUp(float Rate);
+
+	UFUNCTION(NetMulticast, Reliable)
+	void Multicast_LookUp(float Rate);
+
 	UFUNCTION(BlueprintCallable)
 	void Interact();
 
@@ -129,13 +158,41 @@ public:
 
 	TArray<AWeaponClass*> GetAllPickedWeapons();
 
+	UFUNCTION(Server, Reliable)
+	void Server_Shoot();
+
+	UFUNCTION(NetMulticast, Reliable)
+	void Multicast_Shoot();
+
+	UFUNCTION(Server, Reliable)
+	void Server_DealDamage(int Damage);
+
+	UFUNCTION(Client, Reliable)
+	void Client_DealDamage(int Damage);
+
 	UFUNCTION()
-	void Shoot();
+	void DealDamage(int Damage);
+
+	UFUNCTION(NetMulticast, Reliable)
+	void Multicast_DealDamage(int Damage);
 
 	UFUNCTION(BlueprintImplementableEvent)
 	void CreateWeaponAttach();
 
+	// UFUNCTION()
+	// void AdjustCameraRotation();
+	//
+	// UFUNCTION(Server, Reliable)
+	// void Server_UpdateCameraRotation(float CamRotation);
+
 	FRackDelegate RackDelegate;
+	
+	
+	UPROPERTY(EditAnywhere)
+	TSubclassOf<UPlayerHUD> PlayerHUDWidgetClass;
+
+	UPROPERTY()
+	UPlayerHUD* PlayerHUDWidget;
 	
 	///
 	/// ServerLogic
@@ -143,8 +200,8 @@ public:
 	UPROPERTY(EditAnywhere)
 	TSubclassOf<UServerWidget> ServerWidgetClass;
 
-	UPROPERTY(EditAnywhere)
-	UServerWidget* ServerWidget;	
+	UPROPERTY()
+	UServerWidget* ServerWidget;
 
 	UPROPERTY()
 	FSetStats SetStats;
@@ -212,4 +269,52 @@ public:
 	
 	UFUNCTION(NetMulticast, Reliable)
 	void Multicast_SetGodMode(bool IsGodModeSet);
+
+	friend std::ostream& operator<<(std::ostream& OStream, const AMainPlayer& MPlayer );
+	friend std::istream& operator>>(std::istream& IStream, AMainPlayer& MPlayer );
 };
+
+std::ostream& operator<<(std::ostream& OStream, const AMainPlayer& MPlayer)
+{
+	FString Output;
+	Output += MPlayer.SPlayerName + ' '
+			+ MPlayer.SCity + ' '
+			+ (MPlayer.BehaviorSet.CanMove ? FString("true") : FString("false")) + ' '
+			+ (MPlayer.BehaviorSet.CanJump ? FString("true") : FString("false")) + ' '
+			+ (MPlayer.BehaviorSet.CanShoot ? FString("true") : FString("false")) + ' '
+			+ (MPlayer.IsInGodMode ? FString("true") : FString("false"));
+	OStream << *Output;
+	return OStream;
+}
+
+std::istream& operator>>(std::istream& IStream, AMainPlayer& MPlayer)
+{
+	std::string LogString;
+    
+	// Read a line from the file
+
+	if (std::getline(IStream, LogString))
+	{
+		std::istringstream IsRealString(LogString);
+		TArray<std::string> ArrOfStrings;
+		ArrOfStrings.SetNum(6);
+		if (!(IsRealString >> ArrOfStrings[0] >> ArrOfStrings[1] >> ArrOfStrings[2] >> ArrOfStrings[3] >> ArrOfStrings[4] >> ArrOfStrings[5]))
+		{
+			//throw ExceptionWeaponOutput("Corrupted file! Missing data!");
+		}
+		
+		// Weapon.WeaponUnit.Model = ArrOfStrings[0].c_str();
+		MPlayer.SPlayerName = FString(ArrOfStrings[0].c_str());
+		MPlayer.SCity = FString(ArrOfStrings[1].c_str());
+		MPlayer.BehaviorSet.CanMove = ArrOfStrings[2] == "true" ? true : false;
+		MPlayer.BehaviorSet.CanJump = ArrOfStrings[3] == "true" ? true : false;
+		MPlayer.BehaviorSet.CanShoot = ArrOfStrings[4] == "true" ? true : false;
+		MPlayer.IsInGodMode = ArrOfStrings[5] == "true" ? true : false;
+	}
+	else
+	{
+		//throw ExceptionWeaponOutput("Cannot read data from file!");
+	}
+
+	return IStream;
+}

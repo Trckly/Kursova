@@ -11,7 +11,7 @@ void UAdminManagerWidget::NativeConstruct()
 {
 	Super::NativeConstruct();
 	
-	ESearchBar->OnTextChanged.AddDynamic(this, &UAdminManagerWidget::FindByName);
+	ESearchBar->OnTextChanged.AddDynamic(this, &UAdminManagerWidget::Search);
 
 	if(!BSort->OnClicked.IsBound())
 	{
@@ -52,19 +52,33 @@ void UAdminManagerWidget::SetPlayers()
 	}
 }
 
-void UAdminManagerWidget::FindByName(const FText& Value)
-{
+void UAdminManagerWidget::Search(const FText& Value)
+{	
 	if(Value.IsEmpty())
 	{
 		for(const auto& MapPair : MapOfPlayers)
 		{
 			MapPair.Value->SetVisibility(ESlateVisibility::Visible);
 		}
-	}else
+		return;
+	}
+	if(OSearchOption->GetSelectedIndex() == 0)
 	{
 		for(const auto& MapPair : MapOfPlayers)
 		{
 			if(MapPair.Value->GetName().Contains(Value.ToString()))
+			{
+				MapPair.Value->SetVisibility(ESlateVisibility::Visible);
+			}else
+			{
+				MapPair.Value->SetVisibility(ESlateVisibility::Collapsed);
+			}
+		}
+	}else if(OSearchOption->GetSelectedIndex() == 1)
+	{
+		for(const auto& MapPair : MapOfPlayers)
+		{
+			if(MapPair.Value->GetCity().Contains(Value.ToString()))
 			{
 				MapPair.Value->SetVisibility(ESlateVisibility::Visible);
 			}else

@@ -10,6 +10,7 @@
 #include "Kursova/Core/CustomPlayerController.h"
 #include "Net/UnrealNetwork.h"
 #include "Kursova/UMG/CrosshairWidget.h"
+#include "Kursova/HUD/PlayerHUD.h"
 
 // Sets default values
 AMainPlayer::AMainPlayer()
@@ -25,6 +26,37 @@ AMainPlayer::AMainPlayer()
 	IsInGodMode = false;
 	BehaviorSet = {true, true, true};
 	Health = 100.f;
+	bReplicates = true;
+	
+	std::cout << *this;
+}
+
+AMainPlayer::AMainPlayer(AMainPlayer& OtherPlayer)
+{
+	CameraComponent = CreateDefaultSubobject<UCameraComponent>(FName(*OtherPlayer.CameraComponent->GetName()));
+	CameraComponent->SetRelativeLocation(OtherPlayer.CameraComponent->GetUpVector());
+	CameraComponent->bUsePawnControlRotation = OtherPlayer.CameraComponent->bUsePawnControlRotation;
+	CameraComponent->SetupAttachment(GetMesh(), "head");
+	
+	IsInGodMode = OtherPlayer.IsInGodMode;
+	BehaviorSet = OtherPlayer.BehaviorSet;
+	Health = OtherPlayer.Health;
+	bReplicates = OtherPlayer.bReplicates;
+}
+
+AMainPlayer::AMainPlayer(bool GodMode, FBehaviorSet Behavior, float HP)
+{
+ 	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
+	PrimaryActorTick.bCanEverTick = true;
+
+	CameraComponent = CreateDefaultSubobject<UCameraComponent>(TEXT("Camera"));
+	CameraComponent->SetRelativeLocation(CameraComponent->GetUpVector() * 90.f);
+	CameraComponent->bUsePawnControlRotation = true;
+	CameraComponent->SetupAttachment(GetMesh(), "head");
+
+	IsInGodMode = GodMode;
+	BehaviorSet = Behavior;
+	Health = HP;
 	bReplicates = true;
 }
 
@@ -68,6 +100,15 @@ void AMainPlayer::BeginPlay()
 				PController->SetInputMode(FInputModeGameAndUI());
 			}
 		}
+		if(PlayerHUDWidgetClass)
+		{
+			PlayerHUDWidget = CreateWidget<UPlayerHUD>(PController, PlayerHUDWidgetClass);
+
+			if(PlayerHUDWidget)
+			{
+				PlayerHUDWidget->SetHealth(Health);
+			}
+		}
 	}
 	///
 	///	Creating crosshair
@@ -89,13 +130,13 @@ void AMainPlayer::SetupPlayerInputComponent(UInputComponent* PlayerInputComponen
 
 	PlayerInputComponent->BindAxis(TEXT("MoveForward"), this, &AMainPlayer::MoveForward);
 	PlayerInputComponent->BindAxis(TEXT("MoveRight"), this, &AMainPlayer::MoveRight);
-	PlayerInputComponent->BindAxis(TEXT("LookUp"), this, &APawn::AddControllerPitchInput);
+	PlayerInputComponent->BindAxis(TEXT("LookUp"), this, &AMainPlayer::AddControllerPitchInput);
 	PlayerInputComponent->BindAxis(TEXT("LookRight"), this, &APawn::AddControllerYawInput);
 	
 	PlayerInputComponent->BindAction(TEXT("Interact"), IE_Pressed, this, &AMainPlayer::Interact);
 	PlayerInputComponent->BindAction(TEXT("Escape"), IE_Pressed, this, &AMainPlayer::ContinueGameplay);
-	PlayerInputComponent->BindAction(TEXT("Jump"), IE_Pressed, this, &ACharacter::Jump);
-	PlayerInputComponent->BindAction(TEXT("Shoot"), IE_Pressed, this, &AMainPlayer::Shoot);
+	PlayerInputComponent->BindAction(TEXT("Jump"), IE_Pressed, this, &AMainPlayer::Jump);
+	PlayerInputComponent->BindAction(TEXT("Shoot"), IE_Pressed, this, &AMainPlayer::Server_Shoot);
 
 	///
 	/// Server Logic
@@ -115,7 +156,7 @@ void AMainPlayer::Tick(float DeltaSeconds)
 
 void AMainPlayer::MoveForward(float Scale)
 {
-	if(Scale != 0.f)
+	if(Scale != 0.f && BehaviorSet.CanMove)
 	{
 		AddMovementInput(GetActorForwardVector(), Scale);
 	}
@@ -123,16 +164,45 @@ void AMainPlayer::MoveForward(float Scale)
 
 void AMainPlayer::MoveRight(float Scale)
 {
-	if(Scale != 0.f)
+	if(Scale != 0.f && BehaviorSet.CanMove)
 	{
 		AddMovementInput(GetActorRightVector(), Scale);
 	}
 }
 
+void AMainPlayer::Jump()
+{
+	if(BehaviorSet.CanJump)
+	{
+		Super::Jump();
+	}
+}
+
+void AMainPlayer::Server_Turn_Implementation(float Rate)
+{
+	Multicast_Turn(Rate);
+}
+
+void AMainPlayer::Multicast_Turn_Implementation(float Rate)
+{
+	TurnRate = Rate;
+	AddControllerYawInput(Rate * 45.f * GetWorld()->GetDeltaSeconds());
+}
+
+void AMainPlayer::Server_LookUp_Implementation(float Rate)
+{
+	Multicast_LookUp(Rate);
+}
+
+void AMainPlayer::Multicast_LookUp_Implementation(float Rate)
+{
+	AddControllerPitchInput(Rate * 45.f * GetWorld()->GetDeltaSeconds());
+}
+
 void AMainPlayer::Interact()
 {
 	FHitResult HitResult;
-	FVector StartTrace = CameraComponent->GetComponentLocation();
+	FVector StartTrace = CameraComponent->GetComponentLocation() + CameraComponent->GetComponentRotation().Vector();
 	FVector EndTrace = CameraComponent->GetComponentLocation() + CameraComponent->GetComponentRotation().Vector() * 150.f;
 	
 	UKismetSystemLibrary::SphereTraceSingle(GetWorld(), StartTrace, EndTrace, 50.f,
@@ -220,8 +290,18 @@ TArray<AWeaponClass*> AMainPlayer::GetAllPickedWeapons()
 	return PickedWeapons;
 }
 
-void AMainPlayer::Shoot()
+void AMainPlayer::Server_Shoot_Implementation()
 {
+	Multicast_Shoot();
+}
+
+void AMainPlayer::Multicast_Shoot_Implementation()
+{
+	if(!BehaviorSet.CanShoot)
+	{
+		return;
+	}
+	
 	FHitResult HitResult;
 	FVector StartTrace = CameraComponent->GetComponentLocation();
 	FVector EndTrace = CameraComponent->GetComponentLocation() + CameraComponent->GetComponentRotation().Vector() * 10000.f;
@@ -230,6 +310,51 @@ void AMainPlayer::Shoot()
 		UEngineTypes::ConvertToTraceType(ECC_GameTraceChannel2), false, {this},
 		EDrawDebugTrace::ForDuration, HitResult, true, FColor::Red, FColor::Green,
 		2.f);
+	
+	AMainPlayer* Enemy = Cast<AMainPlayer>(HitResult.GetActor());
+	if(Enemy)
+	{
+		
+		Enemy->DealDamage(30.f);
+		//Enemy->DealDamage(30.f);
+	}
+
+}
+
+void AMainPlayer::Server_DealDamage_Implementation(int Damage)
+{
+	Multicast_DealDamage(Damage);
+}
+
+void AMainPlayer::Client_DealDamage_Implementation(int Damage)
+{
+	
+}
+
+void AMainPlayer::DealDamage(int Damage)
+{
+	if(!IsInGodMode)
+	{
+		Health -= Damage;
+
+		if(PlayerHUDWidget != nullptr)
+		{
+			PlayerHUDWidget->SetHealth(Health);
+		}
+	}
+}
+
+void AMainPlayer::Multicast_DealDamage_Implementation(int Damage)
+{
+	if(!IsInGodMode)
+	{
+		Health -= Damage;
+
+		if(PlayerHUDWidget != nullptr)
+		{
+			PlayerHUDWidget->SetHealth(Health);
+		}
+	}
 }
 
 ///
@@ -357,7 +482,8 @@ void AMainPlayer::SetNameAndCity(FString const& Name, FString const& City)
 	{
     	
 		MainMenuWidget->RemoveFromViewport();
-    		
+		PlayerHUDWidget->AddToViewport();
+		
 		PController->SetShowMouseCursor(false);
 		PController->SetInputMode(FInputModeGameOnly());
 	}
@@ -367,11 +493,11 @@ void AMainPlayer::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifet
 {
 	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
 
-	DOREPLIFETIME(AMainPlayer, Health);
 	DOREPLIFETIME(AMainPlayer, SPlayerName);
 	DOREPLIFETIME(AMainPlayer, SCity);
 	DOREPLIFETIME(AMainPlayer, IsInGodMode);
-	DOREPLIFETIME(AMainPlayer, BehaviorSet);
+	DOREPLIFETIME(AMainPlayer, TurnRate);
+	DOREPLIFETIME(AMainPlayer, LookUpRate);
 }
 
 void AMainPlayer::Multicast_SetGodMode_Implementation(bool IsGodModeSet)
@@ -385,3 +511,4 @@ void AMainPlayer::Multicast_SetBehavior_Implementation(bool CanMove, bool CanJum
 	BehaviorSet.CanJump = CanJump;
 	BehaviorSet.CanShoot = CanFire;
 }
+

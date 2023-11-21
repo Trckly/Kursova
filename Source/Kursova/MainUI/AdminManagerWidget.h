@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "Blueprint/UserWidget.h"
 #include "Components/Button.h"
+#include "Components/ComboBoxString.h"
 #include "Components/EditableText.h"
 #include "Components/ScrollBox.h"
 #include "AdminManagerWidget.generated.h"
@@ -32,6 +33,9 @@ protected:
 	
 	UPROPERTY(BlueprintReadWrite, meta=(BindWidget))
 	UScrollBox* SListOfPlayers;
+	
+	UPROPERTY(BlueprintReadWrite, meta=(BindWidget))
+	UComboBoxString* OSearchOption;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
 	TSubclassOf<UPlayerPanelWidget> PlayerPanelWidgetClass;
@@ -61,7 +65,7 @@ public:
 	void SetPlayers();
 
 	UFUNCTION()
-	void FindByName(const FText& Value);
+	void Search(const FText& Value);
 
 	UFUNCTION()
 	void SortByCity();
