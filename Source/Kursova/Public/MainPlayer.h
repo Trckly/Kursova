@@ -101,7 +101,10 @@ protected:
 public:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
-
+	
+	/// 
+	/// Common
+	/// 
 	void MoveForward(float Scale);
 
 	void MoveRight(float Scale);
@@ -118,12 +121,17 @@ public:
 
 	TArray<AWeaponClass*> GetAllPickedWeapons();
 
+	UFUNCTION()
+	void Shoot();
+
+	UFUNCTION(BlueprintImplementableEvent)
+	void CreateWeaponAttach();
+
 	FRackDelegate RackDelegate;
 	
 	///
 	/// ServerLogic
 	///
-
 	UPROPERTY(EditAnywhere)
 	TSubclassOf<UServerWidget> ServerWidgetClass;
 

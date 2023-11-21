@@ -4,6 +4,7 @@
 #include "MainPlayer.h"
 #include "../ServerLogic/UI/ServerWidget.h"
 #include "GameFramework/CharacterMovementComponent.h"
+#include "Kismet/GameplayStatics.h"
 #include "Kursova/MainUI/MainMenuWidget.h"
 #include "Kismet/KismetSystemLibrary.h"
 #include "Kursova/Core/CustomPlayerController.h"
@@ -19,7 +20,7 @@ AMainPlayer::AMainPlayer()
 	CameraComponent = CreateDefaultSubobject<UCameraComponent>(TEXT("Camera"));
 	CameraComponent->SetRelativeLocation(CameraComponent->GetUpVector() * 90.f);
 	CameraComponent->bUsePawnControlRotation = true;
-	CameraComponent->SetupAttachment(RootComponent);
+	CameraComponent->SetupAttachment(GetMesh(), "head");
 
 	IsInGodMode = false;
 	BehaviorSet = {true, true, true};
@@ -77,6 +78,8 @@ void AMainPlayer::BeginPlay()
 		CrosshairWidget = CreatedCrosshair;
 		CrosshairWidget->AddToViewport();
 	}
+
+	CreateWeaponAttach();
 }
 
 // Called to bind functionality to input
@@ -92,6 +95,7 @@ void AMainPlayer::SetupPlayerInputComponent(UInputComponent* PlayerInputComponen
 	PlayerInputComponent->BindAction(TEXT("Interact"), IE_Pressed, this, &AMainPlayer::Interact);
 	PlayerInputComponent->BindAction(TEXT("Escape"), IE_Pressed, this, &AMainPlayer::ContinueGameplay);
 	PlayerInputComponent->BindAction(TEXT("Jump"), IE_Pressed, this, &ACharacter::Jump);
+	PlayerInputComponent->BindAction(TEXT("Shoot"), IE_Pressed, this, &AMainPlayer::Shoot);
 
 	///
 	/// Server Logic
@@ -204,6 +208,18 @@ void AMainPlayer::ProcessHitWeapon(AWeaponClass* WeaponActor)
 TArray<AWeaponClass*> AMainPlayer::GetAllPickedWeapons()
 {
 	return PickedWeapons;
+}
+
+void AMainPlayer::Shoot()
+{
+	FHitResult HitResult;
+	FVector StartTrace = CameraComponent->GetComponentLocation();
+	FVector EndTrace = CameraComponent->GetComponentLocation() + CameraComponent->GetComponentRotation().Vector() * 10000.f;
+
+	UKismetSystemLibrary::LineTraceSingle(GetWorld(), StartTrace, EndTrace,
+		UEngineTypes::ConvertToTraceType(ECC_GameTraceChannel2), false, {this},
+		EDrawDebugTrace::ForDuration, HitResult, true, FColor::Red, FColor::Green,
+		2.f);
 }
 
 ///
@@ -339,8 +355,8 @@ void AMainPlayer::SetNameAndCity(FString const& Name, FString const& City)
     	
 		MainMenuWidget->RemoveFromViewport();
     		
-		PController->SetShowMouseCursor(true);
-		PController->SetInputMode(FInputModeGameAndUI());
+		PController->SetShowMouseCursor(false);
+		PController->SetInputMode(FInputModeGameOnly());
 	}
 }
 
