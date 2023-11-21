@@ -16,7 +16,7 @@
  * 
  */
 
-UCLASS()
+UCLASS(BlueprintType)
 class KURSOVA_API AWeaponClass : public AActor, public FWeaponUnit
 {
 	GENERATED_BODY()

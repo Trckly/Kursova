@@ -61,6 +61,42 @@ protected:
 
 	UPROPERTY(BlueprintReadOnly)
 	TArray<AWeaponClass*> PickedWeapons;
+
+	///
+	///	Weapon blueprint clasess
+	///
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
+	TSubclassOf<AWeaponClass> AwmClass;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
+	TSubclassOf<AWeaponClass> M16A4Class;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
+	TSubclassOf<AWeaponClass> Ak47Class;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
+	TSubclassOf<AWeaponClass> M870Class;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
+	TSubclassOf<AWeaponClass> Hk416Class;
+
+	///
+	/// Player SK weapon sockets
+	/// 
+	enum EPlayerWeaponSockets
+	{
+		AWM,
+		AK47,
+		M16A4,
+		M870,
+		HK416
+	};
+
+	TArray<FString> PlayerWeaponSocketsName;
+	
+	// Equipped weapon
+	UPROPERTY()
+	AWeaponClass* EquippedWeapon;
 	
 	///
 	/// Andrii Kursova
@@ -132,8 +168,19 @@ public:
 	UFUNCTION()
 	void Shoot();
 
-	UFUNCTION(BlueprintImplementableEvent)
-	void CreateWeaponAttach();
+	// Setting weapon into player hands
+	UFUNCTION()
+	void CreateWeaponAttach(AWeaponClass* WeaponActor);
+
+	void AttachAWM();
+
+	void AttachAK47();
+
+	void AttachM16A4();
+
+	void AttachM870();
+
+	void AttachHK416();
 
 	FRackDelegate RackDelegate;
 	

@@ -79,7 +79,7 @@ void AMainPlayer::BeginPlay()
 		CrosshairWidget->AddToViewport();
 	}
 
-	CreateWeaponAttach();
+	PlayerWeaponSocketsName = {"AWM_Attach", "AK47_Attach", "M16A4_Attach", "M870_Attach", "HK416_Attach"};
 }
 
 // Called to bind functionality to input
@@ -213,6 +213,7 @@ void AMainPlayer::ProcessHitWeapon(AWeaponClass* WeaponActor)
 {
 	WeaponActor->Destroy();
 	PickedWeapons.Push(WeaponActor);
+	CreateWeaponAttach(WeaponActor);
 }
 
 TArray<AWeaponClass*> AMainPlayer::GetAllPickedWeapons()
@@ -230,6 +231,125 @@ void AMainPlayer::Shoot()
 		UEngineTypes::ConvertToTraceType(ECC_GameTraceChannel2), false, {this},
 		EDrawDebugTrace::ForDuration, HitResult, true, FColor::Red, FColor::Green,
 		2.f);
+}
+
+void AMainPlayer::CreateWeaponAttach(AWeaponClass* WeaponActor)
+{
+	if(PlayerWeaponSocketsName[AWM].Contains(WeaponActor->GetStructure().Model))
+	{
+		AttachAWM();
+	}
+	if(PlayerWeaponSocketsName[AK47].Contains(WeaponActor->GetStructure().Model))
+	{
+		AttachAK47();
+	}
+	if(PlayerWeaponSocketsName[M16A4].Contains(WeaponActor->GetStructure().Model))
+	{
+		AttachM16A4();
+	}
+	if(PlayerWeaponSocketsName[M870].Contains(WeaponActor->GetStructure().Model))
+	{
+		AttachM870();
+	}
+	if(PlayerWeaponSocketsName[HK416].Contains(WeaponActor->GetStructure().Model))
+	{
+		AttachHK416();
+	}
+}
+
+void AMainPlayer::AttachAWM()
+{
+	if(EquippedWeapon)
+	{
+		EquippedWeapon->DetachFromActor(FDetachmentTransformRules::KeepRelativeTransform);
+		EquippedWeapon->Destroy();
+	}
+	EquippedWeapon = GetWorld()->SpawnActor<AWeaponClass>(AwmClass, FVector(0.f, 0.f, 0.f), FRotator(0.f, 0.f, 0.f));
+	if(EquippedWeapon)
+	{
+		EquippedWeapon->SetActorEnableCollision(false);
+		EquippedWeapon->AttachToComponent(GetMesh(), FAttachmentTransformRules(EAttachmentRule::SnapToTarget, true), *PlayerWeaponSocketsName[AWM]);
+	}
+	else
+	{
+		UE_LOG(LogTemp, Warning, TEXT("Failed to spawn AWM"));
+	}
+}
+
+void AMainPlayer::AttachAK47()
+{
+	if(EquippedWeapon)
+	{
+		EquippedWeapon->DetachFromActor(FDetachmentTransformRules::KeepRelativeTransform);
+		EquippedWeapon->Destroy();
+	}
+	EquippedWeapon = GetWorld()->SpawnActor<AWeaponClass>(Ak47Class, FVector(0.f, 0.f, 0.f), FRotator(0.f, 0.f, 0.f));
+	if(EquippedWeapon)
+	{
+		EquippedWeapon->SetActorEnableCollision(false);
+		EquippedWeapon->AttachToComponent(GetMesh(), FAttachmentTransformRules(EAttachmentRule::SnapToTarget, true), *PlayerWeaponSocketsName[AK47]);
+	}
+	else
+	{
+		UE_LOG(LogTemp, Warning, TEXT("Failed to spawn AK47"));
+	}
+}
+
+void AMainPlayer::AttachM16A4()
+{
+	if(EquippedWeapon)
+	{
+		EquippedWeapon->DetachFromActor(FDetachmentTransformRules::KeepRelativeTransform);
+		EquippedWeapon->Destroy();
+	}
+	EquippedWeapon = GetWorld()->SpawnActor<AWeaponClass>(M16A4Class, FVector(0.f, 0.f, 0.f), FRotator(0.f, 0.f, 0.f));
+	if(EquippedWeapon)
+	{
+		EquippedWeapon->SetActorEnableCollision(false);
+		EquippedWeapon->AttachToComponent(GetMesh(), FAttachmentTransformRules(EAttachmentRule::SnapToTarget, true), *PlayerWeaponSocketsName[M16A4]);
+	}
+	else
+	{
+		UE_LOG(LogTemp, Warning, TEXT("Failed to spawn AK47"));
+	}
+}
+
+void AMainPlayer::AttachM870()
+{
+	if(EquippedWeapon)
+	{
+		EquippedWeapon->DetachFromActor(FDetachmentTransformRules::KeepRelativeTransform);
+		EquippedWeapon->Destroy();
+	}
+	EquippedWeapon = GetWorld()->SpawnActor<AWeaponClass>(M870Class, FVector(0.f, 0.f, 0.f), FRotator(0.f, 0.f, 0.f));
+	if(EquippedWeapon)
+	{
+		EquippedWeapon->SetActorEnableCollision(false);
+		EquippedWeapon->AttachToComponent(GetMesh(), FAttachmentTransformRules(EAttachmentRule::SnapToTarget, true), *PlayerWeaponSocketsName[M870]);
+	}
+	else
+	{
+		UE_LOG(LogTemp, Warning, TEXT("Failed to spawn AK47"));
+	}
+}
+
+void AMainPlayer::AttachHK416()
+{
+	if(EquippedWeapon)
+	{
+		EquippedWeapon->DetachFromActor(FDetachmentTransformRules::KeepRelativeTransform);
+		EquippedWeapon->Destroy();
+	}
+	EquippedWeapon = GetWorld()->SpawnActor<AWeaponClass>(Hk416Class, FVector(0.f, 0.f, 0.f), FRotator(0.f, 0.f, 0.f));
+	if(EquippedWeapon)
+	{
+		EquippedWeapon->SetActorEnableCollision(false);
+		EquippedWeapon->AttachToComponent(GetMesh(), FAttachmentTransformRules(EAttachmentRule::SnapToTarget, true), *PlayerWeaponSocketsName[HK416]);
+	}
+	else
+	{
+		UE_LOG(LogTemp, Warning, TEXT("Failed to spawn AK47"));
+	}
 }
 
 ///
