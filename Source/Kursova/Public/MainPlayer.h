@@ -109,7 +109,10 @@ public:
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
 	virtual void Tick(float DeltaSeconds) override;
-
+	
+	/// 
+	/// Common
+	/// 
 	void MoveForward(float Scale);
 
 	void MoveRight(float Scale);
@@ -126,12 +129,17 @@ public:
 
 	TArray<AWeaponClass*> GetAllPickedWeapons();
 
+	UFUNCTION()
+	void Shoot();
+
+	UFUNCTION(BlueprintImplementableEvent)
+	void CreateWeaponAttach();
+
 	FRackDelegate RackDelegate;
 	
 	///
 	/// ServerLogic
 	///
-
 	UPROPERTY(EditAnywhere)
 	TSubclassOf<UServerWidget> ServerWidgetClass;
 
