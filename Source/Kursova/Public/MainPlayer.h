@@ -18,12 +18,15 @@ DECLARE_DELEGATE(FRackDelegate);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnCharacterJoinSession, FBlueprintSessionResult, SessionResult, const FString&, Password);
 DECLARE_DYNAMIC_DELEGATE_OneParam(FSetStats, AMainPlayer*, Self);
 
-typedef struct FBehaviorSet
+USTRUCT()
+struct FBehaviorSet
 {
+	GENERATED_BODY()
+	
 	bool CanMove;
 	bool CanJump;
 	bool CanShoot;
-} FBehaviorSet;
+};
 
 UCLASS()
 class KURSOVA_API AMainPlayer : public ACharacter
@@ -33,6 +36,8 @@ class KURSOVA_API AMainPlayer : public ACharacter
 protected:
 	// Sets default values for this character's properties
 	AMainPlayer();
+	
+	~AMainPlayer() = default;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
 	UCameraComponent* CameraComponent;
@@ -69,6 +74,7 @@ protected:
 	UPROPERTY(Replicated)
 	bool IsInGodMode;
 
+	UPROPERTY(Replicated)
 	FBehaviorSet BehaviorSet;
 
     UPROPERTY(Replicated)
@@ -101,6 +107,8 @@ protected:
 public:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+
+	virtual void Tick(float DeltaSeconds) override;
 	
 	/// 
 	/// Common
@@ -178,8 +186,6 @@ public:
 
 	FBehaviorSet GetBehaviorSet() const;
 
-	void SetBehaviorSet(bool PCanMove, bool PCanJump, bool PCanShoot);
-
 	bool GetGodModeState() const;
 
 	void SetGodModeState(bool HasGodMode);
@@ -200,4 +206,10 @@ public:
 	void MulticastSetNameAndCity(FString const& Name, FString const& City);
 
 	virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
+	
+	UFUNCTION(NetMulticast, Reliable)
+	void Multicast_SetBehavior(bool CanMove, bool CanJump, bool CanFire);
+	
+	UFUNCTION(NetMulticast, Reliable)
+	void Multicast_SetGodMode(bool IsGodModeSet);
 };

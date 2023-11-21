@@ -9,6 +9,7 @@
 #include "Components/ScrollBox.h"
 #include "AdminManagerWidget.generated.h"
 
+class UPlayerEditorWidget;
 class AMainPlayer;
 class UPlayerPanelWidget;
 /**
@@ -24,9 +25,6 @@ protected:
 	UEditableText* ESearchBar;
 	
 	UPROPERTY(BlueprintReadWrite, meta=(BindWidget))
-	UButton* BSearch;
-	
-	UPROPERTY(BlueprintReadWrite, meta=(BindWidget))
 	UButton* BSort;
 	
 	UPROPERTY(BlueprintReadWrite, meta=(BindWidget))
@@ -38,10 +36,24 @@ protected:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
 	TSubclassOf<UPlayerPanelWidget> PlayerPanelWidgetClass;
 
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
+	TSubclassOf<UPlayerEditorWidget> PlayerEditorWidgetClass;
+
+	UPROPERTY()
+	UPlayerEditorWidget* PlayerEditorWidget;
+
 	UPROPERTY()
 	TMap<int, UPlayerPanelWidget*> MapOfPlayers;
 
-	int PlayerIndex;
+	UPROPERTY()
+	int PlayerIndex = 1;
+
+	UPROPERTY()
+	int ActiveWidgetIndex = 0;
+
+	UPROPERTY()
+	TArray<UPlayerPanelWidget*> SortArray;
+	
 public:
 	virtual void NativeConstruct() override;
 
@@ -49,11 +61,24 @@ public:
 	void SetPlayers();
 
 	UFUNCTION()
-	void FindByName();
+	void FindByName(const FText& Value);
 
 	UFUNCTION()
 	void SortByCity();
 
 	UFUNCTION()
 	void EditPlayerBehavior();
+
+	UFUNCTION()
+	void SetActiveWidget(int Index);
+
+	void QuickSortA(TArray<UPlayerPanelWidget*>& Array, int Begin, int End);
+
+	int PartitionA(TArray<UPlayerPanelWidget*>& Array, int Begin, int End);
+
+	UFUNCTION()
+	void ClosePlayerEditor();
+
+	UFUNCTION()
+	void SavePlayerStats(bool CanMove, bool CanJump, bool CanFire);
 };
