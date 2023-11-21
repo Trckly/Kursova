@@ -27,7 +27,6 @@ void UWeaponEditWidget::SetupInputBoxes(const TArray<FText>& PropertiesArray)
 	ModelEditBox->SetIsEnabled(false);
 	MainTypeEditBox->SetIsEnabled(false);
 	SubtypeEditBox->SetIsEnabled(false);
-	CapacityEditBox->SetIsEnabled(false);
 	ManufacturerEditBox->SetIsEnabled(false);
 	CaliberEditBox->SetIsEnabled(false);
 

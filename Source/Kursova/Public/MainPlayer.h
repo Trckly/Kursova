@@ -171,6 +171,7 @@ public:
 	// Setting weapon into player hands
 	UFUNCTION()
 	void CreateWeaponAttach(AWeaponClass* WeaponActor);
+	void CreateWeaponAttach(const FString& ModelName);
 
 	void AttachAWM();
 
@@ -180,7 +181,7 @@ public:
 
 	void AttachM870();
 
-	void AttachHK416();
+	void AttachHK416(); 
 
 	FRackDelegate RackDelegate;
 	

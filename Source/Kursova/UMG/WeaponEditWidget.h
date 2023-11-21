@@ -48,10 +48,10 @@ virtual void NativeConstruct() override;
 	UPROPERTY(meta=(BindWidget))
 	UEditableTextBox* PriceEditBox;
 
-	UPROPERTY(meta=(BindWidget))
+	UPROPERTY(BlueprintReadWrite, meta=(BindWidget))
 	UButton* ProceedButton;
 
-	UPROPERTY(meta=(BindWidget))
+	UPROPERTY(BlueprintReadWrite, meta=(BindWidget))
 	UButton* CancelButton;
 
 	UPROPERTY()
