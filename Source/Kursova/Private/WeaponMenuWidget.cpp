@@ -63,7 +63,7 @@ void UWeaponMenuWidget::EditWeaponUnitProperties(const TArray<FText>& ChangedVal
 {
 	for (int i = 0; i < ActorPickedWeapons.Num(); ++i)
 	{
-		if(ActorPickedWeapons[i]->GetStructure().Model == OriginalModelName)
+		if(ActorPickedWeapons[i] && ActorPickedWeapons[i]->GetStructure().Model == OriginalModelName)
 		{
 			ActorPickedWeapons[i]->EditStructure(ChangedValues);
 		}
@@ -74,7 +74,7 @@ void UWeaponMenuWidget::EditWeaponUnitProperties(const TArray<FText>& ChangedVal
 	for (auto WeaponInstance : ActorPickedWeapons)
 	{
 		auto WidgetCreated = CreateWidget<UWeaponDataWidget>(this, WeaponDataWidgetClass);
-		if(WidgetCreated)
+		if(WidgetCreated && WeaponInstance)
 		{
 			WidgetCreated->InitWithData(WeaponInstance->GetStructure());
 			WeaponContent->AddChild(WidgetCreated);
@@ -186,7 +186,7 @@ void UWeaponMenuWidget::SetActorPickedWeapons(const TArray<AWeaponClass*>& Picke
 	for (auto WeaponInstance : ActorPickedWeapons)
 	{
 		auto WidgetCreated = CreateWidget<UWeaponDataWidget>(this, WeaponDataWidgetClass);
-		if(WidgetCreated)
+		if(WidgetCreated && WeaponInstance)
 		{
 			WidgetCreated->InitWithData(WeaponInstance->GetStructure());
 			WeaponContent->AddChild(WidgetCreated);
@@ -263,4 +263,9 @@ void UWeaponMenuWidget::FilterByManufacturer(const FText& NewManufacturerName)
 			WeaponContent->AddChild(Child);
 		}
 	}
+}
+
+UWeaponDataWidget* UWeaponMenuWidget::GetSelectedWidget()
+{
+	return SelectedWidget;
 }

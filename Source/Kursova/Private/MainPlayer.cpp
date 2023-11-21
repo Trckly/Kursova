@@ -175,7 +175,11 @@ void AMainPlayer::ContinueGameplay()
 		/// Widgets Handling
 		///
 		CrosshairWidget->AddToViewport();
-
+		if(WeaponMenuWidget->GetSelectedWidget())
+		{
+			CreateWeaponAttach(WeaponMenuWidget->GetSelectedWidget()->GetModelName());
+		}
+		
 		WeaponMenuWidget->RemoveFromParent();
 	}
 }
@@ -211,7 +215,8 @@ void AMainPlayer::ProcessHitRack()
 
 void AMainPlayer::ProcessHitWeapon(AWeaponClass* WeaponActor)
 {
-	WeaponActor->Destroy();
+	WeaponActor->SetHidden(true);
+	WeaponActor->SetActorLocation(WeaponActor->GetActorLocation() + WeaponActor->GetActorUpVector() * -1000.f, false);
 	PickedWeapons.Push(WeaponActor);
 	CreateWeaponAttach(WeaponActor);
 }
@@ -252,6 +257,30 @@ void AMainPlayer::CreateWeaponAttach(AWeaponClass* WeaponActor)
 		AttachM870();
 	}
 	if(PlayerWeaponSocketsName[HK416].Contains(WeaponActor->GetStructure().Model))
+	{
+		AttachHK416();
+	}
+}
+
+void AMainPlayer::CreateWeaponAttach(const FString& ModelName)
+{
+	if(PlayerWeaponSocketsName[AWM].Contains(ModelName))
+	{
+		AttachAWM();
+	}
+	if(PlayerWeaponSocketsName[AK47].Contains(ModelName))
+	{
+		AttachAK47();
+	}
+	if(PlayerWeaponSocketsName[M16A4].Contains(ModelName))
+	{
+		AttachM16A4();
+	}
+	if(PlayerWeaponSocketsName[M870].Contains(ModelName))
+	{
+		AttachM870();
+	}
+	if(PlayerWeaponSocketsName[HK416].Contains(ModelName))
 	{
 		AttachHK416();
 	}

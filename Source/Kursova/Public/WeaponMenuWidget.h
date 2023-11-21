@@ -34,10 +34,10 @@ protected:
 	UPROPERTY(meta=(BindWidget))
 	UVerticalBox* WeaponContent;
 
-	UPROPERTY(meta=(BindWidget))
+	UPROPERTY(BlueprintReadWrite, meta=(BindWidget))
 	UButton* SortButton;
 
-	UPROPERTY(meta=(BindWidget))
+	UPROPERTY(BlueprintReadWrite, meta=(BindWidget))
 	UButton* EditButton;
 
 	UPROPERTY(meta=(BindWidget))
@@ -95,5 +95,7 @@ public:
 	void FilterBySubtype(const FText& NewSubtypeName);
 
 	void FilterByManufacturer(const FText& NewManufacturerName);
+
+	UWeaponDataWidget* GetSelectedWidget();
 };
 
