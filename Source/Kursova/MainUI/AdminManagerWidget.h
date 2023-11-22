@@ -13,6 +13,9 @@
 class UPlayerEditorWidget;
 class AMainPlayer;
 class UPlayerPanelWidget;
+
+DECLARE_DYNAMIC_DELEGATE(FOnAdminCloseButtonClicked);
+
 /**
  * 
  */
@@ -30,6 +33,9 @@ protected:
 	
 	UPROPERTY(BlueprintReadWrite, meta=(BindWidget))
 	UButton* BEditBehavior;
+	
+	UPROPERTY(BlueprintReadWrite, meta=(BindWidget))
+	UButton* BClose;
 	
 	UPROPERTY(BlueprintReadWrite, meta=(BindWidget))
 	UScrollBox* SListOfPlayers;
@@ -59,6 +65,8 @@ protected:
 	TArray<UPlayerPanelWidget*> SortArray;
 	
 public:
+	FOnAdminCloseButtonClicked OnAdminCloseButtonClicked;
+	
 	virtual void NativeConstruct() override;
 
 	UFUNCTION()
@@ -85,4 +93,7 @@ public:
 
 	UFUNCTION()
 	void SavePlayerStats(bool CanMove, bool CanJump, bool CanFire);
+
+	UFUNCTION()
+	void CloseAdminWidget();
 };

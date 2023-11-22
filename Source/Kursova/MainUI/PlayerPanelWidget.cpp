@@ -17,6 +17,8 @@ void UPlayerPanelWidget::NativeConstruct()
 	{
 		CIsInGodMode->OnCheckStateChanged.AddDynamic(this, &UPlayerPanelWidget::SetGodMode);
 	}
+
+	StandardBackgroundColor = BSetActive->BackgroundColor;
 }
 
 void UPlayerPanelWidget::SetWidget(AMainPlayer* MainPlayer, int Index)
@@ -77,5 +79,15 @@ bool UPlayerPanelWidget::GetAbilityToJump()
 bool UPlayerPanelWidget::GetAbilityToFire()
 {
 	return Player->GetBehaviorSet().CanShoot;
+}
+
+void UPlayerPanelWidget::ResetBackgroundColor()
+{
+	BSetActive->SetBackgroundColor(StandardBackgroundColor);
+}
+
+void UPlayerPanelWidget::SetBackgroundColor()
+{
+	BSetActive->SetBackgroundColor(FLinearColor::Gray);
 }
 

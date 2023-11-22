@@ -68,7 +68,7 @@ protected:
 	UPROPERTY(BlueprintReadOnly)
 	bool bShowCrosshair = true;
 
-	UPROPERTY(BlueprintReadOnly)
+	UPROPERTY(BlueprintReadOnly, Replicated)
 	TArray<AWeaponClass*> PickedWeapons;
 
 	UPROPERTY(Replicated)
@@ -112,6 +112,21 @@ protected:
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
+
+	UFUNCTION()
+	void CreateServerWidget();
+
+	UFUNCTION()
+	void CreateHUDWidget();
+
+	UFUNCTION()
+	void CreateMainMenuWidget();
+
+	UFUNCTION()
+	void WriteLog();
+
+	UFUNCTION()
+	void ReadLog();
 	
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
 	TSubclassOf<UMainMenuWidget> MainMenuWidgetClass;
@@ -120,6 +135,7 @@ protected:
 	UMainMenuWidget* MainMenuWidget;
 
 public:
+	
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
@@ -164,26 +180,11 @@ public:
 	UFUNCTION(NetMulticast, Reliable)
 	void Multicast_Shoot();
 
-	UFUNCTION(Server, Reliable)
-	void Server_DealDamage(int Damage);
-
-	UFUNCTION(Client, Reliable)
-	void Client_DealDamage(int Damage);
-
 	UFUNCTION()
 	void DealDamage(int Damage);
 
-	UFUNCTION(NetMulticast, Reliable)
-	void Multicast_DealDamage(int Damage);
-
 	UFUNCTION(BlueprintImplementableEvent)
 	void CreateWeaponAttach();
-
-	// UFUNCTION()
-	// void AdjustCameraRotation();
-	//
-	// UFUNCTION(Server, Reliable)
-	// void Server_UpdateCameraRotation(float CamRotation);
 
 	FRackDelegate RackDelegate;
 	

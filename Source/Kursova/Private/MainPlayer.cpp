@@ -8,6 +8,8 @@
 #include "Kursova/MainUI/MainMenuWidget.h"
 #include "Kismet/KismetSystemLibrary.h"
 #include "Kursova/Core/CustomPlayerController.h"
+#include "Kursova/Exceptions/ExceptionPlayerLog.h"
+#include "Kursova/Exceptions/ExceptionPlayerWidget.h"
 #include "Net/UnrealNetwork.h"
 #include "Kursova/UMG/CrosshairWidget.h"
 #include "Kursova/HUD/PlayerHUD.h"
@@ -27,8 +29,6 @@ AMainPlayer::AMainPlayer()
 	BehaviorSet = {true, true, true};
 	Health = 100.f;
 	bReplicates = true;
-	
-	std::cout << *this;
 }
 
 AMainPlayer::AMainPlayer(AMainPlayer& OtherPlayer)
@@ -68,48 +68,21 @@ void AMainPlayer::BeginPlay()
 	///
 	/// Server Logic
 	///
-	APlayerController* PlayerController = GetController<APlayerController>();
-	if(ServerWidgetClass)
+	try
 	{
-		if(PlayerController)
-		{
-			ServerWidget = CreateWidget<UServerWidget>(PlayerController, ServerWidgetClass);
-			
-			if(ServerWidget)
-			{
-				ServerWidget->SetServerSettings.BindDynamic(this, &AMainPlayer::CreateSession);
-				ServerWidget->OnFindSession.BindDynamic(this, &AMainPlayer::ConnectToService);
-				ServerWidget->OnJoinToSession.BindDynamic(this, &AMainPlayer::JoinSession);
-			}
-		}
+		CreateServerWidget();
+
+		CreateMainMenuWidget();
+
+		CreateHUDWidget();
 	}
+	catch(const ExceptionPlayerWidget& Except)
+	{
+		FString ExceptStr(Except.what());
+		UE_LOG(LogTemp, Warning, TEXT("%s"), *ExceptStr);
+	}
+
 	
-	ACustomPlayerController* PController = Cast<ACustomPlayerController>(GetOwner());
-	if(PController)
-	{
-		if(MainMenuWidgetClass)
-		{
-			MainMenuWidget = CreateWidget<UMainMenuWidget>(PController, MainMenuWidgetClass);
-
-			if(MainMenuWidget)
-			{
-				MainMenuWidget->SetUserInfo.BindDynamic(this, &AMainPlayer::SetNameAndCity);
-				MainMenuWidget->AddToViewport();
-			
-				PController->SetShowMouseCursor(true);
-				PController->SetInputMode(FInputModeGameAndUI());
-			}
-		}
-		if(PlayerHUDWidgetClass)
-		{
-			PlayerHUDWidget = CreateWidget<UPlayerHUD>(PController, PlayerHUDWidgetClass);
-
-			if(PlayerHUDWidget)
-			{
-				PlayerHUDWidget->SetHealth(Health);
-			}
-		}
-	}
 	///
 	///	Creating crosshair
 	///
@@ -121,6 +94,97 @@ void AMainPlayer::BeginPlay()
 	}
 
 	CreateWeaponAttach();
+}
+
+void AMainPlayer::CreateServerWidget()
+{
+	APlayerController* PlayerController = GetController<APlayerController>();
+	if(!ServerWidgetClass)
+	{
+		throw ExceptionPlayerWidget("Unable to create Server Widget");
+	}
+	
+	if(PlayerController)
+	{
+		ServerWidget = CreateWidget<UServerWidget>(PlayerController, ServerWidgetClass);
+			
+		if(ServerWidget)
+		{
+			ServerWidget->SetServerSettings.BindDynamic(this, &AMainPlayer::CreateSession);
+			ServerWidget->OnFindSession.BindDynamic(this, &AMainPlayer::ConnectToService);
+			ServerWidget->OnJoinToSession.BindDynamic(this, &AMainPlayer::JoinSession);
+		}
+	}
+}
+
+void AMainPlayer::CreateHUDWidget()
+{
+	ACustomPlayerController* PController = Cast<ACustomPlayerController>(GetOwner());
+	
+	if(PController)
+	{
+		if(!PlayerHUDWidgetClass)
+		{
+			throw ExceptionPlayerWidget("Unable to create HUD");
+		}
+		
+		PlayerHUDWidget = CreateWidget<UPlayerHUD>(PController, PlayerHUDWidgetClass);
+
+		if(PlayerHUDWidget)
+		{
+			PlayerHUDWidget->SetHealth(Health);
+		}
+	}
+}
+
+void AMainPlayer::CreateMainMenuWidget()
+{
+	ACustomPlayerController* PController = Cast<ACustomPlayerController>(GetOwner());
+	if(PController)
+	{
+		if(!MainMenuWidgetClass)
+		{
+			throw ExceptionPlayerWidget("Unable to create Main Menu Widget");
+		}
+		MainMenuWidget = CreateWidget<UMainMenuWidget>(PController, MainMenuWidgetClass);
+
+		if(MainMenuWidget)
+		{
+			MainMenuWidget->SetUserInfo.BindDynamic(this, &AMainPlayer::SetNameAndCity);
+			MainMenuWidget->AddToViewport();
+			
+			PController->SetShowMouseCursor(true);
+			PController->SetInputMode(FInputModeGameAndUI());
+		}
+	}
+}
+
+void AMainPlayer::WriteLog()
+{
+	std::ofstream LogFile;
+	LogFile.open("D:\\Kursova\\Kursova\\Content\\StuffLog.txt", std::ios::trunc);
+
+	LogFile << *this;
+
+	LogFile.close();
+}
+
+void AMainPlayer::ReadLog()
+{
+	std::ifstream LogFile;
+	LogFile.open("D:\\Kursova\\Kursova\\Content\\StuffLog.txt", std::ios::in);
+
+	try
+	{
+		LogFile >> *this;
+	}
+	catch(const ExceptionPlayerLog& Except)
+	{
+		FString ExceptStr(Except.what());
+		UE_LOG(LogTemp, Warning, TEXT("%s"), *ExceptStr);
+	}
+
+	LogFile.close();
 }
 
 // Called to bind functionality to input
@@ -148,10 +212,6 @@ void AMainPlayer::Tick(float DeltaSeconds)
 {
 	Super::Tick(DeltaSeconds);
 
-	if(IsInGodMode)
-	{
-		Jump();
-	}
 }
 
 void AMainPlayer::MoveForward(float Scale)
@@ -304,7 +364,7 @@ void AMainPlayer::Multicast_Shoot_Implementation()
 	
 	FHitResult HitResult;
 	FVector StartTrace = CameraComponent->GetComponentLocation();
-	FVector EndTrace = CameraComponent->GetComponentLocation() + GetActorForwardVector() * 10000.f;
+	FVector EndTrace = CameraComponent->GetComponentLocation() + GetControlRotation().Vector() * 10000.f;
 
 	UKismetSystemLibrary::LineTraceSingle(GetWorld(), StartTrace, EndTrace,
 		UEngineTypes::ConvertToTraceType(ECC_GameTraceChannel2), false, {this},
@@ -314,40 +374,19 @@ void AMainPlayer::Multicast_Shoot_Implementation()
 	AMainPlayer* Enemy = Cast<AMainPlayer>(HitResult.GetActor());
 	if(Enemy)
 	{
-		
-		Enemy->DealDamage(30.f);
-		//Enemy->DealDamage(30.f);
+		Enemy->DealDamage(20.f);
 	}
 
-}
-
-void AMainPlayer::Server_DealDamage_Implementation(int Damage)
-{
-	Multicast_DealDamage(Damage);
-}
-
-void AMainPlayer::Client_DealDamage_Implementation(int Damage)
-{
-	
 }
 
 void AMainPlayer::DealDamage(int Damage)
 {
 	if(!IsInGodMode)
 	{
-		Health -= Damage;
-
-		if(PlayerHUDWidget != nullptr)
+		if(Health <= 0.f)
 		{
-			PlayerHUDWidget->SetHealth(Health);
+			return;
 		}
-	}
-}
-
-void AMainPlayer::Multicast_DealDamage_Implementation(int Damage)
-{
-	if(!IsInGodMode)
-	{
 		Health -= Damage;
 
 		if(PlayerHUDWidget != nullptr)
@@ -383,6 +422,7 @@ void AMainPlayer::AddServerWidgetToViewPort()
 		GetController<APlayerController>()->SetInputMode(FInputModeUIOnly());
 		
 	}
+	
 }
 
 void AMainPlayer::ConnectToService()
@@ -480,12 +520,17 @@ void AMainPlayer::SetNameAndCity(FString const& Name, FString const& City)
 	ACustomPlayerController* PController = Cast<ACustomPlayerController>(GetOwner());
 	if(PController)
 	{
-    	
 		MainMenuWidget->RemoveFromViewport();
-		PlayerHUDWidget->AddToViewport();
+
+		if(PlayerHUDWidget)
+		{
+			WriteLog();
+			ReadLog();
+			PlayerHUDWidget->AddToViewport();
 		
-		PController->SetShowMouseCursor(false);
-		PController->SetInputMode(FInputModeGameOnly());
+			PController->SetShowMouseCursor(false);
+			PController->SetInputMode(FInputModeGameOnly());
+		}
 	}
 }
 
@@ -498,6 +543,7 @@ void AMainPlayer::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifet
 	DOREPLIFETIME(AMainPlayer, IsInGodMode);
 	DOREPLIFETIME(AMainPlayer, TurnRate);
 	DOREPLIFETIME(AMainPlayer, LookUpRate);
+	DOREPLIFETIME(AMainPlayer, PickedWeapons);
 }
 
 void AMainPlayer::Multicast_SetGodMode_Implementation(bool IsGodModeSet)
@@ -540,7 +586,7 @@ std::istream& operator>>(std::istream& IStream, AMainPlayer& MPlayer)
 		ArrOfStrings.SetNum(6);
 		if (!(IsRealString >> ArrOfStrings[0] >> ArrOfStrings[1] >> ArrOfStrings[2] >> ArrOfStrings[3] >> ArrOfStrings[4] >> ArrOfStrings[5]))
 		{
-			//throw ExceptionWeaponOutput("Corrupted file! Missing data!");
+			throw ExceptionPlayerLog("Corrupted file! Missing data!");
 		}
 		
 		// Weapon.WeaponUnit.Model = ArrOfStrings[0].c_str();
@@ -553,7 +599,7 @@ std::istream& operator>>(std::istream& IStream, AMainPlayer& MPlayer)
 	}
 	else
 	{
-		//throw ExceptionWeaponOutput("Cannot read data from file!");
+		throw ExceptionPlayerLog("Cannot read data from file!");
 	}
 
 	return IStream;

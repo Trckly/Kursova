@@ -6,6 +6,7 @@
 #include "PlayerPanelWidget.h"
 #include "PlayerEditorWidget.h"
 #include "Kismet/GameplayStatics.h"
+#include "Kursova/Exceptions/ExceptionPlayerSort.h"
 
 void UAdminManagerWidget::NativeConstruct()
 {
@@ -21,6 +22,11 @@ void UAdminManagerWidget::NativeConstruct()
 	if(!BEditBehavior->OnClicked.IsBound())
 	{
 		BEditBehavior->OnClicked.AddDynamic(this, &UAdminManagerWidget::EditPlayerBehavior);
+	}
+
+	if(!BClose->OnClicked.IsBound())
+	{
+		BClose->OnClicked.AddDynamic(this, &UAdminManagerWidget::CloseAdminWidget);
 	}
 
 }
@@ -96,7 +102,15 @@ void UAdminManagerWidget::SortByCity()
 		SortArray.Add(Element.Value);
 	}
 
-	QuickSortA(SortArray, 0, SortArray.Num() - 1);
+	try
+	{
+		QuickSortA(SortArray, 0, SortArray.Num() - 1);
+	}
+	catch(const ExceptionPlayerSort& Except)
+	{
+		FString ExceptStr(Except.what());
+		UE_LOG(LogTemp, Warning, TEXT("%s"), *ExceptStr);
+	}
 
 	SListOfPlayers->ClearChildren();
 
@@ -129,11 +143,25 @@ void UAdminManagerWidget::EditPlayerBehavior()
 
 void UAdminManagerWidget::SetActiveWidget(int Index)
 {
+	UPlayerPanelWidget* Panel;
+	if(ActiveWidgetIndex != 0)
+	{
+		Panel = *MapOfPlayers.Find(ActiveWidgetIndex);
+		Panel->ResetBackgroundColor();
+	}
 	ActiveWidgetIndex = Index;
+	Panel = *MapOfPlayers.Find(ActiveWidgetIndex);
+	Panel->SetBackgroundColor();
 }
 
 void UAdminManagerWidget::QuickSortA(TArray<UPlayerPanelWidget*>& Array, int Begin, int End)
-{	// base case
+{
+
+	if(Array.Num() == 0)
+	{
+		throw ExceptionPlayerSort("There are nothing to sort");
+	}
+	// base case
 	if (Begin >= End)
 		return;
  
@@ -189,4 +217,15 @@ void UAdminManagerWidget::SavePlayerStats(bool CanMove, bool CanJump, bool CanFi
 		PlayerPanel->SetBehavior(CanMove, CanJump, CanFire);
 	}
 	ClosePlayerEditor();
+}
+
+void UAdminManagerWidget::CloseAdminWidget()
+{
+	for(auto& Panel : MapOfPlayers)
+	{
+		Panel.Value->SetWidgetActive.Unbind();
+	}
+	SListOfPlayers->ClearChildren();
+
+	OnAdminCloseButtonClicked.ExecuteIfBound();
 }
