@@ -14,7 +14,6 @@ class UMainMenuWidget;
 class UServerWidget;
 class AMainPlayer;
 
-DECLARE_DELEGATE(FRackDelegate);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnCharacterJoinSession, FBlueprintSessionResult, SessionResult, const FString&, Password);
 DECLARE_DYNAMIC_DELEGATE_OneParam(FSetStats, AMainPlayer*, Self);
 
@@ -28,6 +27,10 @@ struct FBehaviorSet
 	bool CanShoot;
 };
 
+/**
+ Player character class
+ */
+
 UCLASS()
 class KURSOVA_API AMainPlayer : public ACharacter
 {
@@ -36,34 +39,40 @@ class KURSOVA_API AMainPlayer : public ACharacter
 protected:
 	// Sets default values for this character's properties
 	AMainPlayer();
-	
-	~AMainPlayer() = default;
 
+	// Default destructor override
+	virtual ~AMainPlayer() override = default;
+
+	// Player's camera component
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
 	UCameraComponent* CameraComponent;
 
+	// Defines how far can player reach to interact with objects
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
 	float InteractDistance = 200.f;
 
+	// Defines whether game can be continued or not
 	UPROPERTY(BlueprintReadOnly)
 	bool bContinuable = false;
-
-	TSubclassOf<AActor*> RackClass;
-
+		
+	// Positions of player before teleportation
 	FVector PreviousActorLocation;
 	FRotator PreviousActorRotation;
 
+	// Positions to teleport player in order to use menu
 	FVector WeaponChooseLocation = FVector(200.f, -810.f, 152.f);
 	FRotator WeaponChooseRotation = FRotator(0.f, -90.f, 0.f);
-	
+
+	// Defines whether to show crosshair or not
 	UPROPERTY(BlueprintReadOnly)
 	bool bShowCrosshair = true;
 
+	// Stores pointers to all picked up weapons
 	UPROPERTY(BlueprintReadOnly)
 	TArray<AWeaponClass*> PickedWeapons;
 
 	///
-	///	Weapon blueprint clasess
+	///	Weapon blueprint classes
 	///
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
 	TSubclassOf<AWeaponClass> AwmClass;
@@ -81,7 +90,7 @@ protected:
 	TSubclassOf<AWeaponClass> Hk416Class;
 
 	///
-	/// Player SK weapon sockets
+	/// Player SK_Mesh weapon sockets enumaeration
 	/// 
 	enum EPlayerWeaponSockets
 	{
@@ -92,6 +101,7 @@ protected:
 		HK416
 	};
 
+	// Names of mesh sockets
 	TArray<FString> PlayerWeaponSocketsName;
 	
 	// Equipped weapon
@@ -148,42 +158,50 @@ public:
 	
 	/// 
 	/// Common
-	/// 
+	///
+
+	// Basic move forward function
 	void MoveForward(float Scale);
 
+	// Basic move right function
 	void MoveRight(float Scale);
 
+	// Delegate function. Defines which object was hit
+	// by trace with interactive channel active 
 	UFUNCTION(BlueprintCallable)
 	void Interact();
 
+	// Exits from weapon menu
 	UFUNCTION(BlueprintCallable)
 	void ContinueGameplay();
 
+	// Prepares and opens weapon menu
 	void ProcessHitRack();
 
+	// Collecting hit weapon
 	void ProcessHitWeapon(AWeaponClass* WeaponActor);
 
+	// Return all player's picked weapons
 	TArray<AWeaponClass*> GetAllPickedWeapons();
 
+	// Delegate function. Defines which object was hit
+	// by trace with enemy channel active
 	UFUNCTION()
 	void Shoot();
 
-	// Setting weapon into player hands
+	// Setting weapon into player's hands
 	UFUNCTION()
 	void CreateWeaponAttach(AWeaponClass* WeaponActor);
 	void CreateWeaponAttach(const FString& ModelName);
 
+	///
+	/// Weapon attachment functions
+	/// 
 	void AttachAWM();
-
 	void AttachAK47();
-
 	void AttachM16A4();
-
 	void AttachM870();
-
-	void AttachHK416(); 
-
-	FRackDelegate RackDelegate;
+	void AttachHK416();
 	
 	///
 	/// ServerLogic
