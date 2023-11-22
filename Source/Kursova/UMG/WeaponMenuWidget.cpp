@@ -78,6 +78,7 @@ void UWeaponMenuWidget::CreatePropertiesEditor()
 			// {
 			// 	std::ifstream Fin("Test.txt");
 			// 	Fin >> *ActorPickedWeapons[0];
+			//  Fin.close();
 			// }
 			// catch(ExceptionWeaponOutput Exception)
 			// {
