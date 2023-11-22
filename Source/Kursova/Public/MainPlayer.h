@@ -135,10 +135,10 @@ protected:
 	UPROPERTY(Replicated)
 	bool IsInGodMode;
 
-	UPROPERTY(Replicated)
+	UPROPERTY()
 	FBehaviorSet BehaviorSet;
 
-    UPROPERTY(Replicated)
+    UPROPERTY()
 	float Health;
 
 	int PlayerIndex;
