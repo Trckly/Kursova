@@ -7,7 +7,7 @@
 #include "FWeaponUnit.generated.h"
 
 /**
- * 
+ Holder for weapon main properties
  */
 USTRUCT(BlueprintType)
 struct FWeaponUnit : public FTableRowBase

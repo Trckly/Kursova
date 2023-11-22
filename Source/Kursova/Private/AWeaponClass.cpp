@@ -17,7 +17,7 @@ AWeaponClass::AWeaponClass(FString Model, FString MainType, FString Subtype, int
 	WeaponUnit.Price = Price;
 }
 
-void AWeaponClass::InitWithStruct(const FWeaponUnit& StructItem)
+void AWeaponClass::InitWithStruct(const FWeaponUnit& StructItem) noexcept
 {
 	WeaponUnit.Model = StructItem.Model;
 	WeaponUnit.MainType = StructItem.MainType;
@@ -30,12 +30,12 @@ void AWeaponClass::InitWithStruct(const FWeaponUnit& StructItem)
 	WeaponUnit.Price = StructItem.Price;
 }
 
-const FWeaponUnit& AWeaponClass::GetStructure()
+const FWeaponUnit& AWeaponClass::GetStructure() noexcept
 {
 	return WeaponUnit;
 }
 
-void AWeaponClass::EditStructure(const TArray<FText>& NewProperties)
+void AWeaponClass::EditStructure(const TArray<FText>& NewProperties) noexcept
 {
 	WeaponUnit.Model = NewProperties[0].ToString();
 	WeaponUnit.MainType = NewProperties[1].ToString();
@@ -48,25 +48,19 @@ void AWeaponClass::EditStructure(const TArray<FText>& NewProperties)
 	WeaponUnit.Price = FCString::Atoi(*NewProperties[8].ToString());
 }
 
-// UWeaponClass::UWeaponClass(const UWeaponClass& Other)
+// AWeaponClass::AWeaponClass(const AWeaponClass& Other)
 // {
-// 	if(Unit.Num() > 0)
-// 		Unit.Empty();
-//
-// 	for (int i = 0; i < Other.Unit.Num(); ++i)
-// 	{
-// 		Unit.Push(Other.Unit[i]);
-// 	}
+// 	WeaponUnit = Other.WeaponUnit;
 // }
 
 std::ofstream& operator<<(std::ofstream& Fout, const AWeaponClass& Weapon)
 {
 	FString Result;
-		Result += Weapon.WeaponUnit.Model + ' ' + Weapon.WeaponUnit.MainType + ' ' + Weapon.WeaponUnit.Subtype + ' ' +
-			FString::FromInt(Weapon.WeaponUnit.Capacity) + ' '+ Weapon.WeaponUnit.Manufacturer + ' ' +
-				FString(std::to_string(Weapon.WeaponUnit.Caliber).c_str()) + ' ' +
-					FString::FromInt(Weapon.WeaponUnit.Length) + ' ' + FString::FromInt(Weapon.WeaponUnit.Weight) + ' '
-						+ FString::FromInt(Weapon.WeaponUnit.Price) + '\n';
+	Result += Weapon.WeaponUnit.Model + ' ' + Weapon.WeaponUnit.MainType + ' ' + Weapon.WeaponUnit.Subtype + ' ' +
+		FString::FromInt(Weapon.WeaponUnit.Capacity) + ' '+ Weapon.WeaponUnit.Manufacturer + ' ' +
+			FString(std::to_string(Weapon.WeaponUnit.Caliber).c_str()) + ' ' +
+				FString::FromInt(Weapon.WeaponUnit.Length) + ' ' + FString::FromInt(Weapon.WeaponUnit.Weight) + ' '
+					+ FString::FromInt(Weapon.WeaponUnit.Price) + '\n';
 	Fout << *Result;
 	return Fout;
 }

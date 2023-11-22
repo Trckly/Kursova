@@ -3,6 +3,8 @@
 
 #include "WeaponMenuWidget.h"
 
+#include "Kursova/Exceptions/ExceptionWeaponFilter.h"
+
 void UWeaponMenuWidget::NativeConstruct()
 {
 	Super::NativeConstruct();
@@ -134,7 +136,7 @@ void UWeaponMenuWidget::FilterFunc(const FText& TypedText)
 			break;
 
 		default:
-			UE_LOG(LogTemp, Warning, TEXT("Filter combo box failure!"));	
+			throw ExceptionWeaponFilter("Combo box failure!");
 		}
 	}
 }

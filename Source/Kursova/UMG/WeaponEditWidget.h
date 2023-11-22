@@ -8,18 +8,25 @@
 #include "Components/EditableTextBox.h"
 #include "WeaponEditWidget.generated.h"
 
-/**
- * 
- */
+// Declares delegate with two parameters
 DECLARE_DYNAMIC_DELEGATE_TwoParams(FAcceptedDelegate, const TArray<FText>&, ChangedValues, const FString&, OriginalModelName);
 
+
+/**
+ Properties editor widget 
+ */
 UCLASS()
 class KURSOVA_API UWeaponEditWidget : public UUserWidget
 {
 	GENERATED_BODY()
 
 protected:
+	// Widget constructor override
 virtual void NativeConstruct() override;
+
+	///
+	/// Link-variables for UI
+	///
 	
 	UPROPERTY(meta=(BindWidget))
 	UEditableTextBox* ModelEditBox;
@@ -54,17 +61,28 @@ virtual void NativeConstruct() override;
 	UPROPERTY(BlueprintReadWrite, meta=(BindWidget))
 	UButton* CancelButton;
 
+	// In case of changing model name is used
+	// to identify current object to change
 	UPROPERTY()
 	FString PreviousModelName;
 
 public:
+	// Setups input text boxes in order to see
+	// what changes are you making and to prevent
+	// writing all other properties by hand, if
+	// you don't want them to change
 	void SetupInputBoxes(const TArray<FText>& PropertiesArray);
 
+	// Calls delegate to override values in
+	// weapon structure and parent widget
 	UFUNCTION()
-	void Proceed();
+	void Proceed() noexcept;
 
+	// Destroys widget, discards all changes
 	UFUNCTION()
-	void Cancel();
+	void Cancel() noexcept;
 
+	// Delegate variable,
+	// executes on proceed button pressed
 	FAcceptedDelegate OnAcceptedEvent;
 };
