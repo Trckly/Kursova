@@ -4,7 +4,6 @@
 
 #include "CoreMinimal.h"
 #include "AWeaponClass.h"
-#include "WeaponMenuWidget.h"
 #include "Camera/CameraComponent.h"
 #include "GameFramework/Character.h"
 #include "../ServerLogic/SessionSubsystem.h"
@@ -12,6 +11,7 @@
 #include <sstream>
 #include <fstream>
 #include <string>
+#include "Kursova/UMG/WeaponMenuWidget.h"
 #include "MainPlayer.generated.h"
 
 class UPlayerHUD;
@@ -19,7 +19,6 @@ class UMainMenuWidget;
 class UServerWidget;
 class AMainPlayer;
 
-DECLARE_DELEGATE(FRackDelegate);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnCharacterJoinSession, FBlueprintSessionResult, SessionResult, const FString&, Password);
 DECLARE_DYNAMIC_DELEGATE_OneParam(FSetStats, AMainPlayer*, Self);
 
@@ -32,6 +31,10 @@ struct FBehaviorSet
 	bool CanJump;
 	bool CanShoot;
 };
+
+/**
+ Player character class
+ */
 
 UCLASS()
 class KURSOVA_API AMainPlayer : public ACharacter
@@ -46,28 +49,34 @@ protected:
 	
 	AMainPlayer(bool GodMode, FBehaviorSet Behavior, float HP);
 	
+	// Default destructor override
 	virtual ~AMainPlayer() override = default;
 
+	// Player's camera component
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
 	UCameraComponent* CameraComponent;
 
+	// Defines how far can player reach to interact with objects
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
 	float InteractDistance = 200.f;
 
+	// Defines whether game can be continued or not
 	UPROPERTY(BlueprintReadOnly)
 	bool bContinuable = false;
-
-	TSubclassOf<AActor*> RackClass;
-
+		
+	// Positions of player before teleportation
 	FVector PreviousActorLocation;
 	FRotator PreviousActorRotation;
 
+	// Positions to teleport player in order to use menu
 	FVector WeaponChooseLocation = FVector(200.f, -810.f, 152.f);
 	FRotator WeaponChooseRotation = FRotator(0.f, -90.f, 0.f);
-	
+
+	// Defines whether to show crosshair or not
 	UPROPERTY(BlueprintReadOnly)
 	bool bShowCrosshair = true;
 
+	// Pointer to all weapon instances picked by player
 	UPROPERTY(BlueprintReadOnly, Replicated)
 	TArray<AWeaponClass*> PickedWeapons;
 
@@ -76,6 +85,43 @@ protected:
 
 	UPROPERTY(Replicated)
 	float LookUpRate;
+
+	///
+	///	Weapon blueprint classes
+	///
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
+	TSubclassOf<AWeaponClass> AwmClass;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
+	TSubclassOf<AWeaponClass> M16A4Class;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
+	TSubclassOf<AWeaponClass> Ak47Class;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
+	TSubclassOf<AWeaponClass> M870Class;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
+	TSubclassOf<AWeaponClass> Hk416Class;
+
+	///
+	/// Player SK_Mesh weapon sockets enumaeration
+	/// 
+	enum EPlayerWeaponSockets
+	{
+		AWM,
+		AK47,
+		M16A4,
+		M870,
+		HK416
+	};
+
+	// Names of mesh sockets
+	TArray<FString> PlayerWeaponSocketsName;
+	
+	// Equipped weapon
+	UPROPERTY()
+	AWeaponClass* EquippedWeapon;
 	
 	///
 	/// Andrii Kursova
@@ -143,11 +189,14 @@ public:
 	
 	/// 
 	/// Common
-	/// 
+	///
+
+	// Basic move forward function
 	void MoveForward(float Scale);
 
+	// Basic move right function
 	void MoveRight(float Scale);
-
+	
 	virtual void Jump() override;
 
 	UFUNCTION(Server, Reliable)
@@ -161,32 +210,48 @@ public:
 
 	UFUNCTION(NetMulticast, Reliable)
 	void Multicast_LookUp(float Rate);
-
+	
+	// Delegate function. Defines which object was hit
+	// by trace with interactive channel active 
 	UFUNCTION(BlueprintCallable)
 	void Interact();
 
+	// Exits from weapon menu
 	UFUNCTION(BlueprintCallable)
 	void ContinueGameplay();
 
+	// Prepares and opens weapon menu
 	void ProcessHitRack();
 
+	// Collecting hit weapon
 	void ProcessHitWeapon(AWeaponClass* WeaponActor);
 
+	// Return all player's picked weapons
 	TArray<AWeaponClass*> GetAllPickedWeapons();
 
+	
 	UFUNCTION(Server, Reliable)
 	void Server_Shoot();
 
 	UFUNCTION(NetMulticast, Reliable)
 	void Multicast_Shoot();
-
+	
 	UFUNCTION()
 	void DealDamage(int Damage);
 
-	UFUNCTION(BlueprintImplementableEvent)
-	void CreateWeaponAttach();
+	// Setting weapon into player's hands
+	UFUNCTION()
+	void CreateWeaponAttach(AWeaponClass* WeaponActor);
+	void CreateWeaponAttach(const FString& ModelName);
 
-	FRackDelegate RackDelegate;
+	///
+	/// Weapon attachment functions
+	/// 
+	void AttachAWM();
+	void AttachAK47();
+	void AttachM16A4();
+	void AttachM870();
+	void AttachHK416();
 	
 	
 	UPROPERTY(EditAnywhere)
@@ -270,7 +335,10 @@ public:
 	
 	UFUNCTION(NetMulticast, Reliable)
 	void Multicast_SetGodMode(bool IsGodModeSet);
-
+	
 	friend std::ostream& operator<<(std::ostream& OStream, const AMainPlayer& MPlayer );
 	friend std::istream& operator>>(std::istream& IStream, AMainPlayer& MPlayer );
+
+	void WriteWeaponsFromFile();
 };
+

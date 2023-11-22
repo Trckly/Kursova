@@ -3,6 +3,8 @@
 
 #include "WeaponEditWidget.h"
 
+#include "Kursova/Exceptions/ExceptionPropertiesEdit.h"
+
 void UWeaponEditWidget::NativeConstruct()
 {
 	Super::NativeConstruct();
@@ -14,6 +16,11 @@ void UWeaponEditWidget::NativeConstruct()
 
 void UWeaponEditWidget::SetupInputBoxes(const TArray<FText>& PropertiesArray)
 {
+	if(PropertiesArray.Num() < 9)
+	{
+		throw ExceptionPropertiesEdit("Lack of information in passed array!");
+	}
+	
 	ModelEditBox->SetText(PropertiesArray[0]);
 	MainTypeEditBox->SetText(PropertiesArray[1]);
 	SubtypeEditBox->SetText(PropertiesArray[2]);
@@ -27,14 +34,13 @@ void UWeaponEditWidget::SetupInputBoxes(const TArray<FText>& PropertiesArray)
 	ModelEditBox->SetIsEnabled(false);
 	MainTypeEditBox->SetIsEnabled(false);
 	SubtypeEditBox->SetIsEnabled(false);
-	CapacityEditBox->SetIsEnabled(false);
 	ManufacturerEditBox->SetIsEnabled(false);
 	CaliberEditBox->SetIsEnabled(false);
 
 	PreviousModelName = PropertiesArray[0].ToString();
 }
 
-void UWeaponEditWidget::Proceed()
+void UWeaponEditWidget::Proceed() noexcept
 {
 	TArray<FText> Result;
 	Result.Push(ModelEditBox->GetText());
@@ -51,7 +57,7 @@ void UWeaponEditWidget::Proceed()
 	RemoveFromParent();
 }
 
-void UWeaponEditWidget::Cancel()
+void UWeaponEditWidget::Cancel() noexcept
 {
 	RemoveFromParent();
 }

@@ -3,6 +3,8 @@
 
 #include "AWeaponClass.h"
 
+#include "Kursova/Exceptions/ExceptionWeaponOutput.h"
+
 AWeaponClass::AWeaponClass(FString Model, FString MainType, FString Subtype, int Capacity,FString Manufacturer,
                            float Caliber, int Length, int Weight, int Price)
 {
@@ -17,7 +19,7 @@ AWeaponClass::AWeaponClass(FString Model, FString MainType, FString Subtype, int
 	WeaponUnit.Price = Price;
 }
 
-void AWeaponClass::InitWithStruct(const FWeaponUnit& StructItem)
+void AWeaponClass::InitWithStruct(const FWeaponUnit& StructItem) noexcept
 {
 	WeaponUnit.Model = StructItem.Model;
 	WeaponUnit.MainType = StructItem.MainType;
@@ -30,12 +32,12 @@ void AWeaponClass::InitWithStruct(const FWeaponUnit& StructItem)
 	WeaponUnit.Price = StructItem.Price;
 }
 
-const FWeaponUnit& AWeaponClass::GetStructure()
+const FWeaponUnit& AWeaponClass::GetStructure() noexcept
 {
 	return WeaponUnit;
 }
 
-void AWeaponClass::EditStructure(const TArray<FText>& NewProperties)
+void AWeaponClass::EditStructure(const TArray<FText>& NewProperties) noexcept
 {
 	WeaponUnit.Model = NewProperties[0].ToString();
 	WeaponUnit.MainType = NewProperties[1].ToString();
@@ -48,25 +50,58 @@ void AWeaponClass::EditStructure(const TArray<FText>& NewProperties)
 	WeaponUnit.Price = FCString::Atoi(*NewProperties[8].ToString());
 }
 
-// UWeaponClass::UWeaponClass(const UWeaponClass& Other)
+void AWeaponClass::WriteFromKeyboard() noexcept
+{
+	std::string ModelInput;
+	std::cin >> ModelInput;
+	WeaponUnit.Model = FString::Printf(TEXT("%s"), *FString(ModelInput.c_str()));
+
+	std::string MainTypeInput;
+	std::cin >> MainTypeInput;
+	WeaponUnit.MainType = FString::Printf(TEXT("%s"), *FString(MainTypeInput.c_str()));
+
+	std::string SubtypeInput;
+	std::cin >> SubtypeInput;
+	WeaponUnit.Subtype = FString::Printf(TEXT("%s"), *FString(SubtypeInput.c_str()));
+
+	int CapacityInput;
+	std::cin >> CapacityInput;
+	WeaponUnit.Capacity = CapacityInput;
+
+	std::string ManufacturerInput;
+	std::cin >> ManufacturerInput;
+	WeaponUnit.Manufacturer = FString::Printf(TEXT("%s"), *FString(ManufacturerInput.c_str()));
+
+	float CaliberInput;
+	std::cin >> CaliberInput;
+	WeaponUnit.Caliber = CapacityInput;
+
+	int LengthInput;
+	std::cin >> LengthInput;
+	WeaponUnit.Capacity = LengthInput;
+
+	int WeightInput;
+	std::cin >> WeightInput;
+	WeaponUnit.Weight = WeightInput;
+
+	int PriceInput;
+	std::cin >> PriceInput;
+	WeaponUnit.Price = PriceInput;
+}
+
+// AWeaponClass::AWeaponClass(const AWeaponClass& Other)
 // {
-// 	if(Unit.Num() > 0)
-// 		Unit.Empty();
-//
-// 	for (int i = 0; i < Other.Unit.Num(); ++i)
-// 	{
-// 		Unit.Push(Other.Unit[i]);
-// 	}
+// 	WeaponUnit = Other.WeaponUnit;
 // }
 
 std::ofstream& operator<<(std::ofstream& Fout, const AWeaponClass& Weapon)
 {
 	FString Result;
-		Result += Weapon.WeaponUnit.Model + ' ' + Weapon.WeaponUnit.MainType + ' ' + Weapon.WeaponUnit.Subtype + ' ' +
-			FString::FromInt(Weapon.WeaponUnit.Capacity) + ' '+ Weapon.WeaponUnit.Manufacturer + ' ' +
-				FString(std::to_string(Weapon.WeaponUnit.Caliber).c_str()) + ' ' +
-					FString::FromInt(Weapon.WeaponUnit.Length) + ' ' + FString::FromInt(Weapon.WeaponUnit.Weight) + ' '
-						+ FString::FromInt(Weapon.WeaponUnit.Price) + '\n';
+	Result += Weapon.WeaponUnit.Model + ' ' + Weapon.WeaponUnit.MainType + ' ' + Weapon.WeaponUnit.Subtype + ' ' +
+		FString::FromInt(Weapon.WeaponUnit.Capacity) + ' '+ Weapon.WeaponUnit.Manufacturer + ' ' +
+			FString(std::to_string(Weapon.WeaponUnit.Caliber).c_str()) + ' ' +
+				FString::FromInt(Weapon.WeaponUnit.Length) + ' ' + FString::FromInt(Weapon.WeaponUnit.Weight) + ' '
+					+ FString::FromInt(Weapon.WeaponUnit.Price) + '\n';
 	Fout << *Result;
 	return Fout;
 }
@@ -81,10 +116,7 @@ std::ifstream& operator>>(std::ifstream& Fin, AWeaponClass& Weapon) {
 		std::istringstream iss(line);
 		TArray<std::string> Temp;
 		Temp.SetNum(9);
-		if (!(iss >> Temp[0] >> Temp[1] >> Temp[2] >> Temp[3] >> Temp[4] >> Temp[5]	>> Temp[6] >> Temp[7] >> Temp[8]))
-		{
-			throw ExceptionWeaponOutput("Corrupted file! Missing data!");
-		}
+		iss >> Temp[0] >> Temp[1] >> Temp[2] >> Temp[3] >> Temp[4] >> Temp[5]	>> Temp[6] >> Temp[7] >> Temp[8];
 		
 		Weapon.WeaponUnit.Model = Temp[0].c_str();
 		Weapon.WeaponUnit.MainType = Temp[1].c_str();
