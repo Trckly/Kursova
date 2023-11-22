@@ -7,6 +7,7 @@
 #include "Kursova/MainUI/MainMenuWidget.h"
 #include "Kismet/KismetSystemLibrary.h"
 #include "Kursova/Core/CustomPlayerController.h"
+#include "Kursova/Exceptions/ExceptionWeaponOutput.h"
 #include "Net/UnrealNetwork.h"
 #include "Kursova/UMG/CrosshairWidget.h"
 
@@ -520,6 +521,37 @@ void AMainPlayer::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifet
 	DOREPLIFETIME(AMainPlayer, SCity);
 	DOREPLIFETIME(AMainPlayer, IsInGodMode);
 	DOREPLIFETIME(AMainPlayer, BehaviorSet);
+}
+
+void AMainPlayer::WriteWeaponsFromFile()
+{
+	std::ifstream Fin("WeaponDataConfig.txt");
+	std::string Line;
+	while (std::getline(Fin, Line))
+	{
+		FString FLine(UTF8_TO_TCHAR(Line.c_str()));
+		TArray<FString> Words;
+		FLine.ParseIntoArray(Words, TEXT(" "));
+		if(Words.Num() < 9)
+		{
+			throw ExceptionWeaponOutput("One of rows in file is corrupted!");
+		}
+		FWeaponUnit NewUnit;
+		NewUnit.Model = Words[0];
+		NewUnit.MainType = Words[1];
+		NewUnit.Subtype = Words[2];
+		NewUnit.Capacity = FCString::Atoi(*Words[3]);
+		NewUnit.Manufacturer = Words[4];
+		NewUnit.Caliber = FCString::Atof(*Words[5]);
+		NewUnit.Length = FCString::Atoi(*Words[6]);
+		NewUnit.Weight = FCString::Atoi(*Words[7]);
+		NewUnit.Price = FCString::Atoi(*Words[8]);
+
+		// AWeaponClass* NewWeapon = new AWeaponClass;
+		// NewWeapon->InitWithStruct(NewUnit);
+		// PickedWeapons.Push(NewWeapon);
+	}
+	Fin.close();
 }
 
 void AMainPlayer::Multicast_SetGodMode_Implementation(bool IsGodModeSet)

@@ -278,4 +278,6 @@ public:
 	
 	UFUNCTION(NetMulticast, Reliable)
 	void Multicast_SetGodMode(bool IsGodModeSet);
+
+	void WriteWeaponsFromFile();
 };
