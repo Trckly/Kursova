@@ -7,9 +7,14 @@
 #include "Camera/CameraComponent.h"
 #include "GameFramework/Character.h"
 #include "../ServerLogic/SessionSubsystem.h"
+#include <iostream>
+#include <sstream>
+#include <fstream>
+#include <string>
 #include "Kursova/UMG/WeaponMenuWidget.h"
 #include "MainPlayer.generated.h"
 
+class UPlayerHUD;
 class UMainMenuWidget;
 class UServerWidget;
 class AMainPlayer;
@@ -39,7 +44,11 @@ class KURSOVA_API AMainPlayer : public ACharacter
 protected:
 	// Sets default values for this character's properties
 	AMainPlayer();
-
+	
+	AMainPlayer(AMainPlayer& OtherPlayer);
+	
+	AMainPlayer(bool GodMode, FBehaviorSet Behavior, float HP);
+	
 	// Default destructor override
 	virtual ~AMainPlayer() override = default;
 
@@ -66,11 +75,17 @@ protected:
 	// Defines whether to show crosshair or not
 	UPROPERTY(BlueprintReadOnly)
 	bool bShowCrosshair = true;
-
-	// Stores pointers to all picked up weapons
-	UPROPERTY(BlueprintReadOnly)
+	
+	// Pointer to all weapon instances picked by player
+	UPROPERTY(BlueprintReadOnly, Replicated)
 	TArray<AWeaponClass*> PickedWeapons;
 
+	UPROPERTY(Replicated)
+	float TurnRate;
+
+	UPROPERTY(Replicated)
+	float LookUpRate;
+	
 	///
 	///	Weapon blueprint classes
 	///
@@ -143,6 +158,21 @@ protected:
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
+
+	UFUNCTION()
+	void CreateServerWidget();
+
+	UFUNCTION()
+	void CreateHUDWidget();
+
+	UFUNCTION()
+	void CreateMainMenuWidget();
+
+	UFUNCTION()
+	void WriteLog();
+
+	UFUNCTION()
+	void ReadLog();
 	
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
 	TSubclassOf<UMainMenuWidget> MainMenuWidgetClass;
@@ -151,6 +181,7 @@ protected:
 	UMainMenuWidget* MainMenuWidget;
 
 public:
+	
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
@@ -165,6 +196,20 @@ public:
 
 	// Basic move right function
 	void MoveRight(float Scale);
+	
+	virtual void Jump() override;
+
+	UFUNCTION(Server, Reliable)
+	void Server_Turn(float Rate);
+
+	UFUNCTION(NetMulticast, Reliable)
+	void Multicast_Turn(float Rate);
+
+	UFUNCTION(Server, Reliable)
+	void Server_LookUp(float Rate);
+
+	UFUNCTION(NetMulticast, Reliable)
+	void Multicast_LookUp(float Rate);
 
 	// Delegate function. Defines which object was hit
 	// by trace with interactive channel active 
@@ -183,11 +228,15 @@ public:
 
 	// Return all player's picked weapons
 	TArray<AWeaponClass*> GetAllPickedWeapons();
+	
+	UFUNCTION(Server, Reliable)
+	void Server_Shoot();
 
-	// Delegate function. Defines which object was hit
-	// by trace with enemy channel active
+	UFUNCTION(NetMulticast, Reliable)
+	void Multicast_Shoot();
+	
 	UFUNCTION()
-	void Shoot();
+	void DealDamage(int Damage);
 
 	// Setting weapon into player's hands
 	UFUNCTION()
@@ -202,6 +251,12 @@ public:
 	void AttachM16A4();
 	void AttachM870();
 	void AttachHK416();
+
+	UPROPERTY(EditAnywhere)
+	TSubclassOf<UPlayerHUD> PlayerHUDWidgetClass;
+
+	UPROPERTY()
+	UPlayerHUD* PlayerHUDWidget;
 	
 	///
 	/// ServerLogic
@@ -209,8 +264,8 @@ public:
 	UPROPERTY(EditAnywhere)
 	TSubclassOf<UServerWidget> ServerWidgetClass;
 
-	UPROPERTY(EditAnywhere)
-	UServerWidget* ServerWidget;	
+	UPROPERTY()
+	UServerWidget* ServerWidget;
 
 	UPROPERTY()
 	FSetStats SetStats;
@@ -278,6 +333,10 @@ public:
 	
 	UFUNCTION(NetMulticast, Reliable)
 	void Multicast_SetGodMode(bool IsGodModeSet);
+	
+	friend std::ostream& operator<<(std::ostream& OStream, const AMainPlayer& MPlayer );
+	friend std::istream& operator>>(std::istream& IStream, AMainPlayer& MPlayer );
 
 	void WriteWeaponsFromFile();
 };
+

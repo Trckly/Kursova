@@ -114,8 +114,15 @@ void UServerWidget::OpenAdminMenu()
 
 		if(AdminManagerWidget)
 		{
+			AdminManagerWidget->OnAdminCloseButtonClicked.BindDynamic(this, &UServerWidget::CloseAdminMenu);
 			AdminManagerWidget->SetPlayers();
 			AdminManagerWidget->AddToViewport();
 		}
 	}
+}
+
+void UServerWidget::CloseAdminMenu()
+{
+	AdminManagerWidget->OnAdminCloseButtonClicked.Unbind();
+	AdminManagerWidget->RemoveFromViewport();
 }

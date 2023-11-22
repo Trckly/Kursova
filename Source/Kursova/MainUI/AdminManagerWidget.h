@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "Blueprint/UserWidget.h"
 #include "Components/Button.h"
+#include "Components/ComboBoxString.h"
 #include "Components/EditableText.h"
 #include "Components/ScrollBox.h"
 #include "AdminManagerWidget.generated.h"
@@ -12,6 +13,9 @@
 class UPlayerEditorWidget;
 class AMainPlayer;
 class UPlayerPanelWidget;
+
+DECLARE_DYNAMIC_DELEGATE(FOnAdminCloseButtonClicked);
+
 /**
  * 
  */
@@ -31,7 +35,13 @@ protected:
 	UButton* BEditBehavior;
 	
 	UPROPERTY(BlueprintReadWrite, meta=(BindWidget))
+	UButton* BClose;
+	
+	UPROPERTY(BlueprintReadWrite, meta=(BindWidget))
 	UScrollBox* SListOfPlayers;
+	
+	UPROPERTY(BlueprintReadWrite, meta=(BindWidget))
+	UComboBoxString* OSearchOption;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
 	TSubclassOf<UPlayerPanelWidget> PlayerPanelWidgetClass;
@@ -55,13 +65,15 @@ protected:
 	TArray<UPlayerPanelWidget*> SortArray;
 	
 public:
+	FOnAdminCloseButtonClicked OnAdminCloseButtonClicked;
+	
 	virtual void NativeConstruct() override;
 
 	UFUNCTION()
 	void SetPlayers();
 
 	UFUNCTION()
-	void FindByName(const FText& Value);
+	void Search(const FText& Value);
 
 	UFUNCTION()
 	void SortByCity();
@@ -81,4 +93,7 @@ public:
 
 	UFUNCTION()
 	void SavePlayerStats(bool CanMove, bool CanJump, bool CanFire);
+
+	UFUNCTION()
+	void CloseAdminWidget();
 };

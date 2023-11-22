@@ -42,6 +42,9 @@ protected:
 
 	UPROPERTY()
 	AMainPlayer* Player;
+
+	UPROPERTY()
+	FLinearColor StandardBackgroundColor;
 	
 public:
 	UPROPERTY()
@@ -78,4 +81,10 @@ public:
 
 	UFUNCTION()
 	bool GetAbilityToFire();
+
+	UFUNCTION()
+	void ResetBackgroundColor();
+
+	UFUNCTION()
+	void SetBackgroundColor();
 };

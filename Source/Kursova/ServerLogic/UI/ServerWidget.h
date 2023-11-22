@@ -106,4 +106,7 @@ public:
 	
 	UFUNCTION()
 	void OpenAdminMenu();
+	
+	UFUNCTION()
+	void CloseAdminMenu();
 };

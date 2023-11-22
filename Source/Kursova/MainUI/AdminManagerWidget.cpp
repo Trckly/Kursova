@@ -6,12 +6,13 @@
 #include "PlayerPanelWidget.h"
 #include "PlayerEditorWidget.h"
 #include "Kismet/GameplayStatics.h"
+#include "Kursova/Exceptions/ExceptionPlayerSort.h"
 
 void UAdminManagerWidget::NativeConstruct()
 {
 	Super::NativeConstruct();
 	
-	ESearchBar->OnTextChanged.AddDynamic(this, &UAdminManagerWidget::FindByName);
+	ESearchBar->OnTextChanged.AddDynamic(this, &UAdminManagerWidget::Search);
 
 	if(!BSort->OnClicked.IsBound())
 	{
@@ -21,6 +22,11 @@ void UAdminManagerWidget::NativeConstruct()
 	if(!BEditBehavior->OnClicked.IsBound())
 	{
 		BEditBehavior->OnClicked.AddDynamic(this, &UAdminManagerWidget::EditPlayerBehavior);
+	}
+
+	if(!BClose->OnClicked.IsBound())
+	{
+		BClose->OnClicked.AddDynamic(this, &UAdminManagerWidget::CloseAdminWidget);
 	}
 
 }
@@ -52,19 +58,33 @@ void UAdminManagerWidget::SetPlayers()
 	}
 }
 
-void UAdminManagerWidget::FindByName(const FText& Value)
-{
+void UAdminManagerWidget::Search(const FText& Value)
+{	
 	if(Value.IsEmpty())
 	{
 		for(const auto& MapPair : MapOfPlayers)
 		{
 			MapPair.Value->SetVisibility(ESlateVisibility::Visible);
 		}
-	}else
+		return;
+	}
+	if(OSearchOption->GetSelectedIndex() == 0)
 	{
 		for(const auto& MapPair : MapOfPlayers)
 		{
 			if(MapPair.Value->GetName().Contains(Value.ToString()))
+			{
+				MapPair.Value->SetVisibility(ESlateVisibility::Visible);
+			}else
+			{
+				MapPair.Value->SetVisibility(ESlateVisibility::Collapsed);
+			}
+		}
+	}else if(OSearchOption->GetSelectedIndex() == 1)
+	{
+		for(const auto& MapPair : MapOfPlayers)
+		{
+			if(MapPair.Value->GetCity().Contains(Value.ToString()))
 			{
 				MapPair.Value->SetVisibility(ESlateVisibility::Visible);
 			}else
@@ -82,7 +102,15 @@ void UAdminManagerWidget::SortByCity()
 		SortArray.Add(Element.Value);
 	}
 
-	QuickSortA(SortArray, 0, SortArray.Num() - 1);
+	try
+	{
+		QuickSortA(SortArray, 0, SortArray.Num() - 1);
+	}
+	catch(const ExceptionPlayerSort& Except)
+	{
+		FString ExceptStr(Except.what());
+		UE_LOG(LogTemp, Warning, TEXT("%s"), *ExceptStr);
+	}
 
 	SListOfPlayers->ClearChildren();
 
@@ -115,11 +143,25 @@ void UAdminManagerWidget::EditPlayerBehavior()
 
 void UAdminManagerWidget::SetActiveWidget(int Index)
 {
+	UPlayerPanelWidget* Panel;
+	if(ActiveWidgetIndex != 0)
+	{
+		Panel = *MapOfPlayers.Find(ActiveWidgetIndex);
+		Panel->ResetBackgroundColor();
+	}
 	ActiveWidgetIndex = Index;
+	Panel = *MapOfPlayers.Find(ActiveWidgetIndex);
+	Panel->SetBackgroundColor();
 }
 
 void UAdminManagerWidget::QuickSortA(TArray<UPlayerPanelWidget*>& Array, int Begin, int End)
-{	// base case
+{
+
+	if(Array.Num() == 0)
+	{
+		throw ExceptionPlayerSort("There are nothing to sort");
+	}
+	// base case
 	if (Begin >= End)
 		return;
  
@@ -175,4 +217,15 @@ void UAdminManagerWidget::SavePlayerStats(bool CanMove, bool CanJump, bool CanFi
 		PlayerPanel->SetBehavior(CanMove, CanJump, CanFire);
 	}
 	ClosePlayerEditor();
+}
+
+void UAdminManagerWidget::CloseAdminWidget()
+{
+	for(auto& Panel : MapOfPlayers)
+	{
+		Panel.Value->SetWidgetActive.Unbind();
+	}
+	SListOfPlayers->ClearChildren();
+
+	OnAdminCloseButtonClicked.ExecuteIfBound();
 }
