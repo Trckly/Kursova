@@ -44,7 +44,7 @@ class KURSOVA_API AMainPlayer : public ACharacter
 protected:
 	// Sets default values for this character's properties
 	AMainPlayer();
-
+	
 	AMainPlayer(AMainPlayer& OtherPlayer);
 	
 	AMainPlayer(bool GodMode, FBehaviorSet Behavior, float HP);
@@ -75,7 +75,7 @@ protected:
 	// Defines whether to show crosshair or not
 	UPROPERTY(BlueprintReadOnly)
 	bool bShowCrosshair = true;
-
+	
 	// Pointer to all weapon instances picked by player
 	UPROPERTY(BlueprintReadOnly, Replicated)
 	TArray<AWeaponClass*> PickedWeapons;
@@ -85,7 +85,7 @@ protected:
 
 	UPROPERTY(Replicated)
 	float LookUpRate;
-
+	
 	///
 	///	Weapon blueprint classes
 	///
@@ -210,7 +210,7 @@ public:
 
 	UFUNCTION(NetMulticast, Reliable)
 	void Multicast_LookUp(float Rate);
-	
+
 	// Delegate function. Defines which object was hit
 	// by trace with interactive channel active 
 	UFUNCTION(BlueprintCallable)
@@ -228,7 +228,6 @@ public:
 
 	// Return all player's picked weapons
 	TArray<AWeaponClass*> GetAllPickedWeapons();
-
 	
 	UFUNCTION(Server, Reliable)
 	void Server_Shoot();
@@ -252,8 +251,7 @@ public:
 	void AttachM16A4();
 	void AttachM870();
 	void AttachHK416();
-	
-	
+
 	UPROPERTY(EditAnywhere)
 	TSubclassOf<UPlayerHUD> PlayerHUDWidgetClass;
 
