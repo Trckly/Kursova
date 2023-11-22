@@ -4,10 +4,10 @@
 
 #include "CoreMinimal.h"
 #include "AWeaponClass.h"
-#include "WeaponMenuWidget.h"
 #include "Camera/CameraComponent.h"
 #include "GameFramework/Character.h"
 #include "../ServerLogic/SessionSubsystem.h"
+#include "Kursova/UMG/WeaponMenuWidget.h"
 #include "MainPlayer.generated.h"
 
 class UMainMenuWidget;

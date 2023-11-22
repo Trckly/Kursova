@@ -8,14 +8,14 @@
 /**
  * 
  */
-class KURSOVA_API ExceptionWeaponFilter : public std::exception
+class KURSOVA_API ExceptionWeaponSort : public std::exception
 {
 public:
 	// Exception constructor
-	explicit ExceptionWeaponFilter(const std::string& Message) noexcept : Message(Message){}
+	explicit ExceptionWeaponSort(const std::string& Message) noexcept : Message(Message){}
 
 	// Exception destructor override
-	virtual ~ExceptionWeaponFilter() override = default;
+	virtual ~ExceptionWeaponSort() override = default;
 
 	// Outputs exception message
 	virtual const char* what() const noexcept override {

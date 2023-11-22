@@ -1,7 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "WeaponDataWidget.h"
+#include "Kursova/UMG/WeaponDataWidget.h"
 
 void UWeaponDataWidget::NativeConstruct()
 {
