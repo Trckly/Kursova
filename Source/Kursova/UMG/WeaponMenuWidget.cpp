@@ -1,9 +1,11 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "WeaponMenuWidget.h"
+#include "Kursova/UMG/WeaponMenuWidget.h"
 
-#include "Kursova/Exceptions/ExceptionWeaponFilter.h"
+#include "Kursova/Exceptions/ExceptionPropertiesEdit.h"
+#include "Kursova/Exceptions/ExceptionWeaponSort.h"
+#include "Kursova/Exceptions/ExceptionWeaponOutput.h"
 
 void UWeaponMenuWidget::NativeConstruct()
 {
@@ -36,25 +38,52 @@ void UWeaponMenuWidget::SortByCaliber()
 		Children.Push(Cast<UWeaponDataWidget>(Child));
 	}
 	
-	ShellSort(Children, bSortFlipFlop );
-
-	for(auto Child : Children)
+	try
 	{
-		WeaponContent->AddChild(Child);
+		ShellSort(Children, bSortFlipFlop);
+		for(auto Child : Children)
+		{
+			WeaponContent->AddChild(Child);
+		}
 	}
-	
+	catch (ExceptionWeaponSort Exception)
+	{
+		const FString Exc(UTF8_TO_TCHAR(Exception.what()));
+		UE_LOG(LogTemp, Warning, TEXT("%s"), *Exc);
+	}
 }
 
 void UWeaponMenuWidget::CreatePropertiesEditor()
 {
 	if(SelectedWidget)
 	{
+		TArray<FText> Test = {FText::FromString(TEXT("fdas")), FText::FromString(TEXT("ffdss"))};
+		
 		UWeaponEditWidget* CreatedWidget = CreateWidget<UWeaponEditWidget>(this, WeaponEditWidgetClass);
 		if(CreatedWidget)
 		{
 			EditWidget = CreatedWidget;
 			EditWidget->OnAcceptedEvent.BindDynamic(this, & UWeaponMenuWidget::EditWeaponUnitProperties);
-			EditWidget->SetupInputBoxes(SelectedWidget->GetAllProperties());
+			try
+			{
+				EditWidget->SetupInputBoxes(SelectedWidget->GetAllProperties());
+				// EditWidget->SetupInputBoxes(Test);
+			}
+			catch(ExceptionPropertiesEdit Exception)
+			{
+				const FString Exc(UTF8_TO_TCHAR(Exception.what()));
+				UE_LOG(LogTemp, Warning, TEXT("%s"), *Exc);
+			}
+			// try
+			// {
+			// 	std::ifstream Fin("Test.txt");
+			// 	Fin >> *ActorPickedWeapons[0];
+			// }
+			// catch(ExceptionWeaponOutput Exception)
+			// {
+			// 	const FString Exc(UTF8_TO_TCHAR(Exception.what()));
+			// 	UE_LOG(LogTemp, Warning, TEXT("%s"), *Exc);
+			// }
 			EditWidget->AddToViewport();
 			
 		}
@@ -136,13 +165,17 @@ void UWeaponMenuWidget::FilterFunc(const FText& TypedText)
 			break;
 
 		default:
-			throw ExceptionWeaponFilter("Combo box failure!");
+			break;
 		}
 	}
 }
 
 void UWeaponMenuWidget::ShellSort(TArray<UWeaponDataWidget*>& Children, bool& bAscending)
 {
+	if(Children.Num() == 0)
+	{
+		throw ExceptionWeaponSort("Cannot sort empty array!");
+	}
 	if(bAscending)
 	{
 		for (int Gap = Children.Num() / 2; Gap > 0; Gap /= 2)

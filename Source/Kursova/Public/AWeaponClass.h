@@ -3,7 +3,6 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "ExceptionWeaponOutput.h"
 #include <string>
 #include <fstream>
 #include <iostream>
@@ -59,6 +58,9 @@ public:
 
 	// Edits properties structure with an array of strings
 	void EditStructure(const TArray<FText>& NewProperties) noexcept;
+
+	// Populates weapon properties from keyboard
+	void WriteFromKeyboard() noexcept;
 
 	
 	///
