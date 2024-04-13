@@ -3,7 +3,6 @@
 
 #include "WeaponEditWidget.h"
 
-#include "Kursova/Exceptions/ExceptionPropertiesEdit.h"
 
 void UWeaponEditWidget::NativeConstruct()
 {
@@ -18,7 +17,7 @@ void UWeaponEditWidget::SetupInputBoxes(const TArray<FText>& PropertiesArray)
 {
 	if(PropertiesArray.Num() < 9)
 	{
-		throw ExceptionPropertiesEdit("Lack of information in passed array!");
+		return;
 	}
 	
 	ModelEditBox->SetText(PropertiesArray[0]);

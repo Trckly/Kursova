@@ -6,7 +6,6 @@
 #include "PlayerPanelWidget.h"
 #include "PlayerEditorWidget.h"
 #include "Kismet/GameplayStatics.h"
-#include "Kursova/Exceptions/ExceptionPlayerSort.h"
 
 void UAdminManagerWidget::NativeConstruct()
 {
@@ -102,15 +101,7 @@ void UAdminManagerWidget::SortByCity()
 		SortArray.Add(Element.Value);
 	}
 
-	try
-	{
-		QuickSortA(SortArray, 0, SortArray.Num() - 1);
-	}
-	catch(const ExceptionPlayerSort& Except)
-	{
-		FString ExceptStr(Except.what());
-		UE_LOG(LogTemp, Warning, TEXT("%s"), *ExceptStr);
-	}
+	QuickSortA(SortArray, 0, SortArray.Num() - 1);
 
 	SListOfPlayers->ClearChildren();
 
@@ -159,7 +150,8 @@ void UAdminManagerWidget::QuickSortA(TArray<UPlayerPanelWidget*>& Array, int Beg
 
 	if(Array.Num() == 0)
 	{
-		throw ExceptionPlayerSort("There are nothing to sort");
+		UE_LOG(LogTemp, Warning, TEXT("There are nothing to sort"));
+		return;
 	}
 	// base case
 	if (Begin >= End)

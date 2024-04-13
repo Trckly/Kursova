@@ -167,12 +167,6 @@ protected:
 
 	UFUNCTION()
 	void CreateMainMenuWidget();
-
-	UFUNCTION()
-	void WriteLog();
-
-	UFUNCTION()
-	void ReadLog();
 	
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
 	TSubclassOf<UMainMenuWidget> MainMenuWidgetClass;

@@ -3,10 +3,6 @@
 
 #include "Kursova/UMG/WeaponMenuWidget.h"
 
-#include "Kursova/Exceptions/ExceptionPropertiesEdit.h"
-#include "Kursova/Exceptions/ExceptionWeaponSort.h"
-#include "Kursova/Exceptions/ExceptionWeaponOutput.h"
-
 void UWeaponMenuWidget::NativeConstruct()
 {
 	Super::NativeConstruct();
@@ -38,18 +34,10 @@ void UWeaponMenuWidget::SortByCaliber()
 		Children.Push(Cast<UWeaponDataWidget>(Child));
 	}
 	
-	try
+	ShellSort(Children, bSortFlipFlop);
+	for(auto Child : Children)
 	{
-		ShellSort(Children, bSortFlipFlop);
-		for(auto Child : Children)
-		{
-			WeaponContent->AddChild(Child);
-		}
-	}
-	catch (ExceptionWeaponSort Exception)
-	{
-		const FString Exc(UTF8_TO_TCHAR(Exception.what()));
-		UE_LOG(LogTemp, Warning, TEXT("%s"), *Exc);
+		WeaponContent->AddChild(Child);
 	}
 }
 
@@ -64,16 +52,10 @@ void UWeaponMenuWidget::CreatePropertiesEditor()
 		{
 			EditWidget = CreatedWidget;
 			EditWidget->OnAcceptedEvent.BindDynamic(this, & UWeaponMenuWidget::EditWeaponUnitProperties);
-			try
-			{
-				EditWidget->SetupInputBoxes(SelectedWidget->GetAllProperties());
-				// EditWidget->SetupInputBoxes(Test);
-			}
-			catch(ExceptionPropertiesEdit Exception)
-			{
-				const FString Exc(UTF8_TO_TCHAR(Exception.what()));
-				UE_LOG(LogTemp, Warning, TEXT("%s"), *Exc);
-			}
+			
+			EditWidget->SetupInputBoxes(SelectedWidget->GetAllProperties());
+			// EditWidget->SetupInputBoxes(Test);
+				
 			// try
 			// {
 			// 	std::ifstream Fin("Test.txt");
@@ -175,7 +157,8 @@ void UWeaponMenuWidget::ShellSort(TArray<UWeaponDataWidget*>& Children, bool& bA
 {
 	if(Children.Num() == 0)
 	{
-		throw ExceptionWeaponSort("Cannot sort empty array!");
+		UE_LOG(LogTemp, Warning, TEXT("Cannot sort empty array!"));
+		return;
 	}
 	if(bAscending)
 	{
