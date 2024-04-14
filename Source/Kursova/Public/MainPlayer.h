@@ -7,19 +7,17 @@
 #include "Camera/CameraComponent.h"
 #include "GameFramework/Character.h"
 #include "../ServerLogic/SessionSubsystem.h"
-#include <iostream>
-#include <sstream>
-#include <fstream>
-#include <string>
-
 #include "GenericTeamAgentInterface.h"
 #include "Kursova/UMG/WeaponMenuWidget.h"
+#include "Kismet/KismetMathLibrary.h"
 #include "MainPlayer.generated.h"
 
 class UPlayerHUD;
 class UMainMenuWidget;
 class UServerWidget;
 class AMainPlayer;
+
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FAnimNotify_Jump);
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnCharacterJoinSession, FBlueprintSessionResult, SessionResult, const FString&, Password);
 DECLARE_DYNAMIC_DELEGATE_OneParam(FSetStats, AMainPlayer*, Self);
@@ -82,6 +80,9 @@ protected:
 
 	UPROPERTY(Replicated)
 	float LookUpRate;
+
+	UPROPERTY(EditDefaultsOnly)
+	float MouseSensivity;
 	
 	///
 	///	Weapon blueprint classes
@@ -190,6 +191,9 @@ public:
 	
 	virtual void Jump() override;
 
+	UFUNCTION(BlueprintCallable)
+	UCameraComponent* GetCameraComponent();
+
 	UFUNCTION(Server, Reliable)
 	void Server_Turn(float Rate);
 
@@ -230,7 +234,7 @@ public:
 	void Multicast_Shoot(FVector StartTrace, FVector EndTrace);
 	
 	UFUNCTION()
-	void TakeDamage(int Damage);
+	void GetDamage(int Damage);
 
 	// Setting weapon into player's hands
 	UFUNCTION()
@@ -330,5 +334,8 @@ public:
 
 	//Team
 	virtual FGenericTeamId GetGenericTeamId() const override{return TeamId;}
+
+	UPROPERTY(BlueprintAssignable)
+	FAnimNotify_Jump AnimNotify_Jump;
 };
 

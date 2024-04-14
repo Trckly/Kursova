@@ -22,7 +22,6 @@ class IEnemyInterface
 
 public:
 	virtual int DealDamage() = 0;
-	virtual int TakeDamage(int Damage) = 0;
-
+	virtual int GetDamage(int Damage) = 0;
 	virtual UBehaviorTree* GetBehaviourTree() = 0;
 };
