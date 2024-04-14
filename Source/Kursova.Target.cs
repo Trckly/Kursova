@@ -11,7 +11,7 @@ public class KursovaTarget : TargetRules
 		DefaultBuildSettings = BuildSettingsVersion.V2;
 		ExtraModuleNames.AddRange( new string[] { "Kursova" } );
         
-        bOverrideBuildEnvironment = true;
-        AdditionalCompilerArguments = "-Wno-unused-but-set-variable";
+        // bOverrideBuildEnvironment = true;
+        // AdditionalCompilerArguments = "-Wno-unused-but-set-variable";
 	}
 }
