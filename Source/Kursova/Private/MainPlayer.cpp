@@ -26,35 +26,8 @@ AMainPlayer::AMainPlayer()
 	BehaviorSet = {true, true, true};
 	Health = 100.f;
 	bReplicates = true;
-}
 
-AMainPlayer::AMainPlayer(AMainPlayer& OtherPlayer)
-{
-	CameraComponent = CreateDefaultSubobject<UCameraComponent>(FName(*OtherPlayer.CameraComponent->GetName()));
-	CameraComponent->SetRelativeLocation(OtherPlayer.CameraComponent->GetUpVector());
-	CameraComponent->bUsePawnControlRotation = OtherPlayer.CameraComponent->bUsePawnControlRotation;
-	CameraComponent->SetupAttachment(GetMesh(), "head");
 	
-	IsInGodMode = OtherPlayer.IsInGodMode;
-	BehaviorSet = OtherPlayer.BehaviorSet;
-	Health = OtherPlayer.Health;
-	bReplicates = OtherPlayer.bReplicates;
-}
-
-AMainPlayer::AMainPlayer(bool GodMode, FBehaviorSet Behavior, float HP)
-{
- 	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
-	PrimaryActorTick.bCanEverTick = true;
-
-	CameraComponent = CreateDefaultSubobject<UCameraComponent>(TEXT("Camera"));
-	CameraComponent->SetRelativeLocation(CameraComponent->GetUpVector() * 90.f);
-	CameraComponent->bUsePawnControlRotation = true;
-	CameraComponent->SetupAttachment(GetMesh(), "head");
-
-	IsInGodMode = GodMode;
-	BehaviorSet = Behavior;
-	Health = HP;
-	bReplicates = true;
 }
 
 // Called when the game starts or when spawned
@@ -328,12 +301,12 @@ void AMainPlayer::Multicast_Shoot_Implementation()
 	AMainPlayer* Enemy = Cast<AMainPlayer>(HitResult.GetActor());
 	if(Enemy)
 	{
-		Enemy->DealDamage(20.f);
+		Enemy->TakeDamage(20.f);
 	}
 
 }
 
-void AMainPlayer::DealDamage(int Damage)
+void AMainPlayer::TakeDamage(int Damage)
 {
 	if(!IsInGodMode)
 	{
@@ -342,6 +315,7 @@ void AMainPlayer::DealDamage(int Damage)
 			return;
 		}
 		Health -= Damage;
+		UE_LOG(LogTemp, Warning, TEXT("Player got %d damage"), Damage);
 
 		if(PlayerHUDWidget != nullptr)
 		{

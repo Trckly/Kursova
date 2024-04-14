@@ -11,6 +11,8 @@
 #include <sstream>
 #include <fstream>
 #include <string>
+
+#include "GenericTeamAgentInterface.h"
 #include "Kursova/UMG/WeaponMenuWidget.h"
 #include "MainPlayer.generated.h"
 
@@ -37,20 +39,15 @@ struct FBehaviorSet
  */
 
 UCLASS()
-class KURSOVA_API AMainPlayer : public ACharacter
+class KURSOVA_API AMainPlayer : public ACharacter, public IGenericTeamAgentInterface
 {
 	GENERATED_BODY()
+
+	FGenericTeamId TeamId;
 
 protected:
 	// Sets default values for this character's properties
 	AMainPlayer();
-	
-	AMainPlayer(AMainPlayer& OtherPlayer);
-	
-	AMainPlayer(bool GodMode, FBehaviorSet Behavior, float HP);
-	
-	// Default destructor override
-	virtual ~AMainPlayer() override = default;
 
 	// Player's camera component
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
@@ -230,7 +227,7 @@ public:
 	void Multicast_Shoot();
 	
 	UFUNCTION()
-	void DealDamage(int Damage);
+	void TakeDamage(int Damage);
 
 	// Setting weapon into player's hands
 	UFUNCTION()
@@ -327,10 +324,8 @@ public:
 	
 	UFUNCTION(NetMulticast, Reliable)
 	void Multicast_SetGodMode(bool IsGodModeSet);
-	
-	friend std::ostream& operator<<(std::ostream& OStream, const AMainPlayer& MPlayer );
-	friend std::istream& operator>>(std::istream& IStream, AMainPlayer& MPlayer );
 
-	void WriteWeaponsFromFile();
+	//Team
+	virtual FGenericTeamId GetGenericTeamId() const override{return TeamId;}
 };
 
