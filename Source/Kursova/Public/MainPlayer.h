@@ -223,12 +223,15 @@ public:
 
 	// Return all player's picked weapons
 	TArray<AWeaponClass*> GetAllPickedWeapons();
+
+	UFUNCTION()
+	void Shoot();
 	
 	UFUNCTION(Server, Reliable)
-	void Server_Shoot();
+	void Server_Shoot(FVector StartTrace, FVector EndTrace);
 
 	UFUNCTION(NetMulticast, Reliable)
-	void Multicast_Shoot();
+	void Multicast_Shoot(FVector StartTrace, FVector EndTrace);
 	
 	UFUNCTION()
 	void GetDamage(int Damage);
@@ -328,6 +331,7 @@ public:
 	
 	UFUNCTION(NetMulticast, Reliable)
 	void Multicast_SetGodMode(bool IsGodModeSet);
+
 	//Team
 	virtual FGenericTeamId GetGenericTeamId() const override{return TeamId;}
 

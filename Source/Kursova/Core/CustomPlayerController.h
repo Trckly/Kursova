@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "MainPlayerController.h"
 #include "GameFramework/PlayerController.h"
 #include "CustomPlayerController.generated.h"
 
@@ -11,11 +12,11 @@
  * 
  */
 UCLASS()
-class KURSOVA_API ACustomPlayerController : public APlayerController
+class KURSOVA_API ACustomPlayerController : public AMainPlayerController
 {
 	GENERATED_BODY()
 
 	UFUNCTION(Reliable, Client)
 	virtual void BeginPlay() override;
-	
+  
 };

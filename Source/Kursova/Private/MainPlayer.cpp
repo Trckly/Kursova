@@ -6,7 +6,7 @@
 #include "GameFramework/CharacterMovementComponent.h"
 #include "Kursova/MainUI/MainMenuWidget.h"
 #include "Kismet/KismetSystemLibrary.h"
-#include "Kursova/Core/CustomPlayerController.h"
+#include "Kursova/Core//CustomPlayerController.h"
 #include "Net/UnrealNetwork.h"
 #include "Kursova/UMG/CrosshairWidget.h"
 #include "Kursova/HUD/PlayerHUD.h"
@@ -18,7 +18,6 @@ AMainPlayer::AMainPlayer()
 	PrimaryActorTick.bCanEverTick = true;
 
 	CameraComponent = CreateDefaultSubobject<UCameraComponent>(TEXT("Camera"));
-	CameraComponent->SetRelativeLocation(CameraComponent->GetUpVector() * 90.f);
 	CameraComponent->bUsePawnControlRotation = true;
 	CameraComponent->SetupAttachment(GetMesh(), "head");
 
@@ -118,7 +117,7 @@ void AMainPlayer::SetupPlayerInputComponent(UInputComponent* PlayerInputComponen
 	PlayerInputComponent->BindAction(TEXT("Interact"), IE_Pressed, this, &AMainPlayer::Interact);
 	PlayerInputComponent->BindAction(TEXT("Escape"), IE_Pressed, this, &AMainPlayer::ContinueGameplay);
 	PlayerInputComponent->BindAction(TEXT("Jump"), IE_Pressed, this, &AMainPlayer::Jump);
-	PlayerInputComponent->BindAction(TEXT("Shoot"), IE_Pressed, this, &AMainPlayer::Server_Shoot);
+	PlayerInputComponent->BindAction(TEXT("Shoot"), IE_Pressed, this, &AMainPlayer::Shoot);
 
 	///
 	/// Server Logic
@@ -289,22 +288,30 @@ TArray<AWeaponClass*> AMainPlayer::GetAllPickedWeapons()
 	return PickedWeapons;
 }
 
-void AMainPlayer::Server_Shoot_Implementation()
+void AMainPlayer::Shoot()
 {
-	Multicast_Shoot();
-}
-
-void AMainPlayer::Multicast_Shoot_Implementation()
-{
+	
 	if(!BehaviorSet.CanShoot)
 	{
 		return;
 	}
-	
-	FHitResult HitResult;
 	FVector StartTrace = CameraComponent->GetComponentLocation();
-	FVector EndTrace = CameraComponent->GetComponentLocation() + GetControlRotation().Vector() * 10000.f;
+	FVector EndTrace = CameraComponent->GetComponentLocation() + CameraComponent->GetComponentRotation().Vector() * 10000.f;
+	
+	Server_Shoot(StartTrace, EndTrace);
+	
+	
+}
 
+void AMainPlayer::Server_Shoot_Implementation(FVector StartTrace, FVector EndTrace)
+{
+	Multicast_Shoot(StartTrace, EndTrace);
+}
+
+void AMainPlayer::Multicast_Shoot_Implementation(FVector StartTrace, FVector EndTrace)
+{
+
+	FHitResult HitResult;
 	UKismetSystemLibrary::LineTraceSingle(GetWorld(), StartTrace, EndTrace,
 		UEngineTypes::ConvertToTraceType(ECC_GameTraceChannel2), false, {this},
 		EDrawDebugTrace::ForDuration, HitResult, true, FColor::Red, FColor::Green,
