@@ -7,17 +7,16 @@
 #include "Camera/CameraComponent.h"
 #include "GameFramework/Character.h"
 #include "../ServerLogic/SessionSubsystem.h"
-#include <iostream>
-#include <sstream>
-#include <fstream>
-#include <string>
 #include "Kursova/UMG/WeaponMenuWidget.h"
+#include "Kismet/KismetMathLibrary.h"
 #include "MainPlayer.generated.h"
 
 class UPlayerHUD;
 class UMainMenuWidget;
 class UServerWidget;
 class AMainPlayer;
+
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FAnimNotify_Jump);
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnCharacterJoinSession, FBlueprintSessionResult, SessionResult, const FString&, Password);
 DECLARE_DYNAMIC_DELEGATE_OneParam(FSetStats, AMainPlayer*, Self);
@@ -85,6 +84,9 @@ protected:
 
 	UPROPERTY(Replicated)
 	float LookUpRate;
+
+	UPROPERTY(EditDefaultsOnly)
+	float MouseSensivity;
 	
 	///
 	///	Weapon blueprint classes
@@ -192,6 +194,9 @@ public:
 	void MoveRight(float Scale);
 	
 	virtual void Jump() override;
+
+	UFUNCTION(BlueprintCallable)
+	UCameraComponent* GetCameraComponent();
 
 	UFUNCTION(Server, Reliable)
 	void Server_Turn(float Rate);
@@ -331,6 +336,7 @@ public:
 	friend std::ostream& operator<<(std::ostream& OStream, const AMainPlayer& MPlayer );
 	friend std::istream& operator>>(std::istream& IStream, AMainPlayer& MPlayer );
 
-	void WriteWeaponsFromFile();
+	UPROPERTY(BlueprintAssignable)
+	FAnimNotify_Jump AnimNotify_Jump;
 };
 
