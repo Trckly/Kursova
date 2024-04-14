@@ -7,6 +7,7 @@
 #include "Camera/CameraComponent.h"
 #include "GameFramework/Character.h"
 #include "../ServerLogic/SessionSubsystem.h"
+#include "GenericTeamAgentInterface.h"
 #include "Kursova/UMG/WeaponMenuWidget.h"
 #include "Kismet/KismetMathLibrary.h"
 #include "MainPlayer.generated.h"
@@ -36,20 +37,15 @@ struct FBehaviorSet
  */
 
 UCLASS()
-class KURSOVA_API AMainPlayer : public ACharacter
+class KURSOVA_API AMainPlayer : public ACharacter, public IGenericTeamAgentInterface
 {
 	GENERATED_BODY()
+
+	FGenericTeamId TeamId;
 
 protected:
 	// Sets default values for this character's properties
 	AMainPlayer();
-	
-	AMainPlayer(AMainPlayer& OtherPlayer);
-	
-	AMainPlayer(bool GodMode, FBehaviorSet Behavior, float HP);
-	
-	// Default destructor override
-	virtual ~AMainPlayer() override = default;
 
 	// Player's camera component
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
@@ -235,7 +231,7 @@ public:
 	void Multicast_Shoot();
 	
 	UFUNCTION()
-	void DealDamage(int Damage);
+	void GetDamage(int Damage);
 
 	// Setting weapon into player's hands
 	UFUNCTION()
@@ -332,9 +328,8 @@ public:
 	
 	UFUNCTION(NetMulticast, Reliable)
 	void Multicast_SetGodMode(bool IsGodModeSet);
-	
-	friend std::ostream& operator<<(std::ostream& OStream, const AMainPlayer& MPlayer );
-	friend std::istream& operator>>(std::istream& IStream, AMainPlayer& MPlayer );
+	//Team
+	virtual FGenericTeamId GetGenericTeamId() const override{return TeamId;}
 
 	UPROPERTY(BlueprintAssignable)
 	FAnimNotify_Jump AnimNotify_Jump;
