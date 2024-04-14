@@ -3,7 +3,6 @@
 
 #include "MainMenuWidget.h"
 
-#include "Kursova/Exceptions/ExceptionPlayerWidget.h"
 
 void UMainMenuWidget::NativeConstruct()
 {

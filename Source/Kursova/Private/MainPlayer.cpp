@@ -7,9 +7,6 @@
 #include "Kursova/MainUI/MainMenuWidget.h"
 #include "Kismet/KismetSystemLibrary.h"
 #include "Kursova/Core/CustomPlayerController.h"
-#include "Kursova/Exceptions/ExceptionPlayerLog.h"
-#include "Kursova/Exceptions/ExceptionPlayerWidget.h"
-#include "Kursova/Exceptions/ExceptionWeaponOutput.h"
 #include "Net/UnrealNetwork.h"
 #include "Kursova/UMG/CrosshairWidget.h"
 #include "Kursova/HUD/PlayerHUD.h"
@@ -29,6 +26,7 @@ AMainPlayer::AMainPlayer()
 	BehaviorSet = {true, true, true};
 	Health = 100.f;
 	bReplicates = true;
+	MouseSensivity = 50.f;
 }
 
 AMainPlayer::AMainPlayer(AMainPlayer& OtherPlayer)
@@ -68,20 +66,11 @@ void AMainPlayer::BeginPlay()
 	///
 	/// Server Logic
 	///
-	try
-	{
-		CreateServerWidget();
+	CreateServerWidget();
 
-		CreateMainMenuWidget();
+	CreateMainMenuWidget();
 
-		CreateHUDWidget();
-	}
-	catch(const ExceptionPlayerWidget& Except)
-	{
-		FString ExceptStr(Except.what());
-		UE_LOG(LogTemp, Warning, TEXT("%s"), *ExceptStr);
-	}
-
+	CreateHUDWidget();
 	
 	///
 	///	Creating crosshair
@@ -99,10 +88,6 @@ void AMainPlayer::BeginPlay()
 void AMainPlayer::CreateServerWidget()
 {
 	APlayerController* PlayerController = GetController<APlayerController>();
-	if(!ServerWidgetClass)
-	{
-		throw ExceptionPlayerWidget("Unable to create Server Widget");
-	}
 	
 	if(PlayerController)
 	{
@@ -123,10 +108,6 @@ void AMainPlayer::CreateHUDWidget()
 	
 	if(PController)
 	{
-		if(!PlayerHUDWidgetClass)
-		{
-			throw ExceptionPlayerWidget("Unable to create HUD");
-		}
 		
 		PlayerHUDWidget = CreateWidget<UPlayerHUD>(PController, PlayerHUDWidgetClass);
 
@@ -142,10 +123,6 @@ void AMainPlayer::CreateMainMenuWidget()
 	ACustomPlayerController* PController = Cast<ACustomPlayerController>(GetOwner());
 	if(PController)
 	{
-		if(!MainMenuWidgetClass)
-		{
-			throw ExceptionPlayerWidget("Unable to create Main Menu Widget");
-		}
 		MainMenuWidget = CreateWidget<UMainMenuWidget>(PController, MainMenuWidgetClass);
 
 		if(MainMenuWidget)
@@ -159,34 +136,6 @@ void AMainPlayer::CreateMainMenuWidget()
 	}
 }
 
-void AMainPlayer::WriteLog()
-{
-	std::ofstream LogFile;
-	LogFile.open("D:\\Kursova\\Kursova\\Content\\StuffLog.txt", std::ios::trunc);
-
-	LogFile << *this;
-
-	LogFile.close();
-}
-
-void AMainPlayer::ReadLog()
-{
-	std::ifstream LogFile;
-	LogFile.open("D:\\Kursova\\Kursova\\Content\\StuffLog.txt", std::ios::in);
-
-	try
-	{
-		LogFile >> *this;
-	}
-	catch(const ExceptionPlayerLog& Except)
-	{
-		FString ExceptStr(Except.what());
-		UE_LOG(LogTemp, Warning, TEXT("%s"), *ExceptStr);
-	}
-
-	LogFile.close();
-}
-
 // Called to bind functionality to input
 void AMainPlayer::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
@@ -194,8 +143,6 @@ void AMainPlayer::SetupPlayerInputComponent(UInputComponent* PlayerInputComponen
 
 	PlayerInputComponent->BindAxis(TEXT("MoveForward"), this, &AMainPlayer::MoveForward);
 	PlayerInputComponent->BindAxis(TEXT("MoveRight"), this, &AMainPlayer::MoveRight);
-	PlayerInputComponent->BindAxis(TEXT("LookUp"), this, &AMainPlayer::AddControllerPitchInput);
-	PlayerInputComponent->BindAxis(TEXT("LookRight"), this, &APawn::AddControllerYawInput);
 	
 	PlayerInputComponent->BindAction(TEXT("Interact"), IE_Pressed, this, &AMainPlayer::Interact);
 	PlayerInputComponent->BindAction(TEXT("Escape"), IE_Pressed, this, &AMainPlayer::ContinueGameplay);
@@ -230,12 +177,27 @@ void AMainPlayer::MoveRight(float Scale)
 	}
 }
 
+// void AMainPlayer::LookRight(float Value)
+// {
+// 	if(Value != 0)
+// 	{
+// 		float SensivityScalar = MouseSensivity * GetWorld()->GetDeltaSeconds();
+// 		AddControllerYawInput(Value * SensivityScalar);
+// 	}
+// }
+
 void AMainPlayer::Jump()
 {
 	if(BehaviorSet.CanJump)
 	{
 		Super::Jump();
+		AnimNotify_Jump.Broadcast();
 	}
+}
+
+UCameraComponent* AMainPlayer::GetCameraComponent()
+{
+	return CameraComponent;
 }
 
 void AMainPlayer::Server_Turn_Implementation(float Rate)
@@ -673,8 +635,6 @@ void AMainPlayer::SetNameAndCity(FString const& Name, FString const& City)
 
 		if(PlayerHUDWidget)
 		{
-			WriteLog();
-			ReadLog();
 			PlayerHUDWidget->AddToViewport();
 		
 			PController->SetShowMouseCursor(false);
@@ -695,37 +655,6 @@ void AMainPlayer::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifet
 	DOREPLIFETIME(AMainPlayer, PickedWeapons);
 }
 
-void AMainPlayer::WriteWeaponsFromFile()
-{
-	std::ifstream Fin("WeaponDataConfig.txt");
-	std::string Line;
-	while (std::getline(Fin, Line))
-	{
-		FString FLine(UTF8_TO_TCHAR(Line.c_str()));
-		TArray<FString> Words;
-		FLine.ParseIntoArray(Words, TEXT(" "));
-		if(Words.Num() < 9)
-		{
-			throw ExceptionWeaponOutput("One of rows in file is corrupted!");
-		}
-		FWeaponUnit NewUnit;
-		NewUnit.Model = Words[0];
-		NewUnit.MainType = Words[1];
-		NewUnit.Subtype = Words[2];
-		NewUnit.Capacity = FCString::Atoi(*Words[3]);
-		NewUnit.Manufacturer = Words[4];
-		NewUnit.Caliber = FCString::Atof(*Words[5]);
-		NewUnit.Length = FCString::Atoi(*Words[6]);
-		NewUnit.Weight = FCString::Atoi(*Words[7]);
-		NewUnit.Price = FCString::Atoi(*Words[8]);
-
-		// AWeaponClass* NewWeapon = new AWeaponClass;
-		// NewWeapon->InitWithStruct(NewUnit);
-		// PickedWeapons.Push(NewWeapon);
-	}
-	Fin.close();
-}
-
 void AMainPlayer::Multicast_SetGodMode_Implementation(bool IsGodModeSet)
 {
 	IsInGodMode = IsGodModeSet;
@@ -736,51 +665,4 @@ void AMainPlayer::Multicast_SetBehavior_Implementation(bool CanMove, bool CanJum
 	BehaviorSet.CanMove = CanMove;
 	BehaviorSet.CanJump = CanJump;
 	BehaviorSet.CanShoot = CanFire;
-}
-
-
-
-std::ostream& operator<<(std::ostream& OStream, const AMainPlayer& MPlayer)
-{
-	FString Output;
-	Output += MPlayer.SPlayerName + ' '
-			+ MPlayer.SCity + ' '
-			+ (MPlayer.BehaviorSet.CanMove ? FString("true") : FString("false")) + ' '
-			+ (MPlayer.BehaviorSet.CanJump ? FString("true") : FString("false")) + ' '
-			+ (MPlayer.BehaviorSet.CanShoot ? FString("true") : FString("false")) + ' '
-			+ (MPlayer.IsInGodMode ? FString("true") : FString("false"));
-	OStream << *Output;
-	return OStream;
-}
-
-std::istream& operator>>(std::istream& IStream, AMainPlayer& MPlayer)
-{
-	std::string LogString;
-    
-	// Read a line from the file
-
-	if (std::getline(IStream, LogString))
-	{
-		std::istringstream IsRealString(LogString);
-		TArray<std::string> ArrOfStrings;
-		ArrOfStrings.SetNum(6);
-		if (!(IsRealString >> ArrOfStrings[0] >> ArrOfStrings[1] >> ArrOfStrings[2] >> ArrOfStrings[3] >> ArrOfStrings[4] >> ArrOfStrings[5]))
-		{
-			throw ExceptionPlayerLog("Corrupted file! Missing data!");
-		}
-		
-		// Weapon.WeaponUnit.Model = ArrOfStrings[0].c_str();
-		MPlayer.SPlayerName = FString(ArrOfStrings[0].c_str());
-		MPlayer.SCity = FString(ArrOfStrings[1].c_str());
-		MPlayer.BehaviorSet.CanMove = ArrOfStrings[2] == "true" ? true : false;
-		MPlayer.BehaviorSet.CanJump = ArrOfStrings[3] == "true" ? true : false;
-		MPlayer.BehaviorSet.CanShoot = ArrOfStrings[4] == "true" ? true : false;
-		MPlayer.IsInGodMode = ArrOfStrings[5] == "true" ? true : false;
-	}
-	else
-	{
-		throw ExceptionPlayerLog("Cannot read data from file!");
-	}
-
-	return IStream;
 }
