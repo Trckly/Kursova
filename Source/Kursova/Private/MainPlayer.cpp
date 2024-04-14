@@ -26,8 +26,7 @@ AMainPlayer::AMainPlayer()
 	BehaviorSet = {true, true, true};
 	Health = 100.f;
 	bReplicates = true;
-
-	
+	MouseSensivity = 50.f;
 }
 
 // Called when the game starts or when spawned
@@ -115,8 +114,6 @@ void AMainPlayer::SetupPlayerInputComponent(UInputComponent* PlayerInputComponen
 
 	PlayerInputComponent->BindAxis(TEXT("MoveForward"), this, &AMainPlayer::MoveForward);
 	PlayerInputComponent->BindAxis(TEXT("MoveRight"), this, &AMainPlayer::MoveRight);
-	PlayerInputComponent->BindAxis(TEXT("LookUp"), this, &AMainPlayer::AddControllerPitchInput);
-	PlayerInputComponent->BindAxis(TEXT("LookRight"), this, &APawn::AddControllerYawInput);
 	
 	PlayerInputComponent->BindAction(TEXT("Interact"), IE_Pressed, this, &AMainPlayer::Interact);
 	PlayerInputComponent->BindAction(TEXT("Escape"), IE_Pressed, this, &AMainPlayer::ContinueGameplay);
@@ -151,12 +148,27 @@ void AMainPlayer::MoveRight(float Scale)
 	}
 }
 
+// void AMainPlayer::LookRight(float Value)
+// {
+// 	if(Value != 0)
+// 	{
+// 		float SensivityScalar = MouseSensivity * GetWorld()->GetDeltaSeconds();
+// 		AddControllerYawInput(Value * SensivityScalar);
+// 	}
+// }
+
 void AMainPlayer::Jump()
 {
 	if(BehaviorSet.CanJump)
 	{
 		Super::Jump();
+		AnimNotify_Jump.Broadcast();
 	}
+}
+
+UCameraComponent* AMainPlayer::GetCameraComponent()
+{
+	return CameraComponent;
 }
 
 void AMainPlayer::Server_Turn_Implementation(float Rate)
@@ -301,12 +313,12 @@ void AMainPlayer::Multicast_Shoot_Implementation()
 	AMainPlayer* Enemy = Cast<AMainPlayer>(HitResult.GetActor());
 	if(Enemy)
 	{
-		Enemy->TakeDamage(20.f);
+		Enemy->GetDamage(20.f);
 	}
 
 }
 
-void AMainPlayer::TakeDamage(int Damage)
+void AMainPlayer::GetDamage(int Damage)
 {
 	if(!IsInGodMode)
 	{

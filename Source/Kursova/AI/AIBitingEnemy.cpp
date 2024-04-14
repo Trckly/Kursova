@@ -43,7 +43,7 @@ int AAIBitingEnemy::DealDamage()
 	return CharacterDamage;
 }
 
-int AAIBitingEnemy::TakeDamage(int Damage)
+int AAIBitingEnemy::GetDamage(int Damage)
 {
 	CurrentHP -= Damage;
 	CurrentHP = FMath::Clamp(CurrentHP, 0, MaxHP);
@@ -57,7 +57,7 @@ void AAIBitingEnemy::OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor
 	AMainPlayer* MainPlayer = Cast<AMainPlayer>(OtherActor);
 	if(MainPlayer)
 	{
-		MainPlayer->TakeDamage(DealDamage());
+		MainPlayer->GetDamage(DealDamage());
 	}
 
 	UE_LOG(LogTemp, Warning, TEXT("Collision with %s"), *OtherActor->GetName());
