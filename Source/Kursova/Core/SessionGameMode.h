@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "Kursova/KursovaGameModeBase.h"
 #include "Kursova/AI/AbstractFactory/GoblinCreator.h"
+#include "Kursova/MapBuilder/MainMapBuilder.h"
 #include "SessionGameMode.generated.h"
 
 /**
@@ -29,4 +30,9 @@ public:
 	virtual void BeginPlay() override;
 
 	virtual void PostLogin(APlayerController* NewPlayer) override;
+	
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
+	TSubclassOf<UMainMapBuilder> MainMapBuilderClass;
+
+	UMainMapBuilder* MainMapBuilder;
 };

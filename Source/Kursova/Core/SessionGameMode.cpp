@@ -6,6 +6,16 @@
 void ASessionGameMode::BeginPlay()
 {
 	Super::BeginPlay();
+
+	if(MainMapBuilderClass)
+	{
+		MainMapBuilder = NewObject<UMainMapBuilder>(this, MainMapBuilderClass);
+
+		if(MainMapBuilder)
+		{
+			MainMapBuilder->BuildFloor(FVector2D(10.f, 10.f));
+		}
+	}
 }
 
 void ASessionGameMode::PostLogin(APlayerController* NewPlayer)
@@ -23,5 +33,4 @@ void ASessionGameMode::PostLogin(APlayerController* NewPlayer)
 				Enemies.Add(NewEnemy);
 		}
 	}
-	
 }
