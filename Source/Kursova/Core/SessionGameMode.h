@@ -3,7 +3,8 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "../KursovaGameModeBase.h"
+#include "Kursova/KursovaGameModeBase.h"
+#include "Kursova/AI/AbstractFactory/GoblinCreator.h"
 #include "Kursova/MapBuilder/MainMapBuilder.h"
 #include "SessionGameMode.generated.h"
 
@@ -16,9 +17,20 @@ class KURSOVA_API ASessionGameMode : public AKursovaGameModeBase
 	GENERATED_BODY()
 
 protected:
-	virtual void BeginPlay() override;
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	TSubclassOf<UGoblinCreator> GoblinCreatorClass;
+
+	UPROPERTY()
+	UGoblinCreator* GoblinCreator;
+	
+	TArray<IEnemyInterface*> Enemies;
 	
 public:
+	
+	virtual void BeginPlay() override;
+
+	virtual void PostLogin(APlayerController* NewPlayer) override;
+	
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
 	TSubclassOf<UMainMapBuilder> MainMapBuilderClass;
 

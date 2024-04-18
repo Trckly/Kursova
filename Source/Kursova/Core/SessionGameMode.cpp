@@ -17,3 +17,20 @@ void ASessionGameMode::BeginPlay()
 		}
 	}
 }
+
+void ASessionGameMode::PostLogin(APlayerController* NewPlayer)
+{
+	Super::PostLogin(NewPlayer);
+
+	if(GoblinCreatorClass)
+	{
+		GoblinCreator = NewObject<UGoblinCreator>(this, GoblinCreatorClass);
+
+		if(GoblinCreator)
+		{
+			IEnemyInterface* NewEnemy = GoblinCreator->CreateBitingEnemies();
+			if(NewEnemy)
+				Enemies.Add(NewEnemy);
+		}
+	}
+}
