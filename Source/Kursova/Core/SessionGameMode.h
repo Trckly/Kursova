@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "Kursova/KursovaGameModeBase.h"
 #include "Kursova/AI/AbstractFactory/GoblinCreator.h"
+#include "Kursova/AI/AbstractFactory/SkeletonCreator.h"
 #include "Kursova/MapBuilder/MainMapBuilder.h"
 #include "SessionGameMode.generated.h"
 
@@ -23,7 +24,22 @@ protected:
 	UPROPERTY()
 	UGoblinCreator* GoblinCreator;
 	
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	TSubclassOf<USkeletonCreator> SkeletonCreatorClass;
+	
+	UPROPERTY()
+	USkeletonCreator* SkeletonCreator;
+	
+	// UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	// TSubclassOf<UGoblinCreator> GoblinCreatorClass;
+	//
+	// UPROPERTY()
+	// UGoblinCreator* GoblinCreator;
+	
 	TArray<IEnemyInterface*> Enemies;
+
+	UFUNCTION()
+	void CreateEnemies(const TScriptInterface<IIEnemyCreator>& EnemyCreator);
 	
 public:
 	

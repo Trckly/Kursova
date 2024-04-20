@@ -490,7 +490,7 @@ void AMainPlayer::AttachHK416()
 /// Server Logic
 ///
 
-void AMainPlayer::CreateSession(FString Name, bool Privacy, FString Password, int InputNumberOfPlayers)
+void AMainPlayer::CreateSession(FString Name, bool Privacy, FString Password, int InputNumberOfPlayers, FString Map)
 {
 	if(ServerWidget && ServerWidget->IsInViewport())
 	{
@@ -499,7 +499,7 @@ void AMainPlayer::CreateSession(FString Name, bool Privacy, FString Password, in
 	GetController<APlayerController>()->SetShowMouseCursor(false);
 	GetController<APlayerController>()->SetInputMode(FInputModeGameOnly());
 
-	CreateS(InputNumberOfPlayers, Name, Privacy, Password);
+	CreateS(InputNumberOfPlayers, Name, Privacy, Password, Map);
 }
 
 void AMainPlayer::AddServerWidgetToViewPort()

@@ -269,10 +269,10 @@ public:
 	FSetStats SetStats;
 	
 	UFUNCTION()
-	void CreateSession(FString Name, bool IsPrivate, FString Password, int NumberOfPlayers);
+	void CreateSession(FString Name, bool IsPrivate, FString Password, int NumberOfPlayers, FString Map);
 
 	UFUNCTION(BlueprintImplementableEvent)
-	void CreateS(int NumberOfPlayers,const FString& SessionName, bool IsPrivate, const FString& Password);
+	void CreateS(int NumberOfPlayers,const FString& SessionName, bool IsPrivate, const FString& Password, const FString& Map);
 
 	UFUNCTION(BlueprintImplementableEvent)
 	void FindS();
