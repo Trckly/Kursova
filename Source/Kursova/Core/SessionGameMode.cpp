@@ -32,7 +32,7 @@ void ASessionGameMode::PostLogin(APlayerController* NewPlayer)
 	FString MapName = GetWorld()->GetMapName();
 	MapName.RemoveFromStart(GetWorld()->StreamingLevelsPrefix);
 	
-	if(MapName == FString("GoblinMap"))
+	if(MapName == FString("GoblinsMap"))
 	{
 		if(GoblinCreatorClass)
 		{

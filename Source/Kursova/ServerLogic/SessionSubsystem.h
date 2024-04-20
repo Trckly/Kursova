@@ -39,7 +39,7 @@ class USessionSubsystem : public UGameInstanceSubsystem
 public:
 	USessionSubsystem();
 
-	UFUNCTION(BlueprintCallable) void CreateSession(int32 NumPublicConnections, bool IsLANMatch, FString SessionName, bool IsPrivate = false, FString SessionPassword = "");
+	UFUNCTION(BlueprintCallable) void CreateSession(int32 NumPublicConnections, bool IsLANMatch, FString SessionName, bool IsPrivate = false, FString SessionPassword = "", FString Map = "Undefined");
 	UFUNCTION(BlueprintCallable) void UpdateSession();
 	UFUNCTION(BlueprintCallable) void StartSession();
 	UFUNCTION(BlueprintCallable) void EndSession();

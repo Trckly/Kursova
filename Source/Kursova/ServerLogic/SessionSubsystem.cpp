@@ -35,7 +35,7 @@ bool USessionSubsystem::SessionHasBeenStarted()
 	//return SessionState >= EOnlineSessionState::Pending();
 }
 
-void USessionSubsystem::CreateSession(int32 NumPublicConnections, bool IsLANMatch, FString SessionName, bool IsPrivate, FString SessionPassword)
+void USessionSubsystem::CreateSession(int32 NumPublicConnections, bool IsLANMatch, FString SessionName, bool IsPrivate, FString SessionPassword, FString Map)
 {
 	const IOnlineSessionPtr SessionInterface = Online::GetSessionInterface(GetWorld());
 	if (!SessionInterface.IsValid())
@@ -59,7 +59,7 @@ void USessionSubsystem::CreateSession(int32 NumPublicConnections, bool IsLANMatc
 	LastSessionSettings->Set(FName(TEXT("IsPrivate")), bool(IsPrivate), EOnlineDataAdvertisementType::ViaOnlineService);
 	LastSessionSettings->Set(FName(TEXT("Password")), FString(SessionPassword), EOnlineDataAdvertisementType::ViaOnlineService);
 
-	LastSessionSettings->Set(SETTING_MAPNAME, FString("TestLevel"), EOnlineDataAdvertisementType::ViaOnlineService);
+	LastSessionSettings->Set(SETTING_MAPNAME, FString(Map), EOnlineDataAdvertisementType::ViaOnlineService);
 
 	CreateSessionCompleteDelegateHandle = SessionInterface->AddOnCreateSessionCompleteDelegate_Handle(CreateSessionCompleteDelegate);
 
@@ -151,8 +151,16 @@ void USessionSubsystem::OnStartSessionCompleted(FName SessionName, bool Successf
 
 	if (Successful)
 	{
-		FString ConnectString("SkeletonsMap?listen");
-		if (!GetWorld()->ServerTravel(ConnectString, true))
+		FString MapName;
+		SessionInterface->GetSessionSettings(SessionName)->Get(SETTING_MAPNAME, MapName);
+		if(MapName != "Undefined")
+		{
+			FString ConnectString = MapName + FString("Map?listen");
+			if (!GetWorld()->ServerTravel(ConnectString, true))
+			{
+				UKismetSystemLibrary::PrintString(this, FString("Error: server travel"));
+			}
+		}else
 		{
 			UKismetSystemLibrary::PrintString(this, FString("Error: server travel"));
 		}

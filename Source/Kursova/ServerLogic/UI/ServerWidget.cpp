@@ -10,6 +10,7 @@ void UServerWidget::NativeConstruct()
 	Super::NativeConstruct();
 
 	dNumberOfPlayers = 0;
+	SMap = "";
 
 	CreateServer->OnClicked.AddDynamic(this, &UServerWidget::Create);
 	ConnectToServer->OnClicked.AddDynamic(this, &UServerWidget::Find);
@@ -60,9 +61,15 @@ void UServerWidget::Create()
 		IsAllOk = false;
 	}
 
+	if(SMap == "")
+	{
+		Errors += "Choose map\n";
+		IsAllOk = false;
+	}
+	
 	if(IsAllOk)
 	{
-		SetServerSettings.ExecuteIfBound(Name, IsPrivate->GetCheckedState() == ECheckBoxState::Checked, Password, dNumberOfPlayers);
+		SetServerSettings.ExecuteIfBound(Name, IsPrivate->GetCheckedState() == ECheckBoxState::Checked, Password, dNumberOfPlayers, SMap);
 	}else
 	{
 		ShowErrorMessage(Errors);
