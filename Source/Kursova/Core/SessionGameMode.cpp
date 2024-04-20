@@ -3,6 +3,13 @@
 
 #include "SessionGameMode.h"
 
+void ASessionGameMode::CreateEnemies(const TScriptInterface<IIEnemyCreator>& EnemyCreator)
+{
+	IEnemyInterface* NewEnemy = EnemyCreator->CreateBitingEnemies();
+	if(NewEnemy)
+		Enemies.Add(NewEnemy);
+}
+
 void ASessionGameMode::BeginPlay()
 {
 	Super::BeginPlay();
@@ -21,16 +28,34 @@ void ASessionGameMode::BeginPlay()
 void ASessionGameMode::PostLogin(APlayerController* NewPlayer)
 {
 	Super::PostLogin(NewPlayer);
-
-	if(GoblinCreatorClass)
+	
+	FString MapName = GetWorld()->GetMapName();
+	MapName.RemoveFromStart(GetWorld()->StreamingLevelsPrefix);
+	
+	if(MapName == FString("GoblinMap"))
 	{
-		GoblinCreator = NewObject<UGoblinCreator>(this, GoblinCreatorClass);
-
-		if(GoblinCreator)
+		if(GoblinCreatorClass)
 		{
-			IEnemyInterface* NewEnemy = GoblinCreator->CreateBitingEnemies();
-			if(NewEnemy)
-				Enemies.Add(NewEnemy);
+			GoblinCreator = NewObject<UGoblinCreator>(this, GoblinCreatorClass);
+
+			if(GoblinCreator)
+			{
+				CreateEnemies(GoblinCreator);
+			}
 		}
+	}else if(MapName == FString("SkeletonsMap"))
+	{
+		if(SkeletonCreatorClass)
+		{
+			SkeletonCreator = NewObject<USkeletonCreator>(this, SkeletonCreatorClass);
+
+			if(SkeletonCreator)
+			{
+				CreateEnemies(SkeletonCreator);
+			}
+		}
+	}else
+	{
+		UE_LOG(LogTemp, Error, TEXT("Failed to create enemies!"));
 	}
 }

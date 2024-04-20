@@ -151,7 +151,7 @@ void USessionSubsystem::OnStartSessionCompleted(FName SessionName, bool Successf
 
 	if (Successful)
 	{
-		FString ConnectString("MainMap?listen");
+		FString ConnectString("SkeletonsMap?listen");
 		if (!GetWorld()->ServerTravel(ConnectString, true))
 		{
 			UKismetSystemLibrary::PrintString(this, FString("Error: server travel"));
