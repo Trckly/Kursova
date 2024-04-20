@@ -13,7 +13,10 @@ void ASessionGameMode::BeginPlay()
 
 		if(MainMapBuilder)
 		{
-			MainMapBuilder->BuildFloor(FVector2D(10.f, 10.f));
+			FVector2D GeneralUniversalDimensions(10.f, 10.f);
+			MainMapBuilder->BuildFloor(GeneralUniversalDimensions);
+			MainMapBuilder->BuildGeneralWalls(GeneralUniversalDimensions);
+			MainMapBuilder->BuildObstacles(GeneralUniversalDimensions);
 		}
 	}
 }

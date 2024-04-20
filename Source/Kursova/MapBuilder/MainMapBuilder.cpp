@@ -2,37 +2,95 @@
 
 
 #include "MainMapBuilder.h"
+#include "BuilderProps/Obstacle.h"
+#include "Kismet/KismetMathLibrary.h"
 
 UMainMapBuilder::UMainMapBuilder()
 {
 	
 }
 
-void UMainMapBuilder::BuildFloor(const FVector2D& Dimentions)
+void UMainMapBuilder::BuildFloor(const FVector2D& Dimensions)
 {
 	FActorSpawnParameters SpawnParameters;
 	SpawnParameters.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
 	
-	const int XStartSpawnPosition = CalculateStartingPoint(Dimentions.X);
-	const int YStartSpawnPosition = CalculateStartingPoint(Dimentions.Y);
+	const int XStartSpawnPosition = CalculateStartingPoint(Dimensions.X);
+	const int YStartSpawnPosition = CalculateStartingPoint(Dimensions.Y);
 
 	int XSpawnPosition = XStartSpawnPosition;
-	for (int i = 0; i < Dimentions.X; ++i, XSpawnPosition -= TileLength)
+	for (int i = 0; i < Dimensions.X; ++i, XSpawnPosition -= TileLength)
 	{
 		int YSpawnPosition = YStartSpawnPosition;
-		for (int j = 0; j < Dimentions.Y; ++j, YSpawnPosition -= TileLength)
+		for (int j = 0; j < Dimensions.Y; ++j, YSpawnPosition -= TileLength)
 		{
-			GetWorld()->SpawnActor<AFloor>(FloorClass, FVector(XSpawnPosition, YSpawnPosition, 0.f), FRotator::ZeroRotator, SpawnParameters);
+			GetWorld()->SpawnActor<AFloor>(FloorClass, FVector(XSpawnPosition, YSpawnPosition, 0.f),
+				FRotator::ZeroRotator, SpawnParameters);
 		}
 	}
 }
 
-void UMainMapBuilder::BuildGeneralWalls()
+void UMainMapBuilder::BuildGeneralWalls(const FVector2D& Dimensions)
 {
-	
+	const float XStartSpawnPosition = CalculateStartingPoint(Dimensions.X) + TileLength;	// Offset for walls
+	const float YStartSpawnPosition = CalculateStartingPoint(Dimensions.Y) + TileLength;	// Offset for walls
+	FVector2D SpawnPosition(XStartSpawnPosition, YStartSpawnPosition);
+
+	float RotationDegree = 180.f;
+	int TileAmount;
+	for ( int i = 0; i < 4; ++i, RotationDegree += 90.f)
+	{
+		if(RotationDegree == 0.f || RotationDegree == 180.f)
+		{
+			TileAmount = Dimensions.Y;
+		}
+		else
+		{
+			TileAmount = Dimensions.X;
+		}
+		SpawnPosition = WallLine(SpawnPosition, TileAmount, RotationDegree);
+	}
 }
 
-int UMainMapBuilder::CalculateStartingPoint(int Dimention)
+void UMainMapBuilder::BuildObstacles(const FVector2D& Dimensions)
 {
-		return ((Dimention - 1) * TileLength / 2) - (TileLength / 2);
+	int SpawnedObjectCounter = 0;
+
+	FActorSpawnParameters SpawnParameters;
+	SpawnParameters.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AdjustIfPossibleButDontSpawnIfColliding;
+	
+	while(SpawnedObjectCounter < Dimensions.X + Dimensions.Y)
+	{
+		auto SpawnedObject = GetWorld()->SpawnActor<AObstacle>(ObstacleClass, FVector(UKismetMathLibrary::RandomFloatInRange(-Dimensions.X/2.f * TileLength, Dimensions.X/2.f * TileLength),
+			UKismetMathLibrary::RandomFloatInRange(-Dimensions.Y/2.f * TileLength, Dimensions.Y/2.f * TileLength), 1.f), FRotator::ZeroRotator, SpawnParameters);
+
+		if(SpawnedObject)
+		{
+			SpawnedObjectCounter++;
+		}
+	}
+}
+
+int UMainMapBuilder::CalculateStartingPoint(int Dimension)
+{
+		return ((Dimension - 1) * TileLength / 2) - (TileLength / 2);
+}
+
+FVector2D UMainMapBuilder::WallLine(const FVector2D& StartingPoint, const int TileAmount, const float RotationDegrees)
+{
+	FActorSpawnParameters SpawnParameters;
+	SpawnParameters.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
+	
+	auto SpawnPosition = StartingPoint;
+
+	float RotationRadians = RotationDegrees * PI / 180;
+	FVector2D RotationDirection(FMath::Cos(RotationRadians), FMath::Sin(RotationRadians));
+	RotationDirection.Normalize();
+	for(int i = 0; i < TileAmount; ++i, SpawnPosition += RotationDirection * TileLength)
+	{
+		GetWorld()->SpawnActor<AWall>(WallClass, FVector(SpawnPosition.X,
+			SpawnPosition.Y, 0.f), FRotator(0.f, RotationDegrees, 0.f), SpawnParameters);
+	}
+
+	return SpawnPosition;
 }
