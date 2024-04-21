@@ -24,6 +24,12 @@ void AAIBitingEnemy::BeginPlay()
 	PlayerCapsuleComponent->OnComponentHit.AddDynamic(this, &AAIBitingEnemy::OnHit);
 }
 
+void AAIBitingEnemy::Die()
+{
+	if(!Destroy())
+		UE_LOG(LogTemp, Warning, TEXT("Enemy haven't been destroyed after death!"));
+}
+
 // Called every frame
 void AAIBitingEnemy::Tick(float DeltaTime)
 {
@@ -43,12 +49,14 @@ int AAIBitingEnemy::DealDamage()
 	return CharacterDamage;
 }
 
-int AAIBitingEnemy::GetDamage(int Damage)
+void AAIBitingEnemy::GetDamage(int Damage)
 {
+	if(CurrentHP <= 0) return;
+	
 	CurrentHP -= Damage;
 	CurrentHP = FMath::Clamp(CurrentHP, 0, MaxHP);
-
-	return CurrentHP;
+	
+	if(CurrentHP <= 0) Die();
 }
 
 void AAIBitingEnemy::OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComponent,

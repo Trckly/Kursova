@@ -33,13 +33,16 @@ protected:
 	int CurrentHP = 100;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
-	int CharacterDamage  = 20;
+	int CharacterDamage  = 90;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
 	UCapsuleComponent* PlayerCapsuleComponent;
 	
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category="AI")
 	UBehaviorTree* BehaviorTree;
+
+	UFUNCTION(BlueprintCallable, Category=Character)
+	virtual void Die() override;
 
 
 public:	
@@ -53,7 +56,7 @@ public:
 	virtual int DealDamage() override;
 
 	UFUNCTION(BlueprintCallable, Category=Character)
-	virtual int GetDamage(int Damage) override;
+	virtual void GetDamage(int Damage) override;
 
 	UFUNCTION()
 	void OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComponent, FVector NormalImpulse, const FHitResult& Hit);

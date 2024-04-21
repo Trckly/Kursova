@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "IEnemyCreator.h"
 #include "Kursova/AI/AIBitingEnemy.h"
+#include "Kursova/AI/AIExplodingEnemy.h"
 #include "UObject/NoExportTypes.h"
 #include "SkeletonCreator.generated.h"
 
@@ -18,9 +19,9 @@ class KURSOVA_API USkeletonCreator : public UObject, public IIEnemyCreator
 	
 public:
 	
-	virtual IEnemyInterface* CreateBitingEnemies() override;
-	virtual IEnemyInterface* CreateShootingEnemies() override;
-	virtual IEnemyInterface* CreateExplodingEnemies() override;
+	virtual IEnemyInterface* CreateBitingEnemies(FVector2D MapSize) override;
+	virtual IEnemyInterface* CreateShootingEnemies(FVector2D MapSize) override;
+	virtual IEnemyInterface* CreateExplodingEnemies(FVector2D MapSize) override;
 	
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 	TSubclassOf<AAIBitingEnemy> BitingSkeleton;
@@ -29,5 +30,5 @@ public:
 	TSubclassOf<AAIBitingEnemy> ShootingSkeleton;
 	
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
-	TSubclassOf<AAIBitingEnemy> ExplodingSkeleton;
+	TSubclassOf<AAIExplodingEnemy> ExplodingSkeleton;
 };

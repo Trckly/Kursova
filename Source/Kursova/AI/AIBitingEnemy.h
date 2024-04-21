@@ -42,6 +42,9 @@ protected:
 	UBehaviorTree* BehaviorTree;
 
 
+	UFUNCTION(BlueprintCallable, Category=Character)
+	virtual void Die() override;
+
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
@@ -53,7 +56,7 @@ public:
 	virtual int DealDamage() override;
 
 	UFUNCTION(BlueprintCallable, Category=Character)
-	virtual int GetDamage(int Damage) override;
+	virtual void GetDamage(int Damage) override;
 
 	UFUNCTION()
 	void OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComponent, FVector NormalImpulse, const FHitResult& Hit);

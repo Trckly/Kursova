@@ -22,6 +22,12 @@ void AAIExplodingEnemy::BeginPlay()
 	PlayerCapsuleComponent->OnComponentHit.AddDynamic(this, &AAIExplodingEnemy::OnHit);
 }
 
+void AAIExplodingEnemy::Die()
+{
+	if(!Destroy())
+		UE_LOG(LogTemp, Warning, TEXT("Enemy haven't been destroyed after death!"));
+}
+
 // Called every frame
 void AAIExplodingEnemy::Tick(float DeltaTime)
 {
@@ -41,12 +47,14 @@ int AAIExplodingEnemy::DealDamage()
 	return CharacterDamage;
 }
 
-int AAIExplodingEnemy::GetDamage(int Damage)
+void AAIExplodingEnemy::GetDamage(int Damage)
 {
+	if(CurrentHP <= 0) return;
+	
 	CurrentHP -= Damage;
 	CurrentHP = FMath::Clamp(CurrentHP, 0, MaxHP);
-
-	return CurrentHP;
+	
+	if(CurrentHP <= 0) Die();
 }
 
 void AAIExplodingEnemy::OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComponent,
@@ -56,6 +64,7 @@ void AAIExplodingEnemy::OnHit(UPrimitiveComponent* HitComponent, AActor* OtherAc
 	if(MainPlayer)
 	{
 		MainPlayer->GetDamage(DealDamage());
+		Die();
 	}
 
 	UE_LOG(LogTemp, Warning, TEXT("Collision with %s"), *OtherActor->GetName());
