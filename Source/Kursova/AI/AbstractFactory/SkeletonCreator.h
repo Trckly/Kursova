@@ -9,6 +9,7 @@
 #include "UObject/NoExportTypes.h"
 #include "SkeletonCreator.generated.h"
 
+class ASessionGameMode;
 /**
  * 
  */
@@ -17,11 +18,18 @@ class KURSOVA_API USkeletonCreator : public UObject, public IIEnemyCreator
 {
 	GENERATED_BODY()
 	
-public:
+	FVector2D MapSize;
+
+	FVector GetRandomLocation();
 	
-	virtual IEnemyInterface* CreateBitingEnemies(FVector2D MapSize) override;
-	virtual IEnemyInterface* CreateShootingEnemies(FVector2D MapSize) override;
-	virtual IEnemyInterface* CreateExplodingEnemies(FVector2D MapSize) override;
+public:
+	static USkeletonCreator* Create(ASessionGameMode* Owner, TSubclassOf<USkeletonCreator>const& GoblinCreatorClass, const FVector2D& Map);
+	
+	virtual IEnemyInterface* CreateEnemies(EEnemyType EnemyType) override;
+	
+	virtual IEnemyInterface* CreateBitingEnemies(FVector2D MapSizeRed) override;
+	virtual IEnemyInterface* CreateShootingEnemies(FVector2D MapSizeRed) override;
+	virtual IEnemyInterface* CreateExplodingEnemies(FVector2D MapSizeRed) override;
 	
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 	TSubclassOf<AAIBitingEnemy> BitingSkeleton;
@@ -31,4 +39,7 @@ public:
 	
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 	TSubclassOf<AAIExplodingEnemy> ExplodingSkeleton;
+	
+	UPROPERTY()
+	TMap<EEnemyType, TScriptInterface<IEnemyInterface>> EnemyPrototypes;
 };

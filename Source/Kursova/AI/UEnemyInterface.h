@@ -26,4 +26,6 @@ public:
 	virtual int DealDamage() = 0;
 	virtual void GetDamage(int Damage) = 0;
 	virtual UBehaviorTree* GetBehaviourTree() = 0;
+
+	virtual IEnemyInterface* Clone(FVector Location) = 0;
 };

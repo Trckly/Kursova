@@ -3,11 +3,11 @@
 
 #include "SessionGameMode.h"
 
-void ASessionGameMode::CreateEnemies(const TScriptInterface<IIEnemyCreator>& EnemyCreator)
+void ASessionGameMode::CreateEnemies(IIEnemyCreator* EnemyCreator)
 {
 	while(NumberOfBiters--)
 	{
-		IEnemyInterface* NewEnemy = EnemyCreator->CreateBitingEnemies(GeneralUniversalDimensions * 400.f);
+		IEnemyInterface* NewEnemy = EnemyCreator->CreateEnemies(EEnemyType::Biting);
 		if(NewEnemy)
 			Enemies.Add(NewEnemy);
 		else
@@ -15,7 +15,7 @@ void ASessionGameMode::CreateEnemies(const TScriptInterface<IIEnemyCreator>& Ene
 	}
 	while(NumberOfSuicidal--)
 	{
-		IEnemyInterface* NewEnemy = EnemyCreator->CreateExplodingEnemies(GeneralUniversalDimensions * 400.f);
+		IEnemyInterface* NewEnemy = EnemyCreator->CreateEnemies(EEnemyType::Exploding);
 		if(NewEnemy)
 			Enemies.Add(NewEnemy);
 		else
@@ -69,7 +69,7 @@ void ASessionGameMode::BeginPlay()
 	{
 		if(GoblinCreatorClass)
 		{
-			GoblinCreator = NewObject<UGoblinCreator>(this, GoblinCreatorClass);
+			GoblinCreator = UGoblinCreator::Create(this, GoblinCreatorClass, GeneralUniversalDimensions * 400.f);
 
 			if(GoblinCreator)
 			{
@@ -80,7 +80,7 @@ void ASessionGameMode::BeginPlay()
 	{
 		if(SkeletonCreatorClass)
 		{
-			SkeletonCreator = NewObject<USkeletonCreator>(this, SkeletonCreatorClass);
+			SkeletonCreator = USkeletonCreator::Create(this, SkeletonCreatorClass, GeneralUniversalDimensions * 400.f);
 
 			if(SkeletonCreator)
 			{

@@ -59,8 +59,16 @@ void AAIBitingEnemy::GetDamage(int Damage)
 	if(CurrentHP <= 0) Die();
 }
 
+IEnemyInterface* AAIBitingEnemy::Clone(FVector Location)
+{
+	FActorSpawnParameters SpawnInfo;
+	SpawnInfo.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AdjustIfPossibleButDontSpawnIfColliding;
+	
+	return GetWorld()->SpawnActor<IEnemyInterface>(Self, Location, FRotator(0.f, 0.f, 0.f), SpawnInfo);
+}
+
 void AAIBitingEnemy::OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComponent,
-	FVector NormalImpulse, const FHitResult& Hit)
+                           FVector NormalImpulse, const FHitResult& Hit)
 {
 	AMainPlayer* MainPlayer = Cast<AMainPlayer>(OtherActor);
 	if(MainPlayer)

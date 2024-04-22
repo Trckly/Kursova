@@ -53,9 +53,8 @@ protected:
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category="AI")
 	int NumberOfSuicidal = 5;
-
-	UFUNCTION()
-	void CreateEnemies(const TScriptInterface<IIEnemyCreator>& EnemyCreator);
+	
+	void CreateEnemies(IIEnemyCreator* EnemyCreator);
 
 	UPROPERTY()
 	FTimerHandle ScoreTimerHandle;

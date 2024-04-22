@@ -57,6 +57,14 @@ void AAIExplodingEnemy::GetDamage(int Damage)
 	if(CurrentHP <= 0) Die();
 }
 
+IEnemyInterface* AAIExplodingEnemy::Clone(FVector Location)
+{
+	FActorSpawnParameters SpawnInfo;
+	SpawnInfo.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AdjustIfPossibleButDontSpawnIfColliding;
+	
+	return GetWorld()->SpawnActor<IEnemyInterface>(Self, Location, FRotator(0.f, 0.f, 0.f), SpawnInfo);
+}
+
 void AAIExplodingEnemy::OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComponent,
 	FVector NormalImpulse, const FHitResult& Hit)
 {
