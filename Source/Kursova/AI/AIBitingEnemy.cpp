@@ -24,6 +24,12 @@ void AAIBitingEnemy::BeginPlay()
 	PlayerCapsuleComponent->OnComponentHit.AddDynamic(this, &AAIBitingEnemy::OnHit);
 }
 
+void AAIBitingEnemy::Die()
+{
+	if(!Destroy())
+		UE_LOG(LogTemp, Warning, TEXT("Enemy haven't been destroyed after death!"));
+}
+
 // Called every frame
 void AAIBitingEnemy::Tick(float DeltaTime)
 {
@@ -43,16 +49,26 @@ int AAIBitingEnemy::DealDamage()
 	return CharacterDamage;
 }
 
-int AAIBitingEnemy::GetDamage(int Damage)
+void AAIBitingEnemy::GetDamage(int Damage)
 {
+	if(CurrentHP <= 0) return;
+	
 	CurrentHP -= Damage;
 	CurrentHP = FMath::Clamp(CurrentHP, 0, MaxHP);
+	
+	if(CurrentHP <= 0) Die();
+}
 
-	return CurrentHP;
+IEnemyInterface* AAIBitingEnemy::Clone(FVector Location)
+{
+	FActorSpawnParameters SpawnInfo;
+	SpawnInfo.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AdjustIfPossibleButDontSpawnIfColliding;
+	
+	return GetWorld()->SpawnActor<IEnemyInterface>(Self, Location, FRotator(0.f, 0.f, 0.f), SpawnInfo);
 }
 
 void AAIBitingEnemy::OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComponent,
-	FVector NormalImpulse, const FHitResult& Hit)
+                           FVector NormalImpulse, const FHitResult& Hit)
 {
 	AMainPlayer* MainPlayer = Cast<AMainPlayer>(OtherActor);
 	if(MainPlayer)

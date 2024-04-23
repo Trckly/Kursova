@@ -6,6 +6,7 @@
 #include "GameFramework/CharacterMovementComponent.h"
 #include "Kursova/MainUI/MainMenuWidget.h"
 #include "Kismet/KismetSystemLibrary.h"
+#include "Kursova/AI/UEnemyInterface.h"
 #include "Kursova/Core//CustomPlayerController.h"
 #include "Net/UnrealNetwork.h"
 #include "Kursova/UMG/CrosshairWidget.h"
@@ -317,10 +318,11 @@ void AMainPlayer::Multicast_Shoot_Implementation(FVector StartTrace, FVector End
 		EDrawDebugTrace::ForDuration, HitResult, true, FColor::Red, FColor::Green,
 		2.f);
 	
-	AMainPlayer* Enemy = Cast<AMainPlayer>(HitResult.GetActor());
+	IEnemyInterface* Enemy = Cast<IEnemyInterface>(HitResult.GetActor());
 	if(Enemy)
 	{
-		Enemy->GetDamage(20.f);
+		Enemy->GetDamage(20);
+		UE_LOG(LogTemp, Warning, TEXT("Enemy was hit"));
 	}
 
 }

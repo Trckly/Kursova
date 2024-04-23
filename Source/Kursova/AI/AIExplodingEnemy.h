@@ -33,13 +33,16 @@ protected:
 	int CurrentHP = 100;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
-	int CharacterDamage  = 20;
+	int CharacterDamage  = 90;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
 	UCapsuleComponent* PlayerCapsuleComponent;
 	
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category="AI")
 	UBehaviorTree* BehaviorTree;
+
+	UFUNCTION(BlueprintCallable, Category=Character)
+	virtual void Die() override;
 
 
 public:	
@@ -53,7 +56,9 @@ public:
 	virtual int DealDamage() override;
 
 	UFUNCTION(BlueprintCallable, Category=Character)
-	virtual int GetDamage(int Damage) override;
+	virtual void GetDamage(int Damage) override;
+	
+	virtual IEnemyInterface* Clone(FVector Location) override;
 
 	UFUNCTION()
 	void OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComponent, FVector NormalImpulse, const FHitResult& Hit);
@@ -61,4 +66,7 @@ public:
 	virtual FGenericTeamId GetGenericTeamId() const override{return TeamId;}
 
 	virtual UBehaviorTree* GetBehaviourTree() override;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
+	TSubclassOf<AAIExplodingEnemy> Self;
 };
