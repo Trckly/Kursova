@@ -3,22 +3,28 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Animation/SkeletalMeshActor.h"
+#include "Components/BoxComponent.h"
 #include "Radio.generated.h"
 
 /**
  * 
  */
 UCLASS()
-class KURSOVA_API ARadio : public ASkeletalMeshActor
+class KURSOVA_API ARadio : public AActor
 {
 	GENERATED_BODY()
 	
-	ARadio() = default;
+	ARadio();
+	
+	static ARadio* SelfInstance;
 
-	UPROPERTY()
-	ARadio* SelfInstance;
+protected:
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
+	UBoxComponent* BoxComponent;
+	
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
+	USkeletalMeshComponent* SkeletalMeshComponent;
 
 public:
-	ARadio* InitializeRadio();
+	static ARadio* GetInstance(UWorld* World, TSubclassOf<ARadio> RadioClass);
 };
