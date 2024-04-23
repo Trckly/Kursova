@@ -50,5 +50,6 @@ public:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
 	TSubclassOf<UMainMapBuilder> MainMapBuilderClass;
 
+	UPROPERTY()
 	UMainMapBuilder* MainMapBuilder;
 };
