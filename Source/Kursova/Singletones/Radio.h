@@ -10,18 +10,15 @@
  * 
  */
 UCLASS()
-class KURSOVA_API ARadio : public AActor
+class KURSOVA_API ARadio : public ASkeletalMeshActor
 {
 	GENERATED_BODY()
 	
-	ARadio();
+	ARadio() = default;
 
-protected:
-	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
-	USkeletalMeshComponent* SkeletalMeshComponent;
-
-	static ARadio* SelfInstance;
+	UPROPERTY()
+	ARadio* SelfInstance;
 
 public:
-	static ARadio* GetInstance(UWorld* World, TSubclassOf<ARadio> RadioClass);
+	ARadio* InitializeRadio();
 };
