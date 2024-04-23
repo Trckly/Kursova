@@ -59,6 +59,7 @@ void ASessionGameMode::BeginPlay()
 			MainMapBuilder->BuildFloor(GeneralUniversalDimensions);
 			MainMapBuilder->BuildGeneralWalls(GeneralUniversalDimensions);
 			MainMapBuilder->BuildObstacles(GeneralUniversalDimensions);
+			MainMapBuilder->PlaceRadio(GeneralUniversalDimensions);
 		}
 	}
 	
