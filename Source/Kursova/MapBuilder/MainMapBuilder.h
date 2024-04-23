@@ -6,6 +6,7 @@
 #include "BuilderProps/Floor.h"
 #include "BuilderProps/Obstacle.h"
 #include "BuilderProps/Wall.h"
+#include "Kursova/Singletones/Radio.h"
 #include "UObject/NoExportTypes.h"
 #include "MainMapBuilder.generated.h"
 
@@ -22,11 +23,20 @@ UCLASS(BlueprintType, Blueprintable)
 class KURSOVA_API UMainMapBuilder : public UObject
 {
 	GENERATED_BODY()
+
+private:
+	UMainMapBuilder();
+	
 protected:
 	const int TileLength = 400;
+
+	UPROPERTY()
+	UMainMapBuilder* SelfInstance;
+
+	UPROPERTY()
+	ARadio* Radio;
 	
 public:
-	UMainMapBuilder();
 	
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
 	TSubclassOf<AFloor> FloorClass;
@@ -37,11 +47,16 @@ public:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
 	TSubclassOf<AObstacle> ObstacleClass;
 
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
+	TSubclassOf<ARadio> RadioClass;
+
 	void BuildFloor(const FVector2D& Dimensions);
 
 	void BuildGeneralWalls(const FVector2D& Dimensions);
 
 	void BuildObstacles(const FVector2D& Dimensions);
+
+	void PlaceRadio(const FVector2D& Dimensions);
 
 protected:
 	int CalculateStartingPoint(int Dimension);
