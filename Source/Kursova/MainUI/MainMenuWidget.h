@@ -7,9 +7,12 @@
 #include "Components/Button.h"
 #include "Components/EditableText.h"
 #include "Components/TextBlock.h"
+#include "Components/ComboBoxString.h"
 #include "MainMenuWidget.generated.h"
 
 DECLARE_DYNAMIC_DELEGATE_TwoParams(FSetUserInfo, FString const&, PlayerName, FString const&, PlayerCity);
+DECLARE_DYNAMIC_DELEGATE_OneParam(FSetDifficultyMode, const FString&, DifficultyMode);
+
 
 /**
  * 
@@ -36,9 +39,15 @@ protected:
 	UPROPERTY(BlueprintReadWrite, meta=(BindWidget))
 	UButton* BConfirm;
 
+	UPROPERTY(BlueprintReadWrite, meta=(BindWidget))
+	UComboBoxString* CBDifficulty;
+
 public:
 	UPROPERTY()
 	FSetUserInfo SetUserInfo;
+
+	UPROPERTY()
+	FSetDifficultyMode SetDifficultyMode;
 	
 	virtual void NativeConstruct() override;
 	

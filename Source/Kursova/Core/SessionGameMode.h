@@ -6,6 +6,7 @@
 #include "Kursova/KursovaGameModeBase.h"
 #include "Kursova/AI/AbstractFactory/GoblinCreator.h"
 #include "Kursova/AI/AbstractFactory/SkeletonCreator.h"
+#include "Kursova/DifficultyFactories/ModeFactory.h"
 #include "Kursova/Items/CoolItem.h"
 #include "Kursova/MapBuilder/MainMapBuilder.h"
 #include "SessionGameMode.generated.h"
@@ -53,6 +54,14 @@ protected:
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category="AI")
 	int NumberOfSuicidal = 5;
+
+	UPROPERTY()
+	FString DifficultyMode;
+
+	UPROPERTY()
+	TScriptInterface<IModeFactory> ModeFactory;
+	
+	virtual void BeginPlay() override;
 	
 	void CreateEnemies(IIEnemyCreator* EnemyCreator);
 
@@ -64,11 +73,11 @@ protected:
 
 	UFUNCTION()
 	void HandleHardPointCapture();
+
+	UFUNCTION()
+	TScriptInterface<IModeFactory> SetDifficultyMode(const FString& Difficulty);
 	
 public:
-	
-	virtual void BeginPlay() override;
-
 	virtual void PostLogin(APlayerController* NewPlayer) override;
 	
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)

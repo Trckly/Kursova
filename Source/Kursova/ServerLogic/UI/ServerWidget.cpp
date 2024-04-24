@@ -69,7 +69,7 @@ void UServerWidget::Create()
 	
 	if(IsAllOk)
 	{
-		SetServerSettings.ExecuteIfBound(Name, IsPrivate->GetCheckedState() == ECheckBoxState::Checked, Password, dNumberOfPlayers, SMap);
+		SetServerSettings.ExecuteIfBound(Name, IsPrivate->GetCheckedState() == ECheckBoxState::Checked, Password, dNumberOfPlayers, SMap, SDifficulty);
 	}else
 	{
 		ShowErrorMessage(Errors);

@@ -10,6 +10,7 @@
 #include "GenericTeamAgentInterface.h"
 #include "Kursova/UMG/WeaponMenuWidget.h"
 #include "Kismet/KismetMathLibrary.h"
+#include "Kursova/DifficultyFactories/ModeFactory.h"
 #include "MainPlayer.generated.h"
 
 class UPlayerHUD;
@@ -21,6 +22,7 @@ DECLARE_DYNAMIC_MULTICAST_DELEGATE(FAnimNotify_Jump);
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnCharacterJoinSession, FBlueprintSessionResult, SessionResult, const FString&, Password);
 DECLARE_DYNAMIC_DELEGATE_OneParam(FSetStats, AMainPlayer*, Self);
+DECLARE_DYNAMIC_DELEGATE_RetVal_OneParam(TScriptInterface<IModeFactory>, FDifficultyModeSet, const FString&, Difficulty);
 
 USTRUCT()
 struct FBehaviorSet
@@ -165,6 +167,9 @@ protected:
 
 	UFUNCTION()
 	void CreateMainMenuWidget();
+
+	UFUNCTION()
+	void SetDifficultyMode(const FString& Difficulty);
 	
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
 	TSubclassOf<UMainMenuWidget> MainMenuWidgetClass;
@@ -267,12 +272,14 @@ public:
 
 	UPROPERTY()
 	FSetStats SetStats;
+
+	FDifficultyModeSet SetDifficultyModeDelegate;
 	
 	UFUNCTION()
-	void CreateSession(FString Name, bool IsPrivate, FString Password, int NumberOfPlayers, FString Map);
+	void CreateSession(FString Name, bool IsPrivate, FString Password, int NumberOfPlayers, FString Map, FString Difficulty);
 
 	UFUNCTION(BlueprintImplementableEvent)
-	void CreateS(int NumberOfPlayers,const FString& SessionName, bool IsPrivate, const FString& Password, const FString& Map);
+	void CreateS(int NumberOfPlayers,const FString& SessionName, bool IsPrivate, const FString& Password, const FString& Map, const FString& Difficulty);
 
 	UFUNCTION(BlueprintImplementableEvent)
 	void FindS();
