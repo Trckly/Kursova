@@ -111,7 +111,7 @@ TScriptInterface<IModeFactory> ASessionGameMode::SetDifficultyMode(const FString
 		DifficultyMode = Difficulty;
 
 	if(DifficultyMode == "Easy")
-		ModeFactory = NewObject<UEasyModeFactory>(this, TEXT("Easy Mode Factory"));
+		ModeFactory = NewObject<UEasyModeFactory>(this, EasyModeFactoryClass, TEXT("Easy Mode Factory"));
 	if(DifficultyMode == "Medium")
 		ModeFactory = NewObject<UMediumModeFactory>(this, TEXT("Medium Mode Factory"));
 	if(DifficultyMode == "Hard")
