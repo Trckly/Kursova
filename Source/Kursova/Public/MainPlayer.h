@@ -9,7 +9,6 @@
 #include "../ServerLogic/SessionSubsystem.h"
 #include "GenericTeamAgentInterface.h"
 #include "Kursova/UMG/WeaponMenuWidget.h"
-#include "Kismet/KismetMathLibrary.h"
 #include "Kursova/DifficultyFactories/ModeFactory.h"
 #include "MainPlayer.generated.h"
 
@@ -122,6 +121,8 @@ protected:
 	// Equipped weapon
 	UPROPERTY()
 	AWeaponClass* EquippedWeapon;
+
+	IWeaponInterface* EquippedDifficultyWeapon;
 	
 	///
 	/// Andrii Kursova

@@ -8,6 +8,6 @@ IWeaponInterface* UEasyModeFactory::CreateWeapon()
 {
 	AEasyWeapon* EasyWeapon = GetWorld()->SpawnActor<AEasyWeapon>(EasyWeaponClass, FVector::ZeroVector,
 		FRotator::ZeroRotator);
-	if (EasyWeapon) UE_LOG(LogTemp, Error, TEXT("Failed to spawn EasyWeapon instance"));
+	if (!EasyWeapon) UE_LOG(LogTemp, Error, TEXT("Failed to spawn EasyWeapon instance"));
 	return EasyWeapon;
 }

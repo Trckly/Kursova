@@ -636,7 +636,21 @@ void AMainPlayer::SetDifficultyMode(const FString& Difficulty)
 	{
 		IWeaponInterface* Weapon = Factory->CreateWeapon();
 		if(!Weapon)
+		{
 			UE_LOG(LogActor, Error, TEXT("Factory failed to create weapon"));
+		}
+		else
+		{
+			if(EquippedDifficultyWeapon)
+			{
+				EquippedDifficultyWeapon->DetachFromActor(FDetachmentTransformRules::KeepRelativeTransform);
+				EquippedDifficultyWeapon->Destroy();
+			}
+
+			EquippedDifficultyWeapon = Weapon;
+			EquippedDifficultyWeapon->SetActorEnableCollision(false);
+			EquippedDifficultyWeapon->AttachToComponent(GetMesh(), FAttachmentTransformRules(EAttachmentRule::SnapToTarget, true), *PlayerWeaponSocketsName[AK47]);
+		}
 	}
 }
 
