@@ -19,6 +19,9 @@ void UMainMenuWidget::ConfirmRegistration()
 	bool CanContinue(true);
 	FString Name;
 	FString City;
+	FString Difficulty;
+	
+	Difficulty = CBDifficulty->GetSelectedOption();
 	
 	if(EName->GetText().IsEmpty())
 	{
@@ -43,6 +46,7 @@ void UMainMenuWidget::ConfirmRegistration()
 	if(CanContinue)
 	{
 		SetUserInfo.ExecuteIfBound(Name, City);
+		auto Success = SetDifficultyMode.ExecuteIfBound(Difficulty);
 	}
 	
 }

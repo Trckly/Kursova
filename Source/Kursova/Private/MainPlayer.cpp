@@ -99,6 +99,7 @@ void AMainPlayer::CreateMainMenuWidget()
 		if(MainMenuWidget)
 		{
 			MainMenuWidget->SetUserInfo.BindDynamic(this, &AMainPlayer::SetNameAndCity);
+			MainMenuWidget->SetDifficultyMode.BindDynamic(this, &AMainPlayer::SetDifficultyMode);
 			MainMenuWidget->AddToViewport();
 			
 			PController->SetShowMouseCursor(true);
@@ -492,7 +493,7 @@ void AMainPlayer::AttachHK416()
 /// Server Logic
 ///
 
-void AMainPlayer::CreateSession(FString Name, bool Privacy, FString Password, int InputNumberOfPlayers, FString Map)
+void AMainPlayer::CreateSession(FString Name, bool Privacy, FString Password, int InputNumberOfPlayers, FString Map, FString Difficulty)
 {
 	if(ServerWidget && ServerWidget->IsInViewport())
 	{
@@ -501,7 +502,7 @@ void AMainPlayer::CreateSession(FString Name, bool Privacy, FString Password, in
 	GetController<APlayerController>()->SetShowMouseCursor(false);
 	GetController<APlayerController>()->SetInputMode(FInputModeGameOnly());
 
-	CreateS(InputNumberOfPlayers, Name, Privacy, Password, Map);
+	CreateS(InputNumberOfPlayers, Name, Privacy, Password, Map, Difficulty);
 }
 
 void AMainPlayer::AddServerWidgetToViewPort()
@@ -621,6 +622,21 @@ void AMainPlayer::SetNameAndCity(FString const& Name, FString const& City)
 			PController->SetShowMouseCursor(false);
 			PController->SetInputMode(FInputModeGameOnly());
 		}
+	}
+}
+
+void AMainPlayer::SetDifficultyMode(const FString& Difficulty)
+{
+	TScriptInterface<IModeFactory> Factory = SetDifficultyModeDelegate.Execute(Difficulty);
+	if(!Factory)
+	{
+		UE_LOG(LogActor, Error, TEXT("Delegate SetDifficultyMode is not bound"));
+	}
+	else
+	{
+		IWeaponInterface* Weapon = Factory->CreateWeapon();
+		if(!Weapon)
+			UE_LOG(LogActor, Error, TEXT("Factory failed to create weapon"));
 	}
 }
 

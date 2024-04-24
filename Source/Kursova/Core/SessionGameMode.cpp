@@ -3,6 +3,11 @@
 
 #include "SessionGameMode.h"
 
+#include "MainPlayer.h"
+#include "Kursova/DifficultyFactories/EasyModeFactory.h"
+#include "Kursova/DifficultyFactories/HardModeFactory.h"
+#include "Kursova/DifficultyFactories/MediumModeFactory.h"
+
 void ASessionGameMode::CreateEnemies(IIEnemyCreator* EnemyCreator)
 {
 	while(NumberOfBiters--)
@@ -45,7 +50,6 @@ void ASessionGameMode::HandleHardPointCapture()
 	CreateHardPoint();
 }
 
-
 void ASessionGameMode::BeginPlay()
 {
 	Super::BeginPlay();
@@ -62,6 +66,13 @@ void ASessionGameMode::BeginPlay()
 			MainMapBuilder->PlaceRadio(GeneralUniversalDimensions);
 		}
 	}
+
+	AMainPlayer* MainPlayer = Cast<AMainPlayer>(GetWorld()->GetFirstPlayerController()->GetCharacter());
+	
+	if(MainPlayer)
+		MainPlayer->SetDifficultyModeDelegate.BindDynamic(this, &ASessionGameMode::SetDifficultyMode);
+	else
+		UE_LOG(LogGameMode, Error, TEXT("Failed to get MainPlayer reference"));
 	
 	FString MapName = GetWorld()->GetMapName();
 	MapName.RemoveFromStart(GetWorld()->StreamingLevelsPrefix);
@@ -73,9 +84,7 @@ void ASessionGameMode::BeginPlay()
 			GoblinCreator = UGoblinCreator::Create(this, GoblinCreatorClass, GeneralUniversalDimensions * 400.f);
 
 			if(GoblinCreator)
-			{
 				CreateEnemies(GoblinCreator);
-			}
 		}
 	}else if(MapName == FString("SkeletonsMap"))
 	{
@@ -84,19 +93,34 @@ void ASessionGameMode::BeginPlay()
 			SkeletonCreator = USkeletonCreator::Create(this, SkeletonCreatorClass, GeneralUniversalDimensions * 400.f);
 
 			if(SkeletonCreator)
-			{
 				CreateEnemies(SkeletonCreator);
-			}
 		}
-	}else
-	{
-		UE_LOG(LogTemp, Error, TEXT("Failed to create enemies!"));
 	}
+	else
+		UE_LOG(LogTemp, Error, TEXT("Failed to create enemies!"));
 
 	if(CoolItemClass)
 	{
 		CreateHardPoint();
 	}
+}
+
+TScriptInterface<IModeFactory> ASessionGameMode::SetDifficultyMode(const FString& Difficulty)
+{
+	if(DifficultyMode == "")
+		DifficultyMode = Difficulty;
+
+	if(DifficultyMode == "Easy")
+		ModeFactory = NewObject<UEasyModeFactory>(this, TEXT("Easy Mode Factory"));
+	if(DifficultyMode == "Medium")
+		ModeFactory = NewObject<UMediumModeFactory>(this, TEXT("Medium Mode Factory"));
+	if(DifficultyMode == "Hard")
+		ModeFactory = NewObject<UHardModeFactory>(this, TEXT("Hard Mode Factory"));
+
+	if(!ModeFactory)
+		UE_LOG(LogGameMode, Error, TEXT("Failed to create new factory object"));
+
+	return ModeFactory;
 }
 
 void ASessionGameMode::PostLogin(APlayerController* NewPlayer)

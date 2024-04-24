@@ -17,7 +17,7 @@
 
 class UAdminManagerWidget;
 
-DECLARE_DYNAMIC_DELEGATE_FiveParams(FSendSettingsToPlayer, FString, Name, bool, IsPrivate, FString, Password, int, NumberOfPlayers, FString, Map);
+DECLARE_DYNAMIC_DELEGATE_SixParams(FSendSettingsToPlayer, FString, Name, bool, IsPrivate, FString, Password, int, NumberOfPlayers, FString, Map, FString, Difficulty);
 DECLARE_DYNAMIC_DELEGATE(FOnFindSession);
 DECLARE_DYNAMIC_DELEGATE_TwoParams(FOnJoinToSession, FBlueprintSessionResult, SessionResult, const FString&, Password);
 /**
@@ -61,6 +61,9 @@ public:
 
 	UPROPERTY(BlueprintReadWrite, meta=(BindWidget))
 	FString SMap;
+
+	UPROPERTY(BlueprintReadWrite, meta=(BindWidget))
+	FString SDifficulty;
 
 	UPROPERTY(BlueprintReadOnly, meta=(BindWidget))
 	UTextBlock* W_ErrorMessage;

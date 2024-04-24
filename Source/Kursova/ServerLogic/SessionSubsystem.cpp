@@ -35,7 +35,7 @@ bool USessionSubsystem::SessionHasBeenStarted()
 	//return SessionState >= EOnlineSessionState::Pending();
 }
 
-void USessionSubsystem::CreateSession(int32 NumPublicConnections, bool IsLANMatch, FString SessionName, bool IsPrivate, FString SessionPassword, FString Map)
+void USessionSubsystem::CreateSession(int32 NumPublicConnections, bool IsLANMatch, FString SessionName, bool IsPrivate, FString SessionPassword, FString Map, FString Difficulty)
 {
 	const IOnlineSessionPtr SessionInterface = Online::GetSessionInterface(GetWorld());
 	if (!SessionInterface.IsValid())
@@ -60,6 +60,8 @@ void USessionSubsystem::CreateSession(int32 NumPublicConnections, bool IsLANMatc
 	LastSessionSettings->Set(FName(TEXT("Password")), FString(SessionPassword), EOnlineDataAdvertisementType::ViaOnlineService);
 
 	LastSessionSettings->Set(SETTING_MAPNAME, FString(Map), EOnlineDataAdvertisementType::ViaOnlineService);
+
+	LastSessionSettings->Set(FName(TEXT("Difficulty")), FString(Difficulty), EOnlineDataAdvertisementType::ViaOnlineService);
 
 	CreateSessionCompleteDelegateHandle = SessionInterface->AddOnCreateSessionCompleteDelegate_Handle(CreateSessionCompleteDelegate);
 
