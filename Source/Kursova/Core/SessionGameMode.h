@@ -7,6 +7,8 @@
 #include "Kursova/AI/AbstractFactory/GoblinCreator.h"
 #include "Kursova/AI/AbstractFactory/SkeletonCreator.h"
 #include "Kursova/DifficultyFactories/EasyModeFactory.h"
+#include "Kursova/DifficultyFactories/HardModeFactory.h"
+#include "Kursova/DifficultyFactories/MediumModeFactory.h"
 #include "Kursova/DifficultyFactories/ModeFactory.h"
 #include "Kursova/Items/CoolItem.h"
 #include "Kursova/MapBuilder/MainMapBuilder.h"
@@ -93,5 +95,9 @@ public:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category="Difficulty")
 	TSubclassOf<UEasyModeFactory> EasyModeFactoryClass;
 
-	
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category="Difficulty")
+	TSubclassOf<UMediumModeFactory> MediumModeFactoryClass;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category="Difficulty")
+	TSubclassOf<UHardModeFactory> HardModeFactoryClass;
 };

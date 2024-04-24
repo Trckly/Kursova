@@ -3,15 +3,22 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "UObject/NoExportTypes.h"
+#include "ModeFactory.h"
+#include "FactoryProducts/MediumWeapon.h"
 #include "MediumModeFactory.generated.h"
 
 /**
  * 
  */
-UCLASS()
-class KURSOVA_API UMediumModeFactory : public UObject
+UCLASS(BlueprintType, Blueprintable)
+class KURSOVA_API UMediumModeFactory : public UObject, public IModeFactory
 {
 	GENERATED_BODY()
 	
+protected:
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
+	TSubclassOf<AMediumWeapon> MediumWeaponClass;
+	
+public:
+	virtual IWeaponInterface* CreateWeapon() override;
 };

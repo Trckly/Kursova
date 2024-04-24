@@ -21,4 +21,9 @@ class KURSOVA_API IWeaponInterface
 	GENERATED_BODY()
 
 public:
+	virtual void DetachFromActor(const FDetachmentTransformRules& DetachmentTransformRules) = 0;
+	virtual void Destroy() = 0;
+	virtual void SetActorEnableCollision(bool bNewActorEnableCollision) = 0;
+	virtual void AttachToComponent(USceneComponent* Parent,	const FAttachmentTransformRules& AttachmentRules,
+		FName SocketName = NAME_None) = 0;
 };

@@ -24,11 +24,14 @@ protected:
 	UStaticMeshComponent* StaticMeshComponent;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
-	float Damage = 100;
+	float Damage = 1000;
 
 	UPROPERTY(EditDefaultsOnly,BlueprintReadWrite)
 	uint8 Capacity = 100;
 
 public:	
-
+	virtual void DetachFromActor(const FDetachmentTransformRules& DetachmentTransformRules) override;
+	virtual void Destroy() override;
+	virtual void SetActorEnableCollision(bool bNewActorEnableCollision) override;
+	virtual void AttachToComponent(USceneComponent* Parent, const FAttachmentTransformRules& AttachmentRules, FName SocketName) override;
 };

@@ -77,7 +77,7 @@ void UMainMapBuilder::PlaceRadio(const FVector2D& Dimensions)
 	
 	if(Radio)
 		Radio->SetActorLocation(FVector(UKismetMathLibrary::RandomFloatInRange(-Dimensions.X/2.f * TileLength, Dimensions.X/2.f * TileLength),
-				UKismetMathLibrary::RandomFloatInRange(-Dimensions.Y/2.f * TileLength, Dimensions.Y/2.f * TileLength), 57.f));
+				UKismetMathLibrary::RandomFloatInRange(-Dimensions.Y/2.f * TileLength, Dimensions.Y/2.f * TileLength), 57.f), false,nullptr, ETeleportType::TeleportPhysics);
 }
 
 int UMainMapBuilder::CalculateStartingPoint(int Dimension)

@@ -113,9 +113,9 @@ TScriptInterface<IModeFactory> ASessionGameMode::SetDifficultyMode(const FString
 	if(DifficultyMode == "Easy")
 		ModeFactory = NewObject<UEasyModeFactory>(this, EasyModeFactoryClass, TEXT("Easy Mode Factory"));
 	if(DifficultyMode == "Medium")
-		ModeFactory = NewObject<UMediumModeFactory>(this, TEXT("Medium Mode Factory"));
+		ModeFactory = NewObject<UMediumModeFactory>(this, MediumModeFactoryClass, TEXT("Medium Mode Factory"));
 	if(DifficultyMode == "Hard")
-		ModeFactory = NewObject<UHardModeFactory>(this, TEXT("Hard Mode Factory"));
+		ModeFactory = NewObject<UHardModeFactory>(this, HardModeFactoryClass, TEXT("Hard Mode Factory"));
 
 	if(!ModeFactory)
 		UE_LOG(LogGameMode, Error, TEXT("Failed to create new factory object"));
