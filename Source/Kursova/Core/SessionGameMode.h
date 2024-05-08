@@ -90,7 +90,7 @@ public:
 	UMainMapBuilder* MainMapBuilder;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
-	FVector2D GeneralUniversalDimensions = FVector2D(10.f, 10.f);
+	FVector2D GeneralUniversalDimensions = FVector2D(100.f, 100.f);
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category="Difficulty")
 	TSubclassOf<UEasyModeFactory> EasyModeFactoryClass;

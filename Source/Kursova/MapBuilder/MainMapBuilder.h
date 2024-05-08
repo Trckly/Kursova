@@ -6,6 +6,7 @@
 #include "BuilderProps/Floor.h"
 #include "BuilderProps/Obstacle.h"
 #include "BuilderProps/Wall.h"
+#include "Kursova/ForestFlyweight/Forest.h"
 #include "Kursova/Singletones/Radio.h"
 #include "UObject/NoExportTypes.h"
 #include "MainMapBuilder.generated.h"
@@ -28,6 +29,7 @@ private:
 	UMainMapBuilder();
 	
 protected:
+	
 	const int TileLength = 400;
 
 	UPROPERTY()
@@ -35,6 +37,8 @@ protected:
 
 	UPROPERTY()
 	ARadio* Radio;
+
+	static UForest* Forest;
 	
 public:
 	
@@ -50,6 +54,12 @@ public:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
 	TSubclassOf<ARadio> RadioClass;
 
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
+	TSubclassOf<ATree> JungleTreeClass;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
+	TSubclassOf<ATree> SakuraTreeClass;
+	
 	void BuildFloor(const FVector2D& Dimensions);
 
 	void BuildGeneralWalls(const FVector2D& Dimensions);
@@ -57,6 +67,8 @@ public:
 	void BuildObstacles(const FVector2D& Dimensions);
 
 	void PlaceRadio(const FVector2D& Dimensions);
+
+	void CreateForest(const FVector2D& Dimensions);
 
 protected:
 	int CalculateStartingPoint(int Dimension);
