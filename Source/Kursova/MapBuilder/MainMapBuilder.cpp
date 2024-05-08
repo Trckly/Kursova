@@ -5,9 +5,11 @@
 #include "BuilderProps/Obstacle.h"
 #include "Kismet/KismetMathLibrary.h"
 
+UForest* UMainMapBuilder::Forest = nullptr;
+
 UMainMapBuilder::UMainMapBuilder()
 {
-	
+	Forest = NewObject<UForest>();
 }
 
 void UMainMapBuilder::BuildFloor(const FVector2D& Dimensions)
@@ -78,6 +80,30 @@ void UMainMapBuilder::PlaceRadio(const FVector2D& Dimensions)
 	if(Radio)
 		Radio->SetActorLocation(FVector(UKismetMathLibrary::RandomFloatInRange(-Dimensions.X/2.f * TileLength, Dimensions.X/2.f * TileLength),
 				UKismetMathLibrary::RandomFloatInRange(-Dimensions.Y/2.f * TileLength, Dimensions.Y/2.f * TileLength), 57.f), false,nullptr, ETeleportType::TeleportPhysics);
+}
+
+void UMainMapBuilder::CreateForest(const FVector2D& Dimensions)
+{
+	TArray<FString> TreeTypeNames = {"Jungle Tree", "Sakura"};
+	for (int i = 0; i < Dimensions.X * Dimensions.Y / 2.f; ++i)
+	{
+		FVector Position = FVector(UKismetMathLibrary::RandomFloatInRange(-Dimensions.X/2.f * TileLength, Dimensions.X/2.f * TileLength),
+				UKismetMathLibrary::RandomFloatInRange(-Dimensions.Y/2.f * TileLength, Dimensions.Y/2.f * TileLength), 0.f);
+
+		FString TreeTypeName = TreeTypeNames[UKismetMathLibrary::RandomIntegerInRange(0, 1)];
+
+		TSubclassOf<ATree> TreeClass;
+		if(TreeTypeName == "Sakura")
+		{
+			TreeClass = SakuraTreeClass;
+		}
+		else
+		{
+			TreeClass = JungleTreeClass;
+		}
+		
+		Forest->PlantTree(Position, TreeTypeName, TreeClass, GetWorld());
+	}
 }
 
 int UMainMapBuilder::CalculateStartingPoint(int Dimension)
