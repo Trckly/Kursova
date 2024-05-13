@@ -10,6 +10,8 @@
 #include "GenericTeamAgentInterface.h"
 #include "Kursova/UMG/WeaponMenuWidget.h"
 #include "Kursova/DifficultyFactories/ModeFactory.h"
+#include "Kursova/ObjectDecorator/Cube.h"
+#include "Kursova/ObjectDecorator/CubeBaseDecorator.h"
 #include "MainPlayer.generated.h"
 
 class UPlayerHUD;
@@ -226,6 +228,18 @@ public:
 
 	// Collecting hit weapon
 	void ProcessHitWeapon(AWeaponClass* WeaponActor);
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
+	TSubclassOf<ACube> CubeClass;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
+	TSubclassOf<ACubeBaseDecorator> CubeDecoratorClass;
+	
+	ICubeInterface* Cube;
+	
+	int CubeHitNumber = 0;
+	
+	void ProcessHitCube();
 
 	// Return all player's picked weapons
 	TArray<AWeaponClass*> GetAllPickedWeapons();

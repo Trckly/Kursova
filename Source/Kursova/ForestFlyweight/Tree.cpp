@@ -14,7 +14,7 @@ ATree* ATree::CreateTree(FVector WorldPosition, UTreeType* Type, UWorld* World)
 	FActorSpawnParameters SpawnParameters;
 	SpawnParameters.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
 
-	TSubclassOf<ATree> TreeClass = Type->GetTreeClass();
+	TSubclassOf<UObject> TreeClass = Type->GetTreeClass();
 	
 	ATree* NewTree = World->SpawnActor<ATree>(TreeClass, FVector::ZeroVector, FRotator(0.f, FMath::RandRange(0, 360), 0.f), SpawnParameters);
 	if(NewTree)

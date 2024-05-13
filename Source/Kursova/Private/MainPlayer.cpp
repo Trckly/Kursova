@@ -11,6 +11,9 @@
 #include "Net/UnrealNetwork.h"
 #include "Kursova/UMG/CrosshairWidget.h"
 #include "Kursova/HUD/PlayerHUD.h"
+#include "Kursova/ObjectDecorator/BlueCubeDecorator.h"
+#include "Kursova/ObjectDecorator/Cube.h"
+#include "Kursova/ObjectDecorator/GreenCubeDecorator.h"
 
 // Sets default values
 AMainPlayer::AMainPlayer()
@@ -211,6 +214,10 @@ void AMainPlayer::Interact()
 		{
 			ProcessHitWeapon(Cast<AWeaponClass>(ReturnedActor));
 		}
+		else if(Cast<ACube>(ReturnedActor))
+		{
+			ProcessHitCube();
+		}
 		else
 		{
 			ProcessHitRack();
@@ -283,6 +290,45 @@ void AMainPlayer::ProcessHitWeapon(AWeaponClass* WeaponActor)
 	WeaponActor->SetActorLocation(WeaponActor->GetActorLocation() + WeaponActor->GetActorUpVector() * -1000.f, false);
 	PickedWeapons.Push(WeaponActor);
 	CreateWeaponAttach(WeaponActor);
+}
+
+void AMainPlayer::ProcessHitCube()
+{
+	FActorSpawnParameters SpawnParameters;
+	SpawnParameters.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
+	
+	if(CubeHitNumber == 3)
+		CubeHitNumber = 0;
+
+	if(Cube)
+	{
+		Cube->DestroyCube();
+	}
+	
+	if(CubeHitNumber == 0)
+	{
+		Cube = ACube::CreateCube(CubeClass, GetWorld());
+	}
+	if(CubeHitNumber == 1)
+	{
+		AGreenCubeDecorator* CubeDecorator = GetWorld()->SpawnActor<AGreenCubeDecorator>(FVector::ZeroVector,
+			FRotator::ZeroRotator, SpawnParameters);
+		
+		Cube = CubeDecorator->CreateCube(Cube, CubeDecoratorClass, GetWorld());
+		Cube->ChangeColor();
+		CubeDecorator->Destroy();
+	}
+	if(CubeHitNumber == 2)
+	{
+		ABlueCubeDecorator* CubeDecorator = GetWorld()->SpawnActor<ABlueCubeDecorator>(FVector::ZeroVector,
+			FRotator::ZeroRotator, SpawnParameters);
+		
+		Cube = CubeDecorator->CreateCube(Cube, CubeDecoratorClass, GetWorld());
+		Cube->ChangeColor();
+		CubeDecorator->Destroy();
+	}
+
+	CubeHitNumber++;
 }
 
 TArray<AWeaponClass*> AMainPlayer::GetAllPickedWeapons()

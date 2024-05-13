@@ -13,5 +13,13 @@ UCLASS()
 class KURSOVA_API AGreenCubeDecorator : public ACubeBaseDecorator
 {
 	GENERATED_BODY()
-	
+
+protected:
+	virtual void BeginPlay() override;
+
+public:
+	virtual ICubeInterface* CreateCube(ICubeInterface* Source, TSubclassOf<UObject> CubeClass, UWorld* World) override;
+	virtual void DestroyCube() override;
+	virtual void ChangeColor() override;
+	virtual UStaticMeshComponent* GetStaticMeshComponent() override;
 };

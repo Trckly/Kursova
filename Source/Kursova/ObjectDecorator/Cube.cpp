@@ -13,13 +13,21 @@ ACube::ACube()
 void ACube::BeginPlay()
 {
 	Super::BeginPlay();
+	
+	ChangeColor();
 }
 
-// Called every frame
-void ACube::Tick(float DeltaTime)
+ICubeInterface* ACube::CreateCube(TSubclassOf<UObject> CubeClass, UWorld* World)
 {
-	Super::Tick(DeltaTime);
+	FActorSpawnParameters SpawnParameters;
+	SpawnParameters.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
+	
+	return World->SpawnActor<ACube>(CubeClass, FVector(391.f, -29.f, 173.f), FRotator::ZeroRotator, SpawnParameters);
+}
 
+void ACube::DestroyCube()
+{
+	Destroy();
 }
 
 UStaticMeshComponent* ACube::GetStaticMeshComponent()
