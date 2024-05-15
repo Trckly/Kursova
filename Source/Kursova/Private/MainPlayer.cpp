@@ -7,6 +7,8 @@
 #include "Kursova/MainUI/MainMenuWidget.h"
 #include "Kismet/KismetSystemLibrary.h"
 #include "Kursova/AI/UEnemyInterface.h"
+#include "Kursova/Command/NegativeRotationCommand.h"
+#include "Kursova/Command/PositiveRotationCommand.h"
 #include "Kursova/Core//CustomPlayerController.h"
 #include "Net/UnrealNetwork.h"
 #include "Kursova/UMG/CrosshairWidget.h"
@@ -216,7 +218,7 @@ void AMainPlayer::Interact()
 		}
 		else if(Cast<ACube>(ReturnedActor))
 		{
-			ProcessHitCube();
+			ProcessHitCube(ReturnedActor);
 		}
 		else
 		{
@@ -292,43 +294,52 @@ void AMainPlayer::ProcessHitWeapon(AWeaponClass* WeaponActor)
 	CreateWeaponAttach(WeaponActor);
 }
 
-void AMainPlayer::ProcessHitCube()
+void AMainPlayer::ProcessHitCube(AActor* HitActor)
 {
-	FActorSpawnParameters SpawnParameters;
-	SpawnParameters.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
-	
-	if(CubeHitNumber == 3)
-		CubeHitNumber = 0;
+	APlayerController* PController = Cast<APlayerController>(GetOwner());
+	if(PController)
+	{
+		UCommandWidget* CommandWidget = CreateWidget<UCommandWidget>(PController, CommandWidgetClass);
 
-	if(Cube)
-	{
-		Cube->DestroyCube();
-	}
-	
-	if(CubeHitNumber == 0)
-	{
-		Cube = ACube::CreateCube(CubeClass, GetWorld());
-	}
-	if(CubeHitNumber == 1)
-	{
-		AGreenCubeDecorator* CubeDecorator = GetWorld()->SpawnActor<AGreenCubeDecorator>(FVector::ZeroVector,
-			FRotator::ZeroRotator, SpawnParameters);
-		
-		Cube = CubeDecorator->CreateCube(Cube, CubeDecoratorClass, GetWorld());
-		Cube->ChangeColor();
-		CubeDecorator->Destroy();
-	}
-	if(CubeHitNumber == 2)
-	{
-		ABlueCubeDecorator* CubeDecorator = GetWorld()->SpawnActor<ABlueCubeDecorator>(FVector::ZeroVector,
-			FRotator::ZeroRotator, SpawnParameters);
-		
-		Cube = CubeDecorator->CreateCube(Cube, CubeDecoratorClass, GetWorld());
-		Cube->ChangeColor();
-		CubeDecorator->Destroy();
-	}
+		CommandWidget->PositiveRotationDelegate.BindDynamic(this, &AMainPlayer::RotatePositive);
+		CommandWidget->NegativeRotationDelegate.BindDynamic(this, &AMainPlayer::RotateNegative);
+		CommandWidget->WidgetClosed.BindDynamic(this, &AMainPlayer::OnCommandWidgetClosed);
 
-	CubeHitNumber++;
+		CommandWidget->PassActor(HitActor);
+		
+		CommandWidget->AddToViewport();
+		
+		PController->SetShowMouseCursor(true);
+		PController->SetInputMode(FInputModeUIOnly());
+	}
+}
+
+void AMainPlayer::RotatePositive(AActor* Actor)
+{
+	UPositiveRotationCommand* PositiveRotationCommand = NewObject<UPositiveRotationCommand>();
+	if(PositiveRotationCommand)
+	{
+		PositiveRotationCommand->Execute(Actor);
+	}
+}
+
+void AMainPlayer::RotateNegative(AActor* Actor)
+{
+	UNegativeRotationCommand* NegativeRotationCommand = NewObject<UNegativeRotationCommand>();
+	if(NegativeRotationCommand)
+	{
+		NegativeRotationCommand->Execute(Actor);
+	}
+}
+
+void AMainPlayer::OnCommandWidgetClosed()
+{
+	APlayerController* Controller = Cast<APlayerController>(GetOwner());
+	if(Controller)
+	{
+		Controller->SetShowMouseCursor(false);
+		Controller->SetInputMode(FInputModeGameOnly());
+	}
 }
 
 TArray<AWeaponClass*> AMainPlayer::GetAllPickedWeapons()

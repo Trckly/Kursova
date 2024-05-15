@@ -16,7 +16,9 @@ public:
 	ACube();
 
 protected:
-virtual void BeginPlay() override;
+	virtual void BeginPlay() override;
+	
+	virtual void Tick(float DeltaSeconds) override;
 	
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
 	UStaticMeshComponent* StaticMeshComponent;
@@ -24,10 +26,18 @@ virtual void BeginPlay() override;
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
 	UMaterial* DefaultMaterial;
 
+	bool bPositiveRotation = false;
+	bool bNegativeRotation = false;
+
+	float RotationSpeed = 100.f;
+
 public:
 	static ICubeInterface* CreateCube(TSubclassOf<UObject> CubeClass, UWorld* World);
 	virtual void DestroyCube() override;
 	virtual UStaticMeshComponent* GetStaticMeshComponent() override;
 
 	virtual void ChangeColor() override;
+
+	void AddPositiveRotation();
+	void AddNegativeRotation();
 };

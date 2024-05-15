@@ -3,9 +3,10 @@
 
 #include "Cube.h"
 
-// Sets default values
 ACube::ACube()
 {
+	PrimaryActorTick.bCanEverTick = true;
+	
 	StaticMeshComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Mesh"));
 	RootComponent = StaticMeshComponent;
 }
@@ -15,6 +16,19 @@ void ACube::BeginPlay()
 	Super::BeginPlay();
 	
 	ChangeColor();
+}
+
+void ACube::Tick(float DeltaSeconds)
+{
+	if(bPositiveRotation)
+	{
+		SetActorRotation(GetActorRotation() + FRotator(0.f, RotationSpeed, 0.f) * DeltaSeconds);
+		GEngine->AddOnScreenDebugMessage(0, 1.f, FColor::Cyan, TEXT("Positive Rotation"));
+	}
+	if(bNegativeRotation)
+	{
+		SetActorRotation(GetActorRotation() + FRotator(0.f, -RotationSpeed, 0.f) * DeltaSeconds);
+	}
 }
 
 ICubeInterface* ACube::CreateCube(TSubclassOf<UObject> CubeClass, UWorld* World)
@@ -42,5 +56,17 @@ void ACube::ChangeColor()
 	DynamicMaterial->SetVectorParameterValue(TEXT("Color"), FLinearColor::Red);
 
 	StaticMeshComponent->SetMaterial(0, DynamicMaterial);
+}
+
+void ACube::AddPositiveRotation()
+{
+	bPositiveRotation = true;
+	bNegativeRotation = false;
+}
+
+void ACube::AddNegativeRotation()
+{
+	bNegativeRotation = true;
+	bPositiveRotation = false;
 }
 

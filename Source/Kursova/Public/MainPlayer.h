@@ -8,6 +8,7 @@
 #include "GameFramework/Character.h"
 #include "../ServerLogic/SessionSubsystem.h"
 #include "GenericTeamAgentInterface.h"
+#include "Kursova/Command/Widgets/CommandWidget.h"
 #include "Kursova/UMG/WeaponMenuWidget.h"
 #include "Kursova/DifficultyFactories/ModeFactory.h"
 #include "Kursova/ObjectDecorator/Cube.h"
@@ -230,16 +231,18 @@ public:
 	void ProcessHitWeapon(AWeaponClass* WeaponActor);
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
-	TSubclassOf<ACube> CubeClass;
+	TSubclassOf<UCommandWidget> CommandWidgetClass;
 
-	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
-	TSubclassOf<ACubeBaseDecorator> CubeDecoratorClass;
+	UFUNCTION()
+	void RotatePositive(AActor* Actor);
+
+	UFUNCTION()
+	void RotateNegative(AActor* Actor);
+
+	UFUNCTION()
+	void OnCommandWidgetClosed();
 	
-	ICubeInterface* Cube;
-	
-	int CubeHitNumber = 0;
-	
-	void ProcessHitCube();
+	void ProcessHitCube(AActor* HitActor);
 
 	// Return all player's picked weapons
 	TArray<AWeaponClass*> GetAllPickedWeapons();

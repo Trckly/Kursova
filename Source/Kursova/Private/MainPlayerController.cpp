@@ -3,6 +3,10 @@
 
 #include "MainPlayerController.h"
 
+#include "Kismet/GameplayStatics.h"
+#include "Kursova/Command/NegativeRotationCommand.h"
+#include "Kursova/Command/PositiveRotationCommand.h"
+
 AMainPlayerController::AMainPlayerController()
 {
 	MouseSensivity = 50.f;
@@ -39,6 +43,9 @@ void AMainPlayerController::SetupInputComponent()
 	// Bind the LookUp axis input to the LookUp function in the player controller
 	InputComponent->BindAxis("LookRight", this, &AMainPlayerController::LookRight);
 	InputComponent->BindAxis("LookUp", this, &AMainPlayerController::LookUp);
+
+	InputComponent->BindAction("RotatePositive",IE_Pressed, this, &AMainPlayerController::RotatePositive);
+	InputComponent->BindAction("RotateNegative",IE_Pressed, this, &AMainPlayerController::RotateNegative);
 }
 
 void AMainPlayerController::LookUp(float Value)
@@ -58,5 +65,29 @@ void AMainPlayerController::LookRight(float Value)
 	{
 		float SensivityScalar = MouseSensivity * GetWorld()->GetDeltaSeconds();
 		ControlledPlayer->AddControllerYawInput(Value * SensivityScalar);
+	}
+}
+
+void AMainPlayerController::RotatePositive()
+{
+	TArray<AActor*> OutActors;
+	UGameplayStatics::GetAllActorsOfClass(GetWorld(), ACube::StaticClass(), OutActors);
+
+	UPositiveRotationCommand* PositiveRotationCommand = NewObject<UPositiveRotationCommand>();
+	if(PositiveRotationCommand)
+	{
+		PositiveRotationCommand->Execute(OutActors[0]);
+	}
+}
+
+void AMainPlayerController::RotateNegative()
+{
+	TArray<AActor*> OutActors;
+	UGameplayStatics::GetAllActorsOfClass(GetWorld(), ACube::StaticClass(), OutActors);
+
+	UNegativeRotationCommand* NegativeRotationCommand = NewObject<UNegativeRotationCommand>();
+	if(NegativeRotationCommand)
+	{
+		NegativeRotationCommand->Execute(OutActors[0]);
 	}
 }
