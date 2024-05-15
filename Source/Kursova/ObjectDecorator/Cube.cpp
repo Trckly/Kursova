@@ -3,9 +3,10 @@
 
 #include "Cube.h"
 
-// Sets default values
 ACube::ACube()
 {
+	PrimaryActorTick.bCanEverTick = true;
+	
 	StaticMeshComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Mesh"));
 	RootComponent = StaticMeshComponent;
 }
@@ -13,13 +14,34 @@ ACube::ACube()
 void ACube::BeginPlay()
 {
 	Super::BeginPlay();
+	
+	ChangeColor();
 }
 
-// Called every frame
-void ACube::Tick(float DeltaTime)
+void ACube::Tick(float DeltaSeconds)
 {
-	Super::Tick(DeltaTime);
+	if(bPositiveRotation)
+	{
+		SetActorRotation(GetActorRotation() + FRotator(0.f, RotationSpeed, 0.f) * DeltaSeconds);
+		GEngine->AddOnScreenDebugMessage(0, 1.f, FColor::Cyan, TEXT("Positive Rotation"));
+	}
+	if(bNegativeRotation)
+	{
+		SetActorRotation(GetActorRotation() + FRotator(0.f, -RotationSpeed, 0.f) * DeltaSeconds);
+	}
+}
 
+ICubeInterface* ACube::CreateCube(TSubclassOf<UObject> CubeClass, UWorld* World)
+{
+	FActorSpawnParameters SpawnParameters;
+	SpawnParameters.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
+	
+	return World->SpawnActor<ACube>(CubeClass, FVector(391.f, -29.f, 173.f), FRotator::ZeroRotator, SpawnParameters);
+}
+
+void ACube::DestroyCube()
+{
+	Destroy();
 }
 
 UStaticMeshComponent* ACube::GetStaticMeshComponent()
@@ -34,5 +56,17 @@ void ACube::ChangeColor()
 	DynamicMaterial->SetVectorParameterValue(TEXT("Color"), FLinearColor::Red);
 
 	StaticMeshComponent->SetMaterial(0, DynamicMaterial);
+}
+
+void ACube::AddPositiveRotation()
+{
+	bPositiveRotation = true;
+	bNegativeRotation = false;
+}
+
+void ACube::AddNegativeRotation()
+{
+	bNegativeRotation = true;
+	bPositiveRotation = false;
 }
 

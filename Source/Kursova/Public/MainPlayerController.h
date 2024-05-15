@@ -26,6 +26,9 @@ public:
 	void LookUp(float Value);
 
 	void LookRight(float Value);
+
+	void RotatePositive();
+	void RotateNegative();
 	
 protected:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Player")

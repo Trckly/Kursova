@@ -7,10 +7,15 @@
 #include "Kursova/MainUI/MainMenuWidget.h"
 #include "Kismet/KismetSystemLibrary.h"
 #include "Kursova/AI/UEnemyInterface.h"
+#include "Kursova/Command/NegativeRotationCommand.h"
+#include "Kursova/Command/PositiveRotationCommand.h"
 #include "Kursova/Core//CustomPlayerController.h"
 #include "Net/UnrealNetwork.h"
 #include "Kursova/UMG/CrosshairWidget.h"
 #include "Kursova/HUD/PlayerHUD.h"
+#include "Kursova/ObjectDecorator/BlueCubeDecorator.h"
+#include "Kursova/ObjectDecorator/Cube.h"
+#include "Kursova/ObjectDecorator/GreenCubeDecorator.h"
 
 // Sets default values
 AMainPlayer::AMainPlayer()
@@ -211,6 +216,10 @@ void AMainPlayer::Interact()
 		{
 			ProcessHitWeapon(Cast<AWeaponClass>(ReturnedActor));
 		}
+		else if(Cast<ACube>(ReturnedActor))
+		{
+			ProcessHitCube(ReturnedActor);
+		}
 		else
 		{
 			ProcessHitRack();
@@ -283,6 +292,54 @@ void AMainPlayer::ProcessHitWeapon(AWeaponClass* WeaponActor)
 	WeaponActor->SetActorLocation(WeaponActor->GetActorLocation() + WeaponActor->GetActorUpVector() * -1000.f, false);
 	PickedWeapons.Push(WeaponActor);
 	CreateWeaponAttach(WeaponActor);
+}
+
+void AMainPlayer::ProcessHitCube(AActor* HitActor)
+{
+	APlayerController* PController = Cast<APlayerController>(GetOwner());
+	if(PController)
+	{
+		UCommandWidget* CommandWidget = CreateWidget<UCommandWidget>(PController, CommandWidgetClass);
+
+		CommandWidget->PositiveRotationDelegate.BindDynamic(this, &AMainPlayer::RotatePositive);
+		CommandWidget->NegativeRotationDelegate.BindDynamic(this, &AMainPlayer::RotateNegative);
+		CommandWidget->WidgetClosed.BindDynamic(this, &AMainPlayer::OnCommandWidgetClosed);
+
+		CommandWidget->PassActor(HitActor);
+		
+		CommandWidget->AddToViewport();
+		
+		PController->SetShowMouseCursor(true);
+		PController->SetInputMode(FInputModeUIOnly());
+	}
+}
+
+void AMainPlayer::RotatePositive(AActor* Actor)
+{
+	UPositiveRotationCommand* PositiveRotationCommand = NewObject<UPositiveRotationCommand>();
+	if(PositiveRotationCommand)
+	{
+		PositiveRotationCommand->Execute(Actor);
+	}
+}
+
+void AMainPlayer::RotateNegative(AActor* Actor)
+{
+	UNegativeRotationCommand* NegativeRotationCommand = NewObject<UNegativeRotationCommand>();
+	if(NegativeRotationCommand)
+	{
+		NegativeRotationCommand->Execute(Actor);
+	}
+}
+
+void AMainPlayer::OnCommandWidgetClosed()
+{
+	APlayerController* Controller = Cast<APlayerController>(GetOwner());
+	if(Controller)
+	{
+		Controller->SetShowMouseCursor(false);
+		Controller->SetInputMode(FInputModeGameOnly());
+	}
 }
 
 TArray<AWeaponClass*> AMainPlayer::GetAllPickedWeapons()

@@ -21,6 +21,7 @@ class KURSOVA_API ICubeInterface
 	GENERATED_BODY()
 
 public:
+	virtual void DestroyCube() = 0;
 	virtual void ChangeColor() = 0;
 	virtual UStaticMeshComponent* GetStaticMeshComponent() = 0;
 };

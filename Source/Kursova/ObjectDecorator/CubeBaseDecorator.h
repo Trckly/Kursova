@@ -16,11 +16,15 @@ public:
 	ACubeBaseDecorator();
 
 protected:
+	virtual void BeginPlay() override;
+	
 	ICubeInterface* Wrappee;
 
 public:	
 	void Wrap(ICubeInterface* Source);
 
+	virtual ICubeInterface* CreateCube(ICubeInterface* Source, TSubclassOf<UObject> CubeClass, UWorld* World);
+	virtual void DestroyCube() override;
 	virtual void ChangeColor() override;
 	virtual UStaticMeshComponent* GetStaticMeshComponent() override;
 };
