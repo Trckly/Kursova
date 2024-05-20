@@ -11,8 +11,6 @@
 #include "Kursova/Command/Widgets/CommandWidget.h"
 #include "Kursova/UMG/WeaponMenuWidget.h"
 #include "Kursova/DifficultyFactories/ModeFactory.h"
-#include "Kursova/ObjectDecorator/Cube.h"
-#include "Kursova/ObjectDecorator/CubeBaseDecorator.h"
 #include "MainPlayer.generated.h"
 
 class UPlayerHUD;
