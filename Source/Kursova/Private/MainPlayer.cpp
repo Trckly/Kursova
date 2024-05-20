@@ -13,9 +13,7 @@
 #include "Net/UnrealNetwork.h"
 #include "Kursova/UMG/CrosshairWidget.h"
 #include "Kursova/HUD/PlayerHUD.h"
-#include "Kursova/ObjectDecorator/BlueCubeDecorator.h"
 #include "Kursova/ObjectDecorator/Cube.h"
-#include "Kursova/ObjectDecorator/GreenCubeDecorator.h"
 
 // Sets default values
 AMainPlayer::AMainPlayer()
@@ -334,11 +332,11 @@ void AMainPlayer::RotateNegative(AActor* Actor)
 
 void AMainPlayer::OnCommandWidgetClosed()
 {
-	APlayerController* Controller = Cast<APlayerController>(GetOwner());
-	if(Controller)
+	APlayerController* PlayerController = Cast<APlayerController>(GetOwner());
+	if(PlayerController)
 	{
-		Controller->SetShowMouseCursor(false);
-		Controller->SetInputMode(FInputModeGameOnly());
+		PlayerController->SetShowMouseCursor(false);
+		PlayerController->SetInputMode(FInputModeGameOnly());
 	}
 }
 

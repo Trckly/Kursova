@@ -3,12 +3,12 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "CubeInterface.h"
 #include "GameFramework/Actor.h"
+#include "Kursova/State/State.h"
 #include "Cube.generated.h"
 
 UCLASS()
-class KURSOVA_API ACube : public AActor, public ICubeInterface
+class KURSOVA_API ACube : public AActor
 {
 	GENERATED_BODY()
 	
@@ -30,14 +30,20 @@ protected:
 	bool bNegativeRotation = false;
 
 	float RotationSpeed = 100.f;
+	
+	IState* State;
+
+	UPROPERTY()
+	UMaterialInstanceDynamic* DynamicMaterial = nullptr;
 
 public:
-	static ICubeInterface* CreateCube(TSubclassOf<UObject> CubeClass, UWorld* World);
-	virtual void DestroyCube() override;
-	virtual UStaticMeshComponent* GetStaticMeshComponent() override;
+	UStaticMeshComponent* GetStaticMeshComponent();
 
-	virtual void ChangeColor() override;
+	void ChangeState(IState* otherState);
 
 	void AddPositiveRotation();
 	void AddNegativeRotation();
+
+	UMaterialInstanceDynamic* GetDynamicMaterial();
+	void SetDynamicMaterial(UMaterialInstanceDynamic* Material);
 };

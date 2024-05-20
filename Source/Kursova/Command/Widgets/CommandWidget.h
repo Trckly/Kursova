@@ -28,6 +28,12 @@ protected:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, meta=(BindWidget))
 	UButton* NegRotationButton;
 
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, meta=(BindWidget))
+	UButton* RedStateButton;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, meta=(BindWidget))
+	UButton* GreenStateButton;
+
 	UPROPERTY()
 	AActor* Actor;
 
@@ -37,6 +43,12 @@ public:
 
 	UFUNCTION()
 	void NegativeRotation();
+
+	UFUNCTION()
+	void RedState();
+	
+	UFUNCTION()
+	void GreenState();
 	
 	void CloseWidget();
 
