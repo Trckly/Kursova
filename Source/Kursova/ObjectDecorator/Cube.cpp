@@ -3,6 +3,9 @@
 
 #include "Cube.h"
 
+#include "Kismet/GameplayStatics.h"
+#include "Kursova/Observer/PositiveRotationCounter.h"
+
 ACube::ACube()
 {
 	PrimaryActorTick.bCanEverTick = true;
@@ -14,6 +17,17 @@ ACube::ACube()
 void ACube::BeginPlay()
 {
 	Super::BeginPlay();
+	
+	SubscriptionManager = NewObject<USubscriptionManager>();
+
+	TArray<AActor*> OutActors;
+	UGameplayStatics::GetAllActorsOfClass(GetWorld(), APositiveRotationCounter::StaticClass(), OutActors);
+
+	for (const auto OutActor : OutActors)
+	{
+		IEventListener* EventListener = Cast<IEventListener>(OutActor);
+		SubscriptionManager->Subscribe(EventListener);
+	}
 }
 
 void ACube::Tick(float DeltaSeconds)
@@ -21,10 +35,12 @@ void ACube::Tick(float DeltaSeconds)
 	if(bPositiveRotation)
 	{
 		SetActorRotation(GetActorRotation() + FRotator(0.f, RotationSpeed, 0.f) * DeltaSeconds);
+		SubscriptionManager->Notify(RotationSpeed * DeltaSeconds);
 	}
 	if(bNegativeRotation)
 	{
 		SetActorRotation(GetActorRotation() + FRotator(0.f, -RotationSpeed, 0.f) * DeltaSeconds);
+		SubscriptionManager->Notify(-RotationSpeed * DeltaSeconds);
 	}
 }
 
