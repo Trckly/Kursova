@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+#include "Kursova/Observer/SubscriptionManager.h"
 #include "Kursova/State/State.h"
 #include "Cube.generated.h"
 
@@ -32,6 +33,9 @@ protected:
 	float RotationSpeed = 100.f;
 	
 	IState* State;
+
+	UPROPERTY()
+	USubscriptionManager* SubscriptionManager;
 
 	UPROPERTY()
 	UMaterialInstanceDynamic* DynamicMaterial = nullptr;
