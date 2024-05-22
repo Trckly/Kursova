@@ -19,8 +19,14 @@ protected:
 	UPROPERTY(BlueprintReadWrite, meta=(BindWidget))
 	UProgressBar* PHealth;
 	
+	UPROPERTY(BlueprintReadWrite, meta=(BindWidget))
+	UProgressBar* PArmor;
+	
 public:
 
 	UFUNCTION()
 	void SetHealth(float Health);
+	
+	UFUNCTION()
+	void SetArmor(float Armor);
 };

@@ -11,10 +11,13 @@
 #include "Kursova/Command/Widgets/CommandWidget.h"
 #include "Kursova/UMG/WeaponMenuWidget.h"
 #include "Kursova/DifficultyFactories/ModeFactory.h"
+#include "Kursova/EnemyObserver/PlayerNotifier.h"
 #include "Kursova/ObjectDecorator/Cube.h"
 #include "Kursova/ObjectDecorator/CubeBaseDecorator.h"
 #include "MainPlayer.generated.h"
 
+class IHandler;
+class AAbstractItem;
 class UPlayerHUD;
 class UMainMenuWidget;
 class UServerWidget;
@@ -41,7 +44,7 @@ struct FBehaviorSet
  */
 
 UCLASS()
-class KURSOVA_API AMainPlayer : public ACharacter, public IGenericTeamAgentInterface
+class KURSOVA_API AMainPlayer : public ACharacter, public IGenericTeamAgentInterface, public IPlayerNotifier
 {
 	GENERATED_BODY()
 
@@ -145,6 +148,11 @@ protected:
     UPROPERTY()
 	float Health;
 
+	int HealthState = 1;
+
+    UPROPERTY()
+	float Armor;
+
 	int PlayerIndex;
 
 	UPROPERTY(EditDefaultsOnly)
@@ -192,6 +200,13 @@ public:
 	/// Common
 	///
 
+	UFUNCTION()
+	void OnBeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp,
+	int OtherBodyIndex, bool FromSweep, const FHitResult& SweepResult);
+
+	UPROPERTY()
+	TArray<AAbstractItem*> PickUpItems;
+
 	// Basic move forward function
 	void MoveForward(float Scale);
 
@@ -203,6 +218,18 @@ public:
 	UFUNCTION(BlueprintCallable)
 	UCameraComponent* GetCameraComponent();
 
+	UFUNCTION()
+	void SetHealth();
+
+	UFUNCTION()
+	void SetArmor();
+
+	UFUNCTION()
+	void SetHealthArmor();
+
+	UFUNCTION()
+	void ActivateBuffs(const TScriptInterface<IHandler>& Handler);
+	
 	UFUNCTION(Server, Reliable)
 	void Server_Turn(float Rate);
 
@@ -258,6 +285,12 @@ public:
 	
 	UFUNCTION()
 	void GetDamage(int Damage);
+
+	UFUNCTION()
+	void AddHealth(float HealthPoints);
+
+	UFUNCTION()
+	void AddArmor(float ArmorPoints);
 
 	// Setting weapon into player's hands
 	UFUNCTION()
@@ -362,5 +395,11 @@ public:
 
 	UPROPERTY(BlueprintAssignable)
 	FAnimNotify_Jump AnimNotify_Jump;
-};
 
+	// Observer Logic
+	TArray<IEnemyObserver*> EnemyObservers;
+	
+	virtual void Attach(IEnemyObserver* EnemyInterface) override;
+	virtual void Detach(IEnemyObserver* EnemyInterface) override;
+	virtual void Notify() override;
+};

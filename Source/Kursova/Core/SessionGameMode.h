@@ -6,11 +6,14 @@
 #include "Kursova/KursovaGameModeBase.h"
 #include "Kursova/AI/AbstractFactory/GoblinCreator.h"
 #include "Kursova/AI/AbstractFactory/SkeletonCreator.h"
+#include "Kursova/AI/Strategy/EnemyCreationMode.h"
 #include "Kursova/DifficultyFactories/EasyModeFactory.h"
 #include "Kursova/DifficultyFactories/HardModeFactory.h"
 #include "Kursova/DifficultyFactories/MediumModeFactory.h"
 #include "Kursova/DifficultyFactories/ModeFactory.h"
+#include "Kursova/Items/ArmorItem.h"
 #include "Kursova/Items/CoolItem.h"
+#include "Kursova/Items/HealthItem.h"
 #include "Kursova/MapBuilder/MainMapBuilder.h"
 #include "SessionGameMode.generated.h"
 
@@ -47,8 +50,20 @@ protected:
 	UPROPERTY()
 	ACoolItem* CoolItem = nullptr;
 	
-	TArray<IEnemyInterface*> Enemies;
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category="Items")
+	TSubclassOf<AHealthItem> HealthItemClass;
 
+	UPROPERTY()
+	TArray<AHealthItem*> HealthItems;
+	
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category="Items")
+	TSubclassOf<AArmorItem> ArmorItemClass;
+
+	UPROPERTY()
+	TArray<AArmorItem*> ArmorItems;
+
+	TArray<IEnemyInterface*> Enemies;
+	
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category="AI")
 	int NumberOfBiters = 5;
 
@@ -66,7 +81,7 @@ protected:
 	
 	virtual void BeginPlay() override;
 	
-	void CreateEnemies(IIEnemyCreator* EnemyCreator);
+	void CreateEnemies(IIEnemyCreator* EnemyCreator, IEnemyCreationMode* CreationMode);
 
 	UPROPERTY()
 	FTimerHandle ScoreTimerHandle;
@@ -90,7 +105,7 @@ public:
 	UMainMapBuilder* MainMapBuilder;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
-	FVector2D GeneralUniversalDimensions = FVector2D(100.f, 100.f);
+	FVector2D GeneralUniversalDimensions = FVector2D(10.f, 10.f);
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category="Difficulty")
 	TSubclassOf<UEasyModeFactory> EasyModeFactoryClass;
@@ -100,4 +115,7 @@ public:
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category="Difficulty")
 	TSubclassOf<UHardModeFactory> HardModeFactoryClass;
+
+	UFUNCTION()
+	void UpdateEnemies();
 };
