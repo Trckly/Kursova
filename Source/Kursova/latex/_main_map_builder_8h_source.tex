@@ -1,0 +1,80 @@
+\doxysection{Main\+Map\+Builder.\+h}
+\hypertarget{_main_map_builder_8h_source}{}\label{_main_map_builder_8h_source}\index{MapBuilder/MainMapBuilder.h@{MapBuilder/MainMapBuilder.h}}
+\mbox{\hyperlink{_main_map_builder_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//\ Fill\ out\ your\ copyright\ notice\ in\ the\ Description\ page\ of\ Project\ Settings.}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}CoreMinimal.h"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_floor_8h}{BuilderProps/Floor.h}}"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_obstacle_8h}{BuilderProps/Obstacle.h}}"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_wall_8h}{BuilderProps/Wall.h}}"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_forest_8h}{Kursova/ForestFlyweight/Forest.h}}"{}}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_radio_8h}{Kursova/Singletones/Radio.h}}"{}}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}UObject/NoExportTypes.h"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}MainMapBuilder.generated.h"{}}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{_main_map_builder_8h_a3376cadff06df30d86f6ebc02cc69b7c}{EWallLineDirection}}}
+\DoxyCodeLine{00018\ \{}
+\DoxyCodeLine{00019\ \ \ \ \ \mbox{\hyperlink{_main_map_builder_8h_a3376cadff06df30d86f6ebc02cc69b7ca2434cd8c1a594a4cdaa250f86639c600}{Vertical}},}
+\DoxyCodeLine{00020\ \ \ \ \ \mbox{\hyperlink{_main_map_builder_8h_a3376cadff06df30d86f6ebc02cc69b7ca7d5f78c516bedc0a066182a6fd606b8b}{Horizontal}}}
+\DoxyCodeLine{00021\ \};}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ UCLASS(BlueprintType,\ Blueprintable)}
+\DoxyCodeLine{00024\ class\ KURSOVA\_API\ \mbox{\hyperlink{class_u_main_map_builder}{UMainMapBuilder}}\ :\ public\ UObject}
+\DoxyCodeLine{00025\ \{}
+\DoxyCodeLine{00026\ \ \ \ \ GENERATED\_BODY()}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00029\ \ \ \ \ \mbox{\hyperlink{class_u_main_map_builder}{UMainMapBuilder}}();}
+\DoxyCodeLine{00030\ \ \ \ \ }
+\DoxyCodeLine{00031\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00032\ \ \ \ \ }
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ TileLength\ =\ 400;}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ UPROPERTY()}
+\DoxyCodeLine{00036\ \ \ \ \ \mbox{\hyperlink{class_u_main_map_builder}{UMainMapBuilder}}*\ SelfInstance;}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \ \ UPROPERTY()}
+\DoxyCodeLine{00039\ \ \ \ \ \mbox{\hyperlink{class_a_radio}{ARadio}}*\ Radio;}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \ \ \ \ static\ \mbox{\hyperlink{class_u_forest}{UForest}}*\ Forest;}
+\DoxyCodeLine{00042\ \ \ \ \ }
+\DoxyCodeLine{00043\ public:}
+\DoxyCodeLine{00044\ \ \ \ \ }
+\DoxyCodeLine{00045\ \ \ \ \ UPROPERTY(EditDefaultsOnly,\ BlueprintReadWrite)}
+\DoxyCodeLine{00046\ \ \ \ \ TSubclassOf<\mbox{\hyperlink{class_a_floor}{AFloor}}>\ FloorClass;}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \ \ \ \ UPROPERTY(EditDefaultsOnly,\ BlueprintReadWrite)}
+\DoxyCodeLine{00049\ \ \ \ \ TSubclassOf<\mbox{\hyperlink{class_a_wall}{AWall}}>\ WallClass;}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \ \ \ \ UPROPERTY(EditDefaultsOnly,\ BlueprintReadWrite)}
+\DoxyCodeLine{00052\ \ \ \ \ TSubclassOf<\mbox{\hyperlink{class_a_obstacle}{AObstacle}}>\ ObstacleClass;}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \ \ \ \ UPROPERTY(EditDefaultsOnly,\ BlueprintReadWrite)}
+\DoxyCodeLine{00055\ \ \ \ \ TSubclassOf<\mbox{\hyperlink{class_a_radio}{ARadio}}>\ RadioClass;}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \ \ \ \ UPROPERTY(EditDefaultsOnly,\ BlueprintReadWrite)}
+\DoxyCodeLine{00058\ \ \ \ \ TSubclassOf<\mbox{\hyperlink{class_a_tree}{ATree}}>\ JungleTreeClass;}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \ \ \ \ UPROPERTY(EditDefaultsOnly,\ BlueprintReadWrite)}
+\DoxyCodeLine{00061\ \ \ \ \ TSubclassOf<\mbox{\hyperlink{class_a_tree}{ATree}}>\ SakuraTreeClass;}
+\DoxyCodeLine{00062\ \ \ \ \ }
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keywordtype}{void}\ BuildFloor(const\ FVector2D\&\ Dimensions);}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordtype}{void}\ BuildGeneralWalls(const\ FVector2D\&\ Dimensions);}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keywordtype}{void}\ BuildObstacles(const\ FVector2D\&\ Dimensions);}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keywordtype}{void}\ PlaceRadio(const\ FVector2D\&\ Dimensions);}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keywordtype}{void}\ CreateForest(const\ FVector2D\&\ Dimensions);}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ protected:}
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{keywordtype}{int}\ CalculateStartingPoint(\textcolor{keywordtype}{int}\ Dimension);}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00076\ \ \ \ \ FVector2D\ WallLine(const\ FVector2D\&\ StartingPoint,\ const\ \textcolor{keywordtype}{int}\ TileAmount,\ const\ \textcolor{keywordtype}{float}\ RotationDegrees);}
+\DoxyCodeLine{00077\ \};}
+
+\end{DoxyCode}

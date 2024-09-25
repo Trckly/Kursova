@@ -1,0 +1,146 @@
+\doxysection{AEnemy\+Controller Class Reference}
+\hypertarget{class_a_enemy_controller}{}\label{class_a_enemy_controller}\index{AEnemyController@{AEnemyController}}
+
+
+{\ttfamily \#include $<$Enemy\+Controller.\+h$>$}
+
+
+
+Inheritance diagram for AEnemy\+Controller\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=239pt]{class_a_enemy_controller__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for AEnemy\+Controller\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=239pt]{class_a_enemy_controller__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_a_enemy_controller_a77681bff405547a6ca88f5821791f3db}{AEnemy\+Controller}} ()
+\item 
+virtual void \mbox{\hyperlink{class_a_enemy_controller_ac0a494262d237b783a01cbafb8803100}{Begin\+Play}} () override
+\item 
+virtual void \mbox{\hyperlink{class_a_enemy_controller_a63d94bc541cdf6460dc6fb687416e3c4}{On\+Possess}} (APawn \texorpdfstring{$\ast$}{*}In\+Pawn) override
+\item 
+void \mbox{\hyperlink{class_a_enemy_controller_ad193756d872a6b50aef57a8ac04da9d5}{On\+Perception\+Update}} (const FActor\+Perception\+Update\+Info \&Update\+Info)
+\item 
+virtual FGeneric\+Team\+Id \mbox{\hyperlink{class_a_enemy_controller_abb3c63daa1f453f67665f3bd8f0e31ae}{Get\+Generic\+Team\+Id}} () const override
+\item 
+virtual ETeam\+Attitude\+::\+Type \mbox{\hyperlink{class_a_enemy_controller_ad2087906bd219470ef22898aca83d6bc}{Get\+Team\+Attitude\+Towards}} (const AActor \&Other) const override
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+UBehavior\+Tree\+Component \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_a_enemy_controller_a3c36598536b0ab35276ae19e997c334b}{Behavior\+Tree\+Component}}
+\item 
+UBlackboard\+Component \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_a_enemy_controller_ac4534c3ee02c1cb405e9aca63dc354a9}{Blackboard\+Component}}
+\item 
+UAIPerception\+Component \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_a_enemy_controller_af7d74b8a0377708a817d8a3957757b30}{Custom\+Perception\+Component}}
+\item 
+UAISense\+Config\+\_\+\+Sight \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_a_enemy_controller_a12e5262626f994d68236afc42ca1a906}{Sight}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_a_enemy_controller_a77681bff405547a6ca88f5821791f3db}\index{AEnemyController@{AEnemyController}!AEnemyController@{AEnemyController}}
+\index{AEnemyController@{AEnemyController}!AEnemyController@{AEnemyController}}
+\doxysubsubsection{\texorpdfstring{AEnemyController()}{AEnemyController()}}
+{\footnotesize\ttfamily \label{class_a_enemy_controller_a77681bff405547a6ca88f5821791f3db} 
+AEnemy\+Controller\+::\+AEnemy\+Controller (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_a_enemy_controller_ac0a494262d237b783a01cbafb8803100}\index{AEnemyController@{AEnemyController}!BeginPlay@{BeginPlay}}
+\index{BeginPlay@{BeginPlay}!AEnemyController@{AEnemyController}}
+\doxysubsubsection{\texorpdfstring{BeginPlay()}{BeginPlay()}}
+{\footnotesize\ttfamily \label{class_a_enemy_controller_ac0a494262d237b783a01cbafb8803100} 
+void AEnemy\+Controller\+::\+Begin\+Play (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_a_enemy_controller_ac0a494262d237b783a01cbafb8803100_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_a_enemy_controller_abb3c63daa1f453f67665f3bd8f0e31ae}\index{AEnemyController@{AEnemyController}!GetGenericTeamId@{GetGenericTeamId}}
+\index{GetGenericTeamId@{GetGenericTeamId}!AEnemyController@{AEnemyController}}
+\doxysubsubsection{\texorpdfstring{GetGenericTeamId()}{GetGenericTeamId()}}
+{\footnotesize\ttfamily \label{class_a_enemy_controller_abb3c63daa1f453f67665f3bd8f0e31ae} 
+virtual FGeneric\+Team\+Id AEnemy\+Controller\+::\+Get\+Generic\+Team\+Id (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+\Hypertarget{class_a_enemy_controller_ad2087906bd219470ef22898aca83d6bc}\index{AEnemyController@{AEnemyController}!GetTeamAttitudeTowards@{GetTeamAttitudeTowards}}
+\index{GetTeamAttitudeTowards@{GetTeamAttitudeTowards}!AEnemyController@{AEnemyController}}
+\doxysubsubsection{\texorpdfstring{GetTeamAttitudeTowards()}{GetTeamAttitudeTowards()}}
+{\footnotesize\ttfamily \label{class_a_enemy_controller_ad2087906bd219470ef22898aca83d6bc} 
+ETeam\+Attitude\+::\+Type AEnemy\+Controller\+::\+Get\+Team\+Attitude\+Towards (\begin{DoxyParamCaption}\item[{const AActor \&}]{Other}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+\Hypertarget{class_a_enemy_controller_ad193756d872a6b50aef57a8ac04da9d5}\index{AEnemyController@{AEnemyController}!OnPerceptionUpdate@{OnPerceptionUpdate}}
+\index{OnPerceptionUpdate@{OnPerceptionUpdate}!AEnemyController@{AEnemyController}}
+\doxysubsubsection{\texorpdfstring{OnPerceptionUpdate()}{OnPerceptionUpdate()}}
+{\footnotesize\ttfamily \label{class_a_enemy_controller_ad193756d872a6b50aef57a8ac04da9d5} 
+void AEnemy\+Controller\+::\+On\+Perception\+Update (\begin{DoxyParamCaption}\item[{const FActor\+Perception\+Update\+Info \&}]{Update\+Info}{}\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_a_enemy_controller_ad193756d872a6b50aef57a8ac04da9d5_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_a_enemy_controller_a63d94bc541cdf6460dc6fb687416e3c4}\index{AEnemyController@{AEnemyController}!OnPossess@{OnPossess}}
+\index{OnPossess@{OnPossess}!AEnemyController@{AEnemyController}}
+\doxysubsubsection{\texorpdfstring{OnPossess()}{OnPossess()}}
+{\footnotesize\ttfamily \label{class_a_enemy_controller_a63d94bc541cdf6460dc6fb687416e3c4} 
+void AEnemy\+Controller\+::\+On\+Possess (\begin{DoxyParamCaption}\item[{APawn \texorpdfstring{$\ast$}{*}}]{In\+Pawn}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_a_enemy_controller_a63d94bc541cdf6460dc6fb687416e3c4_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_a_enemy_controller_a3c36598536b0ab35276ae19e997c334b}\index{AEnemyController@{AEnemyController}!BehaviorTreeComponent@{BehaviorTreeComponent}}
+\index{BehaviorTreeComponent@{BehaviorTreeComponent}!AEnemyController@{AEnemyController}}
+\doxysubsubsection{\texorpdfstring{BehaviorTreeComponent}{BehaviorTreeComponent}}
+{\footnotesize\ttfamily \label{class_a_enemy_controller_a3c36598536b0ab35276ae19e997c334b} 
+UBehavior\+Tree\+Component\texorpdfstring{$\ast$}{*} AEnemy\+Controller\+::\+Behavior\+Tree\+Component\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{class_a_enemy_controller_ac4534c3ee02c1cb405e9aca63dc354a9}\index{AEnemyController@{AEnemyController}!BlackboardComponent@{BlackboardComponent}}
+\index{BlackboardComponent@{BlackboardComponent}!AEnemyController@{AEnemyController}}
+\doxysubsubsection{\texorpdfstring{BlackboardComponent}{BlackboardComponent}}
+{\footnotesize\ttfamily \label{class_a_enemy_controller_ac4534c3ee02c1cb405e9aca63dc354a9} 
+UBlackboard\+Component\texorpdfstring{$\ast$}{*} AEnemy\+Controller\+::\+Blackboard\+Component\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{class_a_enemy_controller_af7d74b8a0377708a817d8a3957757b30}\index{AEnemyController@{AEnemyController}!CustomPerceptionComponent@{CustomPerceptionComponent}}
+\index{CustomPerceptionComponent@{CustomPerceptionComponent}!AEnemyController@{AEnemyController}}
+\doxysubsubsection{\texorpdfstring{CustomPerceptionComponent}{CustomPerceptionComponent}}
+{\footnotesize\ttfamily \label{class_a_enemy_controller_af7d74b8a0377708a817d8a3957757b30} 
+UAIPerception\+Component\texorpdfstring{$\ast$}{*} AEnemy\+Controller\+::\+Custom\+Perception\+Component\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{class_a_enemy_controller_a12e5262626f994d68236afc42ca1a906}\index{AEnemyController@{AEnemyController}!Sight@{Sight}}
+\index{Sight@{Sight}!AEnemyController@{AEnemyController}}
+\doxysubsubsection{\texorpdfstring{Sight}{Sight}}
+{\footnotesize\ttfamily \label{class_a_enemy_controller_a12e5262626f994d68236afc42ca1a906} 
+UAISense\+Config\+\_\+\+Sight\texorpdfstring{$\ast$}{*} AEnemy\+Controller\+::\+Sight\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+AI/\mbox{\hyperlink{_enemy_controller_8h}{Enemy\+Controller.\+h}}\item 
+AI/\mbox{\hyperlink{_enemy_controller_8cpp}{Enemy\+Controller.\+cpp}}\end{DoxyCompactItemize}

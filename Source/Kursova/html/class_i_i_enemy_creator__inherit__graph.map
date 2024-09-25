@@ -1,0 +1,7 @@
+<map id="IIEnemyCreator" name="IIEnemyCreator">
+<area shape="rect" id="Node000001" title=" " alt="" coords="171,5,379,248"/>
+<area shape="rect" id="Node000002" href="$class_u_goblin_creator.html" title=" " alt="" coords="5,296,259,768"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="230,263,218,297,213,295,225,261"/>
+<area shape="rect" id="Node000003" href="$class_u_skeleton_creator.html" title=" " alt="" coords="283,296,551,768"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="325,261,337,295,332,297,320,263"/>
+</map>

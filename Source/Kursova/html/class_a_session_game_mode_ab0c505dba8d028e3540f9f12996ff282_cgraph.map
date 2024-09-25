@@ -1,0 +1,10 @@
+<map id="ASessionGameMode::HandleHardPointCapture" name="ASessionGameMode::HandleHardPointCapture">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,55,198,96"/>
+<area shape="rect" id="Node000002" href="$class_a_cool_item.html#a2f1ef2574a4adfe30c5c436de19cc29e" title=" " alt="" coords="256,5,426,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="189,52,268,33,270,38,190,57"/>
+<area shape="rect" id="Node000003" href="$class_a_session_game_mode.html#a8b98aa04b48aeb28a7d6ef2f4841c75e" title=" " alt="" coords="246,55,436,96"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="198,82,230,82,230,87,198,87"/>
+<area shape="poly" id="edge4_Node000003_Node000001" title=" " alt="" coords="245,69,213,69,213,64,245,64"/>
+<area shape="rect" id="Node000004" href="$class_a_cool_item.html#a76b16f6230f90bc66b30e0b45db7f27b" title=" " alt="" coords="484,63,645,88"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="437,73,468,73,468,78,437,78"/>
+</map>

@@ -1,0 +1,25 @@
+var class_u_player_panel_widget =
+[
+    [ "GetAbilityToFire", "class_u_player_panel_widget.html#a0ffda561b98ebe9f608a516e92d48ec7", null ],
+    [ "GetAbilityToJump", "class_u_player_panel_widget.html#aee3adca1c7081fec6da5cbcffe5933d0", null ],
+    [ "GetAbilityToMove", "class_u_player_panel_widget.html#acda5f9d03a6289aaeb9dcc37120f612d", null ],
+    [ "GetCity", "class_u_player_panel_widget.html#ac77d20725be30ed37a86539de1af1027", null ],
+    [ "GetIndex", "class_u_player_panel_widget.html#a47e908f5fb3892430d9ef65b102c5a28", null ],
+    [ "GetName", "class_u_player_panel_widget.html#a4e71819865593b28cdb0e3e51cd10d9c", null ],
+    [ "NativeConstruct", "class_u_player_panel_widget.html#ac9307e4345c0624673b05fcf75cc332e", null ],
+    [ "ResetBackgroundColor", "class_u_player_panel_widget.html#a7acf82adc1fd40e772a5794ab5e7efa7", null ],
+    [ "SetActive", "class_u_player_panel_widget.html#aa561e7ff08a404865366a48abf25bd56", null ],
+    [ "SetBackgroundColor", "class_u_player_panel_widget.html#a185f11831d0220689344ee80cbfe4b39", null ],
+    [ "SetBehavior", "class_u_player_panel_widget.html#ae0b35b4e0430fff019bde68c8eba9e7c", null ],
+    [ "SetGodMode", "class_u_player_panel_widget.html#a7f6f1bc9b4da51c90e87f766126a4837", null ],
+    [ "SetWidget", "class_u_player_panel_widget.html#a26f1e40225320b87e8f2ab9f61bf53b3", null ],
+    [ "BSetActive", "class_u_player_panel_widget.html#aae6053d5d718a6be3cb79ea253834c84", null ],
+    [ "CIsInGodMode", "class_u_player_panel_widget.html#ad43c6bfccf6e2390dff1171281bf5c6d", null ],
+    [ "Player", "class_u_player_panel_widget.html#af1f89834c5963303b861871d79de288a", null ],
+    [ "PlayerIndex", "class_u_player_panel_widget.html#adc50f32dbc86fedeacfede931f3a3725", null ],
+    [ "SetWidgetActive", "class_u_player_panel_widget.html#a314b7e2d285e31b12eb2dacc46076589", null ],
+    [ "StandardBackgroundColor", "class_u_player_panel_widget.html#a1bc6f422f55854cbac060f20de0e070c", null ],
+    [ "TCity", "class_u_player_panel_widget.html#a498e9a2ae241a4e1f3a684127ecf5ef0", null ],
+    [ "THitPoints", "class_u_player_panel_widget.html#a1bfaae8a1bb541a5f64f58c5e8221678", null ],
+    [ "TName", "class_u_player_panel_widget.html#a91896d758b80d5c10528b0b445e1f2d6", null ]
+];

@@ -1,0 +1,148 @@
+\doxysection{USkeleton\+Creator Class Reference}
+\hypertarget{class_u_skeleton_creator}{}\label{class_u_skeleton_creator}\index{USkeletonCreator@{USkeletonCreator}}
+
+
+{\ttfamily \#include $<$Skeleton\+Creator.\+h$>$}
+
+
+
+Inheritance diagram for USkeleton\+Creator\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{class_u_skeleton_creator__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for USkeleton\+Creator\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{class_u_skeleton_creator__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{class_i_enemy_interface}{IEnemy\+Interface}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_u_skeleton_creator_af4d1edf5e309a9a834c01bc5ac65b3d7}{Create\+Enemies}} (\mbox{\hyperlink{_i_enemy_creator_8h_a0cbe862093c47a8a862973edd433613e}{EEnemy\+Type}} Enemy\+Type) override
+\item 
+virtual \mbox{\hyperlink{class_i_enemy_interface}{IEnemy\+Interface}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_u_skeleton_creator_a324d7f5f4b7cfb0ce0f97929597bdce5}{Create\+Biting\+Enemies}} (FVector2D Map\+Size\+Red) override
+\item 
+virtual \mbox{\hyperlink{class_i_enemy_interface}{IEnemy\+Interface}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_u_skeleton_creator_a414896ef739814758a801428f210115a}{Create\+Shooting\+Enemies}} (FVector2D Map\+Size\+Red) override
+\item 
+virtual \mbox{\hyperlink{class_i_enemy_interface}{IEnemy\+Interface}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_u_skeleton_creator_a3d1a0265acff5a4d88ca09e5b1334b57}{Create\+Exploding\+Enemies}} (FVector2D Map\+Size\+Red) override
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_u_skeleton_creator}{USkeleton\+Creator}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_u_skeleton_creator_a1dd33f0d16ae8bdf8582a0fa8dc718c4}{Create}} (\mbox{\hyperlink{class_a_session_game_mode}{ASession\+Game\+Mode}} \texorpdfstring{$\ast$}{*}Owner, TSubclass\+Of$<$ \mbox{\hyperlink{class_u_skeleton_creator}{USkeleton\+Creator}} $>$const \&Goblin\+Creator\+Class, const FVector2D \&Map)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+TSubclass\+Of$<$ \mbox{\hyperlink{class_a_a_i_biting_enemy}{AAIBiting\+Enemy}} $>$ \mbox{\hyperlink{class_u_skeleton_creator_a524d9fee59f85572c7301c0e0c0d750a}{Biting\+Skeleton}}
+\item 
+TSubclass\+Of$<$ \mbox{\hyperlink{class_a_a_i_biting_enemy}{AAIBiting\+Enemy}} $>$ \mbox{\hyperlink{class_u_skeleton_creator_aaaeb7627d0e8b2e08c6744789df3a539}{Shooting\+Skeleton}}
+\item 
+TSubclass\+Of$<$ \mbox{\hyperlink{class_a_a_i_exploding_enemy}{AAIExploding\+Enemy}} $>$ \mbox{\hyperlink{class_u_skeleton_creator_a7bcb431b6d1c076303f8df3dad54b1e1}{Exploding\+Skeleton}}
+\item 
+TMap$<$ \mbox{\hyperlink{_i_enemy_creator_8h_a0cbe862093c47a8a862973edd433613e}{EEnemy\+Type}}, TScript\+Interface$<$ \mbox{\hyperlink{class_i_enemy_interface}{IEnemy\+Interface}} $>$ $>$ \mbox{\hyperlink{class_u_skeleton_creator_a363f1d4bf8cc566b8d63e58a2278f5f0}{Enemy\+Prototypes}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_u_skeleton_creator_a1dd33f0d16ae8bdf8582a0fa8dc718c4}\index{USkeletonCreator@{USkeletonCreator}!Create@{Create}}
+\index{Create@{Create}!USkeletonCreator@{USkeletonCreator}}
+\doxysubsubsection{\texorpdfstring{Create()}{Create()}}
+{\footnotesize\ttfamily \label{class_u_skeleton_creator_a1dd33f0d16ae8bdf8582a0fa8dc718c4} 
+\mbox{\hyperlink{class_u_skeleton_creator}{USkeleton\+Creator}} \texorpdfstring{$\ast$}{*} USkeleton\+Creator\+::\+Create (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_a_session_game_mode}{ASession\+Game\+Mode}} \texorpdfstring{$\ast$}{*}}]{Owner}{, }\item[{TSubclass\+Of$<$ \mbox{\hyperlink{class_u_skeleton_creator}{USkeleton\+Creator}} $>$const \&}]{Goblin\+Creator\+Class}{, }\item[{const FVector2D \&}]{Map}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_u_skeleton_creator_a1dd33f0d16ae8bdf8582a0fa8dc718c4_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_u_skeleton_creator_a324d7f5f4b7cfb0ce0f97929597bdce5}\index{USkeletonCreator@{USkeletonCreator}!CreateBitingEnemies@{CreateBitingEnemies}}
+\index{CreateBitingEnemies@{CreateBitingEnemies}!USkeletonCreator@{USkeletonCreator}}
+\doxysubsubsection{\texorpdfstring{CreateBitingEnemies()}{CreateBitingEnemies()}}
+{\footnotesize\ttfamily \label{class_u_skeleton_creator_a324d7f5f4b7cfb0ce0f97929597bdce5} 
+\mbox{\hyperlink{class_i_enemy_interface}{IEnemy\+Interface}} \texorpdfstring{$\ast$}{*} USkeleton\+Creator\+::\+Create\+Biting\+Enemies (\begin{DoxyParamCaption}\item[{FVector2D}]{Map\+Size\+Red}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_i_i_enemy_creator_a3abf391f5f38a5ac496f8e6c5afc474b}{IIEnemy\+Creator}}.
+
+\Hypertarget{class_u_skeleton_creator_af4d1edf5e309a9a834c01bc5ac65b3d7}\index{USkeletonCreator@{USkeletonCreator}!CreateEnemies@{CreateEnemies}}
+\index{CreateEnemies@{CreateEnemies}!USkeletonCreator@{USkeletonCreator}}
+\doxysubsubsection{\texorpdfstring{CreateEnemies()}{CreateEnemies()}}
+{\footnotesize\ttfamily \label{class_u_skeleton_creator_af4d1edf5e309a9a834c01bc5ac65b3d7} 
+\mbox{\hyperlink{class_i_enemy_interface}{IEnemy\+Interface}} \texorpdfstring{$\ast$}{*} USkeleton\+Creator\+::\+Create\+Enemies (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_i_enemy_creator_8h_a0cbe862093c47a8a862973edd433613e}{EEnemy\+Type}}}]{Enemy\+Type}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_i_i_enemy_creator_ab20e4d5ae67c4ca9e2ff5180cb8cbc71}{IIEnemy\+Creator}}.
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_u_skeleton_creator_af4d1edf5e309a9a834c01bc5ac65b3d7_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_u_skeleton_creator_a3d1a0265acff5a4d88ca09e5b1334b57}\index{USkeletonCreator@{USkeletonCreator}!CreateExplodingEnemies@{CreateExplodingEnemies}}
+\index{CreateExplodingEnemies@{CreateExplodingEnemies}!USkeletonCreator@{USkeletonCreator}}
+\doxysubsubsection{\texorpdfstring{CreateExplodingEnemies()}{CreateExplodingEnemies()}}
+{\footnotesize\ttfamily \label{class_u_skeleton_creator_a3d1a0265acff5a4d88ca09e5b1334b57} 
+\mbox{\hyperlink{class_i_enemy_interface}{IEnemy\+Interface}} \texorpdfstring{$\ast$}{*} USkeleton\+Creator\+::\+Create\+Exploding\+Enemies (\begin{DoxyParamCaption}\item[{FVector2D}]{Map\+Size\+Red}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_i_i_enemy_creator_ab2022bdef7db5eb4f156861d88736c5f}{IIEnemy\+Creator}}.
+
+\Hypertarget{class_u_skeleton_creator_a414896ef739814758a801428f210115a}\index{USkeletonCreator@{USkeletonCreator}!CreateShootingEnemies@{CreateShootingEnemies}}
+\index{CreateShootingEnemies@{CreateShootingEnemies}!USkeletonCreator@{USkeletonCreator}}
+\doxysubsubsection{\texorpdfstring{CreateShootingEnemies()}{CreateShootingEnemies()}}
+{\footnotesize\ttfamily \label{class_u_skeleton_creator_a414896ef739814758a801428f210115a} 
+\mbox{\hyperlink{class_i_enemy_interface}{IEnemy\+Interface}} \texorpdfstring{$\ast$}{*} USkeleton\+Creator\+::\+Create\+Shooting\+Enemies (\begin{DoxyParamCaption}\item[{FVector2D}]{Map\+Size\+Red}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_i_i_enemy_creator_a02be6f7e87114776baaef36b180a4060}{IIEnemy\+Creator}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_u_skeleton_creator_a524d9fee59f85572c7301c0e0c0d750a}\index{USkeletonCreator@{USkeletonCreator}!BitingSkeleton@{BitingSkeleton}}
+\index{BitingSkeleton@{BitingSkeleton}!USkeletonCreator@{USkeletonCreator}}
+\doxysubsubsection{\texorpdfstring{BitingSkeleton}{BitingSkeleton}}
+{\footnotesize\ttfamily \label{class_u_skeleton_creator_a524d9fee59f85572c7301c0e0c0d750a} 
+TSubclass\+Of$<$\mbox{\hyperlink{class_a_a_i_biting_enemy}{AAIBiting\+Enemy}}$>$ USkeleton\+Creator\+::\+Biting\+Skeleton}
+
+\Hypertarget{class_u_skeleton_creator_a363f1d4bf8cc566b8d63e58a2278f5f0}\index{USkeletonCreator@{USkeletonCreator}!EnemyPrototypes@{EnemyPrototypes}}
+\index{EnemyPrototypes@{EnemyPrototypes}!USkeletonCreator@{USkeletonCreator}}
+\doxysubsubsection{\texorpdfstring{EnemyPrototypes}{EnemyPrototypes}}
+{\footnotesize\ttfamily \label{class_u_skeleton_creator_a363f1d4bf8cc566b8d63e58a2278f5f0} 
+TMap$<$\mbox{\hyperlink{_i_enemy_creator_8h_a0cbe862093c47a8a862973edd433613e}{EEnemy\+Type}}, TScript\+Interface$<$\mbox{\hyperlink{class_i_enemy_interface}{IEnemy\+Interface}}$>$ $>$ USkeleton\+Creator\+::\+Enemy\+Prototypes}
+
+\Hypertarget{class_u_skeleton_creator_a7bcb431b6d1c076303f8df3dad54b1e1}\index{USkeletonCreator@{USkeletonCreator}!ExplodingSkeleton@{ExplodingSkeleton}}
+\index{ExplodingSkeleton@{ExplodingSkeleton}!USkeletonCreator@{USkeletonCreator}}
+\doxysubsubsection{\texorpdfstring{ExplodingSkeleton}{ExplodingSkeleton}}
+{\footnotesize\ttfamily \label{class_u_skeleton_creator_a7bcb431b6d1c076303f8df3dad54b1e1} 
+TSubclass\+Of$<$\mbox{\hyperlink{class_a_a_i_exploding_enemy}{AAIExploding\+Enemy}}$>$ USkeleton\+Creator\+::\+Exploding\+Skeleton}
+
+\Hypertarget{class_u_skeleton_creator_aaaeb7627d0e8b2e08c6744789df3a539}\index{USkeletonCreator@{USkeletonCreator}!ShootingSkeleton@{ShootingSkeleton}}
+\index{ShootingSkeleton@{ShootingSkeleton}!USkeletonCreator@{USkeletonCreator}}
+\doxysubsubsection{\texorpdfstring{ShootingSkeleton}{ShootingSkeleton}}
+{\footnotesize\ttfamily \label{class_u_skeleton_creator_aaaeb7627d0e8b2e08c6744789df3a539} 
+TSubclass\+Of$<$\mbox{\hyperlink{class_a_a_i_biting_enemy}{AAIBiting\+Enemy}}$>$ USkeleton\+Creator\+::\+Shooting\+Skeleton}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+AI/\+Abstract\+Factory/\mbox{\hyperlink{_skeleton_creator_8h}{Skeleton\+Creator.\+h}}\item 
+AI/\+Abstract\+Factory/\mbox{\hyperlink{_skeleton_creator_8cpp}{Skeleton\+Creator.\+cpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,11 @@
+<map id="ICubeInterface" name="ICubeInterface">
+<area shape="rect" id="Node000001" title=" " alt="" coords="124,5,336,125"/>
+<area shape="rect" id="Node000002" href="$class_a_cube.html" title=" " alt="" coords="5,173,217,627"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="207,140,194,175,189,173,201,139"/>
+<area shape="rect" id="Node000003" href="$class_a_cube_base_decorator.html" title=" " alt="" coords="242,241,458,559"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="259,139,295,240,290,242,254,140"/>
+<area shape="rect" id="Node000004" href="$class_a_blue_cube_decorator.html" title=" " alt="" coords="90,675,338,939"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="294,575,260,676,255,674,289,573"/>
+<area shape="rect" id="Node000005" href="$class_a_green_cube_decorator.html" title=" " alt="" coords="362,675,610,939"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="411,573,445,674,440,676,406,575"/>
+</map>

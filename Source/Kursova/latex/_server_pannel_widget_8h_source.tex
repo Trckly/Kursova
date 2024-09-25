@@ -1,0 +1,59 @@
+\doxysection{Server\+Pannel\+Widget.\+h}
+\hypertarget{_server_pannel_widget_8h_source}{}\label{_server_pannel_widget_8h_source}\index{ServerLogic/UI/ServerPannelWidget.h@{ServerLogic/UI/ServerPannelWidget.h}}
+\mbox{\hyperlink{_server_pannel_widget_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//\ Fill\ out\ your\ copyright\ notice\ in\ the\ Description\ page\ of\ Project\ Settings.}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}CoreMinimal.h"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}Blueprint/UserWidget.h"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}Components/Button.h"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}Components/TextBlock.h"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}FindSessionsCallbackProxy.h"{}}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_password_widget_8h}{PasswordWidget.h}}"{}}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}ServerPannelWidget.generated.h"{}}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \mbox{\hyperlink{_server_pannel_widget_8h_adf697baeb8a7f5e8506e39ca8319bcea}{DECLARE\_DYNAMIC\_DELEGATE\_TwoParams}}(FOnSessionJoin,\ FBlueprintSessionResult,\ SessionResult,\ \textcolor{keyword}{const}\ FString\&,\ Password);}
+\DoxyCodeLine{00017\ UCLASS()}
+\DoxyCodeLine{00018\ class\ KURSOVA\_API\ \mbox{\hyperlink{class_u_server_pannel_widget}{UServerPannelWidget}}\ :\ public\ UUserWidget}
+\DoxyCodeLine{00019\ \{}
+\DoxyCodeLine{00020\ \ \ \ \ GENERATED\_BODY()}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ NativeConstruct()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00025\ \ \ \ \ }
+\DoxyCodeLine{00026\ \ \ \ \ UPROPERTY(BlueprintReadOnly,\ meta=(BindWidget))}
+\DoxyCodeLine{00027\ \ \ \ \ UTextBlock*\ W\_ServerName;}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \ \ UPROPERTY(BlueprintReadOnly,\ meta=(BindWidget))}
+\DoxyCodeLine{00030\ \ \ \ \ UTextBlock*\ W\_Privacy;}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \ \ UPROPERTY(BlueprintReadWrite,\ meta=(BindWidget))}
+\DoxyCodeLine{00033\ \ \ \ \ UButton*\ W\_SelectServer;}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ UPROPERTY()}
+\DoxyCodeLine{00036\ \ \ \ \ FBlueprintSessionResult\ SessionResult;}
+\DoxyCodeLine{00037\ \ \ \ \ }
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{bool}\ IsPrivateServer;}
+\DoxyCodeLine{00039\ \ \ \ \ }
+\DoxyCodeLine{00040\ \ \ \ \ FOnSessionJoin\ OnSessionJoin;}
+\DoxyCodeLine{00041\ \ \ \ \ }
+\DoxyCodeLine{00042\ \ \ \ \ UPROPERTY(EditAnywhere,\ BlueprintReadWrite)}
+\DoxyCodeLine{00043\ \ \ \ \ TSubclassOf<\mbox{\hyperlink{class_u_password_widget}{UPasswordWidget}}>\ PasswordWidgetClass;}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \ \ \ \ UPROPERTY(EditAnywhere)}
+\DoxyCodeLine{00046\ \ \ \ \ \mbox{\hyperlink{class_u_password_widget}{UPasswordWidget}}*\ PasswordWidget;}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \ \ \ \ UFUNCTION()}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordtype}{void}\ Set(const\ FString\&\ ServerName,\ \textcolor{keywordtype}{bool}\ IsPrivate,\ const\ FBlueprintSessionResult\&\ BPSessionResult);}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \ \ \ \ UFUNCTION()}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordtype}{void}\ SendPassword(const\ FString\&\ Password);}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \ \ \ \ UFUNCTION()}
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordtype}{void}\ SelectServer();}
+\DoxyCodeLine{00056\ \};}
+
+\end{DoxyCode}

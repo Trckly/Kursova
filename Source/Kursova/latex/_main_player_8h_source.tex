@@ -1,0 +1,386 @@
+\doxysection{Main\+Player.\+h}
+\hypertarget{_main_player_8h_source}{}\label{_main_player_8h_source}\index{Public/MainPlayer.h@{Public/MainPlayer.h}}
+\mbox{\hyperlink{_main_player_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//\ Fill\ out\ your\ copyright\ notice\ in\ the\ Description\ page\ of\ Project\ Settings.}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}CoreMinimal.h"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_a_weapon_class_8h}{AWeaponClass.h}}"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}Camera/CameraComponent.h"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}GameFramework/Character.h"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_session_subsystem_8h}{../ServerLogic/SessionSubsystem.h}}"{}}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}GenericTeamAgentInterface.h"{}}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_command_widget_8h}{Kursova/Command/Widgets/CommandWidget.h}}"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_weapon_menu_widget_8h}{Kursova/UMG/WeaponMenuWidget.h}}"{}}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_mode_factory_8h}{Kursova/DifficultyFactories/ModeFactory.h}}"{}}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_player_notifier_8h}{Kursova/EnemyObserver/PlayerNotifier.h}}"{}}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_cube_8h}{Kursova/ObjectDecorator/Cube.h}}"{}}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_cube_base_decorator_8h}{Kursova/ObjectDecorator/CubeBaseDecorator.h}}"{}}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}MainPlayer.generated.h"{}}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_i_handler}{IHandler}};}
+\DoxyCodeLine{00020\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_a_abstract_item}{AAbstractItem}};}
+\DoxyCodeLine{00021\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_u_player_h_u_d}{UPlayerHUD}};}
+\DoxyCodeLine{00022\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_u_main_menu_widget}{UMainMenuWidget}};}
+\DoxyCodeLine{00023\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_u_server_widget}{UServerWidget}};}
+\DoxyCodeLine{00024\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_a_main_player}{AMainPlayer}};}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \mbox{\hyperlink{_main_player_8h_ae6c911a7e3fe633cc30086157278f42e}{DECLARE\_DYNAMIC\_MULTICAST\_DELEGATE}}(FAnimNotify\_Jump);}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \mbox{\hyperlink{_main_player_8h_ab670222281c6ca1bf47e6aad56288537}{DECLARE\_DYNAMIC\_MULTICAST\_DELEGATE\_TwoParams}}(FOnCharacterJoinSession,\ FBlueprintSessionResult,\ SessionResult,\ \textcolor{keyword}{const}\ FString\&,\ Password);}
+\DoxyCodeLine{00029\ \mbox{\hyperlink{_main_player_8h_a414f6b6a05341ecc2eccd4ccc07d2f53}{DECLARE\_DYNAMIC\_DELEGATE\_OneParam}}(FSetStats,\ \mbox{\hyperlink{class_a_main_player}{AMainPlayer}}*,\ Self);}
+\DoxyCodeLine{00030\ \mbox{\hyperlink{_main_player_8h_a15fc0e3aed015dec0609f3c66e2a8483}{DECLARE\_DYNAMIC\_DELEGATE\_RetVal\_OneParam}}(TScriptInterface<IModeFactory>,\ FDifficultyModeSet,\ \textcolor{keyword}{const}\ FString\&,\ Difficulty);}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ USTRUCT()}
+\DoxyCodeLine{00033\ struct\ \mbox{\hyperlink{struct_f_behavior_set}{FBehaviorSet}}}
+\DoxyCodeLine{00034\ \{}
+\DoxyCodeLine{00035\ \ \ \ \ GENERATED\_BODY()}
+\DoxyCodeLine{00036\ \ \ \ \ }
+\DoxyCodeLine{00037\ \ \ \ \ bool\ CanMove;}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{bool}\ CanJump;}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordtype}{bool}\ CanShoot;}
+\DoxyCodeLine{00040\ \};}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00046\ UCLASS()}
+\DoxyCodeLine{00047\ class\ KURSOVA\_API\ \mbox{\hyperlink{class_a_main_player}{AMainPlayer}}\ :\ public\ ACharacter,\ public\ IGenericTeamAgentInterface,\ public\ \mbox{\hyperlink{class_i_player_notifier}{IPlayerNotifier}}}
+\DoxyCodeLine{00048\ \{}
+\DoxyCodeLine{00049\ \ \ \ \ GENERATED\_BODY()}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \ \ \ \ FGenericTeamId\ TeamId;}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{comment}{//\ Sets\ default\ values\ for\ this\ character's\ properties}}
+\DoxyCodeLine{00055\ \ \ \ \ \mbox{\hyperlink{class_a_main_player_a0fa2997b1a468a905bdcf847281d286c}{AMainPlayer}}();}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{comment}{//\ Player's\ camera\ component}}
+\DoxyCodeLine{00058\ \ \ \ \ UPROPERTY(EditDefaultsOnly,\ BlueprintReadWrite)}
+\DoxyCodeLine{00059\ \ \ \ \ UCameraComponent*\ \mbox{\hyperlink{class_a_main_player_ac4c10311fe4e1771fe53520973ee5693}{CameraComponent}};}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{comment}{//\ Defines\ how\ far\ can\ player\ reach\ to\ interact\ with\ objects}}
+\DoxyCodeLine{00062\ \ \ \ \ UPROPERTY(EditDefaultsOnly,\ BlueprintReadWrite)}
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_a_main_player_a1b52f27272b9f0fe9f001d3edf7c0cba}{InteractDistance}}\ =\ 200.f;}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{comment}{//\ Defines\ whether\ game\ can\ be\ continued\ or\ not}}
+\DoxyCodeLine{00066\ \ \ \ \ UPROPERTY(BlueprintReadOnly)}
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_a_main_player_a2bd78568d7f5db6c569fbf1e70b687b9}{bContinuable}}\ =\ false;}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{comment}{//\ Positions\ of\ player\ before\ teleportation}}
+\DoxyCodeLine{00070\ \ \ \ \ FVector\ \mbox{\hyperlink{class_a_main_player_a1b4301102a37806219f1ada4d79a17ca}{PreviousActorLocation}};}
+\DoxyCodeLine{00071\ \ \ \ \ FRotator\ \mbox{\hyperlink{class_a_main_player_ab3c0b13ce4163c8e520008791e6eea48}{PreviousActorRotation}};}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{comment}{//\ Positions\ to\ teleport\ player\ in\ order\ to\ use\ menu}}
+\DoxyCodeLine{00074\ \ \ \ \ FVector\ \mbox{\hyperlink{class_a_main_player_a762c08c3f1487482a19c2d3f8d765566}{WeaponChooseLocation}}\ =\ FVector(200.f,\ -\/810.f,\ 152.f);}
+\DoxyCodeLine{00075\ \ \ \ \ FRotator\ \mbox{\hyperlink{class_a_main_player_ae653cfb95c0487fac7871e62a6f812cb}{WeaponChooseRotation}}\ =\ FRotator(0.f,\ -\/90.f,\ 0.f);}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{comment}{//\ Defines\ whether\ to\ show\ crosshair\ or\ not}}
+\DoxyCodeLine{00078\ \ \ \ \ UPROPERTY(BlueprintReadOnly)}
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_a_main_player_ad0c4581c985371bff8d4f7b686029f9c}{bShowCrosshair}}\ =\ true;}
+\DoxyCodeLine{00080\ \ \ \ \ }
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{comment}{//\ Pointer\ to\ all\ weapon\ instances\ picked\ by\ player}}
+\DoxyCodeLine{00082\ \ \ \ \ UPROPERTY(BlueprintReadOnly,\ Replicated)}
+\DoxyCodeLine{00083\ \ \ \ \ TArray<\mbox{\hyperlink{class_a_weapon_class}{AWeaponClass}}*>\ \mbox{\hyperlink{class_a_main_player_a4bb06be4354fad844c6243e42df247e8}{PickedWeapons}};}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00085\ \ \ \ \ UPROPERTY(Replicated)}
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_a_main_player_a07378f30b28cd6747b718bd4893f4ed4}{TurnRate}};}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00088\ \ \ \ \ UPROPERTY(Replicated)}
+\DoxyCodeLine{00089\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_a_main_player_a76b1e2e99dc3d96f8a47626f7ae7e3a7}{LookUpRate}};}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00091\ \ \ \ \ UPROPERTY(EditDefaultsOnly)}
+\DoxyCodeLine{00092\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_a_main_player_a17a924f76be9666a08b632ad65f40956}{MouseSensivity}};}
+\DoxyCodeLine{00093\ \ \ \ \ }
+\DoxyCodeLine{00097\ \ \ \ \ UPROPERTY(EditDefaultsOnly,\ BlueprintReadWrite)}
+\DoxyCodeLine{00098\ \ \ \ \ TSubclassOf<\mbox{\hyperlink{class_a_weapon_class}{AWeaponClass}}>\ \mbox{\hyperlink{class_a_main_player_aab0469d491ab20b3ea09a044d1e0635a}{AwmClass}};}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00100\ \ \ \ \ UPROPERTY(EditDefaultsOnly,\ BlueprintReadWrite)}
+\DoxyCodeLine{00101\ \ \ \ \ TSubclassOf<\mbox{\hyperlink{class_a_weapon_class}{AWeaponClass}}>\ \mbox{\hyperlink{class_a_main_player_a5f774ae26e1f66370e16560a0451c798}{M16A4Class}};}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00103\ \ \ \ \ UPROPERTY(EditDefaultsOnly,\ BlueprintReadWrite)}
+\DoxyCodeLine{00104\ \ \ \ \ TSubclassOf<\mbox{\hyperlink{class_a_weapon_class}{AWeaponClass}}>\ \mbox{\hyperlink{class_a_main_player_a52184c30af95c392b2696350502bc111}{Ak47Class}};}
+\DoxyCodeLine{00105\ }
+\DoxyCodeLine{00106\ \ \ \ \ UPROPERTY(EditDefaultsOnly,\ BlueprintReadWrite)}
+\DoxyCodeLine{00107\ \ \ \ \ TSubclassOf<\mbox{\hyperlink{class_a_weapon_class}{AWeaponClass}}>\ \mbox{\hyperlink{class_a_main_player_a37bbab0b427528a5fad0b968e516d0cd}{M870Class}};}
+\DoxyCodeLine{00108\ }
+\DoxyCodeLine{00109\ \ \ \ \ UPROPERTY(EditDefaultsOnly,\ BlueprintReadWrite)}
+\DoxyCodeLine{00110\ \ \ \ \ TSubclassOf<\mbox{\hyperlink{class_a_weapon_class}{AWeaponClass}}>\ \mbox{\hyperlink{class_a_main_player_a3996864a408d4cc63a812ef5073192c6}{Hk416Class}};}
+\DoxyCodeLine{00111\ }
+\DoxyCodeLine{00115\ \ \ \ \ enum\ \mbox{\hyperlink{class_a_main_player_ad9c7eab05a6009eec1738de2665ec92a}{EPlayerWeaponSockets}}}
+\DoxyCodeLine{00116\ \ \ \ \ \{}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_a_main_player_ad9c7eab05a6009eec1738de2665ec92aabd8378effc952f05d1614e56aeebbfc8}{AWM}},}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_a_main_player_ad9c7eab05a6009eec1738de2665ec92aad9b62574211e3fa3f4ee17cf570c65d2}{AK47}},}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_a_main_player_ad9c7eab05a6009eec1738de2665ec92aac0aaca39663bf8f5df7f20503c1417e7}{M16A4}},}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_a_main_player_ad9c7eab05a6009eec1738de2665ec92aa1d83d9fd6133a27ebc4af74d54c4e41b}{M870}},}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_a_main_player_ad9c7eab05a6009eec1738de2665ec92aa18731127631af5da9e8fea01068826f8}{HK416}}}
+\DoxyCodeLine{00122\ \ \ \ \ \};}
+\DoxyCodeLine{00123\ }
+\DoxyCodeLine{00124\ \ \ \ \ \textcolor{comment}{//\ Names\ of\ mesh\ sockets}}
+\DoxyCodeLine{00125\ \ \ \ \ TArray<FString>\ \mbox{\hyperlink{class_a_main_player_ad87f4f6a1e0e932a2742a3e831e4dead}{PlayerWeaponSocketsName}};}
+\DoxyCodeLine{00126\ \ \ \ \ }
+\DoxyCodeLine{00127\ \ \ \ \ \textcolor{comment}{//\ Equipped\ weapon}}
+\DoxyCodeLine{00128\ \ \ \ \ UPROPERTY()}
+\DoxyCodeLine{00129\ \ \ \ \ \mbox{\hyperlink{class_a_weapon_class}{AWeaponClass}}*\ \mbox{\hyperlink{class_a_main_player_aaf9722f885ebd4f4536f5ab5b91d46d1}{EquippedWeapon}};}
+\DoxyCodeLine{00130\ }
+\DoxyCodeLine{00131\ \ \ \ \ \mbox{\hyperlink{class_i_weapon_interface}{IWeaponInterface}}*\ \mbox{\hyperlink{class_a_main_player_a405944777dd1df9d068ca43c928d8b84}{EquippedDifficultyWeapon}};}
+\DoxyCodeLine{00132\ \ \ \ \ }
+\DoxyCodeLine{00136\ \ \ \ \ UPROPERTY(Replicated,\ EditAnywhere,\ BlueprintReadWrite)}
+\DoxyCodeLine{00137\ \ \ \ \ FString\ \mbox{\hyperlink{class_a_main_player_ac030e98a5016aeeb73c736dc6535592e}{SPlayerName}};}
+\DoxyCodeLine{00138\ }
+\DoxyCodeLine{00139\ \ \ \ \ UPROPERTY(Replicated,\ EditAnywhere,\ BlueprintReadWrite)}
+\DoxyCodeLine{00140\ \ \ \ \ FString\ \mbox{\hyperlink{class_a_main_player_a95a296b597f356c9116ae75638cf22ed}{SCity}};}
+\DoxyCodeLine{00141\ }
+\DoxyCodeLine{00142\ \ \ \ \ UPROPERTY(Replicated)}
+\DoxyCodeLine{00143\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_a_main_player_a2e3e756b5927eb2fdbba0c30a21a8c4d}{IsInGodMode}};}
+\DoxyCodeLine{00144\ }
+\DoxyCodeLine{00145\ \ \ \ \ UPROPERTY()}
+\DoxyCodeLine{00146\ \ \ \ \ \mbox{\hyperlink{struct_f_behavior_set}{FBehaviorSet}}\ \mbox{\hyperlink{class_a_main_player_aca72d3775f466ec2753c087bfecb5804}{BehaviorSet}};}
+\DoxyCodeLine{00147\ }
+\DoxyCodeLine{00148\ \ \ \ \ UPROPERTY()}
+\DoxyCodeLine{00149\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_a_main_player_a945853e6e35fb5210cda0360dc88ab91}{Health}};}
+\DoxyCodeLine{00150\ }
+\DoxyCodeLine{00151\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_a_main_player_ae7a2a845e78a0e98fcab3fc7fb0e895f}{HealthState}}\ =\ 1;}
+\DoxyCodeLine{00152\ }
+\DoxyCodeLine{00153\ \ \ \ \ UPROPERTY()}
+\DoxyCodeLine{00154\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_a_main_player_abe5d9028fbbddffbe11cda9c89faec9c}{Armor}};}
+\DoxyCodeLine{00155\ }
+\DoxyCodeLine{00156\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_a_main_player_a63a27c124d66bce325f9cccb538f62a6}{PlayerIndex}};}
+\DoxyCodeLine{00157\ }
+\DoxyCodeLine{00158\ \ \ \ \ UPROPERTY(EditDefaultsOnly)}
+\DoxyCodeLine{00159\ \ \ \ \ TSubclassOf<UUserWidget>\ \mbox{\hyperlink{class_a_main_player_a62bcab290ea9a9d4af1930ca5ca335b1}{CrosshairWidgetClass}};}
+\DoxyCodeLine{00160\ }
+\DoxyCodeLine{00161\ \ \ \ \ UPROPERTY(EditDefaultsOnly)}
+\DoxyCodeLine{00162\ \ \ \ \ TSubclassOf<\mbox{\hyperlink{class_u_weapon_menu_widget}{UWeaponMenuWidget}}>\ \mbox{\hyperlink{class_a_main_player_ac5bd9e344aef0090896ff18fd6e4615b}{WeaponMenuWidgetClass}};}
+\DoxyCodeLine{00163\ }
+\DoxyCodeLine{00164\ \ \ \ \ UPROPERTY()}
+\DoxyCodeLine{00165\ \ \ \ \ UUserWidget*\ \mbox{\hyperlink{class_a_main_player_a2ab68d2f4ec4a1b480f65abf625a7993}{CrosshairWidget}};}
+\DoxyCodeLine{00166\ }
+\DoxyCodeLine{00167\ \ \ \ \ UPROPERTY()}
+\DoxyCodeLine{00168\ \ \ \ \ \mbox{\hyperlink{class_u_weapon_menu_widget}{UWeaponMenuWidget}}*\ \mbox{\hyperlink{class_a_main_player_aff8574a4f4e19a4cfbd463a2c6d17e03}{WeaponMenuWidget}};}
+\DoxyCodeLine{00169\ }
+\DoxyCodeLine{00170\ protected:}
+\DoxyCodeLine{00171\ \ \ \ \ \textcolor{comment}{//\ Called\ when\ the\ game\ starts\ or\ when\ spawned}}
+\DoxyCodeLine{00172\ \ \ \ \ virtual\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_a_main_player_aeb19d2fc8b049da2875a1a7fe2640be6}{BeginPlay}}()\ override;}
+\DoxyCodeLine{00173\ }
+\DoxyCodeLine{00174\ \ \ \ \ UFUNCTION()}
+\DoxyCodeLine{00175\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_a_main_player_a05c53b09757e2100e7291ab0ef13eaeb}{CreateServerWidget}}();}
+\DoxyCodeLine{00176\ }
+\DoxyCodeLine{00177\ \ \ \ \ UFUNCTION()}
+\DoxyCodeLine{00178\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_a_main_player_a564cefefe0c0cbb045ed6ecde2660259}{CreateHUDWidget}}();}
+\DoxyCodeLine{00179\ }
+\DoxyCodeLine{00180\ \ \ \ \ UFUNCTION()}
+\DoxyCodeLine{00181\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_a_main_player_aefd570cc1232eb214f82b08f15915687}{CreateMainMenuWidget}}();}
+\DoxyCodeLine{00182\ }
+\DoxyCodeLine{00183\ \ \ \ \ UFUNCTION()}
+\DoxyCodeLine{00184\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_a_main_player_a09dd3cec4f78e89f632002cd8c0f3fce}{SetDifficultyMode}}(const\ FString\&\ Difficulty);}
+\DoxyCodeLine{00185\ \ \ \ \ }
+\DoxyCodeLine{00186\ \ \ \ \ UPROPERTY(EditDefaultsOnly,\ BlueprintReadWrite)}
+\DoxyCodeLine{00187\ \ \ \ \ TSubclassOf<\mbox{\hyperlink{class_u_main_menu_widget}{UMainMenuWidget}}>\ \mbox{\hyperlink{class_a_main_player_adade1d7c3b44ecbf0f776703451e65c9}{MainMenuWidgetClass}};}
+\DoxyCodeLine{00188\ \ \ \ \ }
+\DoxyCodeLine{00189\ \ \ \ \ UPROPERTY()}
+\DoxyCodeLine{00190\ \ \ \ \ \mbox{\hyperlink{class_u_main_menu_widget}{UMainMenuWidget}}*\ \mbox{\hyperlink{class_a_main_player_ae225c49e1af9d5d5fb18db9497de08d3}{MainMenuWidget}};}
+\DoxyCodeLine{00191\ }
+\DoxyCodeLine{00192\ public:}
+\DoxyCodeLine{00193\ \ \ \ \ }
+\DoxyCodeLine{00194\ \ \ \ \ \textcolor{comment}{//\ Called\ to\ bind\ functionality\ to\ input}}
+\DoxyCodeLine{00195\ \ \ \ \ virtual\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_a_main_player_a0d9256922d3a3746cd3be9275ea6253e}{SetupPlayerInputComponent}}(class\ UInputComponent*\ PlayerInputComponent)\ override;}
+\DoxyCodeLine{00196\ }
+\DoxyCodeLine{00197\ \ \ \ \ virtual\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_a_main_player_a049f6c2a02f1964e3ca4602f1dbdc7d6}{Tick}}(\textcolor{keywordtype}{float}\ DeltaSeconds)\ override;}
+\DoxyCodeLine{00198\ \ \ \ \ }
+\DoxyCodeLine{00202\ }
+\DoxyCodeLine{00203\ \ \ \ \ UFUNCTION()}
+\DoxyCodeLine{00204\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_a_main_player_aa67ebc004b49ecc1046c937f91a0b4cc}{OnBeginOverlap}}(UPrimitiveComponent*\ OverlappedComponent,\ AActor*\ OtherActor,\ UPrimitiveComponent*\ OtherComp,}
+\DoxyCodeLine{00205\ \ \ \ \ \textcolor{keywordtype}{int}\ OtherBodyIndex,\ \textcolor{keywordtype}{bool}\ FromSweep,\ const\ FHitResult\&\ SweepResult);}
+\DoxyCodeLine{00206\ }
+\DoxyCodeLine{00207\ \ \ \ \ UPROPERTY()}
+\DoxyCodeLine{00208\ \ \ \ \ TArray<\mbox{\hyperlink{class_a_abstract_item}{AAbstractItem}}*>\ \mbox{\hyperlink{class_a_main_player_aa48e467bdfb06c1481da4bd1a6b1b756}{PickUpItems}};}
+\DoxyCodeLine{00209\ }
+\DoxyCodeLine{00210\ \ \ \ \ \textcolor{comment}{//\ Basic\ move\ forward\ function}}
+\DoxyCodeLine{00211\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_a_main_player_a4a802f2ae38f638bcd39ae939368f33c}{MoveForward}}(\textcolor{keywordtype}{float}\ Scale);}
+\DoxyCodeLine{00212\ }
+\DoxyCodeLine{00213\ \ \ \ \ \textcolor{comment}{//\ Basic\ move\ right\ function}}
+\DoxyCodeLine{00214\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_a_main_player_a87c17493ea1a519d06fd616cbfd9bebf}{MoveRight}}(\textcolor{keywordtype}{float}\ Scale);}
+\DoxyCodeLine{00215\ \ \ \ \ }
+\DoxyCodeLine{00216\ \ \ \ \ virtual\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_a_main_player_a772d4966ea4acab775de18a9bc7b8836}{Jump}}()\ override;}
+\DoxyCodeLine{00217\ }
+\DoxyCodeLine{00218\ \ \ \ \ UFUNCTION(BlueprintCallable)}
+\DoxyCodeLine{00219\ \ \ \ \ UCameraComponent*\ \mbox{\hyperlink{class_a_main_player_a4ccdedd6ee0d4474ca39dec05ab628e6}{GetCameraComponent}}();}
+\DoxyCodeLine{00220\ }
+\DoxyCodeLine{00221\ \ \ \ \ UFUNCTION()}
+\DoxyCodeLine{00222\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_a_main_player_a3522f4c52bfd8bc6f4cc3f4816f986a4}{SetHealth}}();}
+\DoxyCodeLine{00223\ }
+\DoxyCodeLine{00224\ \ \ \ \ UFUNCTION()}
+\DoxyCodeLine{00225\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_a_main_player_a0e32e09edf288aae7bdb30782277e38e}{SetArmor}}();}
+\DoxyCodeLine{00226\ }
+\DoxyCodeLine{00227\ \ \ \ \ UFUNCTION()}
+\DoxyCodeLine{00228\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_a_main_player_a1224fd6f92c16733ea0d99ab6b7bb17d}{SetHealthArmor}}();}
+\DoxyCodeLine{00229\ }
+\DoxyCodeLine{00230\ \ \ \ \ UFUNCTION()}
+\DoxyCodeLine{00231\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_a_main_player_a4101eafc7e7485c775096e3307c8524e}{ActivateBuffs}}(const\ TScriptInterface<\mbox{\hyperlink{class_i_handler}{IHandler}}>\&\ Handler);}
+\DoxyCodeLine{00232\ \ \ \ \ }
+\DoxyCodeLine{00233\ \ \ \ \ UFUNCTION(Server,\ Reliable)}
+\DoxyCodeLine{00234\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_a_main_player_af817f9734584daf22585779a6b0f5496}{Server\_Turn}}(\textcolor{keywordtype}{float}\ Rate);}
+\DoxyCodeLine{00235\ }
+\DoxyCodeLine{00236\ \ \ \ \ UFUNCTION(NetMulticast,\ Reliable)}
+\DoxyCodeLine{00237\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_a_main_player_a09ab4ef8638d7b4d2f75396ee80dbfc0}{Multicast\_Turn}}(\textcolor{keywordtype}{float}\ Rate);}
+\DoxyCodeLine{00238\ }
+\DoxyCodeLine{00239\ \ \ \ \ UFUNCTION(Server,\ Reliable)}
+\DoxyCodeLine{00240\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_a_main_player_aec82dca943cc93b41f130f47adb67bd6}{Server\_LookUp}}(\textcolor{keywordtype}{float}\ Rate);}
+\DoxyCodeLine{00241\ }
+\DoxyCodeLine{00242\ \ \ \ \ UFUNCTION(NetMulticast,\ Reliable)}
+\DoxyCodeLine{00243\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_a_main_player_a4a4af5ea44fc6e08bf80752f45749548}{Multicast\_LookUp}}(\textcolor{keywordtype}{float}\ Rate);}
+\DoxyCodeLine{00244\ }
+\DoxyCodeLine{00245\ \ \ \ \ \textcolor{comment}{//\ Delegate\ function.\ Defines\ which\ object\ was\ hit}}
+\DoxyCodeLine{00246\ \ \ \ \ \textcolor{comment}{//\ by\ trace\ with\ interactive\ channel\ active\ }}
+\DoxyCodeLine{00247\ \ \ \ \ UFUNCTION(BlueprintCallable)}
+\DoxyCodeLine{00248\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_a_main_player_aa0ef473b0207c4ef2086851e0fab91dd}{Interact}}();}
+\DoxyCodeLine{00249\ }
+\DoxyCodeLine{00250\ \ \ \ \ \textcolor{comment}{//\ Exits\ from\ weapon\ menu}}
+\DoxyCodeLine{00251\ \ \ \ \ UFUNCTION(BlueprintCallable)}
+\DoxyCodeLine{00252\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_a_main_player_a014c7104f62d5b6e891f2c170e463458}{ContinueGameplay}}();}
+\DoxyCodeLine{00253\ }
+\DoxyCodeLine{00254\ \ \ \ \ \textcolor{comment}{//\ Prepares\ and\ opens\ weapon\ menu}}
+\DoxyCodeLine{00255\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_a_main_player_af5c76687a55f6d843afcc9e8269a322c}{ProcessHitRack}}();}
+\DoxyCodeLine{00256\ }
+\DoxyCodeLine{00257\ \ \ \ \ \textcolor{comment}{//\ Collecting\ hit\ weapon}}
+\DoxyCodeLine{00258\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_a_main_player_a2f581621d7d1ce81a2ab19301e3cd757}{ProcessHitWeapon}}(\mbox{\hyperlink{class_a_weapon_class}{AWeaponClass}}*\ WeaponActor);}
+\DoxyCodeLine{00259\ }
+\DoxyCodeLine{00260\ \ \ \ \ UPROPERTY(EditDefaultsOnly,\ BlueprintReadWrite)}
+\DoxyCodeLine{00261\ \ \ \ \ TSubclassOf<\mbox{\hyperlink{class_u_command_widget}{UCommandWidget}}>\ \mbox{\hyperlink{class_a_main_player_adb2661511da92053209c3a00c189712c}{CommandWidgetClass}};}
+\DoxyCodeLine{00262\ }
+\DoxyCodeLine{00263\ \ \ \ \ UFUNCTION()}
+\DoxyCodeLine{00264\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_a_main_player_aa5bc84f37ccef7337791dac1b186f310}{RotatePositive}}(AActor*\ Actor);}
+\DoxyCodeLine{00265\ }
+\DoxyCodeLine{00266\ \ \ \ \ UFUNCTION()}
+\DoxyCodeLine{00267\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_a_main_player_a2d76cb9eb316048aebf3022c6462e438}{RotateNegative}}(AActor*\ Actor);}
+\DoxyCodeLine{00268\ }
+\DoxyCodeLine{00269\ \ \ \ \ UFUNCTION()}
+\DoxyCodeLine{00270\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_a_main_player_a8cb5268964b83bfab7a7f195fca10d4b}{OnCommandWidgetClosed}}();}
+\DoxyCodeLine{00271\ \ \ \ \ }
+\DoxyCodeLine{00272\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_a_main_player_a5e163121f319f1b7dd4c536296263320}{ProcessHitCube}}(AActor*\ HitActor);}
+\DoxyCodeLine{00273\ }
+\DoxyCodeLine{00274\ \ \ \ \ \textcolor{comment}{//\ Return\ all\ player's\ picked\ weapons}}
+\DoxyCodeLine{00275\ \ \ \ \ TArray<\mbox{\hyperlink{class_a_weapon_class}{AWeaponClass}}*>\ \mbox{\hyperlink{class_a_main_player_ace6e7172e2a36fce2650faf7d560b18a}{GetAllPickedWeapons}}();}
+\DoxyCodeLine{00276\ }
+\DoxyCodeLine{00277\ \ \ \ \ UFUNCTION()}
+\DoxyCodeLine{00278\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_a_main_player_ab3f7a5523db5fafc852b360e517f3d30}{Shoot}}();}
+\DoxyCodeLine{00279\ \ \ \ \ }
+\DoxyCodeLine{00280\ \ \ \ \ UFUNCTION(Server,\ Reliable)}
+\DoxyCodeLine{00281\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_a_main_player_a2c8ebb1c6b3453cd283a6d5e3ad39f20}{Server\_Shoot}}(FVector\ StartTrace,\ FVector\ EndTrace);}
+\DoxyCodeLine{00282\ }
+\DoxyCodeLine{00283\ \ \ \ \ UFUNCTION(NetMulticast,\ Reliable)}
+\DoxyCodeLine{00284\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_a_main_player_a3574fac9fa42ad4cfc4003e372449d12}{Multicast\_Shoot}}(FVector\ StartTrace,\ FVector\ EndTrace);}
+\DoxyCodeLine{00285\ \ \ \ \ }
+\DoxyCodeLine{00286\ \ \ \ \ UFUNCTION()}
+\DoxyCodeLine{00287\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_a_main_player_a8b3a4e70812eb9f53216fa9450447a8b}{GetDamage}}(\textcolor{keywordtype}{int}\ Damage);}
+\DoxyCodeLine{00288\ }
+\DoxyCodeLine{00289\ \ \ \ \ UFUNCTION()}
+\DoxyCodeLine{00290\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_a_main_player_a4a42ce76b3b073d2d225f1bfa6da4589}{AddHealth}}(\textcolor{keywordtype}{float}\ HealthPoints);}
+\DoxyCodeLine{00291\ }
+\DoxyCodeLine{00292\ \ \ \ \ UFUNCTION()}
+\DoxyCodeLine{00293\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_a_main_player_a058c6a8d9f66416340178a03c535d05a}{AddArmor}}(\textcolor{keywordtype}{float}\ ArmorPoints);}
+\DoxyCodeLine{00294\ }
+\DoxyCodeLine{00295\ \ \ \ \ \textcolor{comment}{//\ Setting\ weapon\ into\ player's\ hands}}
+\DoxyCodeLine{00296\ \ \ \ \ UFUNCTION()}
+\DoxyCodeLine{00297\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_a_main_player_a9e3a70fc768d6f63866decacd8cdf862}{CreateWeaponAttach}}(\mbox{\hyperlink{class_a_weapon_class}{AWeaponClass}}*\ WeaponActor);}
+\DoxyCodeLine{00298\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_a_main_player_a9e3a70fc768d6f63866decacd8cdf862}{CreateWeaponAttach}}(const\ FString\&\ ModelName);}
+\DoxyCodeLine{00299\ }
+\DoxyCodeLine{00303\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_a_main_player_a13cc59a3fd10e2e1ad8702389050e298}{AttachAWM}}();}
+\DoxyCodeLine{00304\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_a_main_player_a89a156ae9dd5c2fa948720b59c5f1922}{AttachAK47}}();}
+\DoxyCodeLine{00305\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_a_main_player_a133c6b299f92ddec05532a0d66a870e8}{AttachM16A4}}();}
+\DoxyCodeLine{00306\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_a_main_player_a70b0bebd04102df839d9ce1317448d9e}{AttachM870}}();}
+\DoxyCodeLine{00307\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_a_main_player_a38a9d187658569ec5b22977a1e5c1ef2}{AttachHK416}}();}
+\DoxyCodeLine{00308\ }
+\DoxyCodeLine{00309\ \ \ \ \ UPROPERTY(EditAnywhere)}
+\DoxyCodeLine{00310\ \ \ \ \ TSubclassOf<\mbox{\hyperlink{class_u_player_h_u_d}{UPlayerHUD}}>\ \mbox{\hyperlink{class_a_main_player_a384089b2cd827c957594a647d08e090f}{PlayerHUDWidgetClass}};}
+\DoxyCodeLine{00311\ }
+\DoxyCodeLine{00312\ \ \ \ \ UPROPERTY()}
+\DoxyCodeLine{00313\ \ \ \ \ \mbox{\hyperlink{class_u_player_h_u_d}{UPlayerHUD}}*\ \mbox{\hyperlink{class_a_main_player_a60d74b6390de9c1d471c3621a7e9b83e}{PlayerHUDWidget}};}
+\DoxyCodeLine{00314\ \ \ \ \ }
+\DoxyCodeLine{00318\ \ \ \ \ UPROPERTY(EditAnywhere)}
+\DoxyCodeLine{00319\ \ \ \ \ TSubclassOf<\mbox{\hyperlink{class_u_server_widget}{UServerWidget}}>\ \mbox{\hyperlink{class_a_main_player_abc5b2af98c9f197db1b23e65d0ec197b}{ServerWidgetClass}};}
+\DoxyCodeLine{00320\ }
+\DoxyCodeLine{00321\ \ \ \ \ UPROPERTY()}
+\DoxyCodeLine{00322\ \ \ \ \ \mbox{\hyperlink{class_u_server_widget}{UServerWidget}}*\ \mbox{\hyperlink{class_a_main_player_a7f9dbf305f4b666cb3fcd910b75a4b04}{ServerWidget}};}
+\DoxyCodeLine{00323\ }
+\DoxyCodeLine{00324\ \ \ \ \ UPROPERTY()}
+\DoxyCodeLine{00325\ \ \ \ \ FSetStats\ \mbox{\hyperlink{class_a_main_player_a127dbea96e7734db76571c63f32a5712}{SetStats}};}
+\DoxyCodeLine{00326\ }
+\DoxyCodeLine{00327\ \ \ \ \ FDifficultyModeSet\ \mbox{\hyperlink{class_a_main_player_a93361abc9b3feda362553e4a092baa75}{SetDifficultyModeDelegate}};}
+\DoxyCodeLine{00328\ \ \ \ \ }
+\DoxyCodeLine{00329\ \ \ \ \ UFUNCTION()}
+\DoxyCodeLine{00330\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_a_main_player_a9daae64d4128b8ef19ccc15a0330955c}{CreateSession}}(FString\ Name,\ \textcolor{keywordtype}{bool}\ IsPrivate,\ FString\ Password,\ \textcolor{keywordtype}{int}\ NumberOfPlayers,\ FString\ Map,\ FString\ Difficulty);}
+\DoxyCodeLine{00331\ }
+\DoxyCodeLine{00332\ \ \ \ \ UFUNCTION(BlueprintImplementableEvent)}
+\DoxyCodeLine{00333\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_a_main_player_ace96f78126f20bc93b56ea65682d300b}{CreateS}}(\textcolor{keywordtype}{int}\ NumberOfPlayers,const\ FString\&\ SessionName,\ \textcolor{keywordtype}{bool}\ IsPrivate,\ const\ FString\&\ Password,\ const\ FString\&\ Map,\ const\ FString\&\ Difficulty);}
+\DoxyCodeLine{00334\ }
+\DoxyCodeLine{00335\ \ \ \ \ UFUNCTION(BlueprintImplementableEvent)}
+\DoxyCodeLine{00336\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_a_main_player_ab7adc3cb9881c8ec21ac095c93dcf932}{FindS}}();}
+\DoxyCodeLine{00337\ }
+\DoxyCodeLine{00338\ \ \ \ \ UPROPERTY(BlueprintAssignable)}
+\DoxyCodeLine{00339\ \ \ \ \ FOnCharacterJoinSession\ \mbox{\hyperlink{class_a_main_player_ac5df49248ac6f03cff370ea65181f943}{OnCharacterJoinSession}};}
+\DoxyCodeLine{00340\ }
+\DoxyCodeLine{00341\ \ \ \ \ UFUNCTION()}
+\DoxyCodeLine{00342\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_a_main_player_a48e9f624e70d66187b85513e5bfbe38a}{AddServerWidgetToViewPort}}();}
+\DoxyCodeLine{00343\ }
+\DoxyCodeLine{00344\ \ \ \ \ UFUNCTION()}
+\DoxyCodeLine{00345\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_a_main_player_a31a377c2d7d3d4cce67818b2d1b5aa73}{ConnectToService}}();}
+\DoxyCodeLine{00346\ }
+\DoxyCodeLine{00347\ \ \ \ \ UFUNCTION()}
+\DoxyCodeLine{00348\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_a_main_player_aeb40de61e4bc213b6f13023f07202d58}{JoinSession}}(FBlueprintSessionResult\ SessionResult,\ const\ FString\&\ Password);}
+\DoxyCodeLine{00349\ }
+\DoxyCodeLine{00350\ \ \ \ \ UFUNCTION(BlueprintCallable)}
+\DoxyCodeLine{00351\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_a_main_player_ae04c7b42035ff35a2e5af65ea7cc94a4}{SetSessionsToWidget}}(TArray<FBlueprintSessionResult>\ BlueprintSessionResults);}
+\DoxyCodeLine{00352\ \ \ \ \ }
+\DoxyCodeLine{00356\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_a_main_player_a48370af67380ad41d3958d858fa06201}{SetName}}(FString\ Name);}
+\DoxyCodeLine{00357\ \ \ \ \ }
+\DoxyCodeLine{00358\ \ \ \ \ FString\ \mbox{\hyperlink{class_a_main_player_a255d726e0153eff5d401e24db2afc547}{GetPlayerName}}()\ const;}
+\DoxyCodeLine{00359\ }
+\DoxyCodeLine{00360\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_a_main_player_a028a8a96a2c54d8fd102a305028944fc}{SetCity}}(FString\ City);}
+\DoxyCodeLine{00361\ \ \ \ \ }
+\DoxyCodeLine{00362\ \ \ \ \ FString\ \mbox{\hyperlink{class_a_main_player_a9af4922763eeab2f8f4abc0eb9d02e6a}{GetCity}}()\ const;}
+\DoxyCodeLine{00363\ }
+\DoxyCodeLine{00364\ \ \ \ \ \mbox{\hyperlink{struct_f_behavior_set}{FBehaviorSet}}\ \mbox{\hyperlink{class_a_main_player_affc455d728b8648bbbf38a4c24705455}{GetBehaviorSet}}()\ const;}
+\DoxyCodeLine{00365\ }
+\DoxyCodeLine{00366\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_a_main_player_aa0d296395e08a4e8f279ea9062bf88fe}{GetGodModeState}}()\ const;}
+\DoxyCodeLine{00367\ }
+\DoxyCodeLine{00368\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_a_main_player_ab320d790405791cc7d75688e7df99d2b}{SetGodModeState}}(\textcolor{keywordtype}{bool}\ HasGodMode);}
+\DoxyCodeLine{00369\ }
+\DoxyCodeLine{00370\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_a_main_player_ab8f8ca587e4109a1aaf069ca948dd63c}{GetHealth}}()\ const;}
+\DoxyCodeLine{00371\ }
+\DoxyCodeLine{00372\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_a_main_player_a5bd5fcef6359ed4b772f344d2d9a9915}{GetPlayerIndex}}()\ const;}
+\DoxyCodeLine{00373\ }
+\DoxyCodeLine{00374\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_a_main_player_aef34968c1d5503ea8290472bf52fcc81}{SetPlayerIndex}}(\textcolor{keywordtype}{int}\ Index);}
+\DoxyCodeLine{00375\ }
+\DoxyCodeLine{00376\ \ \ \ \ UFUNCTION(Server,\ Reliable)}
+\DoxyCodeLine{00377\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_a_main_player_a64d218faf5fb252f65c806a418461ded}{ServerSetNameAndCity}}(FString\ const\&\ Name,\ FString\ const\&\ City);}
+\DoxyCodeLine{00378\ }
+\DoxyCodeLine{00379\ \ \ \ \ UFUNCTION()}
+\DoxyCodeLine{00380\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_a_main_player_a64f2de54b6a986e899e7b4d7c157f2b8}{SetNameAndCity}}(FString\ const\&\ Name,\ FString\ const\&\ City);}
+\DoxyCodeLine{00381\ }
+\DoxyCodeLine{00382\ \ \ \ \ UFUNCTION(NetMulticast,\ Reliable)}
+\DoxyCodeLine{00383\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_a_main_player_a9942a55b614820254ce54b541777cff1}{MulticastSetNameAndCity}}(FString\ const\&\ Name,\ FString\ const\&\ City);}
+\DoxyCodeLine{00384\ }
+\DoxyCodeLine{00385\ \ \ \ \ virtual\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_a_main_player_a98deea668b7a5f8a87e19c215a9e1e80}{GetLifetimeReplicatedProps}}(TArray<FLifetimeProperty>\&\ OutLifetimeProps)\ const\ override;}
+\DoxyCodeLine{00386\ \ \ \ \ }
+\DoxyCodeLine{00387\ \ \ \ \ UFUNCTION(NetMulticast,\ Reliable)}
+\DoxyCodeLine{00388\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_a_main_player_a03de5f0a72fb28a5ad6e186af278b592}{Multicast\_SetBehavior}}(\textcolor{keywordtype}{bool}\ CanMove,\ \textcolor{keywordtype}{bool}\ CanJump,\ \textcolor{keywordtype}{bool}\ CanFire);}
+\DoxyCodeLine{00389\ \ \ \ \ }
+\DoxyCodeLine{00390\ \ \ \ \ UFUNCTION(NetMulticast,\ Reliable)}
+\DoxyCodeLine{00391\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_a_main_player_a8f85dbc23f51a1becb8b07a60626c6c7}{Multicast\_SetGodMode}}(\textcolor{keywordtype}{bool}\ IsGodModeSet);}
+\DoxyCodeLine{00392\ }
+\DoxyCodeLine{00393\ \ \ \ \ \textcolor{comment}{//Team}}
+\DoxyCodeLine{00394\ \ \ \ \ virtual\ FGenericTeamId\ \mbox{\hyperlink{class_a_main_player_a98da2222ccb49b718123fc58234f2456}{GetGenericTeamId}}()\textcolor{keyword}{\ const\ override}\{\textcolor{keywordflow}{return}\ TeamId;\}}
+\DoxyCodeLine{00395\ }
+\DoxyCodeLine{00396\ \ \ \ \ UPROPERTY(BlueprintAssignable)}
+\DoxyCodeLine{00397\ \ \ \ \ FAnimNotify\_Jump\ \mbox{\hyperlink{class_a_main_player_a9590cfbc629ba08a2ac8a54dd2668ada}{AnimNotify\_Jump}};}
+\DoxyCodeLine{00398\ }
+\DoxyCodeLine{00399\ \ \ \ \ \textcolor{comment}{//\ Observer\ Logic}}
+\DoxyCodeLine{00400\ \ \ \ \ TArray<\mbox{\hyperlink{class_i_enemy_observer}{IEnemyObserver}}*>\ \mbox{\hyperlink{class_a_main_player_a9fb5b8abcaa031be2fe3717d6ded9a56}{EnemyObservers}};}
+\DoxyCodeLine{00401\ \ \ \ \ }
+\DoxyCodeLine{00402\ \ \ \ \ virtual\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_a_main_player_a7638962aa57527a2c244c97710e9f862}{Attach}}(\mbox{\hyperlink{class_i_enemy_observer}{IEnemyObserver}}*\ EnemyInterface)\ override;}
+\DoxyCodeLine{00403\ \ \ \ \ virtual\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_a_main_player_a30a804ba9b0dc9bb02aa9217915546e6}{Detach}}(\mbox{\hyperlink{class_i_enemy_observer}{IEnemyObserver}}*\ EnemyInterface)\ override;}
+\DoxyCodeLine{00404\ \ \ \ \ virtual\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_a_main_player_a3680b400fdbc436279a43361a5f94089}{Notify}}()\ override;}
+\DoxyCodeLine{00405\ \};}
+
+\end{DoxyCode}

@@ -1,0 +1,8 @@
+<map id="ASessionGameMode::CreateHardPoint" name="ASessionGameMode::CreateHardPoint">
+<area shape="rect" id="Node000001" title=" " alt="" coords="265,55,455,96"/>
+<area shape="rect" id="Node000002" href="$class_a_session_game_mode.html#aafaf1f0bf8086d917a5d2d392aef9817" title=" " alt="" coords="5,5,217,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="253,54,170,34,171,29,254,49"/>
+<area shape="rect" id="Node000003" href="$class_a_session_game_mode.html#ab0c505dba8d028e3540f9f12996ff282" title=" " alt="" coords="15,55,207,96"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="249,87,208,87,208,82,249,82"/>
+<area shape="poly" id="edge3_Node000003_Node000001" title=" " alt="" coords="223,64,264,64,264,69,223,69"/>
+</map>

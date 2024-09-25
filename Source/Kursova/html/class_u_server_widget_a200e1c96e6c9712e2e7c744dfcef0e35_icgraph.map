@@ -1,0 +1,7 @@
+<map id="UServerWidget::CloseAdminMenu" name="UServerWidget::CloseAdminMenu">
+<area shape="rect" id="Node000001" title=" " alt="" coords="527,5,745,31"/>
+<area shape="rect" id="Node000002" href="$class_u_server_widget.html#a7b0f82f1cd233dd2f6824aa0dc48f837" title=" " alt="" coords="263,5,479,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="511,21,479,21,479,16,511,16"/>
+<area shape="rect" id="Node000003" href="$class_u_server_widget.html#a74cd014e883bf130482eee6be68f26b9" title=" " alt="" coords="5,5,215,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="247,21,215,21,215,16,247,16"/>
+</map>

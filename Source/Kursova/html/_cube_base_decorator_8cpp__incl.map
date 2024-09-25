@@ -1,0 +1,18 @@
+<map id="ObjectDecorator/CubeBaseDecorator.cpp" name="ObjectDecorator/CubeBaseDecorator.cpp">
+<area shape="rect" id="Node000001" title=" " alt="" coords="180,5,359,46"/>
+<area shape="rect" id="Node000002" href="$_cube_base_decorator_8h.html" title=" " alt="" coords="195,94,344,120"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="272,46,272,78,267,78,267,46"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,241,110,267"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="221,123,171,141,122,170,94,199,73,229,69,226,90,195,119,166,169,136,219,118"/>
+<area shape="rect" id="Node000004" href="$_cube_interface_8h.html" title=" " alt="" coords="132,168,245,193"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="257,122,215,159,211,155,254,118"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="269,168,435,193"/>
+<area shape="poly" id="edge7_Node000002_Node000007" title=" " alt="" coords="285,118,329,155,325,159,282,122"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="460,168,669,193"/>
+<area shape="poly" id="edge8_Node000002_Node000008" title=" " alt="" coords="320,118,500,161,499,166,319,123"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="167,196,94,236,91,231,165,192"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="134,241,269,267"/>
+<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="193,193,199,225,194,226,188,194"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="293,241,467,267"/>
+<area shape="poly" id="edge6_Node000004_Node000006" title=" " alt="" coords="222,191,334,233,332,238,220,196"/>
+</map>

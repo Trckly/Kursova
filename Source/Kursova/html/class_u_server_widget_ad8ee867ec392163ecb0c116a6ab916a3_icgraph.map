@@ -1,0 +1,7 @@
+<map id="UServerWidget::Join" name="UServerWidget::Join">
+<area shape="rect" id="Node000001" title=" " alt="" coords="469,13,609,39"/>
+<area shape="rect" id="Node000002" href="$class_u_server_widget.html#abdf7bd4b3187571ccdccf69ef6d97db1" title=" " alt="" coords="231,13,421,39"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="454,28,422,28,422,23,454,23"/>
+<area shape="rect" id="Node000003" href="$class_a_main_player.html#ae04c7b42035ff35a2e5af65ea7cc94a4" title=" " alt="" coords="5,5,183,46"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="215,28,183,28,183,23,215,23"/>
+</map>

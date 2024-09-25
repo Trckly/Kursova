@@ -1,0 +1,118 @@
+\doxysection{Server\+Widget.\+h}
+\hypertarget{_server_widget_8h_source}{}\label{_server_widget_8h_source}\index{ServerLogic/UI/ServerWidget.h@{ServerLogic/UI/ServerWidget.h}}
+\mbox{\hyperlink{_server_widget_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//\ Fill\ out\ your\ copyright\ notice\ in\ the\ Description\ page\ of\ Project\ Settings.}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}CoreMinimal.h"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}FindSessionsCallbackProxy.h"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_server_pannel_widget_8h}{ServerPannelWidget.h}}"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}Blueprint/UserWidget.h"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}Components/Button.h"{}}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}Components/CheckBox.h"{}}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}Components/ComboBox.h"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}Components/EditableText.h"{}}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}Components/ScrollBox.h"{}}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}Components/TextBlock.h"{}}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}Kismet/KismetStringLibrary.h"{}}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ "{}ServerWidget.generated.h"{}}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_u_admin_manager_widget}{UAdminManagerWidget}};}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \mbox{\hyperlink{_server_widget_8h_a5657dadab224a2f3898946d485e45589}{DECLARE\_DYNAMIC\_DELEGATE\_SixParams}}(FSendSettingsToPlayer,\ FString,\ Name,\ \textcolor{keywordtype}{bool},\ IsPrivate,\ FString,\ Password,\ \textcolor{keywordtype}{int},\ NumberOfPlayers,\ FString,\ Map,\ FString,\ Difficulty);}
+\DoxyCodeLine{00021\ \mbox{\hyperlink{_server_widget_8h_a9da3ab4efa8cba9bf24cb29840dcef42}{DECLARE\_DYNAMIC\_DELEGATE}}(FOnFindSession);}
+\DoxyCodeLine{00022\ \mbox{\hyperlink{_server_widget_8h_af503407ffafc6b24fd2f2f4f5174a90f}{DECLARE\_DYNAMIC\_DELEGATE\_TwoParams}}(FOnJoinToSession,\ FBlueprintSessionResult,\ SessionResult,\ \textcolor{keyword}{const}\ FString\&,\ Password);}
+\DoxyCodeLine{00026\ UCLASS()}
+\DoxyCodeLine{00027\ class\ KURSOVA\_API\ \mbox{\hyperlink{class_u_server_widget}{UServerWidget}}\ :\ public\ UUserWidget}
+\DoxyCodeLine{00028\ \{}
+\DoxyCodeLine{00029\ \ \ \ \ GENERATED\_BODY()}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_u_admin_manager_widget_a274f5cf41ae4a82d0bb2f6efd766e3ea}{NativeConstruct}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ UPROPERTY(BlueprintReadWrite,\ meta=(BindWidget))}
+\DoxyCodeLine{00036\ \ \ \ \ UEditableText*\ W\_Name;}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \ \ UPROPERTY(BlueprintReadWrite,\ meta=(BindWidget))}
+\DoxyCodeLine{00039\ \ \ \ \ UEditableText*\ W\_Password;}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{comment}{//\ UPROPERTY(BlueprintReadWrite,\ meta=(BindWidget))}}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{comment}{//\ UComboBox*\ W\_NumberOfPlayers;}}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \ \ \ UPROPERTY(BlueprintReadWrite,\ meta=(BindWidget))}
+\DoxyCodeLine{00045\ \ \ \ \ UButton*\ CreateServer;}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \ \ \ \ UPROPERTY(BlueprintReadWrite,\ meta=(BindWidget))}
+\DoxyCodeLine{00048\ \ \ \ \ UButton*\ ConnectToServer;}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \ \ \ \ UPROPERTY(BlueprintReadWrite,\ meta=(BindWidget))}
+\DoxyCodeLine{00051\ \ \ \ \ UButton*\ BackToGame;}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \ \ \ \ FSendSettingsToPlayer\ SetServerSettings;}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \ \ \ \ FOnFindSession\ OnFindSession;}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \ \ \ \ FOnJoinToSession\ OnJoinToSession;}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \ \ \ \ UPROPERTY(BlueprintReadWrite,\ meta=(BindWidget))}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordtype}{int}\ dNumberOfPlayers;}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \ \ \ \ UPROPERTY(BlueprintReadWrite,\ meta=(BindWidget))}
+\DoxyCodeLine{00063\ \ \ \ \ FString\ SMap;}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ \ \ \ \ UPROPERTY(BlueprintReadWrite,\ meta=(BindWidget))}
+\DoxyCodeLine{00066\ \ \ \ \ FString\ SDifficulty;}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \ \ \ \ UPROPERTY(BlueprintReadOnly,\ meta=(BindWidget))}
+\DoxyCodeLine{00069\ \ \ \ \ UTextBlock*\ W\_ErrorMessage;}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ \ \ \ \ UPROPERTY(BlueprintReadOnly,\ meta=(BindWidget))}
+\DoxyCodeLine{00072\ \ \ \ \ UCheckBox*\ IsPrivate;}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \ \ \ \ UPROPERTY(BlueprintReadOnly,\ meta=(BindWidget))}
+\DoxyCodeLine{00075\ \ \ \ \ UScrollBox*\ SessionsList;}
+\DoxyCodeLine{00076\ \ \ \ \ }
+\DoxyCodeLine{00077\ \ \ \ \ UPROPERTY(EditAnywhere,\ BlueprintReadWrite)}
+\DoxyCodeLine{00078\ \ \ \ \ TSubclassOf<\mbox{\hyperlink{class_u_server_pannel_widget}{UServerPannelWidget}}>\ ServerPanelWidgetClass;}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00080\ \ \ \ \ UPROPERTY(EditAnywhere)}
+\DoxyCodeLine{00081\ \ \ \ \ TArray<\mbox{\hyperlink{class_u_server_pannel_widget}{UServerPannelWidget}}*>\ ServerPanelWidgets;}
+\DoxyCodeLine{00082\ \ \ \ \ }
+\DoxyCodeLine{00083\ \ \ \ \ UFUNCTION()}
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{keywordtype}{void}\ ShowErrorMessage(FString\ Message);}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00086\ \ \ \ \ UFUNCTION()}
+\DoxyCodeLine{00087\ \ \ \ \ \textcolor{keywordtype}{void}\ CloseWidget();}
+\DoxyCodeLine{00088\ \ \ \ \ }
+\DoxyCodeLine{00089\ \ \ \ \ UFUNCTION()}
+\DoxyCodeLine{00090\ \ \ \ \ \textcolor{keywordtype}{void}\ Create();}
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00092\ \ \ \ \ UFUNCTION()}
+\DoxyCodeLine{00093\ \ \ \ \ \textcolor{keywordtype}{void}\ Find();}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00095\ \ \ \ \ UFUNCTION()}
+\DoxyCodeLine{00096\ \ \ \ \ \textcolor{keywordtype}{void}\ Join(FBlueprintSessionResult\ SessionResult,\ const\ FString\&\ Password);}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00098\ \ \ \ \ UFUNCTION()}
+\DoxyCodeLine{00099\ \ \ \ \ \textcolor{keywordtype}{void}\ SetSessions(TArray<FBlueprintSessionResult>\ BlueprintSessionResults);}
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00104\ \ \ \ \ UPROPERTY(BlueprintReadWrite,\ meta=(BindWidget))}
+\DoxyCodeLine{00105\ \ \ \ \ UButton*\ BManageServer;}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00107\ \ \ \ \ UPROPERTY(EditDefaultsOnly,\ BlueprintReadWrite)}
+\DoxyCodeLine{00108\ \ \ \ \ TSubclassOf<\mbox{\hyperlink{class_u_admin_manager_widget}{UAdminManagerWidget}}>\ AdminManagerWidgetClass;}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00110\ \ \ \ \ UPROPERTY()}
+\DoxyCodeLine{00111\ \ \ \ \ \mbox{\hyperlink{class_u_admin_manager_widget}{UAdminManagerWidget}}*\ AdminManagerWidget;}
+\DoxyCodeLine{00112\ \ \ \ \ }
+\DoxyCodeLine{00113\ \ \ \ \ UFUNCTION()}
+\DoxyCodeLine{00114\ \ \ \ \ \textcolor{keywordtype}{void}\ OpenAdminMenu();}
+\DoxyCodeLine{00115\ \ \ \ \ }
+\DoxyCodeLine{00116\ \ \ \ \ UFUNCTION()}
+\DoxyCodeLine{00117\ \ \ \ \ \textcolor{keywordtype}{void}\ CloseAdminMenu();}
+\DoxyCodeLine{00118\ \};}
+
+\end{DoxyCode}

@@ -1,0 +1,28 @@
+\doxysection{Green\+Cube\+Decorator.\+h}
+\hypertarget{_green_cube_decorator_8h_source}{}\label{_green_cube_decorator_8h_source}\index{ObjectDecorator/GreenCubeDecorator.h@{ObjectDecorator/GreenCubeDecorator.h}}
+\mbox{\hyperlink{_green_cube_decorator_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//\ Fill\ out\ your\ copyright\ notice\ in\ the\ Description\ page\ of\ Project\ Settings.}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}CoreMinimal.h"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_cube_base_decorator_8h}{CubeBaseDecorator.h}}"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}GreenCubeDecorator.generated.h"{}}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00012\ UCLASS()}
+\DoxyCodeLine{00013\ class\ KURSOVA\_API\ \mbox{\hyperlink{class_a_green_cube_decorator}{AGreenCubeDecorator}}\ :\ public\ \mbox{\hyperlink{class_a_cube_base_decorator}{ACubeBaseDecorator}}}
+\DoxyCodeLine{00014\ \{}
+\DoxyCodeLine{00015\ \ \ \ \ GENERATED\_BODY()}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ BeginPlay()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_i_cube_interface}{ICubeInterface}}*\ CreateCube(\mbox{\hyperlink{class_i_cube_interface}{ICubeInterface}}*\ Source,\ TSubclassOf<UObject>\ CubeClass,\ UWorld*\ World)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ DestroyCube()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ ChangeColor()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keyword}{virtual}\ UStaticMeshComponent*\ GetStaticMeshComponent()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00025\ \};}
+
+\end{DoxyCode}

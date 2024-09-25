@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "BehaviorTree/BehaviorTreeComponent.h"
+#include "Kursova/EnemyObserver/EnemyObserver.h"
 #include "UObject/Interface.h"
 #include "UEnemyInterface.generated.h"
 

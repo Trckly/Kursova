@@ -26,6 +26,11 @@ void AAIBitingEnemy::BeginPlay()
 
 void AAIBitingEnemy::Die()
 {
+	AMainPlayer* MainPlayer = Cast<AMainPlayer>(GetWorld()->GetFirstPlayerController()->GetCharacter());
+	if(MainPlayer)
+	{
+		MainPlayer->Detach(this);
+	}
 	if(!Destroy())
 		UE_LOG(LogTemp, Warning, TEXT("Enemy haven't been destroyed after death!"));
 }
@@ -82,6 +87,14 @@ void AAIBitingEnemy::OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor
 UBehaviorTree* AAIBitingEnemy::GetBehaviourTree()
 {
 	return BehaviorTree;
+}
+
+void AAIBitingEnemy::Update(float Health)
+{
+	if(Health <= 50)
+		CharacterDamage = 10;
+	else
+		CharacterDamage = 20;
 }
 
 

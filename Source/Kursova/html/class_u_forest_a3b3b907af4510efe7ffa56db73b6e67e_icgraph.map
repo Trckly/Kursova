@@ -1,0 +1,5 @@
+<map id="UForest::PlantTree" name="UForest::PlantTree">
+<area shape="rect" id="Node000001" title=" " alt="" coords="260,5,391,31"/>
+<area shape="rect" id="Node000002" href="$class_u_main_map_builder.html#a6f015175f8184ab7b2b793e34c3f4dc6" title=" " alt="" coords="5,5,212,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="244,21,212,21,212,16,244,16"/>
+</map>

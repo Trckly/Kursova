@@ -7,3 +7,8 @@ void UPlayerHUD::SetHealth(float Health)
 {
 	PHealth->SetPercent(Health / 100.f);
 }
+
+void UPlayerHUD::SetArmor(float Armor)
+{
+	PArmor->SetPercent(Armor / 100.f);
+}

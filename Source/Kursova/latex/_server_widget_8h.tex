@@ -1,0 +1,63 @@
+\doxysection{Server\+Logic/\+UI/\+Server\+Widget.h File Reference}
+\hypertarget{_server_widget_8h}{}\label{_server_widget_8h}\index{ServerLogic/UI/ServerWidget.h@{ServerLogic/UI/ServerWidget.h}}
+{\ttfamily \#include "{}Core\+Minimal.\+h"{}}\newline
+{\ttfamily \#include "{}Find\+Sessions\+Callback\+Proxy.\+h"{}}\newline
+{\ttfamily \#include "{}Server\+Pannel\+Widget.\+h"{}}\newline
+{\ttfamily \#include "{}Blueprint/\+User\+Widget.\+h"{}}\newline
+{\ttfamily \#include "{}Components/\+Button.\+h"{}}\newline
+{\ttfamily \#include "{}Components/\+Check\+Box.\+h"{}}\newline
+{\ttfamily \#include "{}Components/\+Combo\+Box.\+h"{}}\newline
+{\ttfamily \#include "{}Components/\+Editable\+Text.\+h"{}}\newline
+{\ttfamily \#include "{}Components/\+Scroll\+Box.\+h"{}}\newline
+{\ttfamily \#include "{}Components/\+Text\+Block.\+h"{}}\newline
+{\ttfamily \#include "{}Kismet/\+Kismet\+String\+Library.\+h"{}}\newline
+{\ttfamily \#include "{}Server\+Widget.\+generated.\+h"{}}\newline
+Include dependency graph for Server\+Widget.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_server_widget_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_server_widget_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_u_server_widget}{UServer\+Widget}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_server_widget_8h_a5657dadab224a2f3898946d485e45589}{DECLARE\+\_\+\+DYNAMIC\+\_\+\+DELEGATE\+\_\+\+Six\+Params}} (FSend\+Settings\+To\+Player, FString, Name, bool, Is\+Private, FString, Password, int, Number\+Of\+Players, FString, Map, FString, Difficulty)
+\item 
+\mbox{\hyperlink{_server_widget_8h_a9da3ab4efa8cba9bf24cb29840dcef42}{DECLARE\+\_\+\+DYNAMIC\+\_\+\+DELEGATE}} (FOn\+Find\+Session)
+\item 
+\mbox{\hyperlink{_server_widget_8h_af503407ffafc6b24fd2f2f4f5174a90f}{DECLARE\+\_\+\+DYNAMIC\+\_\+\+DELEGATE\+\_\+\+Two\+Params}} (FOn\+Join\+To\+Session, FBlueprint\+Session\+Result, Session\+Result, const FString \&, Password)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{_server_widget_8h_a9da3ab4efa8cba9bf24cb29840dcef42}\index{ServerWidget.h@{ServerWidget.h}!DECLARE\_DYNAMIC\_DELEGATE@{DECLARE\_DYNAMIC\_DELEGATE}}
+\index{DECLARE\_DYNAMIC\_DELEGATE@{DECLARE\_DYNAMIC\_DELEGATE}!ServerWidget.h@{ServerWidget.h}}
+\doxysubsubsection{\texorpdfstring{DECLARE\_DYNAMIC\_DELEGATE()}{DECLARE\_DYNAMIC\_DELEGATE()}}
+{\footnotesize\ttfamily \label{_server_widget_8h_a9da3ab4efa8cba9bf24cb29840dcef42} 
+DECLARE\+\_\+\+DYNAMIC\+\_\+\+DELEGATE (\begin{DoxyParamCaption}\item[{FOn\+Find\+Session}]{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{_server_widget_8h_a5657dadab224a2f3898946d485e45589}\index{ServerWidget.h@{ServerWidget.h}!DECLARE\_DYNAMIC\_DELEGATE\_SixParams@{DECLARE\_DYNAMIC\_DELEGATE\_SixParams}}
+\index{DECLARE\_DYNAMIC\_DELEGATE\_SixParams@{DECLARE\_DYNAMIC\_DELEGATE\_SixParams}!ServerWidget.h@{ServerWidget.h}}
+\doxysubsubsection{\texorpdfstring{DECLARE\_DYNAMIC\_DELEGATE\_SixParams()}{DECLARE\_DYNAMIC\_DELEGATE\_SixParams()}}
+{\footnotesize\ttfamily \label{_server_widget_8h_a5657dadab224a2f3898946d485e45589} 
+DECLARE\+\_\+\+DYNAMIC\+\_\+\+DELEGATE\+\_\+\+Six\+Params (\begin{DoxyParamCaption}\item[{FSend\+Settings\+To\+Player}]{}{, }\item[{FString}]{}{, }\item[{Name}]{}{, }\item[{bool}]{}{, }\item[{Is\+Private}]{}{, }\item[{FString}]{}{, }\item[{Password}]{}{, }\item[{int}]{}{, }\item[{Number\+Of\+Players}]{}{, }\item[{FString}]{}{, }\item[{Map}]{}{, }\item[{FString}]{}{, }\item[{Difficulty}]{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{_server_widget_8h_af503407ffafc6b24fd2f2f4f5174a90f}\index{ServerWidget.h@{ServerWidget.h}!DECLARE\_DYNAMIC\_DELEGATE\_TwoParams@{DECLARE\_DYNAMIC\_DELEGATE\_TwoParams}}
+\index{DECLARE\_DYNAMIC\_DELEGATE\_TwoParams@{DECLARE\_DYNAMIC\_DELEGATE\_TwoParams}!ServerWidget.h@{ServerWidget.h}}
+\doxysubsubsection{\texorpdfstring{DECLARE\_DYNAMIC\_DELEGATE\_TwoParams()}{DECLARE\_DYNAMIC\_DELEGATE\_TwoParams()}}
+{\footnotesize\ttfamily \label{_server_widget_8h_af503407ffafc6b24fd2f2f4f5174a90f} 
+DECLARE\+\_\+\+DYNAMIC\+\_\+\+DELEGATE\+\_\+\+Two\+Params (\begin{DoxyParamCaption}\item[{FOn\+Join\+To\+Session}]{}{, }\item[{FBlueprint\+Session\+Result}]{}{, }\item[{Session\+Result}]{}{, }\item[{const FString \&}]{}{, }\item[{Password}]{}{}\end{DoxyParamCaption})}
+

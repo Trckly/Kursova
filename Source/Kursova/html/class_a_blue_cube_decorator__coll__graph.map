@@ -1,0 +1,10 @@
+<map id="ABlueCubeDecorator" name="ABlueCubeDecorator">
+<area shape="rect" id="Node000001" title=" " alt="" coords="35,555,283,819"/>
+<area shape="rect" id="Node000002" href="$class_a_cube_base_decorator.html" title=" " alt="" coords="51,188,267,507"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="161,522,161,555,156,555,156,522"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,33,59,98"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="55,110,90,188,85,190,50,112"/>
+<area shape="rect" id="Node000004" href="$class_i_cube_interface.html" title=" " alt="" coords="83,5,295,125"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="176,140,175,150,170,189,165,188,169,149,171,140"/>
+<area shape="poly" id="edge4_Node000002_Node000004" title=" " alt="" coords="186,126,180,172,175,171,180,125"/>
+</map>

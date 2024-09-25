@@ -1,0 +1,49 @@
+\doxysection{Cube.\+h}
+\hypertarget{_cube_8h_source}{}\label{_cube_8h_source}\index{ObjectDecorator/Cube.h@{ObjectDecorator/Cube.h}}
+\mbox{\hyperlink{_cube_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//\ Fill\ out\ your\ copyright\ notice\ in\ the\ Description\ page\ of\ Project\ Settings.}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}CoreMinimal.h"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_cube_interface_8h}{CubeInterface.h}}"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}GameFramework/Actor.h"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}Cube.generated.h"{}}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ UCLASS()}
+\DoxyCodeLine{00011\ class\ KURSOVA\_API\ \mbox{\hyperlink{class_a_cube}{ACube}}\ :\ public\ AActor,\ public\ \mbox{\hyperlink{class_i_cube_interface}{ICubeInterface}}}
+\DoxyCodeLine{00012\ \{}
+\DoxyCodeLine{00013\ \ \ \ \ GENERATED\_BODY()}
+\DoxyCodeLine{00014\ \ \ \ \ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{public}:\ }
+\DoxyCodeLine{00016\ \ \ \ \ \mbox{\hyperlink{class_a_cube}{ACube}}();}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ BeginPlay()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00020\ \ \ \ \ }
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ Tick(\textcolor{keywordtype}{float}\ DeltaSeconds)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00022\ \ \ \ \ }
+\DoxyCodeLine{00023\ \ \ \ \ UPROPERTY(EditDefaultsOnly,\ BlueprintReadWrite)}
+\DoxyCodeLine{00024\ \ \ \ \ UStaticMeshComponent*\ StaticMeshComponent;}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \ \ \ \ UPROPERTY(EditDefaultsOnly,\ BlueprintReadWrite)}
+\DoxyCodeLine{00027\ \ \ \ \ UMaterial*\ DefaultMaterial;}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{bool}\ bPositiveRotation\ =\ false;}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{bool}\ bNegativeRotation\ =\ false;}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{float}\ RotationSpeed\ =\ 100.f;}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ public:}
+\DoxyCodeLine{00035\ \ \ \ \ static\ \mbox{\hyperlink{class_i_cube_interface}{ICubeInterface}}*\ CreateCube(TSubclassOf<UObject>\ CubeClass,\ UWorld*\ World);}
+\DoxyCodeLine{00036\ \ \ \ \ virtual\ \textcolor{keywordtype}{void}\ DestroyCube()\ override;}
+\DoxyCodeLine{00037\ \ \ \ \ virtual\ UStaticMeshComponent*\ GetStaticMeshComponent()\ override;}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \ \ virtual\ \textcolor{keywordtype}{void}\ ChangeColor()\ override;}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{void}\ AddPositiveRotation();}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{void}\ AddNegativeRotation();}
+\DoxyCodeLine{00043\ \};}
+
+\end{DoxyCode}

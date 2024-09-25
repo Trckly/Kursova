@@ -1,0 +1,19 @@
+<map id="AMainPlayer::ProcessHitCube" name="AMainPlayer::ProcessHitCube">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,96,203,121"/>
+<area shape="rect" id="Node000002" href="$class_a_main_player.html#a8cb5268964b83bfab7a7f195fca10d4b" title=" " alt="" coords="251,5,470,46"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="141,92,250,55,272,48,273,53,251,60,143,97"/>
+<area shape="rect" id="Node000003" href="$class_u_command_widget.html#a7115f09c8756cf7b458f3b7bb65a6159" title=" " alt="" coords="261,70,460,96"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="203,96,245,92,246,97,203,101"/>
+<area shape="rect" id="Node000004" href="$class_a_main_player.html#a2d76cb9eb316048aebf3022c6462e438" title=" " alt="" coords="264,120,457,145"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="203,115,249,119,249,125,203,120"/>
+<area shape="rect" id="Node000007" href="$class_a_main_player.html#aa5bc84f37ccef7337791dac1b186f310" title=" " alt="" coords="266,173,455,199"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="143,119,251,155,290,166,288,171,250,160,141,124"/>
+<area shape="rect" id="Node000005" href="$class_u_negative_rotation_command.html#a11d46b1ea70b3f7709ca6d22bb4e3b4b" title=" " alt="" coords="518,108,706,149"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="457,128,503,127,503,133,457,133"/>
+<area shape="rect" id="Node000006" href="$class_a_cube.html#aaf45c70a99373cac26ef4be121f064f1" title=" " alt="" coords="754,116,945,141"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="707,126,739,126,739,131,707,131"/>
+<area shape="rect" id="Node000008" href="$class_u_positive_rotation_command.html#a8ed7fa90eb23bb253d07c083ffec65a0" title=" " alt="" coords="520,173,704,214"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="455,186,505,188,505,193,455,191"/>
+<area shape="rect" id="Node000009" href="$class_a_cube.html#afae6e41cf67d3e810baac5e228178c60" title=" " alt="" coords="756,181,943,207"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="705,191,741,191,741,196,705,196"/>
+</map>

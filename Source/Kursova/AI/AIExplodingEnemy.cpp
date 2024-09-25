@@ -24,6 +24,12 @@ void AAIExplodingEnemy::BeginPlay()
 
 void AAIExplodingEnemy::Die()
 {
+	AMainPlayer* MainPlayer = Cast<AMainPlayer>(GetWorld()->GetFirstPlayerController()->GetCharacter());
+	if(MainPlayer)
+	{
+		MainPlayer->Detach(this);
+	}
+	
 	if(!Destroy())
 		UE_LOG(LogTemp, Warning, TEXT("Enemy haven't been destroyed after death!"));
 }
@@ -81,4 +87,12 @@ void AAIExplodingEnemy::OnHit(UPrimitiveComponent* HitComponent, AActor* OtherAc
 UBehaviorTree* AAIExplodingEnemy::GetBehaviourTree()
 {
 	return BehaviorTree;
+}
+
+void AAIExplodingEnemy::Update(float Health)
+{
+	if(Health <= 50)
+		CharacterDamage = 40;
+	else
+		CharacterDamage = 90;
 }

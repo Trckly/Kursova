@@ -1,0 +1,59 @@
+\doxysection{Main\+Menu\+Widget.\+h}
+\hypertarget{_main_menu_widget_8h_source}{}\label{_main_menu_widget_8h_source}\index{MainUI/MainMenuWidget.h@{MainUI/MainMenuWidget.h}}
+\mbox{\hyperlink{_main_menu_widget_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//\ Fill\ out\ your\ copyright\ notice\ in\ the\ Description\ page\ of\ Project\ Settings.}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}CoreMinimal.h"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}Blueprint/UserWidget.h"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}Components/Button.h"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}Components/EditableText.h"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}Components/TextBlock.h"{}}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}Components/ComboBoxString.h"{}}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}MainMenuWidget.generated.h"{}}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \mbox{\hyperlink{_main_menu_widget_8h_a62ed6fd447f8c75ec4456758293483f8}{DECLARE\_DYNAMIC\_DELEGATE\_TwoParams}}(FSetUserInfo,\ FString\ \textcolor{keyword}{const}\&,\ PlayerName,\ FString\ \textcolor{keyword}{const}\&,\ PlayerCity);}
+\DoxyCodeLine{00014\ \mbox{\hyperlink{_main_menu_widget_8h_ad4ba8f5e408854a95e028d8ca34385dd}{DECLARE\_DYNAMIC\_DELEGATE\_OneParam}}(FSetDifficultyMode,\ \textcolor{keyword}{const}\ FString\&,\ DifficultyMode);}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00020\ UCLASS()}
+\DoxyCodeLine{00021\ class\ KURSOVA\_API\ \mbox{\hyperlink{class_u_main_menu_widget}{UMainMenuWidget}}\ :\ public\ UUserWidget}
+\DoxyCodeLine{00022\ \{}
+\DoxyCodeLine{00023\ \ \ \ \ GENERATED\_BODY()}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \ \ \ \ UPROPERTY(BlueprintReadWrite,\ meta=(BindWidget))}
+\DoxyCodeLine{00028\ \ \ \ \ UEditableText*\ EName;}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \ \ \ \ UPROPERTY(BlueprintReadWrite,\ meta=(BindWidget))}
+\DoxyCodeLine{00031\ \ \ \ \ UEditableText*\ ECity;}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \ \ \ UPROPERTY(BlueprintReadWrite,\ meta=(BindWidget))}
+\DoxyCodeLine{00034\ \ \ \ \ UTextBlock*\ TNameError;}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \ \ \ \ UPROPERTY(BlueprintReadWrite,\ meta=(BindWidget))}
+\DoxyCodeLine{00037\ \ \ \ \ UTextBlock*\ TCityError;}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \ \ UPROPERTY(BlueprintReadWrite,\ meta=(BindWidget))}
+\DoxyCodeLine{00040\ \ \ \ \ UButton*\ BConfirm;}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \ \ \ \ UPROPERTY(BlueprintReadWrite,\ meta=(BindWidget))}
+\DoxyCodeLine{00043\ \ \ \ \ UComboBoxString*\ CBDifficulty;}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ public:}
+\DoxyCodeLine{00046\ \ \ \ \ UPROPERTY()}
+\DoxyCodeLine{00047\ \ \ \ \ FSetUserInfo\ SetUserInfo;}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \ \ \ \ UPROPERTY()}
+\DoxyCodeLine{00050\ \ \ \ \ FSetDifficultyMode\ SetDifficultyMode;}
+\DoxyCodeLine{00051\ \ \ \ \ }
+\DoxyCodeLine{00052\ \ \ \ \ virtual\ \textcolor{keywordtype}{void}\ NativeConstruct()\ override;}
+\DoxyCodeLine{00053\ \ \ \ \ }
+\DoxyCodeLine{00054\ \ \ \ \ UFUNCTION()}
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordtype}{void}\ ConfirmRegistration();}
+\DoxyCodeLine{00056\ \};}
+
+\end{DoxyCode}

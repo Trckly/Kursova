@@ -1,0 +1,17 @@
+<map id="AAIExplodingEnemy::BeginPlay" name="AAIExplodingEnemy::BeginPlay">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,63,155,103"/>
+<area shape="rect" id="Node000002" href="$class_a_a_i_exploding_enemy.html#a6953dd0c5ad9c9988ac92db18a892350" title=" " alt="" coords="203,63,352,103"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="155,80,187,80,187,86,155,86"/>
+<area shape="rect" id="Node000003" href="$class_a_a_i_exploding_enemy.html#ad3c2f427814b65e407fa662a784ce1f9" title=" " alt="" coords="412,5,561,46"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="352,60,396,48,397,53,353,65"/>
+<area shape="rect" id="Node000004" href="$class_a_a_i_exploding_enemy.html#a7ffddf0f3af0d3ce0e2664cce705f4a1" title=" " alt="" coords="402,70,570,96"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="353,80,386,80,386,86,353,86"/>
+<area shape="rect" id="Node000006" href="$class_a_main_player.html#a8b3a4e70812eb9f53216fa9450447a8b" title=" " alt="" coords="400,120,572,145"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="353,98,415,113,414,118,352,103"/>
+<area shape="rect" id="Node000005" href="$class_a_main_player.html#a30a804ba9b0dc9bb02aa9217915546e6" title=" " alt="" coords="628,70,772,96"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="571,80,612,80,612,86,571,86"/>
+<area shape="rect" id="Node000007" href="$class_a_main_player.html#a3680b400fdbc436279a43361a5f94089" title=" " alt="" coords="631,120,769,145"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="573,130,616,130,616,135,573,135"/>
+<area shape="rect" id="Node000008" href="$class_u_player_h_u_d.html#a569cdfd09047c1976613dd41a0b28d18" title=" " alt="" coords="620,169,780,195"/>
+<area shape="poly" id="edge7_Node000006_Node000008" title=" " alt="" coords="546,143,627,162,626,167,545,148"/>
+</map>

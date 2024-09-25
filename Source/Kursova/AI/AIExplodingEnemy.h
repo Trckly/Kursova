@@ -9,7 +9,7 @@
 #include "AIExplodingEnemy.generated.h"
 
 UCLASS()
-class KURSOVA_API AAIExplodingEnemy : public ACharacter, public IEnemyInterface, public IGenericTeamAgentInterface
+class KURSOVA_API AAIExplodingEnemy : public ACharacter, public IEnemyInterface, public IGenericTeamAgentInterface, public IEnemyObserver
 {
 	GENERATED_BODY()
 
@@ -69,4 +69,6 @@ public:
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
 	TSubclassOf<AAIExplodingEnemy> Self;
+
+	virtual void Update(float Health) override;
 };

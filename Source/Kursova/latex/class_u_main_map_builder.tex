@@ -1,0 +1,257 @@
+\doxysection{UMain\+Map\+Builder Class Reference}
+\hypertarget{class_u_main_map_builder}{}\label{class_u_main_map_builder}\index{UMainMapBuilder@{UMainMapBuilder}}
+
+
+{\ttfamily \#include $<$Main\+Map\+Builder.\+h$>$}
+
+
+
+Inheritance diagram for UMain\+Map\+Builder\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{class_u_main_map_builder__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for UMain\+Map\+Builder\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{class_u_main_map_builder__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_u_main_map_builder_a5dc130c2b79ebd643c3712123eabb4fa}{Build\+Floor}} (const FVector2D \&Dimensions)
+\item 
+void \mbox{\hyperlink{class_u_main_map_builder_a2fc172deb346f646f5251fc0ddec5518}{Build\+General\+Walls}} (const FVector2D \&Dimensions)
+\item 
+void \mbox{\hyperlink{class_u_main_map_builder_acb36192a0cd8d3fcfa830f6b9afdb986}{Build\+Obstacles}} (const FVector2D \&Dimensions)
+\item 
+void \mbox{\hyperlink{class_u_main_map_builder_a9e48fd181a119771dc3c8cdaf49db419}{Place\+Radio}} (const FVector2D \&Dimensions)
+\item 
+void \mbox{\hyperlink{class_u_main_map_builder_a6f015175f8184ab7b2b793e34c3f4dc6}{Create\+Forest}} (const FVector2D \&Dimensions)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+TSubclass\+Of$<$ \mbox{\hyperlink{class_a_floor}{AFloor}} $>$ \mbox{\hyperlink{class_u_main_map_builder_a6ba6e63d2c9769ea59df1523ea2f9de5}{Floor\+Class}}
+\item 
+TSubclass\+Of$<$ \mbox{\hyperlink{class_a_wall}{AWall}} $>$ \mbox{\hyperlink{class_u_main_map_builder_a2b38181cef3b2a306f634480c3a44375}{Wall\+Class}}
+\item 
+TSubclass\+Of$<$ \mbox{\hyperlink{class_a_obstacle}{AObstacle}} $>$ \mbox{\hyperlink{class_u_main_map_builder_a508eadd4b9034e857be99a19ed45c33c}{Obstacle\+Class}}
+\item 
+TSubclass\+Of$<$ \mbox{\hyperlink{class_a_radio}{ARadio}} $>$ \mbox{\hyperlink{class_u_main_map_builder_a13aa60028f8320d2d8ecdd2423820309}{Radio\+Class}}
+\item 
+TSubclass\+Of$<$ \mbox{\hyperlink{class_a_tree}{ATree}} $>$ \mbox{\hyperlink{class_u_main_map_builder_a44602528de2595bc12a4cefe6848cf5b}{Jungle\+Tree\+Class}}
+\item 
+TSubclass\+Of$<$ \mbox{\hyperlink{class_a_tree}{ATree}} $>$ \mbox{\hyperlink{class_u_main_map_builder_ad02c119d013c5f5e4c54fed74c13bd49}{Sakura\+Tree\+Class}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{class_u_main_map_builder_a48052bfc78c775179e4d2323e604ade5}{Calculate\+Starting\+Point}} (int Dimension)
+\item 
+FVector2D \mbox{\hyperlink{class_u_main_map_builder_a63a7c96c17a76f73aba9829008aa0603}{Wall\+Line}} (const FVector2D \&Starting\+Point, const int Tile\+Amount, const float Rotation\+Degrees)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+const int \mbox{\hyperlink{class_u_main_map_builder_a3b8fb69e20100df55bcf3dc6e79aee1c}{Tile\+Length}} = 400
+\item 
+\mbox{\hyperlink{class_u_main_map_builder}{UMain\+Map\+Builder}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_u_main_map_builder_a0b79f1f36cc5aee19a36f7c3415c1aa6}{Self\+Instance}}
+\item 
+\mbox{\hyperlink{class_a_radio}{ARadio}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_u_main_map_builder_a1dbd533a06e23710be505c30656085d4}{Radio}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_u_forest}{UForest}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_u_main_map_builder_a8e3dd44bd8b6a825b504c09029947286}{Forest}} = nullptr
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_u_main_map_builder_a5dc130c2b79ebd643c3712123eabb4fa}\index{UMainMapBuilder@{UMainMapBuilder}!BuildFloor@{BuildFloor}}
+\index{BuildFloor@{BuildFloor}!UMainMapBuilder@{UMainMapBuilder}}
+\doxysubsubsection{\texorpdfstring{BuildFloor()}{BuildFloor()}}
+{\footnotesize\ttfamily \label{class_u_main_map_builder_a5dc130c2b79ebd643c3712123eabb4fa} 
+void UMain\+Map\+Builder\+::\+Build\+Floor (\begin{DoxyParamCaption}\item[{const FVector2D \&}]{Dimensions}{}\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_u_main_map_builder_a5dc130c2b79ebd643c3712123eabb4fa_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_u_main_map_builder_a5dc130c2b79ebd643c3712123eabb4fa_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_u_main_map_builder_a2fc172deb346f646f5251fc0ddec5518}\index{UMainMapBuilder@{UMainMapBuilder}!BuildGeneralWalls@{BuildGeneralWalls}}
+\index{BuildGeneralWalls@{BuildGeneralWalls}!UMainMapBuilder@{UMainMapBuilder}}
+\doxysubsubsection{\texorpdfstring{BuildGeneralWalls()}{BuildGeneralWalls()}}
+{\footnotesize\ttfamily \label{class_u_main_map_builder_a2fc172deb346f646f5251fc0ddec5518} 
+void UMain\+Map\+Builder\+::\+Build\+General\+Walls (\begin{DoxyParamCaption}\item[{const FVector2D \&}]{Dimensions}{}\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_u_main_map_builder_a2fc172deb346f646f5251fc0ddec5518_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_u_main_map_builder_a2fc172deb346f646f5251fc0ddec5518_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_u_main_map_builder_acb36192a0cd8d3fcfa830f6b9afdb986}\index{UMainMapBuilder@{UMainMapBuilder}!BuildObstacles@{BuildObstacles}}
+\index{BuildObstacles@{BuildObstacles}!UMainMapBuilder@{UMainMapBuilder}}
+\doxysubsubsection{\texorpdfstring{BuildObstacles()}{BuildObstacles()}}
+{\footnotesize\ttfamily \label{class_u_main_map_builder_acb36192a0cd8d3fcfa830f6b9afdb986} 
+void UMain\+Map\+Builder\+::\+Build\+Obstacles (\begin{DoxyParamCaption}\item[{const FVector2D \&}]{Dimensions}{}\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_u_main_map_builder_acb36192a0cd8d3fcfa830f6b9afdb986_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_u_main_map_builder_a48052bfc78c775179e4d2323e604ade5}\index{UMainMapBuilder@{UMainMapBuilder}!CalculateStartingPoint@{CalculateStartingPoint}}
+\index{CalculateStartingPoint@{CalculateStartingPoint}!UMainMapBuilder@{UMainMapBuilder}}
+\doxysubsubsection{\texorpdfstring{CalculateStartingPoint()}{CalculateStartingPoint()}}
+{\footnotesize\ttfamily \label{class_u_main_map_builder_a48052bfc78c775179e4d2323e604ade5} 
+int UMain\+Map\+Builder\+::\+Calculate\+Starting\+Point (\begin{DoxyParamCaption}\item[{int}]{Dimension}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_u_main_map_builder_a48052bfc78c775179e4d2323e604ade5_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_u_main_map_builder_a6f015175f8184ab7b2b793e34c3f4dc6}\index{UMainMapBuilder@{UMainMapBuilder}!CreateForest@{CreateForest}}
+\index{CreateForest@{CreateForest}!UMainMapBuilder@{UMainMapBuilder}}
+\doxysubsubsection{\texorpdfstring{CreateForest()}{CreateForest()}}
+{\footnotesize\ttfamily \label{class_u_main_map_builder_a6f015175f8184ab7b2b793e34c3f4dc6} 
+void UMain\+Map\+Builder\+::\+Create\+Forest (\begin{DoxyParamCaption}\item[{const FVector2D \&}]{Dimensions}{}\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_u_main_map_builder_a6f015175f8184ab7b2b793e34c3f4dc6_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_u_main_map_builder_a9e48fd181a119771dc3c8cdaf49db419}\index{UMainMapBuilder@{UMainMapBuilder}!PlaceRadio@{PlaceRadio}}
+\index{PlaceRadio@{PlaceRadio}!UMainMapBuilder@{UMainMapBuilder}}
+\doxysubsubsection{\texorpdfstring{PlaceRadio()}{PlaceRadio()}}
+{\footnotesize\ttfamily \label{class_u_main_map_builder_a9e48fd181a119771dc3c8cdaf49db419} 
+void UMain\+Map\+Builder\+::\+Place\+Radio (\begin{DoxyParamCaption}\item[{const FVector2D \&}]{Dimensions}{}\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_u_main_map_builder_a9e48fd181a119771dc3c8cdaf49db419_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_u_main_map_builder_a9e48fd181a119771dc3c8cdaf49db419_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_u_main_map_builder_a63a7c96c17a76f73aba9829008aa0603}\index{UMainMapBuilder@{UMainMapBuilder}!WallLine@{WallLine}}
+\index{WallLine@{WallLine}!UMainMapBuilder@{UMainMapBuilder}}
+\doxysubsubsection{\texorpdfstring{WallLine()}{WallLine()}}
+{\footnotesize\ttfamily \label{class_u_main_map_builder_a63a7c96c17a76f73aba9829008aa0603} 
+FVector2D UMain\+Map\+Builder\+::\+Wall\+Line (\begin{DoxyParamCaption}\item[{const FVector2D \&}]{Starting\+Point}{, }\item[{const int}]{Tile\+Amount}{, }\item[{const float}]{Rotation\+Degrees}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_u_main_map_builder_a63a7c96c17a76f73aba9829008aa0603_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_u_main_map_builder_a6ba6e63d2c9769ea59df1523ea2f9de5}\index{UMainMapBuilder@{UMainMapBuilder}!FloorClass@{FloorClass}}
+\index{FloorClass@{FloorClass}!UMainMapBuilder@{UMainMapBuilder}}
+\doxysubsubsection{\texorpdfstring{FloorClass}{FloorClass}}
+{\footnotesize\ttfamily \label{class_u_main_map_builder_a6ba6e63d2c9769ea59df1523ea2f9de5} 
+TSubclass\+Of$<$\mbox{\hyperlink{class_a_floor}{AFloor}}$>$ UMain\+Map\+Builder\+::\+Floor\+Class}
+
+\Hypertarget{class_u_main_map_builder_a8e3dd44bd8b6a825b504c09029947286}\index{UMainMapBuilder@{UMainMapBuilder}!Forest@{Forest}}
+\index{Forest@{Forest}!UMainMapBuilder@{UMainMapBuilder}}
+\doxysubsubsection{\texorpdfstring{Forest}{Forest}}
+{\footnotesize\ttfamily \label{class_u_main_map_builder_a8e3dd44bd8b6a825b504c09029947286} 
+\mbox{\hyperlink{class_u_forest}{UForest}} \texorpdfstring{$\ast$}{*} UMain\+Map\+Builder\+::\+Forest = nullptr\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [protected]}}
+
+\Hypertarget{class_u_main_map_builder_a44602528de2595bc12a4cefe6848cf5b}\index{UMainMapBuilder@{UMainMapBuilder}!JungleTreeClass@{JungleTreeClass}}
+\index{JungleTreeClass@{JungleTreeClass}!UMainMapBuilder@{UMainMapBuilder}}
+\doxysubsubsection{\texorpdfstring{JungleTreeClass}{JungleTreeClass}}
+{\footnotesize\ttfamily \label{class_u_main_map_builder_a44602528de2595bc12a4cefe6848cf5b} 
+TSubclass\+Of$<$\mbox{\hyperlink{class_a_tree}{ATree}}$>$ UMain\+Map\+Builder\+::\+Jungle\+Tree\+Class}
+
+\Hypertarget{class_u_main_map_builder_a508eadd4b9034e857be99a19ed45c33c}\index{UMainMapBuilder@{UMainMapBuilder}!ObstacleClass@{ObstacleClass}}
+\index{ObstacleClass@{ObstacleClass}!UMainMapBuilder@{UMainMapBuilder}}
+\doxysubsubsection{\texorpdfstring{ObstacleClass}{ObstacleClass}}
+{\footnotesize\ttfamily \label{class_u_main_map_builder_a508eadd4b9034e857be99a19ed45c33c} 
+TSubclass\+Of$<$\mbox{\hyperlink{class_a_obstacle}{AObstacle}}$>$ UMain\+Map\+Builder\+::\+Obstacle\+Class}
+
+\Hypertarget{class_u_main_map_builder_a1dbd533a06e23710be505c30656085d4}\index{UMainMapBuilder@{UMainMapBuilder}!Radio@{Radio}}
+\index{Radio@{Radio}!UMainMapBuilder@{UMainMapBuilder}}
+\doxysubsubsection{\texorpdfstring{Radio}{Radio}}
+{\footnotesize\ttfamily \label{class_u_main_map_builder_a1dbd533a06e23710be505c30656085d4} 
+\mbox{\hyperlink{class_a_radio}{ARadio}}\texorpdfstring{$\ast$}{*} UMain\+Map\+Builder\+::\+Radio\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{class_u_main_map_builder_a13aa60028f8320d2d8ecdd2423820309}\index{UMainMapBuilder@{UMainMapBuilder}!RadioClass@{RadioClass}}
+\index{RadioClass@{RadioClass}!UMainMapBuilder@{UMainMapBuilder}}
+\doxysubsubsection{\texorpdfstring{RadioClass}{RadioClass}}
+{\footnotesize\ttfamily \label{class_u_main_map_builder_a13aa60028f8320d2d8ecdd2423820309} 
+TSubclass\+Of$<$\mbox{\hyperlink{class_a_radio}{ARadio}}$>$ UMain\+Map\+Builder\+::\+Radio\+Class}
+
+\Hypertarget{class_u_main_map_builder_ad02c119d013c5f5e4c54fed74c13bd49}\index{UMainMapBuilder@{UMainMapBuilder}!SakuraTreeClass@{SakuraTreeClass}}
+\index{SakuraTreeClass@{SakuraTreeClass}!UMainMapBuilder@{UMainMapBuilder}}
+\doxysubsubsection{\texorpdfstring{SakuraTreeClass}{SakuraTreeClass}}
+{\footnotesize\ttfamily \label{class_u_main_map_builder_ad02c119d013c5f5e4c54fed74c13bd49} 
+TSubclass\+Of$<$\mbox{\hyperlink{class_a_tree}{ATree}}$>$ UMain\+Map\+Builder\+::\+Sakura\+Tree\+Class}
+
+\Hypertarget{class_u_main_map_builder_a0b79f1f36cc5aee19a36f7c3415c1aa6}\index{UMainMapBuilder@{UMainMapBuilder}!SelfInstance@{SelfInstance}}
+\index{SelfInstance@{SelfInstance}!UMainMapBuilder@{UMainMapBuilder}}
+\doxysubsubsection{\texorpdfstring{SelfInstance}{SelfInstance}}
+{\footnotesize\ttfamily \label{class_u_main_map_builder_a0b79f1f36cc5aee19a36f7c3415c1aa6} 
+\mbox{\hyperlink{class_u_main_map_builder}{UMain\+Map\+Builder}}\texorpdfstring{$\ast$}{*} UMain\+Map\+Builder\+::\+Self\+Instance\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{class_u_main_map_builder_a3b8fb69e20100df55bcf3dc6e79aee1c}\index{UMainMapBuilder@{UMainMapBuilder}!TileLength@{TileLength}}
+\index{TileLength@{TileLength}!UMainMapBuilder@{UMainMapBuilder}}
+\doxysubsubsection{\texorpdfstring{TileLength}{TileLength}}
+{\footnotesize\ttfamily \label{class_u_main_map_builder_a3b8fb69e20100df55bcf3dc6e79aee1c} 
+const int UMain\+Map\+Builder\+::\+Tile\+Length = 400\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{class_u_main_map_builder_a2b38181cef3b2a306f634480c3a44375}\index{UMainMapBuilder@{UMainMapBuilder}!WallClass@{WallClass}}
+\index{WallClass@{WallClass}!UMainMapBuilder@{UMainMapBuilder}}
+\doxysubsubsection{\texorpdfstring{WallClass}{WallClass}}
+{\footnotesize\ttfamily \label{class_u_main_map_builder_a2b38181cef3b2a306f634480c3a44375} 
+TSubclass\+Of$<$\mbox{\hyperlink{class_a_wall}{AWall}}$>$ UMain\+Map\+Builder\+::\+Wall\+Class}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Map\+Builder/\mbox{\hyperlink{_main_map_builder_8h}{Main\+Map\+Builder.\+h}}\item 
+Map\+Builder/\mbox{\hyperlink{_main_map_builder_8cpp}{Main\+Map\+Builder.\+cpp}}\end{DoxyCompactItemize}

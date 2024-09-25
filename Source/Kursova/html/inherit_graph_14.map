@@ -1,0 +1,29 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="Node000000" title=" " alt="" coords="5,301,103,327"/>
+<area shape="rect" id="Node000001" href="$class_u_admin_manager_widget.html" title=" " alt="" coords="151,5,308,31"/>
+<area shape="poly" id="edge77_Node000000_Node000001" title=" " alt="" coords="54,286,61,234,77,168,105,100,125,68,149,40,164,29,167,34,152,44,129,71,110,102,82,170,67,235,60,287"/>
+<area shape="rect" id="Node000002" href="$class_u_command_widget.html" title=" " alt="" coords="165,55,294,80"/>
+<area shape="poly" id="edge78_Node000000_Node000002" title=" " alt="" coords="57,285,67,242,84,190,111,136,128,111,149,89,165,79,168,83,152,94,132,115,115,139,89,192,72,244,62,286"/>
+<area shape="rect" id="Node000003" href="$class_u_crosshair_widget.html" title=" " alt="" coords="167,104,292,130"/>
+<area shape="poly" id="edge79_Node000000_Node000003" title=" " alt="" coords="61,286,73,252,91,213,117,173,149,139,167,128,170,132,152,143,121,176,96,215,78,254,66,288"/>
+<area shape="rect" id="Node000004" href="$class_u_main_menu_widget.html" title=" " alt="" coords="164,153,295,179"/>
+<area shape="poly" id="edge80_Node000000_Node000004" title=" " alt="" coords="67,286,100,236,123,210,149,188,169,177,172,182,152,192,127,214,104,240,71,289"/>
+<area shape="rect" id="Node000005" href="$class_u_password_widget.html" title=" " alt="" coords="166,203,293,228"/>
+<area shape="poly" id="edge81_Node000000_Node000005" title=" " alt="" coords="79,288,111,262,149,237,174,227,176,231,152,242,114,266,82,292"/>
+<area shape="rect" id="Node000006" href="$class_u_player_editor_widget.html" title=" " alt="" coords="159,252,300,278"/>
+<area shape="poly" id="edge82_Node000000_Node000006" title=" " alt="" coords="116,294,180,276,182,281,117,299"/>
+<area shape="rect" id="Node000007" href="$class_u_player_h_u_d.html" title=" " alt="" coords="182,301,277,327"/>
+<area shape="poly" id="edge83_Node000000_Node000007" title=" " alt="" coords="118,312,182,312,182,317,118,317"/>
+<area shape="rect" id="Node000008" href="$class_u_player_panel_widget.html" title=" " alt="" coords="159,351,300,376"/>
+<area shape="poly" id="edge84_Node000000_Node000008" title=" " alt="" coords="117,329,182,347,180,353,116,334"/>
+<area shape="rect" id="Node000009" href="$class_u_server_pannel_widget.html" title=" " alt="" coords="155,400,304,426"/>
+<area shape="poly" id="edge85_Node000000_Node000009" title=" " alt="" coords="82,336,114,362,152,386,176,397,174,402,149,391,111,367,79,340"/>
+<area shape="rect" id="Node000010" href="$class_u_server_widget.html" title=" " alt="" coords="175,449,284,475"/>
+<area shape="poly" id="edge86_Node000000_Node000010" title=" " alt="" coords="71,339,104,389,127,414,152,436,176,448,174,453,149,440,123,418,100,392,67,342"/>
+<area shape="rect" id="Node000011" href="$class_u_weapon_data_widget.html" title=" " alt="" coords="157,499,302,524"/>
+<area shape="poly" id="edge87_Node000000_Node000011" title=" " alt="" coords="66,341,78,374,96,413,121,452,152,485,170,496,167,500,149,490,117,455,91,416,73,376,61,342"/>
+<area shape="rect" id="Node000012" href="$class_u_weapon_edit_widget.html" title=" " alt="" coords="159,548,300,574"/>
+<area shape="poly" id="edge88_Node000000_Node000012" title=" " alt="" coords="62,342,72,385,89,437,115,490,132,514,152,535,168,545,165,550,149,539,128,517,111,492,84,439,67,386,57,343"/>
+<area shape="rect" id="Node000013" href="$class_u_weapon_menu_widget.html" title=" " alt="" coords="155,597,304,623"/>
+<area shape="poly" id="edge89_Node000000_Node000013" title=" " alt="" coords="60,342,67,393,82,458,110,526,129,557,152,584,167,595,164,599,149,588,125,560,105,528,77,460,61,394,54,342"/>
+</map>

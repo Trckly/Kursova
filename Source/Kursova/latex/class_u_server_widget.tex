@@ -1,0 +1,352 @@
+\doxysection{UServer\+Widget Class Reference}
+\hypertarget{class_u_server_widget}{}\label{class_u_server_widget}\index{UServerWidget@{UServerWidget}}
+
+
+{\ttfamily \#include $<$Server\+Widget.\+h$>$}
+
+
+
+Inheritance diagram for UServer\+Widget\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{class_u_server_widget__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for UServer\+Widget\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{class_u_server_widget__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{class_u_server_widget_a74cd014e883bf130482eee6be68f26b9}{Native\+Construct}} () override
+\item 
+void \mbox{\hyperlink{class_u_server_widget_a6d4684106098fac964a829a1e77540fe}{Show\+Error\+Message}} (FString Message)
+\item 
+void \mbox{\hyperlink{class_u_server_widget_a3d805bb6e7999814bb2422680f06c7ff}{Close\+Widget}} ()
+\item 
+void \mbox{\hyperlink{class_u_server_widget_a9baae27d00f8e7726fcb8ead7e0781d2}{Create}} ()
+\item 
+void \mbox{\hyperlink{class_u_server_widget_aafb24a3470b65b9f75adf1b1c18633d9}{Find}} ()
+\item 
+void \mbox{\hyperlink{class_u_server_widget_ad8ee867ec392163ecb0c116a6ab916a3}{Join}} (FBlueprint\+Session\+Result Session\+Result, const FString \&Password)
+\item 
+void \mbox{\hyperlink{class_u_server_widget_abdf7bd4b3187571ccdccf69ef6d97db1}{Set\+Sessions}} (TArray$<$ FBlueprint\+Session\+Result $>$ Blueprint\+Session\+Results)
+\item 
+void \mbox{\hyperlink{class_u_server_widget_a7b0f82f1cd233dd2f6824aa0dc48f837}{Open\+Admin\+Menu}} ()
+\item 
+void \mbox{\hyperlink{class_u_server_widget_a200e1c96e6c9712e2e7c744dfcef0e35}{Close\+Admin\+Menu}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+UEditable\+Text \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_u_server_widget_ac1eaccf2c6aea194992cb21a2a3473f3}{W\+\_\+\+Name}}
+\item 
+UEditable\+Text \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_u_server_widget_a65bf09170f23a2adb5b82520219cfe6d}{W\+\_\+\+Password}}
+\item 
+UButton \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_u_server_widget_ab935de495e377ba59e86460cd719c66e}{Create\+Server}}
+\item 
+UButton \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_u_server_widget_abd9c12893f626f1b52d9d3a7c9aa064e}{Connect\+To\+Server}}
+\item 
+UButton \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_u_server_widget_a6602f7704fd4052964ac1843bc1f3896}{Back\+To\+Game}}
+\item 
+FSend\+Settings\+To\+Player \mbox{\hyperlink{class_u_server_widget_a79cdaef24255c2bf57ab6defd203d656}{Set\+Server\+Settings}}
+\item 
+FOn\+Find\+Session \mbox{\hyperlink{class_u_server_widget_a0457fc58cbe596ae85f5ee988a44d62c}{On\+Find\+Session}}
+\item 
+FOn\+Join\+To\+Session \mbox{\hyperlink{class_u_server_widget_aa6cf6ea97d56fc30cbc225aaf3dc86f5}{On\+Join\+To\+Session}}
+\item 
+int \mbox{\hyperlink{class_u_server_widget_adb73b3e1d96840628048c8df405b576a}{d\+Number\+Of\+Players}}
+\item 
+FString \mbox{\hyperlink{class_u_server_widget_a5f7674c8499eaea95c7acc1893881dac}{SMap}}
+\item 
+FString \mbox{\hyperlink{class_u_server_widget_a0239876bcde8792616ab36b83a2a6ca0}{SDifficulty}}
+\item 
+UText\+Block \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_u_server_widget_adfbb42e689f1bdea1b784373f027898f}{W\+\_\+\+Error\+Message}}
+\item 
+UCheck\+Box \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_u_server_widget_ab7f7d60b8c809dd87430d9983c88db4b}{Is\+Private}}
+\item 
+UScroll\+Box \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_u_server_widget_a32e8144dbd9a182f35896496f085fa4c}{Sessions\+List}}
+\item 
+TSubclass\+Of$<$ \mbox{\hyperlink{class_u_server_pannel_widget}{UServer\+Pannel\+Widget}} $>$ \mbox{\hyperlink{class_u_server_widget_ae1ae529b05bef2ce50b8b7699eb34748}{Server\+Panel\+Widget\+Class}}
+\item 
+TArray$<$ \mbox{\hyperlink{class_u_server_pannel_widget}{UServer\+Pannel\+Widget}} \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{class_u_server_widget_a5d869e3016513c405b26a0e67d792fe5}{Server\+Panel\+Widgets}}
+\item 
+UButton \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_u_server_widget_ac0122ecf16bca61657127950e8e4a70b}{BManage\+Server}}
+\item 
+TSubclass\+Of$<$ \mbox{\hyperlink{class_u_admin_manager_widget}{UAdmin\+Manager\+Widget}} $>$ \mbox{\hyperlink{class_u_server_widget_afb4944c57bb9c55713e3c2f7d1337096}{Admin\+Manager\+Widget\+Class}}
+\item 
+\mbox{\hyperlink{class_u_admin_manager_widget}{UAdmin\+Manager\+Widget}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_u_server_widget_a1f91ca4fe1b014f12c9b90156fbf404e}{Admin\+Manager\+Widget}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_u_server_widget_a200e1c96e6c9712e2e7c744dfcef0e35}\index{UServerWidget@{UServerWidget}!CloseAdminMenu@{CloseAdminMenu}}
+\index{CloseAdminMenu@{CloseAdminMenu}!UServerWidget@{UServerWidget}}
+\doxysubsubsection{\texorpdfstring{CloseAdminMenu()}{CloseAdminMenu()}}
+{\footnotesize\ttfamily \label{class_u_server_widget_a200e1c96e6c9712e2e7c744dfcef0e35} 
+void UServer\+Widget\+::\+Close\+Admin\+Menu (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_u_server_widget_a200e1c96e6c9712e2e7c744dfcef0e35_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_u_server_widget_a3d805bb6e7999814bb2422680f06c7ff}\index{UServerWidget@{UServerWidget}!CloseWidget@{CloseWidget}}
+\index{CloseWidget@{CloseWidget}!UServerWidget@{UServerWidget}}
+\doxysubsubsection{\texorpdfstring{CloseWidget()}{CloseWidget()}}
+{\footnotesize\ttfamily \label{class_u_server_widget_a3d805bb6e7999814bb2422680f06c7ff} 
+void UServer\+Widget\+::\+Close\+Widget (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_u_server_widget_a3d805bb6e7999814bb2422680f06c7ff_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_u_server_widget_a9baae27d00f8e7726fcb8ead7e0781d2}\index{UServerWidget@{UServerWidget}!Create@{Create}}
+\index{Create@{Create}!UServerWidget@{UServerWidget}}
+\doxysubsubsection{\texorpdfstring{Create()}{Create()}}
+{\footnotesize\ttfamily \label{class_u_server_widget_a9baae27d00f8e7726fcb8ead7e0781d2} 
+void UServer\+Widget\+::\+Create (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_u_server_widget_a9baae27d00f8e7726fcb8ead7e0781d2_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_u_server_widget_a9baae27d00f8e7726fcb8ead7e0781d2_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_u_server_widget_aafb24a3470b65b9f75adf1b1c18633d9}\index{UServerWidget@{UServerWidget}!Find@{Find}}
+\index{Find@{Find}!UServerWidget@{UServerWidget}}
+\doxysubsubsection{\texorpdfstring{Find()}{Find()}}
+{\footnotesize\ttfamily \label{class_u_server_widget_aafb24a3470b65b9f75adf1b1c18633d9} 
+void UServer\+Widget\+::\+Find (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_u_server_widget_aafb24a3470b65b9f75adf1b1c18633d9_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_u_server_widget_ad8ee867ec392163ecb0c116a6ab916a3}\index{UServerWidget@{UServerWidget}!Join@{Join}}
+\index{Join@{Join}!UServerWidget@{UServerWidget}}
+\doxysubsubsection{\texorpdfstring{Join()}{Join()}}
+{\footnotesize\ttfamily \label{class_u_server_widget_ad8ee867ec392163ecb0c116a6ab916a3} 
+void UServer\+Widget\+::\+Join (\begin{DoxyParamCaption}\item[{FBlueprint\+Session\+Result}]{Session\+Result}{, }\item[{const FString \&}]{Password}{}\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_u_server_widget_ad8ee867ec392163ecb0c116a6ab916a3_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_u_server_widget_a74cd014e883bf130482eee6be68f26b9}\index{UServerWidget@{UServerWidget}!NativeConstruct@{NativeConstruct}}
+\index{NativeConstruct@{NativeConstruct}!UServerWidget@{UServerWidget}}
+\doxysubsubsection{\texorpdfstring{NativeConstruct()}{NativeConstruct()}}
+{\footnotesize\ttfamily \label{class_u_server_widget_a74cd014e883bf130482eee6be68f26b9} 
+void UServer\+Widget\+::\+Native\+Construct (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_u_server_widget_a74cd014e883bf130482eee6be68f26b9_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_u_server_widget_a7b0f82f1cd233dd2f6824aa0dc48f837}\index{UServerWidget@{UServerWidget}!OpenAdminMenu@{OpenAdminMenu}}
+\index{OpenAdminMenu@{OpenAdminMenu}!UServerWidget@{UServerWidget}}
+\doxysubsubsection{\texorpdfstring{OpenAdminMenu()}{OpenAdminMenu()}}
+{\footnotesize\ttfamily \label{class_u_server_widget_a7b0f82f1cd233dd2f6824aa0dc48f837} 
+void UServer\+Widget\+::\+Open\+Admin\+Menu (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+New Functionality Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_u_server_widget_a7b0f82f1cd233dd2f6824aa0dc48f837_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_u_server_widget_a7b0f82f1cd233dd2f6824aa0dc48f837_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_u_server_widget_abdf7bd4b3187571ccdccf69ef6d97db1}\index{UServerWidget@{UServerWidget}!SetSessions@{SetSessions}}
+\index{SetSessions@{SetSessions}!UServerWidget@{UServerWidget}}
+\doxysubsubsection{\texorpdfstring{SetSessions()}{SetSessions()}}
+{\footnotesize\ttfamily \label{class_u_server_widget_abdf7bd4b3187571ccdccf69ef6d97db1} 
+void UServer\+Widget\+::\+Set\+Sessions (\begin{DoxyParamCaption}\item[{TArray$<$ FBlueprint\+Session\+Result $>$}]{Blueprint\+Session\+Results}{}\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_u_server_widget_abdf7bd4b3187571ccdccf69ef6d97db1_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_u_server_widget_abdf7bd4b3187571ccdccf69ef6d97db1_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_u_server_widget_a6d4684106098fac964a829a1e77540fe}\index{UServerWidget@{UServerWidget}!ShowErrorMessage@{ShowErrorMessage}}
+\index{ShowErrorMessage@{ShowErrorMessage}!UServerWidget@{UServerWidget}}
+\doxysubsubsection{\texorpdfstring{ShowErrorMessage()}{ShowErrorMessage()}}
+{\footnotesize\ttfamily \label{class_u_server_widget_a6d4684106098fac964a829a1e77540fe} 
+void UServer\+Widget\+::\+Show\+Error\+Message (\begin{DoxyParamCaption}\item[{FString}]{Message}{}\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_u_server_widget_a6d4684106098fac964a829a1e77540fe_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_u_server_widget_a1f91ca4fe1b014f12c9b90156fbf404e}\index{UServerWidget@{UServerWidget}!AdminManagerWidget@{AdminManagerWidget}}
+\index{AdminManagerWidget@{AdminManagerWidget}!UServerWidget@{UServerWidget}}
+\doxysubsubsection{\texorpdfstring{AdminManagerWidget}{AdminManagerWidget}}
+{\footnotesize\ttfamily \label{class_u_server_widget_a1f91ca4fe1b014f12c9b90156fbf404e} 
+\mbox{\hyperlink{class_u_admin_manager_widget}{UAdmin\+Manager\+Widget}}\texorpdfstring{$\ast$}{*} UServer\+Widget\+::\+Admin\+Manager\+Widget}
+
+\Hypertarget{class_u_server_widget_afb4944c57bb9c55713e3c2f7d1337096}\index{UServerWidget@{UServerWidget}!AdminManagerWidgetClass@{AdminManagerWidgetClass}}
+\index{AdminManagerWidgetClass@{AdminManagerWidgetClass}!UServerWidget@{UServerWidget}}
+\doxysubsubsection{\texorpdfstring{AdminManagerWidgetClass}{AdminManagerWidgetClass}}
+{\footnotesize\ttfamily \label{class_u_server_widget_afb4944c57bb9c55713e3c2f7d1337096} 
+TSubclass\+Of$<$\mbox{\hyperlink{class_u_admin_manager_widget}{UAdmin\+Manager\+Widget}}$>$ UServer\+Widget\+::\+Admin\+Manager\+Widget\+Class}
+
+\Hypertarget{class_u_server_widget_a6602f7704fd4052964ac1843bc1f3896}\index{UServerWidget@{UServerWidget}!BackToGame@{BackToGame}}
+\index{BackToGame@{BackToGame}!UServerWidget@{UServerWidget}}
+\doxysubsubsection{\texorpdfstring{BackToGame}{BackToGame}}
+{\footnotesize\ttfamily \label{class_u_server_widget_a6602f7704fd4052964ac1843bc1f3896} 
+UButton\texorpdfstring{$\ast$}{*} UServer\+Widget\+::\+Back\+To\+Game}
+
+\Hypertarget{class_u_server_widget_ac0122ecf16bca61657127950e8e4a70b}\index{UServerWidget@{UServerWidget}!BManageServer@{BManageServer}}
+\index{BManageServer@{BManageServer}!UServerWidget@{UServerWidget}}
+\doxysubsubsection{\texorpdfstring{BManageServer}{BManageServer}}
+{\footnotesize\ttfamily \label{class_u_server_widget_ac0122ecf16bca61657127950e8e4a70b} 
+UButton\texorpdfstring{$\ast$}{*} UServer\+Widget\+::\+BManage\+Server}
+
+New Functionality \Hypertarget{class_u_server_widget_abd9c12893f626f1b52d9d3a7c9aa064e}\index{UServerWidget@{UServerWidget}!ConnectToServer@{ConnectToServer}}
+\index{ConnectToServer@{ConnectToServer}!UServerWidget@{UServerWidget}}
+\doxysubsubsection{\texorpdfstring{ConnectToServer}{ConnectToServer}}
+{\footnotesize\ttfamily \label{class_u_server_widget_abd9c12893f626f1b52d9d3a7c9aa064e} 
+UButton\texorpdfstring{$\ast$}{*} UServer\+Widget\+::\+Connect\+To\+Server}
+
+\Hypertarget{class_u_server_widget_ab935de495e377ba59e86460cd719c66e}\index{UServerWidget@{UServerWidget}!CreateServer@{CreateServer}}
+\index{CreateServer@{CreateServer}!UServerWidget@{UServerWidget}}
+\doxysubsubsection{\texorpdfstring{CreateServer}{CreateServer}}
+{\footnotesize\ttfamily \label{class_u_server_widget_ab935de495e377ba59e86460cd719c66e} 
+UButton\texorpdfstring{$\ast$}{*} UServer\+Widget\+::\+Create\+Server}
+
+\Hypertarget{class_u_server_widget_adb73b3e1d96840628048c8df405b576a}\index{UServerWidget@{UServerWidget}!dNumberOfPlayers@{dNumberOfPlayers}}
+\index{dNumberOfPlayers@{dNumberOfPlayers}!UServerWidget@{UServerWidget}}
+\doxysubsubsection{\texorpdfstring{dNumberOfPlayers}{dNumberOfPlayers}}
+{\footnotesize\ttfamily \label{class_u_server_widget_adb73b3e1d96840628048c8df405b576a} 
+int UServer\+Widget\+::d\+Number\+Of\+Players}
+
+\Hypertarget{class_u_server_widget_ab7f7d60b8c809dd87430d9983c88db4b}\index{UServerWidget@{UServerWidget}!IsPrivate@{IsPrivate}}
+\index{IsPrivate@{IsPrivate}!UServerWidget@{UServerWidget}}
+\doxysubsubsection{\texorpdfstring{IsPrivate}{IsPrivate}}
+{\footnotesize\ttfamily \label{class_u_server_widget_ab7f7d60b8c809dd87430d9983c88db4b} 
+UCheck\+Box\texorpdfstring{$\ast$}{*} UServer\+Widget\+::\+Is\+Private}
+
+\Hypertarget{class_u_server_widget_a0457fc58cbe596ae85f5ee988a44d62c}\index{UServerWidget@{UServerWidget}!OnFindSession@{OnFindSession}}
+\index{OnFindSession@{OnFindSession}!UServerWidget@{UServerWidget}}
+\doxysubsubsection{\texorpdfstring{OnFindSession}{OnFindSession}}
+{\footnotesize\ttfamily \label{class_u_server_widget_a0457fc58cbe596ae85f5ee988a44d62c} 
+FOn\+Find\+Session UServer\+Widget\+::\+On\+Find\+Session}
+
+\Hypertarget{class_u_server_widget_aa6cf6ea97d56fc30cbc225aaf3dc86f5}\index{UServerWidget@{UServerWidget}!OnJoinToSession@{OnJoinToSession}}
+\index{OnJoinToSession@{OnJoinToSession}!UServerWidget@{UServerWidget}}
+\doxysubsubsection{\texorpdfstring{OnJoinToSession}{OnJoinToSession}}
+{\footnotesize\ttfamily \label{class_u_server_widget_aa6cf6ea97d56fc30cbc225aaf3dc86f5} 
+FOn\+Join\+To\+Session UServer\+Widget\+::\+On\+Join\+To\+Session}
+
+\Hypertarget{class_u_server_widget_a0239876bcde8792616ab36b83a2a6ca0}\index{UServerWidget@{UServerWidget}!SDifficulty@{SDifficulty}}
+\index{SDifficulty@{SDifficulty}!UServerWidget@{UServerWidget}}
+\doxysubsubsection{\texorpdfstring{SDifficulty}{SDifficulty}}
+{\footnotesize\ttfamily \label{class_u_server_widget_a0239876bcde8792616ab36b83a2a6ca0} 
+FString UServer\+Widget\+::\+SDifficulty}
+
+\Hypertarget{class_u_server_widget_ae1ae529b05bef2ce50b8b7699eb34748}\index{UServerWidget@{UServerWidget}!ServerPanelWidgetClass@{ServerPanelWidgetClass}}
+\index{ServerPanelWidgetClass@{ServerPanelWidgetClass}!UServerWidget@{UServerWidget}}
+\doxysubsubsection{\texorpdfstring{ServerPanelWidgetClass}{ServerPanelWidgetClass}}
+{\footnotesize\ttfamily \label{class_u_server_widget_ae1ae529b05bef2ce50b8b7699eb34748} 
+TSubclass\+Of$<$\mbox{\hyperlink{class_u_server_pannel_widget}{UServer\+Pannel\+Widget}}$>$ UServer\+Widget\+::\+Server\+Panel\+Widget\+Class}
+
+\Hypertarget{class_u_server_widget_a5d869e3016513c405b26a0e67d792fe5}\index{UServerWidget@{UServerWidget}!ServerPanelWidgets@{ServerPanelWidgets}}
+\index{ServerPanelWidgets@{ServerPanelWidgets}!UServerWidget@{UServerWidget}}
+\doxysubsubsection{\texorpdfstring{ServerPanelWidgets}{ServerPanelWidgets}}
+{\footnotesize\ttfamily \label{class_u_server_widget_a5d869e3016513c405b26a0e67d792fe5} 
+TArray$<$\mbox{\hyperlink{class_u_server_pannel_widget}{UServer\+Pannel\+Widget}}\texorpdfstring{$\ast$}{*}$>$ UServer\+Widget\+::\+Server\+Panel\+Widgets}
+
+\Hypertarget{class_u_server_widget_a32e8144dbd9a182f35896496f085fa4c}\index{UServerWidget@{UServerWidget}!SessionsList@{SessionsList}}
+\index{SessionsList@{SessionsList}!UServerWidget@{UServerWidget}}
+\doxysubsubsection{\texorpdfstring{SessionsList}{SessionsList}}
+{\footnotesize\ttfamily \label{class_u_server_widget_a32e8144dbd9a182f35896496f085fa4c} 
+UScroll\+Box\texorpdfstring{$\ast$}{*} UServer\+Widget\+::\+Sessions\+List}
+
+\Hypertarget{class_u_server_widget_a79cdaef24255c2bf57ab6defd203d656}\index{UServerWidget@{UServerWidget}!SetServerSettings@{SetServerSettings}}
+\index{SetServerSettings@{SetServerSettings}!UServerWidget@{UServerWidget}}
+\doxysubsubsection{\texorpdfstring{SetServerSettings}{SetServerSettings}}
+{\footnotesize\ttfamily \label{class_u_server_widget_a79cdaef24255c2bf57ab6defd203d656} 
+FSend\+Settings\+To\+Player UServer\+Widget\+::\+Set\+Server\+Settings}
+
+\Hypertarget{class_u_server_widget_a5f7674c8499eaea95c7acc1893881dac}\index{UServerWidget@{UServerWidget}!SMap@{SMap}}
+\index{SMap@{SMap}!UServerWidget@{UServerWidget}}
+\doxysubsubsection{\texorpdfstring{SMap}{SMap}}
+{\footnotesize\ttfamily \label{class_u_server_widget_a5f7674c8499eaea95c7acc1893881dac} 
+FString UServer\+Widget\+::\+SMap}
+
+\Hypertarget{class_u_server_widget_adfbb42e689f1bdea1b784373f027898f}\index{UServerWidget@{UServerWidget}!W\_ErrorMessage@{W\_ErrorMessage}}
+\index{W\_ErrorMessage@{W\_ErrorMessage}!UServerWidget@{UServerWidget}}
+\doxysubsubsection{\texorpdfstring{W\_ErrorMessage}{W\_ErrorMessage}}
+{\footnotesize\ttfamily \label{class_u_server_widget_adfbb42e689f1bdea1b784373f027898f} 
+UText\+Block\texorpdfstring{$\ast$}{*} UServer\+Widget\+::\+W\+\_\+\+Error\+Message}
+
+\Hypertarget{class_u_server_widget_ac1eaccf2c6aea194992cb21a2a3473f3}\index{UServerWidget@{UServerWidget}!W\_Name@{W\_Name}}
+\index{W\_Name@{W\_Name}!UServerWidget@{UServerWidget}}
+\doxysubsubsection{\texorpdfstring{W\_Name}{W\_Name}}
+{\footnotesize\ttfamily \label{class_u_server_widget_ac1eaccf2c6aea194992cb21a2a3473f3} 
+UEditable\+Text\texorpdfstring{$\ast$}{*} UServer\+Widget\+::\+W\+\_\+\+Name}
+
+\Hypertarget{class_u_server_widget_a65bf09170f23a2adb5b82520219cfe6d}\index{UServerWidget@{UServerWidget}!W\_Password@{W\_Password}}
+\index{W\_Password@{W\_Password}!UServerWidget@{UServerWidget}}
+\doxysubsubsection{\texorpdfstring{W\_Password}{W\_Password}}
+{\footnotesize\ttfamily \label{class_u_server_widget_a65bf09170f23a2adb5b82520219cfe6d} 
+UEditable\+Text\texorpdfstring{$\ast$}{*} UServer\+Widget\+::\+W\+\_\+\+Password}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Server\+Logic/\+UI/\mbox{\hyperlink{_server_widget_8h}{Server\+Widget.\+h}}\item 
+Server\+Logic/\+UI/\mbox{\hyperlink{_server_widget_8cpp}{Server\+Widget.\+cpp}}\end{DoxyCompactItemize}

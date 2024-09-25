@@ -1,0 +1,52 @@
+\doxysection{Command\+Widget.\+h}
+\hypertarget{_command_widget_8h_source}{}\label{_command_widget_8h_source}\index{Command/Widgets/CommandWidget.h@{Command/Widgets/CommandWidget.h}}
+\mbox{\hyperlink{_command_widget_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//\ Fill\ out\ your\ copyright\ notice\ in\ the\ Description\ page\ of\ Project\ Settings.}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}CoreMinimal.h"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}Blueprint/UserWidget.h"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}Components/Button.h"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}CommandWidget.generated.h"{}}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00013\ \mbox{\hyperlink{_command_widget_8h_a86c6258105c84fca51e7ec0fb85d63e3}{DECLARE\_DYNAMIC\_DELEGATE\_OneParam}}(FPositiveRotationDelegate,\ AActor*,\ Actor);}
+\DoxyCodeLine{00014\ \mbox{\hyperlink{_command_widget_8h_a86c6258105c84fca51e7ec0fb85d63e3}{DECLARE\_DYNAMIC\_DELEGATE\_OneParam}}(FNegativeRotationDelegate,\ AActor*,\ Actor);}
+\DoxyCodeLine{00015\ \mbox{\hyperlink{_command_widget_8h_ad65d251cd6c839c8edd43694803f4b07}{DECLARE\_DYNAMIC\_DELEGATE}}(FWidgetClosed);}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ UCLASS()}
+\DoxyCodeLine{00018\ class\ KURSOVA\_API\ \mbox{\hyperlink{class_u_command_widget}{UCommandWidget}}\ :\ public\ UUserWidget}
+\DoxyCodeLine{00019\ \{}
+\DoxyCodeLine{00020\ \ \ \ \ GENERATED\_BODY()}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ NativeConstruct()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00024\ \ \ \ \ }
+\DoxyCodeLine{00025\ \ \ \ \ UPROPERTY(EditDefaultsOnly,\ BlueprintReadWrite,\ meta=(BindWidget))}
+\DoxyCodeLine{00026\ \ \ \ \ UButton*\ PosRotationButton;}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \ \ \ \ UPROPERTY(EditDefaultsOnly,\ BlueprintReadWrite,\ meta=(BindWidget))}
+\DoxyCodeLine{00029\ \ \ \ \ UButton*\ NegRotationButton;}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \ \ \ UPROPERTY()}
+\DoxyCodeLine{00032\ \ \ \ \ AActor*\ Actor;}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ public:}
+\DoxyCodeLine{00035\ \ \ \ \ UFUNCTION()}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{void}\ PositiveRotation();}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \ \ UFUNCTION()}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordtype}{void}\ NegativeRotation();}
+\DoxyCodeLine{00040\ \ \ \ \ }
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{void}\ CloseWidget();}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordtype}{void}\ PassActor(AActor*\ HitActor);}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ public:}
+\DoxyCodeLine{00046\ \ \ \ \ FPositiveRotationDelegate\ PositiveRotationDelegate;}
+\DoxyCodeLine{00047\ \ \ \ \ FNegativeRotationDelegate\ NegativeRotationDelegate;}
+\DoxyCodeLine{00048\ \ \ \ \ FWidgetClosed\ WidgetClosed;}
+\DoxyCodeLine{00049\ \};}
+
+\end{DoxyCode}

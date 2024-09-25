@@ -1,0 +1,9 @@
+<map id="UMG/CrosshairWidget.h" name="UMG/CrosshairWidget.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="130,5,292,31"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,79,110,105"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="186,34,98,75,96,70,184,29"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="134,79,288,105"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="214,31,214,63,208,63,208,31"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="313,79,501,105"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="245,29,360,71,359,76,243,34"/>
+</map>

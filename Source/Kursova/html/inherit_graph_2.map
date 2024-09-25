@@ -1,0 +1,21 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="Node000000" title=" " alt="" coords="56,153,143,179"/>
+<area shape="rect" id="Node000001" href="$class_a_a_i_biting_enemy.html" title=" " alt="" coords="254,104,371,130"/>
+<area shape="poly" id="edge17_Node000000_Node000001" title=" " alt="" coords="157,150,253,128,254,133,158,155"/>
+<area shape="rect" id="Node000003" href="$class_a_a_i_exploding_enemy.html" title=" " alt="" coords="242,55,383,80"/>
+<area shape="poly" id="edge18_Node000000_Node000003" title=" " alt="" coords="157,154,192,140,207,128,216,116,225,103,240,89,261,79,264,83,243,94,229,106,220,119,211,132,195,144,159,159"/>
+<area shape="rect" id="Node000006" href="$class_a_main_player.html" title=" " alt="" coords="265,153,360,179"/>
+<area shape="poly" id="edge19_Node000000_Node000006" title=" " alt="" coords="158,164,264,164,264,169,158,169"/>
+<area shape="rect" id="Node000002" href="$class_i_enemy_interface.html" title=" " alt="" coords="41,55,158,80"/>
+<area shape="poly" id="edge20_Node000002_Node000001" title=" " alt="" coords="174,82,254,101,253,106,172,87"/>
+<area shape="poly" id="edge21_Node000002_Node000003" title=" " alt="" coords="174,65,241,65,241,70,174,70"/>
+<area shape="rect" id="Node000004" href="$class_i_enemy_observer.html" title=" " alt="" coords="40,5,159,31"/>
+<area shape="poly" id="edge22_Node000004_Node000001" title=" " alt="" coords="175,30,195,40,211,53,220,66,229,78,243,91,264,101,261,106,240,95,225,82,216,69,207,56,192,44,173,35"/>
+<area shape="poly" id="edge23_Node000004_Node000003" title=" " alt="" coords="174,32,254,51,253,57,172,38"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="5,104,194,130"/>
+<area shape="poly" id="edge24_Node000005_Node000001" title=" " alt="" coords="209,114,253,114,253,120,209,120"/>
+<area shape="poly" id="edge25_Node000005_Node000003" title=" " alt="" coords="172,97,253,78,254,84,174,103"/>
+<area shape="poly" id="edge26_Node000005_Node000006" title=" " alt="" coords="174,131,265,153,264,158,173,136"/>
+<area shape="rect" id="Node000007" href="$class_i_player_notifier.html" title=" " alt="" coords="48,203,151,228"/>
+<area shape="poly" id="edge27_Node000007_Node000006" title=" " alt="" coords="166,198,264,175,265,180,167,203"/>
+</map>

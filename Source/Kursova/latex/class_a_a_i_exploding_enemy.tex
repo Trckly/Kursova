@@ -1,0 +1,282 @@
+\doxysection{AAIExploding\+Enemy Class Reference}
+\hypertarget{class_a_a_i_exploding_enemy}{}\label{class_a_a_i_exploding_enemy}\index{AAIExplodingEnemy@{AAIExplodingEnemy}}
+
+
+{\ttfamily \#include $<$AIExploding\+Enemy.\+h$>$}
+
+
+
+Inheritance diagram for AAIExploding\+Enemy\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_a_a_i_exploding_enemy__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for AAIExploding\+Enemy\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_a_a_i_exploding_enemy__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_a_a_i_exploding_enemy_a80e99435d4e99dd6f73073d2d14d7be3}{AAIExploding\+Enemy}} ()
+\item 
+virtual void \mbox{\hyperlink{class_a_a_i_exploding_enemy_aae28577be7e86b70067494301ead5e5c}{Tick}} (float Delta\+Time) override
+\item 
+virtual void \mbox{\hyperlink{class_a_a_i_exploding_enemy_a8ed0fae804f7467ac3d674732ce4b29f}{Setup\+Player\+Input\+Component}} (class UInput\+Component \texorpdfstring{$\ast$}{*}Player\+Input\+Component) override
+\item 
+virtual int \mbox{\hyperlink{class_a_a_i_exploding_enemy_ad3c2f427814b65e407fa662a784ce1f9}{Deal\+Damage}} () override
+\item 
+virtual void \mbox{\hyperlink{class_a_a_i_exploding_enemy_a53a7a4a355e183be1ce6ea173a6aa0a7}{Get\+Damage}} (int Damage) override
+\item 
+virtual \mbox{\hyperlink{class_i_enemy_interface}{IEnemy\+Interface}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_a_a_i_exploding_enemy_aec2d6712ae5bca7514725cf76c41370d}{Clone}} (FVector Location) override
+\item 
+void \mbox{\hyperlink{class_a_a_i_exploding_enemy_a6953dd0c5ad9c9988ac92db18a892350}{On\+Hit}} (UPrimitive\+Component \texorpdfstring{$\ast$}{*}Hit\+Component, AActor \texorpdfstring{$\ast$}{*}Other\+Actor, UPrimitive\+Component \texorpdfstring{$\ast$}{*}Other\+Component, FVector Normal\+Impulse, const FHit\+Result \&Hit)
+\item 
+virtual FGeneric\+Team\+Id \mbox{\hyperlink{class_a_a_i_exploding_enemy_a7bfc739323ea714229906e2bac6dff00}{Get\+Generic\+Team\+Id}} () const override
+\item 
+virtual UBehavior\+Tree \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_a_a_i_exploding_enemy_af016d1a8a2d0bb00b8d770be74dbf08d}{Get\+Behaviour\+Tree}} () override
+\item 
+virtual void \mbox{\hyperlink{class_a_a_i_exploding_enemy_a39f9be1107deef5f7b919207cc625248}{Update}} (float Health) override
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+TSubclass\+Of$<$ \mbox{\hyperlink{class_a_a_i_exploding_enemy}{AAIExploding\+Enemy}} $>$ \mbox{\hyperlink{class_a_a_i_exploding_enemy_aa83d6695218c0ff46af28da54ab71287}{Self}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{class_a_a_i_exploding_enemy_a8b1110d8b16fbe7dfa468fd9afad64bf}{Begin\+Play}} () override
+\item 
+virtual void \mbox{\hyperlink{class_a_a_i_exploding_enemy_a7ffddf0f3af0d3ce0e2664cce705f4a1}{Die}} () override
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{class_a_a_i_exploding_enemy_a555f438fd53b83f2eade1df8c9c290fa}{Is\+Attacking}} = false
+\item 
+int \mbox{\hyperlink{class_a_a_i_exploding_enemy_a40e1e10dd7e94ff55ffc7282e4f52483}{Max\+HP}} = 100
+\item 
+int \mbox{\hyperlink{class_a_a_i_exploding_enemy_a805a1148a7581a07f15c2a4b63896880}{Current\+HP}} = 100
+\item 
+int \mbox{\hyperlink{class_a_a_i_exploding_enemy_a06d4e0352523f00508fe56c388aaeb75}{Character\+Damage}} = 90
+\item 
+UCapsule\+Component \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_a_a_i_exploding_enemy_adc747c2c70d0f50efd0fb51c14c6a2b3}{Player\+Capsule\+Component}}
+\item 
+UBehavior\+Tree \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_a_a_i_exploding_enemy_ab2e15b21b30d4c04b208115b60453888}{Behavior\+Tree}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_a_a_i_exploding_enemy_a80e99435d4e99dd6f73073d2d14d7be3}\index{AAIExplodingEnemy@{AAIExplodingEnemy}!AAIExplodingEnemy@{AAIExplodingEnemy}}
+\index{AAIExplodingEnemy@{AAIExplodingEnemy}!AAIExplodingEnemy@{AAIExplodingEnemy}}
+\doxysubsubsection{\texorpdfstring{AAIExplodingEnemy()}{AAIExplodingEnemy()}}
+{\footnotesize\ttfamily \label{class_a_a_i_exploding_enemy_a80e99435d4e99dd6f73073d2d14d7be3} 
+AAIExploding\+Enemy\+::\+AAIExploding\+Enemy (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_a_a_i_exploding_enemy_a8b1110d8b16fbe7dfa468fd9afad64bf}\index{AAIExplodingEnemy@{AAIExplodingEnemy}!BeginPlay@{BeginPlay}}
+\index{BeginPlay@{BeginPlay}!AAIExplodingEnemy@{AAIExplodingEnemy}}
+\doxysubsubsection{\texorpdfstring{BeginPlay()}{BeginPlay()}}
+{\footnotesize\ttfamily \label{class_a_a_i_exploding_enemy_a8b1110d8b16fbe7dfa468fd9afad64bf} 
+void AAIExploding\+Enemy\+::\+Begin\+Play (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_a_a_i_exploding_enemy_a8b1110d8b16fbe7dfa468fd9afad64bf_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_a_a_i_exploding_enemy_aec2d6712ae5bca7514725cf76c41370d}\index{AAIExplodingEnemy@{AAIExplodingEnemy}!Clone@{Clone}}
+\index{Clone@{Clone}!AAIExplodingEnemy@{AAIExplodingEnemy}}
+\doxysubsubsection{\texorpdfstring{Clone()}{Clone()}}
+{\footnotesize\ttfamily \label{class_a_a_i_exploding_enemy_aec2d6712ae5bca7514725cf76c41370d} 
+\mbox{\hyperlink{class_i_enemy_interface}{IEnemy\+Interface}} \texorpdfstring{$\ast$}{*} AAIExploding\+Enemy\+::\+Clone (\begin{DoxyParamCaption}\item[{FVector}]{Location}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_i_enemy_interface_a98d486091ebc148603eb8e2417c45721}{IEnemy\+Interface}}.
+
+\Hypertarget{class_a_a_i_exploding_enemy_ad3c2f427814b65e407fa662a784ce1f9}\index{AAIExplodingEnemy@{AAIExplodingEnemy}!DealDamage@{DealDamage}}
+\index{DealDamage@{DealDamage}!AAIExplodingEnemy@{AAIExplodingEnemy}}
+\doxysubsubsection{\texorpdfstring{DealDamage()}{DealDamage()}}
+{\footnotesize\ttfamily \label{class_a_a_i_exploding_enemy_ad3c2f427814b65e407fa662a784ce1f9} 
+int AAIExploding\+Enemy\+::\+Deal\+Damage (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_i_enemy_interface_a467e7bfc92631104e84024230c262f28}{IEnemy\+Interface}}.
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_a_a_i_exploding_enemy_ad3c2f427814b65e407fa662a784ce1f9_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_a_a_i_exploding_enemy_a7ffddf0f3af0d3ce0e2664cce705f4a1}\index{AAIExplodingEnemy@{AAIExplodingEnemy}!Die@{Die}}
+\index{Die@{Die}!AAIExplodingEnemy@{AAIExplodingEnemy}}
+\doxysubsubsection{\texorpdfstring{Die()}{Die()}}
+{\footnotesize\ttfamily \label{class_a_a_i_exploding_enemy_a7ffddf0f3af0d3ce0e2664cce705f4a1} 
+void AAIExploding\+Enemy\+::\+Die (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_i_enemy_interface}{IEnemy\+Interface}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_a_a_i_exploding_enemy_a7ffddf0f3af0d3ce0e2664cce705f4a1_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_a_a_i_exploding_enemy_a7ffddf0f3af0d3ce0e2664cce705f4a1_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_a_a_i_exploding_enemy_af016d1a8a2d0bb00b8d770be74dbf08d}\index{AAIExplodingEnemy@{AAIExplodingEnemy}!GetBehaviourTree@{GetBehaviourTree}}
+\index{GetBehaviourTree@{GetBehaviourTree}!AAIExplodingEnemy@{AAIExplodingEnemy}}
+\doxysubsubsection{\texorpdfstring{GetBehaviourTree()}{GetBehaviourTree()}}
+{\footnotesize\ttfamily \label{class_a_a_i_exploding_enemy_af016d1a8a2d0bb00b8d770be74dbf08d} 
+UBehavior\+Tree \texorpdfstring{$\ast$}{*} AAIExploding\+Enemy\+::\+Get\+Behaviour\+Tree (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_i_enemy_interface_aeeb03a567ae3760dad7c5503a6bea28d}{IEnemy\+Interface}}.
+
+\Hypertarget{class_a_a_i_exploding_enemy_a53a7a4a355e183be1ce6ea173a6aa0a7}\index{AAIExplodingEnemy@{AAIExplodingEnemy}!GetDamage@{GetDamage}}
+\index{GetDamage@{GetDamage}!AAIExplodingEnemy@{AAIExplodingEnemy}}
+\doxysubsubsection{\texorpdfstring{GetDamage()}{GetDamage()}}
+{\footnotesize\ttfamily \label{class_a_a_i_exploding_enemy_a53a7a4a355e183be1ce6ea173a6aa0a7} 
+void AAIExploding\+Enemy\+::\+Get\+Damage (\begin{DoxyParamCaption}\item[{int}]{Damage}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_i_enemy_interface_ad5c39dd66bd46094a6f2052cc2c5cd51}{IEnemy\+Interface}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_a_a_i_exploding_enemy_a53a7a4a355e183be1ce6ea173a6aa0a7_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_a_a_i_exploding_enemy_a7bfc739323ea714229906e2bac6dff00}\index{AAIExplodingEnemy@{AAIExplodingEnemy}!GetGenericTeamId@{GetGenericTeamId}}
+\index{GetGenericTeamId@{GetGenericTeamId}!AAIExplodingEnemy@{AAIExplodingEnemy}}
+\doxysubsubsection{\texorpdfstring{GetGenericTeamId()}{GetGenericTeamId()}}
+{\footnotesize\ttfamily \label{class_a_a_i_exploding_enemy_a7bfc739323ea714229906e2bac6dff00} 
+virtual FGeneric\+Team\+Id AAIExploding\+Enemy\+::\+Get\+Generic\+Team\+Id (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+\Hypertarget{class_a_a_i_exploding_enemy_a6953dd0c5ad9c9988ac92db18a892350}\index{AAIExplodingEnemy@{AAIExplodingEnemy}!OnHit@{OnHit}}
+\index{OnHit@{OnHit}!AAIExplodingEnemy@{AAIExplodingEnemy}}
+\doxysubsubsection{\texorpdfstring{OnHit()}{OnHit()}}
+{\footnotesize\ttfamily \label{class_a_a_i_exploding_enemy_a6953dd0c5ad9c9988ac92db18a892350} 
+void AAIExploding\+Enemy\+::\+On\+Hit (\begin{DoxyParamCaption}\item[{UPrimitive\+Component \texorpdfstring{$\ast$}{*}}]{Hit\+Component}{, }\item[{AActor \texorpdfstring{$\ast$}{*}}]{Other\+Actor}{, }\item[{UPrimitive\+Component \texorpdfstring{$\ast$}{*}}]{Other\+Component}{, }\item[{FVector}]{Normal\+Impulse}{, }\item[{const FHit\+Result \&}]{Hit}{}\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_a_a_i_exploding_enemy_a6953dd0c5ad9c9988ac92db18a892350_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=340pt]{class_a_a_i_exploding_enemy_a6953dd0c5ad9c9988ac92db18a892350_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_a_a_i_exploding_enemy_a8ed0fae804f7467ac3d674732ce4b29f}\index{AAIExplodingEnemy@{AAIExplodingEnemy}!SetupPlayerInputComponent@{SetupPlayerInputComponent}}
+\index{SetupPlayerInputComponent@{SetupPlayerInputComponent}!AAIExplodingEnemy@{AAIExplodingEnemy}}
+\doxysubsubsection{\texorpdfstring{SetupPlayerInputComponent()}{SetupPlayerInputComponent()}}
+{\footnotesize\ttfamily \label{class_a_a_i_exploding_enemy_a8ed0fae804f7467ac3d674732ce4b29f} 
+void AAIExploding\+Enemy\+::\+Setup\+Player\+Input\+Component (\begin{DoxyParamCaption}\item[{class UInput\+Component \texorpdfstring{$\ast$}{*}}]{Player\+Input\+Component}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+\Hypertarget{class_a_a_i_exploding_enemy_aae28577be7e86b70067494301ead5e5c}\index{AAIExplodingEnemy@{AAIExplodingEnemy}!Tick@{Tick}}
+\index{Tick@{Tick}!AAIExplodingEnemy@{AAIExplodingEnemy}}
+\doxysubsubsection{\texorpdfstring{Tick()}{Tick()}}
+{\footnotesize\ttfamily \label{class_a_a_i_exploding_enemy_aae28577be7e86b70067494301ead5e5c} 
+void AAIExploding\+Enemy\+::\+Tick (\begin{DoxyParamCaption}\item[{float}]{Delta\+Time}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+\Hypertarget{class_a_a_i_exploding_enemy_a39f9be1107deef5f7b919207cc625248}\index{AAIExplodingEnemy@{AAIExplodingEnemy}!Update@{Update}}
+\index{Update@{Update}!AAIExplodingEnemy@{AAIExplodingEnemy}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily \label{class_a_a_i_exploding_enemy_a39f9be1107deef5f7b919207cc625248} 
+void AAIExploding\+Enemy\+::\+Update (\begin{DoxyParamCaption}\item[{float}]{Health}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_i_enemy_observer_a5c1ff6c1ecf46e0bf4754f6c71bc00f5}{IEnemy\+Observer}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_a_a_i_exploding_enemy_ab2e15b21b30d4c04b208115b60453888}\index{AAIExplodingEnemy@{AAIExplodingEnemy}!BehaviorTree@{BehaviorTree}}
+\index{BehaviorTree@{BehaviorTree}!AAIExplodingEnemy@{AAIExplodingEnemy}}
+\doxysubsubsection{\texorpdfstring{BehaviorTree}{BehaviorTree}}
+{\footnotesize\ttfamily \label{class_a_a_i_exploding_enemy_ab2e15b21b30d4c04b208115b60453888} 
+UBehavior\+Tree\texorpdfstring{$\ast$}{*} AAIExploding\+Enemy\+::\+Behavior\+Tree\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{class_a_a_i_exploding_enemy_a06d4e0352523f00508fe56c388aaeb75}\index{AAIExplodingEnemy@{AAIExplodingEnemy}!CharacterDamage@{CharacterDamage}}
+\index{CharacterDamage@{CharacterDamage}!AAIExplodingEnemy@{AAIExplodingEnemy}}
+\doxysubsubsection{\texorpdfstring{CharacterDamage}{CharacterDamage}}
+{\footnotesize\ttfamily \label{class_a_a_i_exploding_enemy_a06d4e0352523f00508fe56c388aaeb75} 
+int AAIExploding\+Enemy\+::\+Character\+Damage = 90\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{class_a_a_i_exploding_enemy_a805a1148a7581a07f15c2a4b63896880}\index{AAIExplodingEnemy@{AAIExplodingEnemy}!CurrentHP@{CurrentHP}}
+\index{CurrentHP@{CurrentHP}!AAIExplodingEnemy@{AAIExplodingEnemy}}
+\doxysubsubsection{\texorpdfstring{CurrentHP}{CurrentHP}}
+{\footnotesize\ttfamily \label{class_a_a_i_exploding_enemy_a805a1148a7581a07f15c2a4b63896880} 
+int AAIExploding\+Enemy\+::\+Current\+HP = 100\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{class_a_a_i_exploding_enemy_a555f438fd53b83f2eade1df8c9c290fa}\index{AAIExplodingEnemy@{AAIExplodingEnemy}!IsAttacking@{IsAttacking}}
+\index{IsAttacking@{IsAttacking}!AAIExplodingEnemy@{AAIExplodingEnemy}}
+\doxysubsubsection{\texorpdfstring{IsAttacking}{IsAttacking}}
+{\footnotesize\ttfamily \label{class_a_a_i_exploding_enemy_a555f438fd53b83f2eade1df8c9c290fa} 
+bool AAIExploding\+Enemy\+::\+Is\+Attacking = false\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{class_a_a_i_exploding_enemy_a40e1e10dd7e94ff55ffc7282e4f52483}\index{AAIExplodingEnemy@{AAIExplodingEnemy}!MaxHP@{MaxHP}}
+\index{MaxHP@{MaxHP}!AAIExplodingEnemy@{AAIExplodingEnemy}}
+\doxysubsubsection{\texorpdfstring{MaxHP}{MaxHP}}
+{\footnotesize\ttfamily \label{class_a_a_i_exploding_enemy_a40e1e10dd7e94ff55ffc7282e4f52483} 
+int AAIExploding\+Enemy\+::\+Max\+HP = 100\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{class_a_a_i_exploding_enemy_adc747c2c70d0f50efd0fb51c14c6a2b3}\index{AAIExplodingEnemy@{AAIExplodingEnemy}!PlayerCapsuleComponent@{PlayerCapsuleComponent}}
+\index{PlayerCapsuleComponent@{PlayerCapsuleComponent}!AAIExplodingEnemy@{AAIExplodingEnemy}}
+\doxysubsubsection{\texorpdfstring{PlayerCapsuleComponent}{PlayerCapsuleComponent}}
+{\footnotesize\ttfamily \label{class_a_a_i_exploding_enemy_adc747c2c70d0f50efd0fb51c14c6a2b3} 
+UCapsule\+Component\texorpdfstring{$\ast$}{*} AAIExploding\+Enemy\+::\+Player\+Capsule\+Component\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{class_a_a_i_exploding_enemy_aa83d6695218c0ff46af28da54ab71287}\index{AAIExplodingEnemy@{AAIExplodingEnemy}!Self@{Self}}
+\index{Self@{Self}!AAIExplodingEnemy@{AAIExplodingEnemy}}
+\doxysubsubsection{\texorpdfstring{Self}{Self}}
+{\footnotesize\ttfamily \label{class_a_a_i_exploding_enemy_aa83d6695218c0ff46af28da54ab71287} 
+TSubclass\+Of$<$\mbox{\hyperlink{class_a_a_i_exploding_enemy}{AAIExploding\+Enemy}}$>$ AAIExploding\+Enemy\+::\+Self}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+AI/\mbox{\hyperlink{_a_i_exploding_enemy_8h}{AIExploding\+Enemy.\+h}}\item 
+AI/\mbox{\hyperlink{_a_i_exploding_enemy_8cpp}{AIExploding\+Enemy.\+cpp}}\end{DoxyCompactItemize}

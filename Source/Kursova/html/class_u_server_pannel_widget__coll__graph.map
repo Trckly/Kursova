@@ -1,0 +1,8 @@
+<map id="UServerPannelWidget" name="UServerPannelWidget">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,338,223,687"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="69,5,159,71"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="111,86,109,120,106,230,108,338,103,338,101,230,103,120,106,85"/>
+<area shape="rect" id="Node000003" href="$class_u_password_widget.html" title=" " alt="" coords="117,120,345,275"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="149,81,177,119,173,122,144,84"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="205,275,188,323,183,321,200,273"/>
+</map>

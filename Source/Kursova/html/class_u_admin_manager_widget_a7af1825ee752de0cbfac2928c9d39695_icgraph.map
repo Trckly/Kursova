@@ -1,0 +1,10 @@
+<map id="UAdminManagerWidget::ClosePlayerEditor" name="UAdminManagerWidget::ClosePlayerEditor">
+<area shape="rect" id="Node000001" title=" " alt="" coords="621,5,779,46"/>
+<area shape="rect" id="Node000002" href="$class_u_admin_manager_widget.html#a67dfe901ffc762e7528ca9c7a8003b94" title=" " alt="" coords="211,5,368,46"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="605,25,573,24,416,24,369,25,368,20,416,19,573,19,606,20"/>
+<area shape="rect" id="Node000004" href="$class_u_admin_manager_widget.html#a7748cd69a633a6afff4dd81c844b852b" title=" " alt="" coords="416,33,573,74"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="606,41,574,46,574,40,606,36"/>
+<area shape="rect" id="Node000003" href="$class_u_admin_manager_widget.html#a274f5cf41ae4a82d0bb2f6efd766e3ea" title=" " alt="" coords="5,5,163,46"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="195,28,163,28,163,23,195,23"/>
+<area shape="poly" id="edge4_Node000004_Node000002" title=" " alt="" coords="400,43,368,39,369,34,401,38"/>
+</map>

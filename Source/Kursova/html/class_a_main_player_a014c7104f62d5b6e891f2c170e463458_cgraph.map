@@ -1,0 +1,23 @@
+<map id="AMainPlayer::ContinueGameplay" name="AMainPlayer::ContinueGameplay">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,227,219,252"/>
+<area shape="rect" id="Node000002" href="$class_a_main_player.html#a9e3a70fc768d6f63866decacd8cdf862" title=" " alt="" coords="267,121,455,161"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="142,224,266,172,285,164,287,169,268,177,144,229"/>
+<area shape="rect" id="Node000009" href="$class_u_weapon_data_widget.html#aad10d5e3ceb5008636a0b53ac687402d" title=" " alt="" coords="285,186,437,227"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="212,223,269,216,270,221,213,229"/>
+<area shape="rect" id="Node000010" href="$class_u_weapon_menu_widget.html#af8750176045da9b5b2574970d6482933" title=" " alt="" coords="282,251,440,292"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="217,250,267,257,267,262,217,256"/>
+<area shape="rect" id="Node000011" href="$class_u_weapon_menu_widget.html#aa89472e73bf79330a6931bbd8acdde39" title=" " alt="" coords="282,317,440,357"/>
+<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="145,250,268,301,287,308,285,313,266,306,143,255"/>
+<area shape="rect" id="Node000003" href="$class_a_main_player.html#a89a156ae9dd5c2fa948720b59c5f1922" title=" " alt="" coords="513,5,686,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="384,118,436,78,502,40,517,34,519,39,504,45,439,83,388,122"/>
+<area shape="rect" id="Node000004" href="$class_a_main_player.html#a13cc59a3fd10e2e1ad8702389050e298" title=" " alt="" coords="513,55,686,80"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="417,117,502,89,526,82,528,87,504,94,419,122"/>
+<area shape="rect" id="Node000005" href="$class_a_main_player.html#a38a9d187658569ec5b22977a1e5c1ef2" title=" " alt="" coords="509,104,689,130"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="455,129,493,125,494,130,456,134"/>
+<area shape="rect" id="Node000006" href="$class_a_main_player.html#a133c6b299f92ddec05532a0d66a870e8" title=" " alt="" coords="508,153,690,179"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="456,148,493,152,492,158,455,154"/>
+<area shape="rect" id="Node000007" href="$class_a_main_player.html#a70b0bebd04102df839d9ce1317448d9e" title=" " alt="" coords="513,203,686,228"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="422,159,456,172,504,189,527,196,526,201,502,194,454,177,420,164"/>
+<area shape="rect" id="Node000008" href="$class_a_weapon_class.html#a4655bfd562c519cf5ca879abcc3d0d1f" title=" " alt="" coords="503,252,695,278"/>
+<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="436,159,457,172,473,189,481,207,489,223,505,239,511,243,508,247,501,243,485,226,476,209,468,192,453,176,433,164"/>
+</map>

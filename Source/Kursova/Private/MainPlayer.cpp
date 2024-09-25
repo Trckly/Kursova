@@ -3,6 +3,7 @@
 
 #include "MainPlayer.h"
 #include "../ServerLogic/UI/ServerWidget.h"
+#include "Components/CapsuleComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "Kursova/MainUI/MainMenuWidget.h"
 #include "Kismet/KismetSystemLibrary.h"
@@ -13,6 +14,10 @@
 #include "Net/UnrealNetwork.h"
 #include "Kursova/UMG/CrosshairWidget.h"
 #include "Kursova/HUD/PlayerHUD.h"
+#include "Kursova/Items/AbstractItem.h"
+#include "Kursova/Items/CoolItem.h"
+#include "Kursova/Items/Chain/ArmorHandler.h"
+#include "Kursova/Items/Chain/HealthHandler.h"
 #include "Kursova/ObjectDecorator/Cube.h"
 
 // Sets default values
@@ -57,6 +62,8 @@ void AMainPlayer::BeginPlay()
 	}
 
 	PlayerWeaponSocketsName = {"AWM_Attach", "AK47_Attach", "M16A4_Attach", "M870_Attach", "HK416_Attach"};
+
+	GetCapsuleComponent()->OnComponentBeginOverlap.AddDynamic(this, &AMainPlayer::OnBeginOverlap);
 }
 
 void AMainPlayer::CreateServerWidget()
@@ -123,6 +130,9 @@ void AMainPlayer::SetupPlayerInputComponent(UInputComponent* PlayerInputComponen
 	PlayerInputComponent->BindAction(TEXT("Escape"), IE_Pressed, this, &AMainPlayer::ContinueGameplay);
 	PlayerInputComponent->BindAction(TEXT("Jump"), IE_Pressed, this, &AMainPlayer::Jump);
 	PlayerInputComponent->BindAction(TEXT("Shoot"), IE_Pressed, this, &AMainPlayer::Shoot);
+	PlayerInputComponent->BindAction(TEXT("Heal"), IE_Pressed, this, &AMainPlayer::SetHealth);
+	PlayerInputComponent->BindAction(TEXT("SetArmor"), IE_Pressed, this, &AMainPlayer::SetArmor);
+	PlayerInputComponent->BindAction(TEXT("HealSetArmor"), IE_Pressed, this, &AMainPlayer::SetHealthArmor);
 
 	///
 	/// Server Logic
@@ -134,6 +144,21 @@ void AMainPlayer::Tick(float DeltaSeconds)
 {
 	Super::Tick(DeltaSeconds);
 
+}
+
+void AMainPlayer::OnBeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor,
+	UPrimitiveComponent* OtherComp, int OtherBodyIndex, bool FromSweep, const FHitResult& SweepResult)
+{
+	if(Cast<ACoolItem>(OtherActor)) return;
+
+	AAbstractItem* Item = Cast<AAbstractItem>(OtherActor);
+
+	if(Item)
+	{
+		PickUpItems.Add(Item->CreatePocketCopy());
+		Item->Destroy();
+		UE_LOG(LogTemp, Warning, TEXT("Item was picked up"));
+	}
 }
 
 void AMainPlayer::MoveForward(float Scale)
@@ -173,6 +198,54 @@ void AMainPlayer::Jump()
 UCameraComponent* AMainPlayer::GetCameraComponent()
 {
 	return CameraComponent;
+}
+
+void AMainPlayer::SetHealth()
+{
+	UHealthHandler* HealthHandler = NewObject<UHealthHandler>(this, UHealthHandler::StaticClass(), TEXT("HealthHandler"));
+	HealthHandler->AddHealth.BindDynamic(this, &AMainPlayer::AMainPlayer::AddHealth);
+	ActivateBuffs(HealthHandler);
+}
+
+void AMainPlayer::SetArmor()
+{
+	UArmorHandler* ArmorHandler = NewObject<UArmorHandler>(this, UArmorHandler::StaticClass(), TEXT("ArmorHandler"));
+	ArmorHandler->AddArmor.BindDynamic(this, &AMainPlayer::AddArmor);
+	ActivateBuffs(ArmorHandler);
+}
+
+void AMainPlayer::SetHealthArmor()
+{
+	UHealthHandler* HealthHandler = NewObject<UHealthHandler>(this, UHealthHandler::StaticClass(), TEXT("HealthHandler"));
+	HealthHandler->AddHealth.BindDynamic(this, &AMainPlayer::AMainPlayer::AddHealth);
+	UArmorHandler* ArmorHandler = NewObject<UArmorHandler>(this, UArmorHandler::StaticClass(), TEXT("ArmorHandler"));
+	ArmorHandler->AddArmor.BindDynamic(this, &AMainPlayer::AddArmor);
+	
+	HealthHandler->SetNext(ArmorHandler);
+
+	ActivateBuffs(HealthHandler);
+}
+
+void AMainPlayer::ActivateBuffs(const TScriptInterface<IHandler>& Handler)
+{
+	if(PickUpItems.Num() == 0)
+		return;
+
+	TArray<AAbstractItem*> ToSave;
+	while(PickUpItems.Num() != 0)
+	{
+		AAbstractItem* Item = PickUpItems.Pop();
+		
+		if(Handler->Handle(Item))
+		{
+			Item->Destroy();
+		}else
+		{
+			ToSave.Add(Item);
+		}
+	}
+
+	PickUpItems.Append(ToSave);
 }
 
 void AMainPlayer::Server_Turn_Implementation(float Rate)
@@ -392,11 +465,56 @@ void AMainPlayer::GetDamage(int Damage)
 			return;
 		}
 		Health -= Damage;
+		Health = FMath::Clamp(Health, 0.f, 100.f);
+		
+		if(Health <= 50 && HealthState > 0)
+		{
+			HealthState = -1;
+			Notify();
+		}
+		
 		UE_LOG(LogTemp, Warning, TEXT("Player got %d damage"), Damage);
 
 		if(PlayerHUDWidget != nullptr)
 		{
 			PlayerHUDWidget->SetHealth(Health);
+		}
+	}
+}
+
+void AMainPlayer::AddHealth(float HealthPoints)
+{
+	if(Health < 100)
+	{
+		Health += HealthPoints;
+
+		Health = FMath::Clamp(Health, 0.f, 100.f);
+
+		if(Health > 50 && HealthState < 0)
+		{
+			HealthState = 1;
+			Notify();
+		}
+
+		if(PlayerHUDWidget != nullptr)
+		{
+			PlayerHUDWidget->SetHealth(Health);
+		}
+	}
+}
+
+void AMainPlayer::AddArmor(float ArmorPoints)
+{
+	
+	if(Armor < 100)
+	{
+		Armor += ArmorPoints;
+
+		Armor = FMath::Clamp(Armor, 0.f, 100.f);
+
+		if(PlayerHUDWidget != nullptr)
+		{
+			PlayerHUDWidget->SetArmor(Armor);
 		}
 	}
 }
@@ -719,6 +837,30 @@ void AMainPlayer::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifet
 	DOREPLIFETIME(AMainPlayer, TurnRate);
 	DOREPLIFETIME(AMainPlayer, LookUpRate);
 	DOREPLIFETIME(AMainPlayer, PickedWeapons);
+}
+
+void AMainPlayer::Attach(IEnemyObserver* EnemyInterface)
+{
+	EnemyObservers.Add(EnemyInterface);
+	UE_LOG(LogTemp, Warning, TEXT("Enemy was attached!"));
+}
+
+void AMainPlayer::Detach(IEnemyObserver* EnemyInterface)
+{
+	EnemyObservers.Remove(EnemyInterface);
+}
+
+void AMainPlayer::Notify()
+{
+	for(auto Observer : EnemyObservers)
+	{
+		if(Observer == nullptr)
+		{
+			EnemyObservers.Remove(Observer);
+			continue;
+		}
+		Observer->Update(Health);
+	}
 }
 
 void AMainPlayer::Multicast_SetGodMode_Implementation(bool IsGodModeSet)

@@ -1,0 +1,7 @@
+<map id="AHealthItem" name="AHealthItem">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,347,337,656"/>
+<area shape="rect" id="Node000002" href="$class_a_abstract_item.html" title=" " alt="" coords="75,119,268,299"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="174,314,174,347,169,347,169,314"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="123,5,220,71"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="174,86,174,119,169,119,169,86"/>
+</map>

@@ -1,0 +1,7 @@
+<map id="AMainPlayer::AddHealth" name="AMainPlayer::AddHealth">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,31,169,56"/>
+<area shape="rect" id="Node000002" href="$class_a_main_player.html#a3680b400fdbc436279a43361a5f94089" title=" " alt="" coords="228,5,365,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="169,31,212,26,212,31,169,36"/>
+<area shape="rect" id="Node000003" href="$class_u_player_h_u_d.html#a569cdfd09047c1976613dd41a0b28d18" title=" " alt="" coords="217,55,376,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="169,50,201,54,201,59,169,55"/>
+</map>

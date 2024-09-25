@@ -1,0 +1,7 @@
+<map id="AGreenCubeDecorator::ChangeColor" name="AGreenCubeDecorator::ChangeColor">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,157,46"/>
+<area shape="rect" id="Node000002" href="$class_a_green_cube_decorator.html#ab2f3fdbc23833adc3a55cb83d340c354" title=" " alt="" coords="205,5,387,46"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="157,23,189,23,189,28,157,28"/>
+<area shape="rect" id="Node000003" href="$class_i_cube_interface.html#a1984545a949b26a62ac42a67b8b7caf2" title=" " alt="" coords="435,5,604,46"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="387,23,419,23,419,28,387,28"/>
+</map>

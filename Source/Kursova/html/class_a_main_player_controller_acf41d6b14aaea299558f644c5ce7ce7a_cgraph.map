@@ -1,0 +1,19 @@
+<map id="AMainPlayerController::SetupInputComponent" name="AMainPlayerController::SetupInputComponent">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,104,164,145"/>
+<area shape="rect" id="Node000002" href="$class_a_main_player_controller.html#ac2680d83fdef4b618c53c9fdb699c9c1" title=" " alt="" coords="212,5,362,46"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="123,101,210,57,223,51,225,55,213,61,126,106"/>
+<area shape="rect" id="Node000003" href="$class_a_main_player_controller.html#a855b56df4e9e8fe1a9d2ad023acce375" title=" " alt="" coords="212,71,362,111"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="164,109,196,103,197,109,165,114"/>
+<area shape="rect" id="Node000004" href="$class_a_main_player_controller.html#a4ea96c5cd0fb7480804c504b939d81e4" title=" " alt="" coords="212,136,362,177"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="165,134,197,139,196,145,164,140"/>
+<area shape="rect" id="Node000007" href="$class_a_main_player_controller.html#a4b3d74fb71423f3fe22e5ce1f84322c9" title=" " alt="" coords="212,201,362,242"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="127,143,213,186,226,192,224,197,210,191,125,148"/>
+<area shape="rect" id="Node000005" href="$class_u_negative_rotation_command.html#a11d46b1ea70b3f7709ca6d22bb4e3b4b" title=" " alt="" coords="410,136,598,177"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="363,154,394,154,394,159,363,159"/>
+<area shape="rect" id="Node000006" href="$class_a_cube.html#aaf45c70a99373cac26ef4be121f064f1" title=" " alt="" coords="646,144,837,169"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="599,154,631,154,631,159,599,159"/>
+<area shape="rect" id="Node000008" href="$class_u_positive_rotation_command.html#a8ed7fa90eb23bb253d07c083ffec65a0" title=" " alt="" coords="412,201,596,242"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="363,219,396,219,396,224,363,224"/>
+<area shape="rect" id="Node000009" href="$class_a_cube.html#afae6e41cf67d3e810baac5e228178c60" title=" " alt="" coords="648,209,835,235"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="597,219,633,219,633,224,597,224"/>
+</map>

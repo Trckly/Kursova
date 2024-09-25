@@ -1,0 +1,7 @@
+<map id="IEnemyCreationMode" name="IEnemyCreationMode">
+<area shape="rect" id="Node000001" title=" " alt="" coords="107,5,355,116"/>
+<area shape="rect" id="Node000002" href="$class_u_finite_enemy_creation.html" title=" " alt="" coords="5,189,220,299"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="190,130,150,190,146,187,185,127"/>
+<area shape="rect" id="Node000003" href="$class_u_infinite_enemy_creation.html" title=" " alt="" coords="244,164,459,324"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="278,127,301,163,297,166,273,130"/>
+</map>

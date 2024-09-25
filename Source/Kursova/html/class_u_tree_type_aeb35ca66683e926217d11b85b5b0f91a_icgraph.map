@@ -1,0 +1,9 @@
+<map id="UTreeType::CreateTreeType" name="UTreeType::CreateTreeType">
+<area shape="rect" id="Node000001" title=" " alt="" coords="671,5,858,31"/>
+<area shape="rect" id="Node000002" href="$class_u_tree_factory.html#a382cb3b5c0aeb015d7a3d4fac8680e1b" title=" " alt="" coords="439,5,623,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="655,21,624,21,624,16,655,16"/>
+<area shape="rect" id="Node000003" href="$class_u_forest.html#a3b3b907af4510efe7ffa56db73b6e67e" title=" " alt="" coords="260,5,391,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="423,21,392,21,392,16,423,16"/>
+<area shape="rect" id="Node000004" href="$class_u_main_map_builder.html#a6f015175f8184ab7b2b793e34c3f4dc6" title=" " alt="" coords="5,5,212,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="244,21,212,21,212,16,244,16"/>
+</map>
