@@ -1,0 +1,320 @@
+\doxysection{USession\+Subsystem Class Reference}
+\hypertarget{class_u_session_subsystem}{}\label{class_u_session_subsystem}\index{USessionSubsystem@{USessionSubsystem}}
+
+
+{\ttfamily \#include $<$Session\+Subsystem.\+h$>$}
+
+
+
+Inheritance diagram for USession\+Subsystem\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{class_u_session_subsystem__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for USession\+Subsystem\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{class_u_session_subsystem__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_u_session_subsystem_a5c400e8df4ff348e1fffedc7d87cfa2a}{USession\+Subsystem}} ()
+\item 
+\mbox{\hyperlink{class_u_session_subsystem_abff2522960ae9e90a099b6fee544173a}{UFUNCTION}} (Blueprint\+Callable) void Create\+Session(int32 Num\+Public\+Connections
+\item 
+\mbox{\hyperlink{class_u_session_subsystem_ab667fa417ec879757f441476e536075e}{UFUNCTION}} (Blueprint\+Callable) void Update\+Session()
+\item 
+\mbox{\hyperlink{class_u_session_subsystem_a80d75dbf1b878fb1fba98cf3fbf91bdf}{UFUNCTION}} (Blueprint\+Callable) void Start\+Session()
+\item 
+\mbox{\hyperlink{class_u_session_subsystem_a432ee23713b10e197b5ac31b7d25de69}{UFUNCTION}} (Blueprint\+Callable) void End\+Session()
+\item 
+\mbox{\hyperlink{class_u_session_subsystem_a72b7e6f605eafd85fb99d57af8e9f6b7}{UFUNCTION}} (Blueprint\+Callable) void Destroy\+Session()
+\item 
+\mbox{\hyperlink{class_u_session_subsystem_a4ed481710615377774d98f5d35d2b855}{UFUNCTION}} (Blueprint\+Callable) void Find\+Sessions(int32 Max\+Search\+Results
+\item 
+\mbox{\hyperlink{class_u_session_subsystem_a56ecaf09625015389553b3c737e85a37}{UFUNCTION}} (Blueprint\+Callable) void Join\+Game\+Session(const FBlueprint\+Session\+Result \&Session\+Result
+\item 
+\mbox{\hyperlink{class_u_session_subsystem_a642a4982bf37fafef5a29647fd162f59}{UFUNCTION}} (Blueprint\+Callable) bool Session\+Has\+Been\+Started()
+\item 
+\mbox{\hyperlink{class_u_session_subsystem_a299e6b4ce32a2ae53941d32e3e04739d}{UPROPERTY}} (Blueprint\+Assignable) FCSOn\+Create\+Session\+Complete On\+Create\+Session\+Complete\+Event
+\item 
+\mbox{\hyperlink{class_u_session_subsystem_a4d76555dd5582ddf91352f29624ed5fe}{UPROPERTY}} (Blueprint\+Assignable) FCSOn\+Update\+Session\+Complete On\+Update\+Session\+Complete\+Event
+\item 
+\mbox{\hyperlink{class_u_session_subsystem_a576ef3d4672735a73eb2fb1b9b569544}{UPROPERTY}} (Blueprint\+Assignable) FCSOn\+Start\+Session\+Complete On\+Start\+Session\+Complete\+Event
+\item 
+\mbox{\hyperlink{class_u_session_subsystem_a5f15c042502c69085d9d7cc6a8e5d62d}{UPROPERTY}} (Blueprint\+Assignable) FCSOn\+End\+Session\+Complete On\+End\+Session\+Complete\+Event
+\item 
+\mbox{\hyperlink{class_u_session_subsystem_a506625ab9bf405cc02a1d62e2c8d6468}{UPROPERTY}} (Blueprint\+Assignable) FCSOn\+Destroy\+Session\+Complete On\+Destroy\+Session\+Complete\+Event
+\item 
+\mbox{\hyperlink{class_u_session_subsystem_a925f53c0c2da561ed469602e51d918fa}{UPROPERTY}} (Blueprint\+Assignable) FCSOn\+Find\+Sessions\+Complete On\+Find\+Sessions\+Complete\+Event
+\item 
+\mbox{\hyperlink{class_u_session_subsystem_a2c938f13645c54867dfa6bc8382c5a72}{UPROPERTY}} (Blueprint\+Assignable) FCSOn\+Join\+Session\+Complete On\+Join\+Game\+Session\+Complete\+Event
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{class_u_session_subsystem_ab0ce130f2127a9c9139fd9d0095f4617}{Is\+LANMatch}}
+\item 
+bool FString \mbox{\hyperlink{class_u_session_subsystem_a4604a654000b9f1016e81deb3a6e991a}{Session\+Name}}
+\item 
+bool FString bool \mbox{\hyperlink{class_u_session_subsystem_a5389dbc0ed2d15e918f8c2963a672153}{Is\+Private}} = false
+\item 
+bool FString bool FString \mbox{\hyperlink{class_u_session_subsystem_a1d93ce90097c6da28f39829245758d7e}{Session\+Password}} = "{}"{}
+\item 
+bool FString bool FString FString \mbox{\hyperlink{class_u_session_subsystem_a6dd867cd8b1bc03f8bbdcef6148198ab}{Map}} = "{}Undefined"{}
+\item 
+bool FString bool FString FString FString \mbox{\hyperlink{class_u_session_subsystem_ac62a72a0f1bc851db8ddfbe3772c569d}{Difficulty}} = "{}Medium"{})
+\item 
+bool \mbox{\hyperlink{class_u_session_subsystem_af3485c5720876461cb4bc59bd0ab8fd3}{Is\+LANQuery}}
+\item 
+const FString \& \mbox{\hyperlink{class_u_session_subsystem_ab25130aafe50d077cf6a67e15d47ccf0}{Password}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_u_session_subsystem_a980b5c2748e3e3cfb75acdf5a7ce6968}{On\+Create\+Session\+Completed}} (FName \mbox{\hyperlink{class_u_session_subsystem_a4604a654000b9f1016e81deb3a6e991a}{Session\+Name}}, bool Successful)
+\item 
+void \mbox{\hyperlink{class_u_session_subsystem_a8d5a1d8243037f762de33bc03f65222a}{On\+Update\+Session\+Completed}} (FName \mbox{\hyperlink{class_u_session_subsystem_a4604a654000b9f1016e81deb3a6e991a}{Session\+Name}}, bool Successful)
+\item 
+void \mbox{\hyperlink{class_u_session_subsystem_a3423ef71300740c74c301b8cc8c0802e}{On\+Start\+Session\+Completed}} (FName \mbox{\hyperlink{class_u_session_subsystem_a4604a654000b9f1016e81deb3a6e991a}{Session\+Name}}, bool Successful)
+\item 
+void \mbox{\hyperlink{class_u_session_subsystem_ae7bfa8b6fd5eb66cfc056a74d7e489c1}{On\+End\+Session\+Completed}} (FName \mbox{\hyperlink{class_u_session_subsystem_a4604a654000b9f1016e81deb3a6e991a}{Session\+Name}}, bool Successful)
+\item 
+void \mbox{\hyperlink{class_u_session_subsystem_af59a461655f39d89b98f2fad31d78ce0}{On\+Destroy\+Session\+Completed}} (FName \mbox{\hyperlink{class_u_session_subsystem_a4604a654000b9f1016e81deb3a6e991a}{Session\+Name}}, bool Successful)
+\item 
+void \mbox{\hyperlink{class_u_session_subsystem_ac2527ccb9e6411fd5d2f2d42a5240294}{On\+Find\+Sessions\+Completed}} (bool Successful)
+\item 
+void \mbox{\hyperlink{class_u_session_subsystem_a1f5ed20888086677fe45e195179ed957}{On\+Join\+Session\+Completed}} (FName \mbox{\hyperlink{class_u_session_subsystem_a4604a654000b9f1016e81deb3a6e991a}{Session\+Name}}, EOn\+Join\+Session\+Complete\+Result\+::\+Type Result)
+\item 
+bool \mbox{\hyperlink{class_u_session_subsystem_a1c911c79f753db160734cad25ef8df82}{Try\+Travel\+To\+Current\+Session}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_u_session_subsystem_a5c400e8df4ff348e1fffedc7d87cfa2a}\index{USessionSubsystem@{USessionSubsystem}!USessionSubsystem@{USessionSubsystem}}
+\index{USessionSubsystem@{USessionSubsystem}!USessionSubsystem@{USessionSubsystem}}
+\doxysubsubsection{\texorpdfstring{USessionSubsystem()}{USessionSubsystem()}}
+{\footnotesize\ttfamily \label{class_u_session_subsystem_a5c400e8df4ff348e1fffedc7d87cfa2a} 
+USession\+Subsystem\+::\+USession\+Subsystem (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_u_session_subsystem_a980b5c2748e3e3cfb75acdf5a7ce6968}\index{USessionSubsystem@{USessionSubsystem}!OnCreateSessionCompleted@{OnCreateSessionCompleted}}
+\index{OnCreateSessionCompleted@{OnCreateSessionCompleted}!USessionSubsystem@{USessionSubsystem}}
+\doxysubsubsection{\texorpdfstring{OnCreateSessionCompleted()}{OnCreateSessionCompleted()}}
+{\footnotesize\ttfamily \label{class_u_session_subsystem_a980b5c2748e3e3cfb75acdf5a7ce6968} 
+void USession\+Subsystem\+::\+On\+Create\+Session\+Completed (\begin{DoxyParamCaption}\item[{FName}]{Session\+Name}{, }\item[{bool}]{Successful}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{class_u_session_subsystem_af59a461655f39d89b98f2fad31d78ce0}\index{USessionSubsystem@{USessionSubsystem}!OnDestroySessionCompleted@{OnDestroySessionCompleted}}
+\index{OnDestroySessionCompleted@{OnDestroySessionCompleted}!USessionSubsystem@{USessionSubsystem}}
+\doxysubsubsection{\texorpdfstring{OnDestroySessionCompleted()}{OnDestroySessionCompleted()}}
+{\footnotesize\ttfamily \label{class_u_session_subsystem_af59a461655f39d89b98f2fad31d78ce0} 
+void USession\+Subsystem\+::\+On\+Destroy\+Session\+Completed (\begin{DoxyParamCaption}\item[{FName}]{Session\+Name}{, }\item[{bool}]{Successful}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{class_u_session_subsystem_ae7bfa8b6fd5eb66cfc056a74d7e489c1}\index{USessionSubsystem@{USessionSubsystem}!OnEndSessionCompleted@{OnEndSessionCompleted}}
+\index{OnEndSessionCompleted@{OnEndSessionCompleted}!USessionSubsystem@{USessionSubsystem}}
+\doxysubsubsection{\texorpdfstring{OnEndSessionCompleted()}{OnEndSessionCompleted()}}
+{\footnotesize\ttfamily \label{class_u_session_subsystem_ae7bfa8b6fd5eb66cfc056a74d7e489c1} 
+void USession\+Subsystem\+::\+On\+End\+Session\+Completed (\begin{DoxyParamCaption}\item[{FName}]{Session\+Name}{, }\item[{bool}]{Successful}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{class_u_session_subsystem_ac2527ccb9e6411fd5d2f2d42a5240294}\index{USessionSubsystem@{USessionSubsystem}!OnFindSessionsCompleted@{OnFindSessionsCompleted}}
+\index{OnFindSessionsCompleted@{OnFindSessionsCompleted}!USessionSubsystem@{USessionSubsystem}}
+\doxysubsubsection{\texorpdfstring{OnFindSessionsCompleted()}{OnFindSessionsCompleted()}}
+{\footnotesize\ttfamily \label{class_u_session_subsystem_ac2527ccb9e6411fd5d2f2d42a5240294} 
+void USession\+Subsystem\+::\+On\+Find\+Sessions\+Completed (\begin{DoxyParamCaption}\item[{bool}]{Successful}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{class_u_session_subsystem_a1f5ed20888086677fe45e195179ed957}\index{USessionSubsystem@{USessionSubsystem}!OnJoinSessionCompleted@{OnJoinSessionCompleted}}
+\index{OnJoinSessionCompleted@{OnJoinSessionCompleted}!USessionSubsystem@{USessionSubsystem}}
+\doxysubsubsection{\texorpdfstring{OnJoinSessionCompleted()}{OnJoinSessionCompleted()}}
+{\footnotesize\ttfamily \label{class_u_session_subsystem_a1f5ed20888086677fe45e195179ed957} 
+void USession\+Subsystem\+::\+On\+Join\+Session\+Completed (\begin{DoxyParamCaption}\item[{FName}]{Session\+Name}{, }\item[{EOn\+Join\+Session\+Complete\+Result\+::\+Type}]{Result}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_u_session_subsystem_a1f5ed20888086677fe45e195179ed957_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_u_session_subsystem_a3423ef71300740c74c301b8cc8c0802e}\index{USessionSubsystem@{USessionSubsystem}!OnStartSessionCompleted@{OnStartSessionCompleted}}
+\index{OnStartSessionCompleted@{OnStartSessionCompleted}!USessionSubsystem@{USessionSubsystem}}
+\doxysubsubsection{\texorpdfstring{OnStartSessionCompleted()}{OnStartSessionCompleted()}}
+{\footnotesize\ttfamily \label{class_u_session_subsystem_a3423ef71300740c74c301b8cc8c0802e} 
+void USession\+Subsystem\+::\+On\+Start\+Session\+Completed (\begin{DoxyParamCaption}\item[{FName}]{Session\+Name}{, }\item[{bool}]{Successful}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{class_u_session_subsystem_a8d5a1d8243037f762de33bc03f65222a}\index{USessionSubsystem@{USessionSubsystem}!OnUpdateSessionCompleted@{OnUpdateSessionCompleted}}
+\index{OnUpdateSessionCompleted@{OnUpdateSessionCompleted}!USessionSubsystem@{USessionSubsystem}}
+\doxysubsubsection{\texorpdfstring{OnUpdateSessionCompleted()}{OnUpdateSessionCompleted()}}
+{\footnotesize\ttfamily \label{class_u_session_subsystem_a8d5a1d8243037f762de33bc03f65222a} 
+void USession\+Subsystem\+::\+On\+Update\+Session\+Completed (\begin{DoxyParamCaption}\item[{FName}]{Session\+Name}{, }\item[{bool}]{Successful}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{class_u_session_subsystem_a1c911c79f753db160734cad25ef8df82}\index{USessionSubsystem@{USessionSubsystem}!TryTravelToCurrentSession@{TryTravelToCurrentSession}}
+\index{TryTravelToCurrentSession@{TryTravelToCurrentSession}!USessionSubsystem@{USessionSubsystem}}
+\doxysubsubsection{\texorpdfstring{TryTravelToCurrentSession()}{TryTravelToCurrentSession()}}
+{\footnotesize\ttfamily \label{class_u_session_subsystem_a1c911c79f753db160734cad25ef8df82} 
+bool USession\+Subsystem\+::\+Try\+Travel\+To\+Current\+Session (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_u_session_subsystem_a1c911c79f753db160734cad25ef8df82_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_u_session_subsystem_a642a4982bf37fafef5a29647fd162f59}\index{USessionSubsystem@{USessionSubsystem}!UFUNCTION@{UFUNCTION}}
+\index{UFUNCTION@{UFUNCTION}!USessionSubsystem@{USessionSubsystem}}
+\doxysubsubsection{\texorpdfstring{UFUNCTION()}{UFUNCTION()}\hspace{0.1cm}{\footnotesize\ttfamily [1/8]}}
+{\footnotesize\ttfamily \label{class_u_session_subsystem_a642a4982bf37fafef5a29647fd162f59} 
+USession\+Subsystem\+::\+UFUNCTION (\begin{DoxyParamCaption}\item[{Blueprint\+Callable}]{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_u_session_subsystem_abff2522960ae9e90a099b6fee544173a}\index{USessionSubsystem@{USessionSubsystem}!UFUNCTION@{UFUNCTION}}
+\index{UFUNCTION@{UFUNCTION}!USessionSubsystem@{USessionSubsystem}}
+\doxysubsubsection{\texorpdfstring{UFUNCTION()}{UFUNCTION()}\hspace{0.1cm}{\footnotesize\ttfamily [2/8]}}
+{\footnotesize\ttfamily \label{class_u_session_subsystem_abff2522960ae9e90a099b6fee544173a} 
+USession\+Subsystem\+::\+UFUNCTION (\begin{DoxyParamCaption}\item[{Blueprint\+Callable}]{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_u_session_subsystem_a72b7e6f605eafd85fb99d57af8e9f6b7}\index{USessionSubsystem@{USessionSubsystem}!UFUNCTION@{UFUNCTION}}
+\index{UFUNCTION@{UFUNCTION}!USessionSubsystem@{USessionSubsystem}}
+\doxysubsubsection{\texorpdfstring{UFUNCTION()}{UFUNCTION()}\hspace{0.1cm}{\footnotesize\ttfamily [3/8]}}
+{\footnotesize\ttfamily \label{class_u_session_subsystem_a72b7e6f605eafd85fb99d57af8e9f6b7} 
+USession\+Subsystem\+::\+UFUNCTION (\begin{DoxyParamCaption}\item[{Blueprint\+Callable}]{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_u_session_subsystem_a432ee23713b10e197b5ac31b7d25de69}\index{USessionSubsystem@{USessionSubsystem}!UFUNCTION@{UFUNCTION}}
+\index{UFUNCTION@{UFUNCTION}!USessionSubsystem@{USessionSubsystem}}
+\doxysubsubsection{\texorpdfstring{UFUNCTION()}{UFUNCTION()}\hspace{0.1cm}{\footnotesize\ttfamily [4/8]}}
+{\footnotesize\ttfamily \label{class_u_session_subsystem_a432ee23713b10e197b5ac31b7d25de69} 
+USession\+Subsystem\+::\+UFUNCTION (\begin{DoxyParamCaption}\item[{Blueprint\+Callable}]{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_u_session_subsystem_a4ed481710615377774d98f5d35d2b855}\index{USessionSubsystem@{USessionSubsystem}!UFUNCTION@{UFUNCTION}}
+\index{UFUNCTION@{UFUNCTION}!USessionSubsystem@{USessionSubsystem}}
+\doxysubsubsection{\texorpdfstring{UFUNCTION()}{UFUNCTION()}\hspace{0.1cm}{\footnotesize\ttfamily [5/8]}}
+{\footnotesize\ttfamily \label{class_u_session_subsystem_a4ed481710615377774d98f5d35d2b855} 
+USession\+Subsystem\+::\+UFUNCTION (\begin{DoxyParamCaption}\item[{Blueprint\+Callable}]{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_u_session_subsystem_a56ecaf09625015389553b3c737e85a37}\index{USessionSubsystem@{USessionSubsystem}!UFUNCTION@{UFUNCTION}}
+\index{UFUNCTION@{UFUNCTION}!USessionSubsystem@{USessionSubsystem}}
+\doxysubsubsection{\texorpdfstring{UFUNCTION()}{UFUNCTION()}\hspace{0.1cm}{\footnotesize\ttfamily [6/8]}}
+{\footnotesize\ttfamily \label{class_u_session_subsystem_a56ecaf09625015389553b3c737e85a37} 
+USession\+Subsystem\+::\+UFUNCTION (\begin{DoxyParamCaption}\item[{Blueprint\+Callable}]{}{}\end{DoxyParamCaption}) const \&}
+
+\Hypertarget{class_u_session_subsystem_a80d75dbf1b878fb1fba98cf3fbf91bdf}\index{USessionSubsystem@{USessionSubsystem}!UFUNCTION@{UFUNCTION}}
+\index{UFUNCTION@{UFUNCTION}!USessionSubsystem@{USessionSubsystem}}
+\doxysubsubsection{\texorpdfstring{UFUNCTION()}{UFUNCTION()}\hspace{0.1cm}{\footnotesize\ttfamily [7/8]}}
+{\footnotesize\ttfamily \label{class_u_session_subsystem_a80d75dbf1b878fb1fba98cf3fbf91bdf} 
+USession\+Subsystem\+::\+UFUNCTION (\begin{DoxyParamCaption}\item[{Blueprint\+Callable}]{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_u_session_subsystem_ab667fa417ec879757f441476e536075e}\index{USessionSubsystem@{USessionSubsystem}!UFUNCTION@{UFUNCTION}}
+\index{UFUNCTION@{UFUNCTION}!USessionSubsystem@{USessionSubsystem}}
+\doxysubsubsection{\texorpdfstring{UFUNCTION()}{UFUNCTION()}\hspace{0.1cm}{\footnotesize\ttfamily [8/8]}}
+{\footnotesize\ttfamily \label{class_u_session_subsystem_ab667fa417ec879757f441476e536075e} 
+USession\+Subsystem\+::\+UFUNCTION (\begin{DoxyParamCaption}\item[{Blueprint\+Callable}]{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_u_session_subsystem_a299e6b4ce32a2ae53941d32e3e04739d}\index{USessionSubsystem@{USessionSubsystem}!UPROPERTY@{UPROPERTY}}
+\index{UPROPERTY@{UPROPERTY}!USessionSubsystem@{USessionSubsystem}}
+\doxysubsubsection{\texorpdfstring{UPROPERTY()}{UPROPERTY()}\hspace{0.1cm}{\footnotesize\ttfamily [1/7]}}
+{\footnotesize\ttfamily \label{class_u_session_subsystem_a299e6b4ce32a2ae53941d32e3e04739d} 
+USession\+Subsystem\+::\+UPROPERTY (\begin{DoxyParamCaption}\item[{Blueprint\+Assignable}]{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_u_session_subsystem_a506625ab9bf405cc02a1d62e2c8d6468}\index{USessionSubsystem@{USessionSubsystem}!UPROPERTY@{UPROPERTY}}
+\index{UPROPERTY@{UPROPERTY}!USessionSubsystem@{USessionSubsystem}}
+\doxysubsubsection{\texorpdfstring{UPROPERTY()}{UPROPERTY()}\hspace{0.1cm}{\footnotesize\ttfamily [2/7]}}
+{\footnotesize\ttfamily \label{class_u_session_subsystem_a506625ab9bf405cc02a1d62e2c8d6468} 
+USession\+Subsystem\+::\+UPROPERTY (\begin{DoxyParamCaption}\item[{Blueprint\+Assignable}]{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_u_session_subsystem_a5f15c042502c69085d9d7cc6a8e5d62d}\index{USessionSubsystem@{USessionSubsystem}!UPROPERTY@{UPROPERTY}}
+\index{UPROPERTY@{UPROPERTY}!USessionSubsystem@{USessionSubsystem}}
+\doxysubsubsection{\texorpdfstring{UPROPERTY()}{UPROPERTY()}\hspace{0.1cm}{\footnotesize\ttfamily [3/7]}}
+{\footnotesize\ttfamily \label{class_u_session_subsystem_a5f15c042502c69085d9d7cc6a8e5d62d} 
+USession\+Subsystem\+::\+UPROPERTY (\begin{DoxyParamCaption}\item[{Blueprint\+Assignable}]{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_u_session_subsystem_a925f53c0c2da561ed469602e51d918fa}\index{USessionSubsystem@{USessionSubsystem}!UPROPERTY@{UPROPERTY}}
+\index{UPROPERTY@{UPROPERTY}!USessionSubsystem@{USessionSubsystem}}
+\doxysubsubsection{\texorpdfstring{UPROPERTY()}{UPROPERTY()}\hspace{0.1cm}{\footnotesize\ttfamily [4/7]}}
+{\footnotesize\ttfamily \label{class_u_session_subsystem_a925f53c0c2da561ed469602e51d918fa} 
+USession\+Subsystem\+::\+UPROPERTY (\begin{DoxyParamCaption}\item[{Blueprint\+Assignable}]{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_u_session_subsystem_a2c938f13645c54867dfa6bc8382c5a72}\index{USessionSubsystem@{USessionSubsystem}!UPROPERTY@{UPROPERTY}}
+\index{UPROPERTY@{UPROPERTY}!USessionSubsystem@{USessionSubsystem}}
+\doxysubsubsection{\texorpdfstring{UPROPERTY()}{UPROPERTY()}\hspace{0.1cm}{\footnotesize\ttfamily [5/7]}}
+{\footnotesize\ttfamily \label{class_u_session_subsystem_a2c938f13645c54867dfa6bc8382c5a72} 
+USession\+Subsystem\+::\+UPROPERTY (\begin{DoxyParamCaption}\item[{Blueprint\+Assignable}]{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_u_session_subsystem_a576ef3d4672735a73eb2fb1b9b569544}\index{USessionSubsystem@{USessionSubsystem}!UPROPERTY@{UPROPERTY}}
+\index{UPROPERTY@{UPROPERTY}!USessionSubsystem@{USessionSubsystem}}
+\doxysubsubsection{\texorpdfstring{UPROPERTY()}{UPROPERTY()}\hspace{0.1cm}{\footnotesize\ttfamily [6/7]}}
+{\footnotesize\ttfamily \label{class_u_session_subsystem_a576ef3d4672735a73eb2fb1b9b569544} 
+USession\+Subsystem\+::\+UPROPERTY (\begin{DoxyParamCaption}\item[{Blueprint\+Assignable}]{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_u_session_subsystem_a4d76555dd5582ddf91352f29624ed5fe}\index{USessionSubsystem@{USessionSubsystem}!UPROPERTY@{UPROPERTY}}
+\index{UPROPERTY@{UPROPERTY}!USessionSubsystem@{USessionSubsystem}}
+\doxysubsubsection{\texorpdfstring{UPROPERTY()}{UPROPERTY()}\hspace{0.1cm}{\footnotesize\ttfamily [7/7]}}
+{\footnotesize\ttfamily \label{class_u_session_subsystem_a4d76555dd5582ddf91352f29624ed5fe} 
+USession\+Subsystem\+::\+UPROPERTY (\begin{DoxyParamCaption}\item[{Blueprint\+Assignable}]{}{}\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_u_session_subsystem_ac62a72a0f1bc851db8ddfbe3772c569d}\index{USessionSubsystem@{USessionSubsystem}!Difficulty@{Difficulty}}
+\index{Difficulty@{Difficulty}!USessionSubsystem@{USessionSubsystem}}
+\doxysubsubsection{\texorpdfstring{Difficulty}{Difficulty}}
+{\footnotesize\ttfamily \label{class_u_session_subsystem_ac62a72a0f1bc851db8ddfbe3772c569d} 
+bool FString bool FString FString FString USession\+Subsystem\+::\+Difficulty = "{}Medium"{})}
+
+\Hypertarget{class_u_session_subsystem_ab0ce130f2127a9c9139fd9d0095f4617}\index{USessionSubsystem@{USessionSubsystem}!IsLANMatch@{IsLANMatch}}
+\index{IsLANMatch@{IsLANMatch}!USessionSubsystem@{USessionSubsystem}}
+\doxysubsubsection{\texorpdfstring{IsLANMatch}{IsLANMatch}}
+{\footnotesize\ttfamily \label{class_u_session_subsystem_ab0ce130f2127a9c9139fd9d0095f4617} 
+bool USession\+Subsystem\+::\+Is\+LANMatch}
+
+\Hypertarget{class_u_session_subsystem_af3485c5720876461cb4bc59bd0ab8fd3}\index{USessionSubsystem@{USessionSubsystem}!IsLANQuery@{IsLANQuery}}
+\index{IsLANQuery@{IsLANQuery}!USessionSubsystem@{USessionSubsystem}}
+\doxysubsubsection{\texorpdfstring{IsLANQuery}{IsLANQuery}}
+{\footnotesize\ttfamily \label{class_u_session_subsystem_af3485c5720876461cb4bc59bd0ab8fd3} 
+bool USession\+Subsystem\+::\+Is\+LANQuery}
+
+\Hypertarget{class_u_session_subsystem_a5389dbc0ed2d15e918f8c2963a672153}\index{USessionSubsystem@{USessionSubsystem}!IsPrivate@{IsPrivate}}
+\index{IsPrivate@{IsPrivate}!USessionSubsystem@{USessionSubsystem}}
+\doxysubsubsection{\texorpdfstring{IsPrivate}{IsPrivate}}
+{\footnotesize\ttfamily \label{class_u_session_subsystem_a5389dbc0ed2d15e918f8c2963a672153} 
+bool FString bool USession\+Subsystem\+::\+Is\+Private = false}
+
+\Hypertarget{class_u_session_subsystem_a6dd867cd8b1bc03f8bbdcef6148198ab}\index{USessionSubsystem@{USessionSubsystem}!Map@{Map}}
+\index{Map@{Map}!USessionSubsystem@{USessionSubsystem}}
+\doxysubsubsection{\texorpdfstring{Map}{Map}}
+{\footnotesize\ttfamily \label{class_u_session_subsystem_a6dd867cd8b1bc03f8bbdcef6148198ab} 
+bool FString bool FString FString USession\+Subsystem\+::\+Map = "{}Undefined"{}}
+
+\Hypertarget{class_u_session_subsystem_ab25130aafe50d077cf6a67e15d47ccf0}\index{USessionSubsystem@{USessionSubsystem}!Password@{Password}}
+\index{Password@{Password}!USessionSubsystem@{USessionSubsystem}}
+\doxysubsubsection{\texorpdfstring{Password}{Password}}
+{\footnotesize\ttfamily \label{class_u_session_subsystem_ab25130aafe50d077cf6a67e15d47ccf0} 
+const FString\& USession\+Subsystem\+::\+Password}
+
+\Hypertarget{class_u_session_subsystem_a4604a654000b9f1016e81deb3a6e991a}\index{USessionSubsystem@{USessionSubsystem}!SessionName@{SessionName}}
+\index{SessionName@{SessionName}!USessionSubsystem@{USessionSubsystem}}
+\doxysubsubsection{\texorpdfstring{SessionName}{SessionName}}
+{\footnotesize\ttfamily \label{class_u_session_subsystem_a4604a654000b9f1016e81deb3a6e991a} 
+bool FString USession\+Subsystem\+::\+Session\+Name}
+
+\Hypertarget{class_u_session_subsystem_a1d93ce90097c6da28f39829245758d7e}\index{USessionSubsystem@{USessionSubsystem}!SessionPassword@{SessionPassword}}
+\index{SessionPassword@{SessionPassword}!USessionSubsystem@{USessionSubsystem}}
+\doxysubsubsection{\texorpdfstring{SessionPassword}{SessionPassword}}
+{\footnotesize\ttfamily \label{class_u_session_subsystem_a1d93ce90097c6da28f39829245758d7e} 
+bool FString bool FString USession\+Subsystem\+::\+Session\+Password = "{}"{}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Server\+Logic/\mbox{\hyperlink{_session_subsystem_8h}{Session\+Subsystem.\+h}}\item 
+Server\+Logic/\mbox{\hyperlink{_session_subsystem_8cpp}{Session\+Subsystem.\+cpp}}\end{DoxyCompactItemize}

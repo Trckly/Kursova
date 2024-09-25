@@ -1,0 +1,282 @@
+\doxysection{AAIBiting\+Enemy Class Reference}
+\hypertarget{class_a_a_i_biting_enemy}{}\label{class_a_a_i_biting_enemy}\index{AAIBitingEnemy@{AAIBitingEnemy}}
+
+
+{\ttfamily \#include $<$AIBiting\+Enemy.\+h$>$}
+
+
+
+Inheritance diagram for AAIBiting\+Enemy\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_a_a_i_biting_enemy__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for AAIBiting\+Enemy\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_a_a_i_biting_enemy__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_a_a_i_biting_enemy_aefcf652704cc131187a505eb4d5f10cd}{AAIBiting\+Enemy}} ()
+\item 
+virtual void \mbox{\hyperlink{class_a_a_i_biting_enemy_a54a04bf383b8f5ebeb3fb2963513e095}{Tick}} (float Delta\+Time) override
+\item 
+virtual void \mbox{\hyperlink{class_a_a_i_biting_enemy_ae6c015a0fedec36f87c3fd2c52ab0cd4}{Setup\+Player\+Input\+Component}} (class UInput\+Component \texorpdfstring{$\ast$}{*}Player\+Input\+Component) override
+\item 
+virtual int \mbox{\hyperlink{class_a_a_i_biting_enemy_a6bcd095a24a4cc8e3d4b190937488509}{Deal\+Damage}} () override
+\item 
+virtual void \mbox{\hyperlink{class_a_a_i_biting_enemy_ae302d5af9bc535a1756db864c4a901a8}{Get\+Damage}} (int Damage) override
+\item 
+virtual \mbox{\hyperlink{class_i_enemy_interface}{IEnemy\+Interface}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_a_a_i_biting_enemy_a7ec6fd8fa93c02b1a13792c5aaa5b77e}{Clone}} (FVector Location) override
+\item 
+void \mbox{\hyperlink{class_a_a_i_biting_enemy_af583bf1ead41efa5a351e0d23833dbcb}{On\+Hit}} (UPrimitive\+Component \texorpdfstring{$\ast$}{*}Hit\+Component, AActor \texorpdfstring{$\ast$}{*}Other\+Actor, UPrimitive\+Component \texorpdfstring{$\ast$}{*}Other\+Component, FVector Normal\+Impulse, const FHit\+Result \&Hit)
+\item 
+virtual FGeneric\+Team\+Id \mbox{\hyperlink{class_a_a_i_biting_enemy_adac3f28cdc768a402f76eaea44218129}{Get\+Generic\+Team\+Id}} () const override
+\item 
+virtual UBehavior\+Tree \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_a_a_i_biting_enemy_a8e9efa9c43fa36f1ec8b47460848a92a}{Get\+Behaviour\+Tree}} () override
+\item 
+virtual void \mbox{\hyperlink{class_a_a_i_biting_enemy_a8c03e4fe7866f57f2770e664b67b5d62}{Update}} (float Health) override
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+TSubclass\+Of$<$ \mbox{\hyperlink{class_a_a_i_biting_enemy}{AAIBiting\+Enemy}} $>$ \mbox{\hyperlink{class_a_a_i_biting_enemy_a0177d45945e8e2d90d837f3335edb630}{Self}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{class_a_a_i_biting_enemy_ad934d2b1a243c3a21d0e5d41c7984ead}{Begin\+Play}} () override
+\item 
+virtual void \mbox{\hyperlink{class_a_a_i_biting_enemy_a6810a76383257a37d086c8fc5c89c1a1}{Die}} () override
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{class_a_a_i_biting_enemy_a167a045c645fde0f71d941c4c9f7f1c5}{Is\+Attacking}} = false
+\item 
+int \mbox{\hyperlink{class_a_a_i_biting_enemy_a3f14288de560bc6f1d1723fa87176bc2}{Max\+HP}} = 100
+\item 
+int \mbox{\hyperlink{class_a_a_i_biting_enemy_a908515a9b1e3e7d309551f1140e17b51}{Current\+HP}} = 100
+\item 
+int \mbox{\hyperlink{class_a_a_i_biting_enemy_a047fd4ce84b79456eb8ba7a06f6a2997}{Character\+Damage}} = 20
+\item 
+UCapsule\+Component \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_a_a_i_biting_enemy_a4eea93300283620ef9789aefec2b66f6}{Player\+Capsule\+Component}}
+\item 
+UBehavior\+Tree \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_a_a_i_biting_enemy_a81e133406e2357b6037893a7b79d6dee}{Behavior\+Tree}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_a_a_i_biting_enemy_aefcf652704cc131187a505eb4d5f10cd}\index{AAIBitingEnemy@{AAIBitingEnemy}!AAIBitingEnemy@{AAIBitingEnemy}}
+\index{AAIBitingEnemy@{AAIBitingEnemy}!AAIBitingEnemy@{AAIBitingEnemy}}
+\doxysubsubsection{\texorpdfstring{AAIBitingEnemy()}{AAIBitingEnemy()}}
+{\footnotesize\ttfamily \label{class_a_a_i_biting_enemy_aefcf652704cc131187a505eb4d5f10cd} 
+AAIBiting\+Enemy\+::\+AAIBiting\+Enemy (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_a_a_i_biting_enemy_ad934d2b1a243c3a21d0e5d41c7984ead}\index{AAIBitingEnemy@{AAIBitingEnemy}!BeginPlay@{BeginPlay}}
+\index{BeginPlay@{BeginPlay}!AAIBitingEnemy@{AAIBitingEnemy}}
+\doxysubsubsection{\texorpdfstring{BeginPlay()}{BeginPlay()}}
+{\footnotesize\ttfamily \label{class_a_a_i_biting_enemy_ad934d2b1a243c3a21d0e5d41c7984ead} 
+void AAIBiting\+Enemy\+::\+Begin\+Play (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_a_a_i_biting_enemy_ad934d2b1a243c3a21d0e5d41c7984ead_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_a_a_i_biting_enemy_a7ec6fd8fa93c02b1a13792c5aaa5b77e}\index{AAIBitingEnemy@{AAIBitingEnemy}!Clone@{Clone}}
+\index{Clone@{Clone}!AAIBitingEnemy@{AAIBitingEnemy}}
+\doxysubsubsection{\texorpdfstring{Clone()}{Clone()}}
+{\footnotesize\ttfamily \label{class_a_a_i_biting_enemy_a7ec6fd8fa93c02b1a13792c5aaa5b77e} 
+\mbox{\hyperlink{class_i_enemy_interface}{IEnemy\+Interface}} \texorpdfstring{$\ast$}{*} AAIBiting\+Enemy\+::\+Clone (\begin{DoxyParamCaption}\item[{FVector}]{Location}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_i_enemy_interface_a98d486091ebc148603eb8e2417c45721}{IEnemy\+Interface}}.
+
+\Hypertarget{class_a_a_i_biting_enemy_a6bcd095a24a4cc8e3d4b190937488509}\index{AAIBitingEnemy@{AAIBitingEnemy}!DealDamage@{DealDamage}}
+\index{DealDamage@{DealDamage}!AAIBitingEnemy@{AAIBitingEnemy}}
+\doxysubsubsection{\texorpdfstring{DealDamage()}{DealDamage()}}
+{\footnotesize\ttfamily \label{class_a_a_i_biting_enemy_a6bcd095a24a4cc8e3d4b190937488509} 
+int AAIBiting\+Enemy\+::\+Deal\+Damage (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_i_enemy_interface_a467e7bfc92631104e84024230c262f28}{IEnemy\+Interface}}.
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_a_a_i_biting_enemy_a6bcd095a24a4cc8e3d4b190937488509_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_a_a_i_biting_enemy_a6810a76383257a37d086c8fc5c89c1a1}\index{AAIBitingEnemy@{AAIBitingEnemy}!Die@{Die}}
+\index{Die@{Die}!AAIBitingEnemy@{AAIBitingEnemy}}
+\doxysubsubsection{\texorpdfstring{Die()}{Die()}}
+{\footnotesize\ttfamily \label{class_a_a_i_biting_enemy_a6810a76383257a37d086c8fc5c89c1a1} 
+void AAIBiting\+Enemy\+::\+Die (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_i_enemy_interface}{IEnemy\+Interface}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=333pt]{class_a_a_i_biting_enemy_a6810a76383257a37d086c8fc5c89c1a1_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_a_a_i_biting_enemy_a6810a76383257a37d086c8fc5c89c1a1_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_a_a_i_biting_enemy_a8e9efa9c43fa36f1ec8b47460848a92a}\index{AAIBitingEnemy@{AAIBitingEnemy}!GetBehaviourTree@{GetBehaviourTree}}
+\index{GetBehaviourTree@{GetBehaviourTree}!AAIBitingEnemy@{AAIBitingEnemy}}
+\doxysubsubsection{\texorpdfstring{GetBehaviourTree()}{GetBehaviourTree()}}
+{\footnotesize\ttfamily \label{class_a_a_i_biting_enemy_a8e9efa9c43fa36f1ec8b47460848a92a} 
+UBehavior\+Tree \texorpdfstring{$\ast$}{*} AAIBiting\+Enemy\+::\+Get\+Behaviour\+Tree (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_i_enemy_interface_aeeb03a567ae3760dad7c5503a6bea28d}{IEnemy\+Interface}}.
+
+\Hypertarget{class_a_a_i_biting_enemy_ae302d5af9bc535a1756db864c4a901a8}\index{AAIBitingEnemy@{AAIBitingEnemy}!GetDamage@{GetDamage}}
+\index{GetDamage@{GetDamage}!AAIBitingEnemy@{AAIBitingEnemy}}
+\doxysubsubsection{\texorpdfstring{GetDamage()}{GetDamage()}}
+{\footnotesize\ttfamily \label{class_a_a_i_biting_enemy_ae302d5af9bc535a1756db864c4a901a8} 
+void AAIBiting\+Enemy\+::\+Get\+Damage (\begin{DoxyParamCaption}\item[{int}]{Damage}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_i_enemy_interface_ad5c39dd66bd46094a6f2052cc2c5cd51}{IEnemy\+Interface}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_a_a_i_biting_enemy_ae302d5af9bc535a1756db864c4a901a8_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_a_a_i_biting_enemy_adac3f28cdc768a402f76eaea44218129}\index{AAIBitingEnemy@{AAIBitingEnemy}!GetGenericTeamId@{GetGenericTeamId}}
+\index{GetGenericTeamId@{GetGenericTeamId}!AAIBitingEnemy@{AAIBitingEnemy}}
+\doxysubsubsection{\texorpdfstring{GetGenericTeamId()}{GetGenericTeamId()}}
+{\footnotesize\ttfamily \label{class_a_a_i_biting_enemy_adac3f28cdc768a402f76eaea44218129} 
+virtual FGeneric\+Team\+Id AAIBiting\+Enemy\+::\+Get\+Generic\+Team\+Id (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+\Hypertarget{class_a_a_i_biting_enemy_af583bf1ead41efa5a351e0d23833dbcb}\index{AAIBitingEnemy@{AAIBitingEnemy}!OnHit@{OnHit}}
+\index{OnHit@{OnHit}!AAIBitingEnemy@{AAIBitingEnemy}}
+\doxysubsubsection{\texorpdfstring{OnHit()}{OnHit()}}
+{\footnotesize\ttfamily \label{class_a_a_i_biting_enemy_af583bf1ead41efa5a351e0d23833dbcb} 
+void AAIBiting\+Enemy\+::\+On\+Hit (\begin{DoxyParamCaption}\item[{UPrimitive\+Component \texorpdfstring{$\ast$}{*}}]{Hit\+Component}{, }\item[{AActor \texorpdfstring{$\ast$}{*}}]{Other\+Actor}{, }\item[{UPrimitive\+Component \texorpdfstring{$\ast$}{*}}]{Other\+Component}{, }\item[{FVector}]{Normal\+Impulse}{, }\item[{const FHit\+Result \&}]{Hit}{}\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_a_a_i_biting_enemy_af583bf1ead41efa5a351e0d23833dbcb_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_a_a_i_biting_enemy_af583bf1ead41efa5a351e0d23833dbcb_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_a_a_i_biting_enemy_ae6c015a0fedec36f87c3fd2c52ab0cd4}\index{AAIBitingEnemy@{AAIBitingEnemy}!SetupPlayerInputComponent@{SetupPlayerInputComponent}}
+\index{SetupPlayerInputComponent@{SetupPlayerInputComponent}!AAIBitingEnemy@{AAIBitingEnemy}}
+\doxysubsubsection{\texorpdfstring{SetupPlayerInputComponent()}{SetupPlayerInputComponent()}}
+{\footnotesize\ttfamily \label{class_a_a_i_biting_enemy_ae6c015a0fedec36f87c3fd2c52ab0cd4} 
+void AAIBiting\+Enemy\+::\+Setup\+Player\+Input\+Component (\begin{DoxyParamCaption}\item[{class UInput\+Component \texorpdfstring{$\ast$}{*}}]{Player\+Input\+Component}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+\Hypertarget{class_a_a_i_biting_enemy_a54a04bf383b8f5ebeb3fb2963513e095}\index{AAIBitingEnemy@{AAIBitingEnemy}!Tick@{Tick}}
+\index{Tick@{Tick}!AAIBitingEnemy@{AAIBitingEnemy}}
+\doxysubsubsection{\texorpdfstring{Tick()}{Tick()}}
+{\footnotesize\ttfamily \label{class_a_a_i_biting_enemy_a54a04bf383b8f5ebeb3fb2963513e095} 
+void AAIBiting\+Enemy\+::\+Tick (\begin{DoxyParamCaption}\item[{float}]{Delta\+Time}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+\Hypertarget{class_a_a_i_biting_enemy_a8c03e4fe7866f57f2770e664b67b5d62}\index{AAIBitingEnemy@{AAIBitingEnemy}!Update@{Update}}
+\index{Update@{Update}!AAIBitingEnemy@{AAIBitingEnemy}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily \label{class_a_a_i_biting_enemy_a8c03e4fe7866f57f2770e664b67b5d62} 
+void AAIBiting\+Enemy\+::\+Update (\begin{DoxyParamCaption}\item[{float}]{Health}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_i_enemy_observer_a5c1ff6c1ecf46e0bf4754f6c71bc00f5}{IEnemy\+Observer}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_a_a_i_biting_enemy_a81e133406e2357b6037893a7b79d6dee}\index{AAIBitingEnemy@{AAIBitingEnemy}!BehaviorTree@{BehaviorTree}}
+\index{BehaviorTree@{BehaviorTree}!AAIBitingEnemy@{AAIBitingEnemy}}
+\doxysubsubsection{\texorpdfstring{BehaviorTree}{BehaviorTree}}
+{\footnotesize\ttfamily \label{class_a_a_i_biting_enemy_a81e133406e2357b6037893a7b79d6dee} 
+UBehavior\+Tree\texorpdfstring{$\ast$}{*} AAIBiting\+Enemy\+::\+Behavior\+Tree\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{class_a_a_i_biting_enemy_a047fd4ce84b79456eb8ba7a06f6a2997}\index{AAIBitingEnemy@{AAIBitingEnemy}!CharacterDamage@{CharacterDamage}}
+\index{CharacterDamage@{CharacterDamage}!AAIBitingEnemy@{AAIBitingEnemy}}
+\doxysubsubsection{\texorpdfstring{CharacterDamage}{CharacterDamage}}
+{\footnotesize\ttfamily \label{class_a_a_i_biting_enemy_a047fd4ce84b79456eb8ba7a06f6a2997} 
+int AAIBiting\+Enemy\+::\+Character\+Damage = 20\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{class_a_a_i_biting_enemy_a908515a9b1e3e7d309551f1140e17b51}\index{AAIBitingEnemy@{AAIBitingEnemy}!CurrentHP@{CurrentHP}}
+\index{CurrentHP@{CurrentHP}!AAIBitingEnemy@{AAIBitingEnemy}}
+\doxysubsubsection{\texorpdfstring{CurrentHP}{CurrentHP}}
+{\footnotesize\ttfamily \label{class_a_a_i_biting_enemy_a908515a9b1e3e7d309551f1140e17b51} 
+int AAIBiting\+Enemy\+::\+Current\+HP = 100\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{class_a_a_i_biting_enemy_a167a045c645fde0f71d941c4c9f7f1c5}\index{AAIBitingEnemy@{AAIBitingEnemy}!IsAttacking@{IsAttacking}}
+\index{IsAttacking@{IsAttacking}!AAIBitingEnemy@{AAIBitingEnemy}}
+\doxysubsubsection{\texorpdfstring{IsAttacking}{IsAttacking}}
+{\footnotesize\ttfamily \label{class_a_a_i_biting_enemy_a167a045c645fde0f71d941c4c9f7f1c5} 
+bool AAIBiting\+Enemy\+::\+Is\+Attacking = false\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{class_a_a_i_biting_enemy_a3f14288de560bc6f1d1723fa87176bc2}\index{AAIBitingEnemy@{AAIBitingEnemy}!MaxHP@{MaxHP}}
+\index{MaxHP@{MaxHP}!AAIBitingEnemy@{AAIBitingEnemy}}
+\doxysubsubsection{\texorpdfstring{MaxHP}{MaxHP}}
+{\footnotesize\ttfamily \label{class_a_a_i_biting_enemy_a3f14288de560bc6f1d1723fa87176bc2} 
+int AAIBiting\+Enemy\+::\+Max\+HP = 100\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{class_a_a_i_biting_enemy_a4eea93300283620ef9789aefec2b66f6}\index{AAIBitingEnemy@{AAIBitingEnemy}!PlayerCapsuleComponent@{PlayerCapsuleComponent}}
+\index{PlayerCapsuleComponent@{PlayerCapsuleComponent}!AAIBitingEnemy@{AAIBitingEnemy}}
+\doxysubsubsection{\texorpdfstring{PlayerCapsuleComponent}{PlayerCapsuleComponent}}
+{\footnotesize\ttfamily \label{class_a_a_i_biting_enemy_a4eea93300283620ef9789aefec2b66f6} 
+UCapsule\+Component\texorpdfstring{$\ast$}{*} AAIBiting\+Enemy\+::\+Player\+Capsule\+Component\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{class_a_a_i_biting_enemy_a0177d45945e8e2d90d837f3335edb630}\index{AAIBitingEnemy@{AAIBitingEnemy}!Self@{Self}}
+\index{Self@{Self}!AAIBitingEnemy@{AAIBitingEnemy}}
+\doxysubsubsection{\texorpdfstring{Self}{Self}}
+{\footnotesize\ttfamily \label{class_a_a_i_biting_enemy_a0177d45945e8e2d90d837f3335edb630} 
+TSubclass\+Of$<$\mbox{\hyperlink{class_a_a_i_biting_enemy}{AAIBiting\+Enemy}}$>$ AAIBiting\+Enemy\+::\+Self}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+AI/\mbox{\hyperlink{_a_i_biting_enemy_8h}{AIBiting\+Enemy.\+h}}\item 
+AI/\mbox{\hyperlink{_a_i_biting_enemy_8cpp}{AIBiting\+Enemy.\+cpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,15 @@
+<map id="AMainPlayer::Detach" name="AMainPlayer::Detach">
+<area shape="rect" id="Node000001" title=" " alt="" coords="661,39,806,64"/>
+<area shape="rect" id="Node000002" href="$class_a_a_i_biting_enemy.html#a6810a76383257a37d086c8fc5c89c1a1" title=" " alt="" coords="457,9,601,35"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="646,42,602,35,602,30,646,36"/>
+<area shape="rect" id="Node000004" href="$class_a_a_i_exploding_enemy.html#a7ffddf0f3af0d3ce0e2664cce705f4a1" title=" " alt="" coords="445,63,613,88"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="646,64,614,68,613,63,646,59"/>
+<area shape="rect" id="Node000003" href="$class_a_a_i_biting_enemy.html#ae302d5af9bc535a1756db864c4a901a8" title=" " alt="" coords="203,5,397,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="441,23,397,23,397,17,441,18"/>
+<area shape="rect" id="Node000005" href="$class_a_a_i_exploding_enemy.html#a53a7a4a355e183be1ce6ea173a6aa0a7" title=" " alt="" coords="225,55,375,96"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="429,78,375,78,375,73,429,73"/>
+<area shape="rect" id="Node000006" href="$class_a_a_i_exploding_enemy.html#a6953dd0c5ad9c9988ac92db18a892350" title=" " alt="" coords="225,121,375,161"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="468,96,375,122,373,117,466,90"/>
+<area shape="rect" id="Node000007" href="$class_a_a_i_exploding_enemy.html#a8b1110d8b16fbe7dfa468fd9afad64bf" title=" " alt="" coords="5,121,155,161"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="210,144,155,144,155,138,210,138"/>
+</map>

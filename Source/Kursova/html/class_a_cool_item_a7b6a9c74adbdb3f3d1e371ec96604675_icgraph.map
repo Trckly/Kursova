@@ -1,0 +1,7 @@
+<map id="ACoolItem::IncreaseScore" name="ACoolItem::IncreaseScore">
+<area shape="rect" id="Node000001" title=" " alt="" coords="436,5,610,31"/>
+<area shape="rect" id="Node000002" href="$class_a_cool_item.html#a4515fb3ec2e6a7b7810cdac8687992b6" title=" " alt="" coords="203,5,388,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="420,21,388,21,388,16,420,16"/>
+<area shape="rect" id="Node000003" href="$class_a_cool_item.html#a3f46b1e66df3af7608a65bb37564dd06" title=" " alt="" coords="5,5,155,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="187,21,155,21,155,16,187,16"/>
+</map>

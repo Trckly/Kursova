@@ -1,0 +1,11 @@
+<map id="UPlayerPanelWidget::ResetBackgroundColor" name="UPlayerPanelWidget::ResetBackgroundColor">
+<area shape="rect" id="Node000001" title=" " alt="" coords="938,5,1100,46"/>
+<area shape="rect" id="Node000002" href="$class_u_admin_manager_widget.html#a361118e6c9a1c61edac13bc8b33de356" title=" " alt="" coords="732,5,890,46"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="922,28,890,28,890,23,922,23"/>
+<area shape="rect" id="Node000003" href="$class_u_admin_manager_widget.html#af832b6df2dcb87de66fc3283c49667ec" title=" " alt="" coords="527,5,684,46"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="717,28,685,28,685,23,717,23"/>
+<area shape="rect" id="Node000004" href="$class_u_server_widget.html#a7b0f82f1cd233dd2f6824aa0dc48f837" title=" " alt="" coords="263,13,479,39"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="511,28,480,28,480,23,511,23"/>
+<area shape="rect" id="Node000005" href="$class_u_server_widget.html#a74cd014e883bf130482eee6be68f26b9" title=" " alt="" coords="5,13,215,39"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="247,28,215,28,215,23,247,23"/>
+</map>

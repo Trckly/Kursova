@@ -1,0 +1,10 @@
+<map id="UCommandWidget::CloseWidget" name="UCommandWidget::CloseWidget">
+<area shape="rect" id="Node000001" title=" " alt="" coords="520,46,730,72"/>
+<area shape="rect" id="Node000002" href="$class_u_command_widget.html#ac053481b988e318d3f71c22f478367cc" title=" " alt="" coords="284,5,472,46"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="509,46,472,41,473,36,510,41"/>
+<area shape="rect" id="Node000004" href="$class_u_command_widget.html#ab8039b85770eb9cf9ed2a58d3d5749fe" title=" " alt="" coords="286,71,470,111"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="506,77,471,82,470,76,505,72"/>
+<area shape="rect" id="Node000003" href="$class_u_command_widget.html#a9ffcdd97d3985d15de606b27d9269781" title=" " alt="" coords="5,46,236,72"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="269,42,225,48,224,43,268,37"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="270,80,229,75,229,70,270,75"/>
+</map>

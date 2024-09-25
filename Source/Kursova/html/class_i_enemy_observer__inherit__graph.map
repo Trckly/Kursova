@@ -1,0 +1,7 @@
+<map id="IEnemyObserver" name="IEnemyObserver">
+<area shape="rect" id="Node000001" title=" " alt="" coords="253,5,385,85"/>
+<area shape="rect" id="Node000002" href="$class_a_a_i_biting_enemy.html" title=" " alt="" coords="5,133,308,819"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="302,100,289,135,284,133,297,98"/>
+<area shape="rect" id="Node000003" href="$class_a_a_i_exploding_enemy.html" title=" " alt="" coords="332,133,635,819"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="342,98,355,133,350,135,337,100"/>
+</map>

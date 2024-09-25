@@ -1,0 +1,11 @@
+<map id="AMainPlayer::GetDamage" name="AMainPlayer::GetDamage">
+<area shape="rect" id="Node000001" title=" " alt="" coords="444,35,616,60"/>
+<area shape="rect" id="Node000002" href="$class_a_a_i_biting_enemy.html#af583bf1ead41efa5a351e0d23833dbcb" title=" " alt="" coords="238,5,396,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="428,36,396,32,397,26,429,31"/>
+<area shape="rect" id="Node000004" href="$class_a_a_i_exploding_enemy.html#a6953dd0c5ad9c9988ac92db18a892350" title=" " alt="" coords="242,55,392,96"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="429,63,392,68,392,63,428,58"/>
+<area shape="rect" id="Node000003" href="$class_a_a_i_biting_enemy.html#ad934d2b1a243c3a21d0e5d41c7984ead" title=" " alt="" coords="5,5,190,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="222,21,190,21,190,16,222,16"/>
+<area shape="rect" id="Node000005" href="$class_a_a_i_exploding_enemy.html#a8b1110d8b16fbe7dfa468fd9afad64bf" title=" " alt="" coords="23,55,172,96"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="227,78,173,78,173,73,227,73"/>
+</map>

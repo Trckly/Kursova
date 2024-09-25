@@ -1,0 +1,43 @@
+\doxysection{IEnemy\+Creator.\+h}
+\hypertarget{_i_enemy_creator_8h_source}{}\label{_i_enemy_creator_8h_source}\index{AI/AbstractFactory/IEnemyCreator.h@{AI/AbstractFactory/IEnemyCreator.h}}
+\mbox{\hyperlink{_i_enemy_creator_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//\ Fill\ out\ your\ copyright\ notice\ in\ the\ Description\ page\ of\ Project\ Settings.}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}CoreMinimal.h"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_u_enemy_interface_8h}{Kursova/AI/UEnemyInterface.h}}"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}UObject/Interface.h"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}IEnemyCreator.generated.h"{}}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{comment}{//\ This\ class\ does\ not\ need\ to\ be\ modified.}}
+\DoxyCodeLine{00011\ UINTERFACE(MinimalAPI)}
+\DoxyCodeLine{00012\ class\ \mbox{\hyperlink{class_u_i_enemy_creator}{UIEnemyCreator}}\ :\ public\ UInterface}
+\DoxyCodeLine{00013\ \{}
+\DoxyCodeLine{00014\ \ \ \ \ GENERATED\_BODY()}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \};}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ UENUM()}
+\DoxyCodeLine{00019\ enum\ class\ \mbox{\hyperlink{_i_enemy_creator_8h_a0cbe862093c47a8a862973edd433613e}{EEnemyType}}}
+\DoxyCodeLine{00020\ \{}
+\DoxyCodeLine{00021\ \ \ \ \ \mbox{\hyperlink{_i_enemy_creator_8h_a0cbe862093c47a8a862973edd433613eaa8d4c3a891479ae79f8284e4c8390efb}{Biting}}\ =\ 0,}
+\DoxyCodeLine{00022\ \ \ \ \ \mbox{\hyperlink{_i_enemy_creator_8h_a0cbe862093c47a8a862973edd433613ead77f3ab1f2d580d0267893842d79b625}{Shooting}},}
+\DoxyCodeLine{00023\ \ \ \ \ \mbox{\hyperlink{_i_enemy_creator_8h_a0cbe862093c47a8a862973edd433613ea9be429758d93d5b11b758c4fe241a93e}{Exploding}}}
+\DoxyCodeLine{00024\ \};}
+\DoxyCodeLine{00028\ \textcolor{keyword}{class\ }KURSOVA\_API\ \mbox{\hyperlink{class_i_i_enemy_creator}{IIEnemyCreator}}}
+\DoxyCodeLine{00029\ \{}
+\DoxyCodeLine{00030\ \ \ \ \ GENERATED\_BODY()}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{comment}{//\ Add\ interface\ functions\ to\ this\ class.\ This\ is\ the\ class\ that\ will\ be\ inherited\ to\ implement\ this\ interface.}}
+\DoxyCodeLine{00033\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00034\ \ \ \ \ }
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_i_enemy_interface}{IEnemyInterface}}*\ \mbox{\hyperlink{class_i_i_enemy_creator_ab20e4d5ae67c4ca9e2ff5180cb8cbc71}{CreateEnemies}}(\mbox{\hyperlink{_i_enemy_creator_8h_a0cbe862093c47a8a862973edd433613e}{EEnemyType}}\ EnemyType)\ =\ 0;}
+\DoxyCodeLine{00036\ \ \ \ \ }
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_i_enemy_interface}{IEnemyInterface}}*\ \mbox{\hyperlink{class_i_i_enemy_creator_a3abf391f5f38a5ac496f8e6c5afc474b}{CreateBitingEnemies}}(FVector2D\ MapSize)\ =\ 0;}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_i_enemy_interface}{IEnemyInterface}}*\ \mbox{\hyperlink{class_i_i_enemy_creator_a02be6f7e87114776baaef36b180a4060}{CreateShootingEnemies}}(FVector2D\ MapSize)\ =\ 0;}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_i_enemy_interface}{IEnemyInterface}}*\ \mbox{\hyperlink{class_i_i_enemy_creator_ab2022bdef7db5eb4f156861d88736c5f}{CreateExplodingEnemies}}(FVector2D\ MapSize)\ =\ 0;}
+\DoxyCodeLine{00040\ \};}
+
+\end{DoxyCode}

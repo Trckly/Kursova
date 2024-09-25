@@ -1,0 +1,7 @@
+<map id="AAIExplodingEnemy::GetDamage" name="AAIExplodingEnemy::GetDamage">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,155,46"/>
+<area shape="rect" id="Node000002" href="$class_a_a_i_exploding_enemy.html#a7ffddf0f3af0d3ce0e2664cce705f4a1" title=" " alt="" coords="203,13,371,39"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="155,23,187,23,187,28,155,28"/>
+<area shape="rect" id="Node000003" href="$class_a_main_player.html#a30a804ba9b0dc9bb02aa9217915546e6" title=" " alt="" coords="419,13,563,39"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="371,23,403,23,403,28,371,28"/>
+</map>

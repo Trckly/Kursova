@@ -1,0 +1,9 @@
+<map id="AMainPlayer::Attach" name="AMainPlayer::Attach">
+<area shape="rect" id="Node000001" title=" " alt="" coords="809,13,951,39"/>
+<area shape="rect" id="Node000002" href="$class_a_session_game_mode.html#a005798ac4ee0e6bcd3969dcafa2711d9" title=" " alt="" coords="568,5,761,46"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="794,28,762,28,762,23,794,23"/>
+<area shape="rect" id="Node000003" href="$class_a_session_game_mode.html#ad5ca35b08ea4cebab9a1357792ffca79" title=" " alt="" coords="265,13,520,39"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="552,28,520,28,520,23,552,23"/>
+<area shape="rect" id="Node000004" href="$class_a_session_game_mode.html#aafaf1f0bf8086d917a5d2d392aef9817" title=" " alt="" coords="5,13,217,39"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="249,28,217,28,217,23,249,23"/>
+</map>

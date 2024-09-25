@@ -1,0 +1,32 @@
+\doxysection{Weapon\+Interface.\+h}
+\hypertarget{_weapon_interface_8h_source}{}\label{_weapon_interface_8h_source}\index{DifficultyFactories/FactoryProducts/WeaponInterface.h@{DifficultyFactories/FactoryProducts/WeaponInterface.h}}
+\mbox{\hyperlink{_weapon_interface_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//\ Fill\ out\ your\ copyright\ notice\ in\ the\ Description\ page\ of\ Project\ Settings.}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}CoreMinimal.h"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}UObject/Interface.h"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}WeaponInterface.generated.h"{}}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ This\ class\ does\ not\ need\ to\ be\ modified.}}
+\DoxyCodeLine{00010\ UINTERFACE(MinimalAPI)}
+\DoxyCodeLine{00011\ class\ \mbox{\hyperlink{class_u_weapon_interface}{UWeaponInterface}}\ :\ public\ UInterface}
+\DoxyCodeLine{00012\ \{}
+\DoxyCodeLine{00013\ \ \ \ \ GENERATED\_BODY()}
+\DoxyCodeLine{00014\ \};}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{class\ }KURSOVA\_API\ \mbox{\hyperlink{class_i_weapon_interface}{IWeaponInterface}}}
+\DoxyCodeLine{00020\ \{}
+\DoxyCodeLine{00021\ \ \ \ \ GENERATED\_BODY()}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_i_weapon_interface_aee776679dcfae609bb31afd52cada6b8}{DetachFromActor}}(\textcolor{keyword}{const}\ FDetachmentTransformRules\&\ DetachmentTransformRules)\ =\ 0;}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_i_weapon_interface_aac64a6cd32a2770a751e3b9f0c7e291f}{Destroy}}()\ =\ 0;}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_i_weapon_interface_a402ad59ee91e005380184b2213b9e43d}{SetActorEnableCollision}}(\textcolor{keywordtype}{bool}\ bNewActorEnableCollision)\ =\ 0;}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_i_weapon_interface_a7ccb7383b81d795219ddaaba2bac05a7}{AttachToComponent}}(USceneComponent*\ Parent,\ \ \ \ \textcolor{keyword}{const}\ FAttachmentTransformRules\&\ AttachmentRules,}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ FName\ SocketName\ =\ NAME\_None)\ =\ 0;}
+\DoxyCodeLine{00029\ \};}
+
+\end{DoxyCode}

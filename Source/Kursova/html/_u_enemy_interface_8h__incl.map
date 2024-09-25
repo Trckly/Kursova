@@ -1,0 +1,17 @@
+<map id="AI/UEnemyInterface.h" name="AI/UEnemyInterface.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="261,5,411,31"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,168,110,193"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="261,27,197,33,130,44,74,60,53,69,40,81,32,97,32,116,45,153,40,155,27,117,27,96,35,77,50,65,72,55,129,39,196,28,260,21"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="49,79,229,120"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="307,34,203,75,201,70,305,29"/>
+<area shape="rect" id="Node000004" href="$_enemy_observer_8h.html" title=" " alt="" coords="253,79,420,120"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="339,31,339,64,334,64,334,31"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="390,168,525,193"/>
+<area shape="poly" id="edge7_Node000001_Node000005" title=" " alt="" coords="369,29,404,49,434,77,452,115,459,152,454,153,447,116,430,81,400,53,367,34"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="495,87,689,112"/>
+<area shape="poly" id="edge8_Node000001_Node000007" title=" " alt="" coords="376,29,539,79,538,84,375,34"/>
+<area shape="poly" id="edge4_Node000004_Node000002" title=" " alt="" coords="267,123,116,166,114,160,266,118"/>
+<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="368,118,428,157,425,161,365,122"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="179,168,366,193"/>
+<area shape="poly" id="edge6_Node000004_Node000006" title=" " alt="" coords="322,122,294,157,289,154,318,118"/>
+</map>

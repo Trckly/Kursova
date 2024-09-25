@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Components/BoxComponent.h"
+#include "Kursova/State/State.h"
 #include "Radio.generated.h"
 
 /**
@@ -18,6 +19,8 @@ class KURSOVA_API ARadio : public AActor
 	
 	static ARadio* SelfInstance;
 
+	IState* State;
+
 protected:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
 	UBoxComponent* BoxComponent;
@@ -27,4 +30,6 @@ protected:
 
 public:
 	static ARadio* GetInstance(UWorld* World, TSubclassOf<ARadio> RadioClass);
+
+	void ChangeState(IState* OtherState);
 };

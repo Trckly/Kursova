@@ -1,0 +1,432 @@
+\doxysection{UWeapon\+Menu\+Widget Class Reference}
+\hypertarget{class_u_weapon_menu_widget}{}\label{class_u_weapon_menu_widget}\index{UWeaponMenuWidget@{UWeaponMenuWidget}}
+
+
+{\ttfamily \#include $<$Weapon\+Menu\+Widget.\+h$>$}
+
+
+
+Inheritance diagram for UWeapon\+Menu\+Widget\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{class_u_weapon_menu_widget__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for UWeapon\+Menu\+Widget\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{class_u_weapon_menu_widget__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{class_u_weapon_menu_widget_aa89472e73bf79330a6931bbd8acdde39}{Remove\+From\+Parent}} () override
+\item 
+void \mbox{\hyperlink{class_u_weapon_menu_widget_a92918b8ae627218306419e6e699bbdf4}{Sort\+By\+Caliber}} ()
+\item 
+void \mbox{\hyperlink{class_u_weapon_menu_widget_ac43c61d5ffede7038d3331367f9713a2}{Create\+Properties\+Editor}} ()
+\item 
+void \mbox{\hyperlink{class_u_weapon_menu_widget_a0b3a66bef2b54c59b6a0985caac90fe9}{Edit\+Weapon\+Unit\+Properties}} (const TArray$<$ FText $>$ \&Changed\+Values, const FString \&Original\+Model\+Name)
+\item 
+void \mbox{\hyperlink{class_u_weapon_menu_widget_ac466e5b323afcd5fa32e35e7faa320c5}{Handle\+Selected\+Row\+Widget}} (const FString \&Model\+Name)
+\item 
+void \mbox{\hyperlink{class_u_weapon_menu_widget_afad3568dfd6abebde328a3858af50491}{Filter\+Func}} (const FText \&Typed\+Text)
+\item 
+void \mbox{\hyperlink{class_u_weapon_menu_widget_aa7b1d42e2c308ab3ca7084e73bd6a013}{Shell\+Sort}} (TArray$<$ \mbox{\hyperlink{class_u_weapon_data_widget}{UWeapon\+Data\+Widget}} \texorpdfstring{$\ast$}{*} $>$ \&Children, bool \&b\+Ascending)
+\item 
+void \mbox{\hyperlink{class_u_weapon_menu_widget_abb856539e5d427e048cd3e9a4788a37e}{Set\+Actor\+Picked\+Weapons}} (const TArray$<$ \mbox{\hyperlink{class_a_weapon_class}{AWeapon\+Class}} \texorpdfstring{$\ast$}{*} $>$ \&Picked\+Weapons)
+\item 
+void \mbox{\hyperlink{class_u_weapon_menu_widget_a3af6c273dda55494a44bf4baabc6c19f}{Filter\+By\+Model}} (const FText \&New\+Model\+Name)
+\item 
+void \mbox{\hyperlink{class_u_weapon_menu_widget_ae99b2a1f5fb53eb42c1d83afca1eeedf}{Filter\+By\+Main\+Type}} (const FText \&New\+Main\+Type\+Name)
+\item 
+void \mbox{\hyperlink{class_u_weapon_menu_widget_a7d4e2723bcfdf7b00d3861b77510ee02}{Filter\+By\+Subtype}} (const FText \&New\+Subtype\+Name)
+\item 
+void \mbox{\hyperlink{class_u_weapon_menu_widget_a30688347a9f81e488572920964571a63}{Filter\+By\+Manufacturer}} (const FText \&New\+Manufacturer\+Name)
+\item 
+\mbox{\hyperlink{class_u_weapon_data_widget}{UWeapon\+Data\+Widget}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_u_weapon_menu_widget_af8750176045da9b5b2574970d6482933}{Get\+Selected\+Widget}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{class_u_weapon_menu_widget_a66732b99205662ffc1b773590face9a4}{ECombo\+Box\+Values}} \{ \mbox{\hyperlink{class_u_weapon_menu_widget_a66732b99205662ffc1b773590face9a4a9753d53106438872fa4838f0faab0c47}{Model\+Filter}}
+, \mbox{\hyperlink{class_u_weapon_menu_widget_a66732b99205662ffc1b773590face9a4a0935479cb9fecfb6324c6339f9d4e69d}{Main\+Type\+Filter}}
+, \mbox{\hyperlink{class_u_weapon_menu_widget_a66732b99205662ffc1b773590face9a4a4a0a8bf86d397d1348d245b24dda1616}{Subtype\+Filter}}
+, \mbox{\hyperlink{class_u_weapon_menu_widget_a66732b99205662ffc1b773590face9a4a560046e5549e5b05e0cf92216d83b564}{Manufacturer\+Filter}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{class_u_weapon_menu_widget_ad7883d33e4e48f35a42671388e56a8b5}{Native\+Construct}} () override
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+UVertical\+Box \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_u_weapon_menu_widget_a4d44325c2ab7e490742c75d62842cf29}{Weapon\+Content}}
+\item 
+UButton \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_u_weapon_menu_widget_a5acdf0a0b2301e4b713f3224268e5ba1}{Sort\+Button}}
+\item 
+UButton \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_u_weapon_menu_widget_a803b0e619ab2a8f06b52a3cd052d39bb}{Edit\+Button}}
+\item 
+UCombo\+Box\+String \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_u_weapon_menu_widget_a9ad1b995e08961cbcb679ae074e69b2a}{Filter\+Combo\+Box}}
+\item 
+UEditable\+Text\+Box \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_u_weapon_menu_widget_a705b26e3704f72274aa0e138f37ed13d}{Filter\+Text\+Box}}
+\item 
+TSubclass\+Of$<$ \mbox{\hyperlink{class_u_weapon_data_widget}{UWeapon\+Data\+Widget}} $>$ \mbox{\hyperlink{class_u_weapon_menu_widget_a49a5adeb645ae7a6af1a4f5171b32b57}{Weapon\+Data\+Widget\+Class}}
+\item 
+TSubclass\+Of$<$ \mbox{\hyperlink{class_u_weapon_edit_widget}{UWeapon\+Edit\+Widget}} $>$ \mbox{\hyperlink{class_u_weapon_menu_widget_af66bd218b465b2b01118aea272b7dc9d}{Weapon\+Edit\+Widget\+Class}}
+\item 
+TArray$<$ \mbox{\hyperlink{class_u_weapon_data_widget}{UWeapon\+Data\+Widget}} \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{class_u_weapon_menu_widget_ae34e371adce7d4f6240f8d24676a8b24}{Child\+Row\+Widgets}}
+\item 
+\mbox{\hyperlink{class_u_weapon_data_widget}{UWeapon\+Data\+Widget}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_u_weapon_menu_widget_a5d10dfcad4ef166f98942177c8c0ccec}{Selected\+Widget}}
+\item 
+\mbox{\hyperlink{class_u_weapon_edit_widget}{UWeapon\+Edit\+Widget}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_u_weapon_menu_widget_a6e93890bbe596e4efddf27ad07cad43e}{Edit\+Widget}}
+\item 
+TArray$<$ \mbox{\hyperlink{class_a_weapon_class}{AWeapon\+Class}} \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{class_u_weapon_menu_widget_a60b6d6a52432a1099178fdc82a2a33c5}{Actor\+Picked\+Weapons}}
+\item 
+bool \mbox{\hyperlink{class_u_weapon_menu_widget_afb7e1f6e44821f27e565f6c922ac104a}{b\+Sort\+Flip\+Flop}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+General widget class. Acts like a manager for all user functions 
+
+\doxysubsection{Member Enumeration Documentation}
+\Hypertarget{class_u_weapon_menu_widget_a66732b99205662ffc1b773590face9a4}\index{UWeaponMenuWidget@{UWeaponMenuWidget}!EComboBoxValues@{EComboBoxValues}}
+\index{EComboBoxValues@{EComboBoxValues}!UWeaponMenuWidget@{UWeaponMenuWidget}}
+\doxysubsubsection{\texorpdfstring{EComboBoxValues}{EComboBoxValues}}
+{\footnotesize\ttfamily \label{class_u_weapon_menu_widget_a66732b99205662ffc1b773590face9a4} 
+enum \mbox{\hyperlink{class_u_weapon_menu_widget_a66732b99205662ffc1b773590face9a4}{UWeapon\+Menu\+Widget\+::\+ECombo\+Box\+Values}}\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ModelFilter@{ModelFilter}!UWeaponMenuWidget@{UWeaponMenuWidget}}\index{UWeaponMenuWidget@{UWeaponMenuWidget}!ModelFilter@{ModelFilter}}}\Hypertarget{class_u_weapon_menu_widget_a66732b99205662ffc1b773590face9a4a9753d53106438872fa4838f0faab0c47}\label{class_u_weapon_menu_widget_a66732b99205662ffc1b773590face9a4} 
+Model\+Filter&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MainTypeFilter@{MainTypeFilter}!UWeaponMenuWidget@{UWeaponMenuWidget}}\index{UWeaponMenuWidget@{UWeaponMenuWidget}!MainTypeFilter@{MainTypeFilter}}}\Hypertarget{class_u_weapon_menu_widget_a66732b99205662ffc1b773590face9a4a0935479cb9fecfb6324c6339f9d4e69d}\label{class_u_weapon_menu_widget_a66732b99205662ffc1b773590face9a4} 
+Main\+Type\+Filter&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SubtypeFilter@{SubtypeFilter}!UWeaponMenuWidget@{UWeaponMenuWidget}}\index{UWeaponMenuWidget@{UWeaponMenuWidget}!SubtypeFilter@{SubtypeFilter}}}\Hypertarget{class_u_weapon_menu_widget_a66732b99205662ffc1b773590face9a4a4a0a8bf86d397d1348d245b24dda1616}\label{class_u_weapon_menu_widget_a66732b99205662ffc1b773590face9a4} 
+Subtype\+Filter&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ManufacturerFilter@{ManufacturerFilter}!UWeaponMenuWidget@{UWeaponMenuWidget}}\index{UWeaponMenuWidget@{UWeaponMenuWidget}!ManufacturerFilter@{ManufacturerFilter}}}\Hypertarget{class_u_weapon_menu_widget_a66732b99205662ffc1b773590face9a4a560046e5549e5b05e0cf92216d83b564}\label{class_u_weapon_menu_widget_a66732b99205662ffc1b773590face9a4} 
+Manufacturer\+Filter&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_u_weapon_menu_widget_ac43c61d5ffede7038d3331367f9713a2}\index{UWeaponMenuWidget@{UWeaponMenuWidget}!CreatePropertiesEditor@{CreatePropertiesEditor}}
+\index{CreatePropertiesEditor@{CreatePropertiesEditor}!UWeaponMenuWidget@{UWeaponMenuWidget}}
+\doxysubsubsection{\texorpdfstring{CreatePropertiesEditor()}{CreatePropertiesEditor()}}
+{\footnotesize\ttfamily \label{class_u_weapon_menu_widget_ac43c61d5ffede7038d3331367f9713a2} 
+void UWeapon\+Menu\+Widget\+::\+Create\+Properties\+Editor (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_u_weapon_menu_widget_ac43c61d5ffede7038d3331367f9713a2_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_u_weapon_menu_widget_ac43c61d5ffede7038d3331367f9713a2_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_u_weapon_menu_widget_a0b3a66bef2b54c59b6a0985caac90fe9}\index{UWeaponMenuWidget@{UWeaponMenuWidget}!EditWeaponUnitProperties@{EditWeaponUnitProperties}}
+\index{EditWeaponUnitProperties@{EditWeaponUnitProperties}!UWeaponMenuWidget@{UWeaponMenuWidget}}
+\doxysubsubsection{\texorpdfstring{EditWeaponUnitProperties()}{EditWeaponUnitProperties()}}
+{\footnotesize\ttfamily \label{class_u_weapon_menu_widget_a0b3a66bef2b54c59b6a0985caac90fe9} 
+void UWeapon\+Menu\+Widget\+::\+Edit\+Weapon\+Unit\+Properties (\begin{DoxyParamCaption}\item[{const TArray$<$ FText $>$ \&}]{Changed\+Values}{, }\item[{const FString \&}]{Original\+Model\+Name}{}\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_u_weapon_menu_widget_a0b3a66bef2b54c59b6a0985caac90fe9_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_u_weapon_menu_widget_a0b3a66bef2b54c59b6a0985caac90fe9_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_u_weapon_menu_widget_ae99b2a1f5fb53eb42c1d83afca1eeedf}\index{UWeaponMenuWidget@{UWeaponMenuWidget}!FilterByMainType@{FilterByMainType}}
+\index{FilterByMainType@{FilterByMainType}!UWeaponMenuWidget@{UWeaponMenuWidget}}
+\doxysubsubsection{\texorpdfstring{FilterByMainType()}{FilterByMainType()}}
+{\footnotesize\ttfamily \label{class_u_weapon_menu_widget_ae99b2a1f5fb53eb42c1d83afca1eeedf} 
+void UWeapon\+Menu\+Widget\+::\+Filter\+By\+Main\+Type (\begin{DoxyParamCaption}\item[{const FText \&}]{New\+Main\+Type\+Name}{}\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_u_weapon_menu_widget_ae99b2a1f5fb53eb42c1d83afca1eeedf_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_u_weapon_menu_widget_a30688347a9f81e488572920964571a63}\index{UWeaponMenuWidget@{UWeaponMenuWidget}!FilterByManufacturer@{FilterByManufacturer}}
+\index{FilterByManufacturer@{FilterByManufacturer}!UWeaponMenuWidget@{UWeaponMenuWidget}}
+\doxysubsubsection{\texorpdfstring{FilterByManufacturer()}{FilterByManufacturer()}}
+{\footnotesize\ttfamily \label{class_u_weapon_menu_widget_a30688347a9f81e488572920964571a63} 
+void UWeapon\+Menu\+Widget\+::\+Filter\+By\+Manufacturer (\begin{DoxyParamCaption}\item[{const FText \&}]{New\+Manufacturer\+Name}{}\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_u_weapon_menu_widget_a30688347a9f81e488572920964571a63_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_u_weapon_menu_widget_a3af6c273dda55494a44bf4baabc6c19f}\index{UWeaponMenuWidget@{UWeaponMenuWidget}!FilterByModel@{FilterByModel}}
+\index{FilterByModel@{FilterByModel}!UWeaponMenuWidget@{UWeaponMenuWidget}}
+\doxysubsubsection{\texorpdfstring{FilterByModel()}{FilterByModel()}}
+{\footnotesize\ttfamily \label{class_u_weapon_menu_widget_a3af6c273dda55494a44bf4baabc6c19f} 
+void UWeapon\+Menu\+Widget\+::\+Filter\+By\+Model (\begin{DoxyParamCaption}\item[{const FText \&}]{New\+Model\+Name}{}\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_u_weapon_menu_widget_a3af6c273dda55494a44bf4baabc6c19f_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_u_weapon_menu_widget_a7d4e2723bcfdf7b00d3861b77510ee02}\index{UWeaponMenuWidget@{UWeaponMenuWidget}!FilterBySubtype@{FilterBySubtype}}
+\index{FilterBySubtype@{FilterBySubtype}!UWeaponMenuWidget@{UWeaponMenuWidget}}
+\doxysubsubsection{\texorpdfstring{FilterBySubtype()}{FilterBySubtype()}}
+{\footnotesize\ttfamily \label{class_u_weapon_menu_widget_a7d4e2723bcfdf7b00d3861b77510ee02} 
+void UWeapon\+Menu\+Widget\+::\+Filter\+By\+Subtype (\begin{DoxyParamCaption}\item[{const FText \&}]{New\+Subtype\+Name}{}\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_u_weapon_menu_widget_a7d4e2723bcfdf7b00d3861b77510ee02_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_u_weapon_menu_widget_afad3568dfd6abebde328a3858af50491}\index{UWeaponMenuWidget@{UWeaponMenuWidget}!FilterFunc@{FilterFunc}}
+\index{FilterFunc@{FilterFunc}!UWeaponMenuWidget@{UWeaponMenuWidget}}
+\doxysubsubsection{\texorpdfstring{FilterFunc()}{FilterFunc()}}
+{\footnotesize\ttfamily \label{class_u_weapon_menu_widget_afad3568dfd6abebde328a3858af50491} 
+void UWeapon\+Menu\+Widget\+::\+Filter\+Func (\begin{DoxyParamCaption}\item[{const FText \&}]{Typed\+Text}{}\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_u_weapon_menu_widget_afad3568dfd6abebde328a3858af50491_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_u_weapon_menu_widget_afad3568dfd6abebde328a3858af50491_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_u_weapon_menu_widget_af8750176045da9b5b2574970d6482933}\index{UWeaponMenuWidget@{UWeaponMenuWidget}!GetSelectedWidget@{GetSelectedWidget}}
+\index{GetSelectedWidget@{GetSelectedWidget}!UWeaponMenuWidget@{UWeaponMenuWidget}}
+\doxysubsubsection{\texorpdfstring{GetSelectedWidget()}{GetSelectedWidget()}}
+{\footnotesize\ttfamily \label{class_u_weapon_menu_widget_af8750176045da9b5b2574970d6482933} 
+\mbox{\hyperlink{class_u_weapon_data_widget}{UWeapon\+Data\+Widget}} \texorpdfstring{$\ast$}{*} UWeapon\+Menu\+Widget\+::\+Get\+Selected\+Widget (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_u_weapon_menu_widget_af8750176045da9b5b2574970d6482933_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_u_weapon_menu_widget_ac466e5b323afcd5fa32e35e7faa320c5}\index{UWeaponMenuWidget@{UWeaponMenuWidget}!HandleSelectedRowWidget@{HandleSelectedRowWidget}}
+\index{HandleSelectedRowWidget@{HandleSelectedRowWidget}!UWeaponMenuWidget@{UWeaponMenuWidget}}
+\doxysubsubsection{\texorpdfstring{HandleSelectedRowWidget()}{HandleSelectedRowWidget()}}
+{\footnotesize\ttfamily \label{class_u_weapon_menu_widget_ac466e5b323afcd5fa32e35e7faa320c5} 
+void UWeapon\+Menu\+Widget\+::\+Handle\+Selected\+Row\+Widget (\begin{DoxyParamCaption}\item[{const FString \&}]{Model\+Name}{}\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_u_weapon_menu_widget_ac466e5b323afcd5fa32e35e7faa320c5_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_u_weapon_menu_widget_ac466e5b323afcd5fa32e35e7faa320c5_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_u_weapon_menu_widget_ad7883d33e4e48f35a42671388e56a8b5}\index{UWeaponMenuWidget@{UWeaponMenuWidget}!NativeConstruct@{NativeConstruct}}
+\index{NativeConstruct@{NativeConstruct}!UWeaponMenuWidget@{UWeaponMenuWidget}}
+\doxysubsubsection{\texorpdfstring{NativeConstruct()}{NativeConstruct()}}
+{\footnotesize\ttfamily \label{class_u_weapon_menu_widget_ad7883d33e4e48f35a42671388e56a8b5} 
+void UWeapon\+Menu\+Widget\+::\+Native\+Construct (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_u_weapon_menu_widget_ad7883d33e4e48f35a42671388e56a8b5_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_u_weapon_menu_widget_aa89472e73bf79330a6931bbd8acdde39}\index{UWeaponMenuWidget@{UWeaponMenuWidget}!RemoveFromParent@{RemoveFromParent}}
+\index{RemoveFromParent@{RemoveFromParent}!UWeaponMenuWidget@{UWeaponMenuWidget}}
+\doxysubsubsection{\texorpdfstring{RemoveFromParent()}{RemoveFromParent()}}
+{\footnotesize\ttfamily \label{class_u_weapon_menu_widget_aa89472e73bf79330a6931bbd8acdde39} 
+void UWeapon\+Menu\+Widget\+::\+Remove\+From\+Parent (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_u_weapon_menu_widget_aa89472e73bf79330a6931bbd8acdde39_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_u_weapon_menu_widget_abb856539e5d427e048cd3e9a4788a37e}\index{UWeaponMenuWidget@{UWeaponMenuWidget}!SetActorPickedWeapons@{SetActorPickedWeapons}}
+\index{SetActorPickedWeapons@{SetActorPickedWeapons}!UWeaponMenuWidget@{UWeaponMenuWidget}}
+\doxysubsubsection{\texorpdfstring{SetActorPickedWeapons()}{SetActorPickedWeapons()}}
+{\footnotesize\ttfamily \label{class_u_weapon_menu_widget_abb856539e5d427e048cd3e9a4788a37e} 
+void UWeapon\+Menu\+Widget\+::\+Set\+Actor\+Picked\+Weapons (\begin{DoxyParamCaption}\item[{const TArray$<$ \mbox{\hyperlink{class_a_weapon_class}{AWeapon\+Class}} \texorpdfstring{$\ast$}{*} $>$ \&}]{Picked\+Weapons}{}\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_u_weapon_menu_widget_abb856539e5d427e048cd3e9a4788a37e_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_u_weapon_menu_widget_abb856539e5d427e048cd3e9a4788a37e_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_u_weapon_menu_widget_aa7b1d42e2c308ab3ca7084e73bd6a013}\index{UWeaponMenuWidget@{UWeaponMenuWidget}!ShellSort@{ShellSort}}
+\index{ShellSort@{ShellSort}!UWeaponMenuWidget@{UWeaponMenuWidget}}
+\doxysubsubsection{\texorpdfstring{ShellSort()}{ShellSort()}}
+{\footnotesize\ttfamily \label{class_u_weapon_menu_widget_aa7b1d42e2c308ab3ca7084e73bd6a013} 
+void UWeapon\+Menu\+Widget\+::\+Shell\+Sort (\begin{DoxyParamCaption}\item[{TArray$<$ \mbox{\hyperlink{class_u_weapon_data_widget}{UWeapon\+Data\+Widget}} \texorpdfstring{$\ast$}{*} $>$ \&}]{Children}{, }\item[{bool \&}]{b\+Ascending}{}\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_u_weapon_menu_widget_aa7b1d42e2c308ab3ca7084e73bd6a013_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_u_weapon_menu_widget_a92918b8ae627218306419e6e699bbdf4}\index{UWeaponMenuWidget@{UWeaponMenuWidget}!SortByCaliber@{SortByCaliber}}
+\index{SortByCaliber@{SortByCaliber}!UWeaponMenuWidget@{UWeaponMenuWidget}}
+\doxysubsubsection{\texorpdfstring{SortByCaliber()}{SortByCaliber()}}
+{\footnotesize\ttfamily \label{class_u_weapon_menu_widget_a92918b8ae627218306419e6e699bbdf4} 
+void UWeapon\+Menu\+Widget\+::\+Sort\+By\+Caliber (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_u_weapon_menu_widget_a92918b8ae627218306419e6e699bbdf4_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_u_weapon_menu_widget_a92918b8ae627218306419e6e699bbdf4_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_u_weapon_menu_widget_a60b6d6a52432a1099178fdc82a2a33c5}\index{UWeaponMenuWidget@{UWeaponMenuWidget}!ActorPickedWeapons@{ActorPickedWeapons}}
+\index{ActorPickedWeapons@{ActorPickedWeapons}!UWeaponMenuWidget@{UWeaponMenuWidget}}
+\doxysubsubsection{\texorpdfstring{ActorPickedWeapons}{ActorPickedWeapons}}
+{\footnotesize\ttfamily \label{class_u_weapon_menu_widget_a60b6d6a52432a1099178fdc82a2a33c5} 
+TArray$<$\mbox{\hyperlink{class_a_weapon_class}{AWeapon\+Class}}\texorpdfstring{$\ast$}{*}$>$ UWeapon\+Menu\+Widget\+::\+Actor\+Picked\+Weapons\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{class_u_weapon_menu_widget_afb7e1f6e44821f27e565f6c922ac104a}\index{UWeaponMenuWidget@{UWeaponMenuWidget}!bSortFlipFlop@{bSortFlipFlop}}
+\index{bSortFlipFlop@{bSortFlipFlop}!UWeaponMenuWidget@{UWeaponMenuWidget}}
+\doxysubsubsection{\texorpdfstring{bSortFlipFlop}{bSortFlipFlop}}
+{\footnotesize\ttfamily \label{class_u_weapon_menu_widget_afb7e1f6e44821f27e565f6c922ac104a} 
+bool UWeapon\+Menu\+Widget\+::b\+Sort\+Flip\+Flop\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{class_u_weapon_menu_widget_ae34e371adce7d4f6240f8d24676a8b24}\index{UWeaponMenuWidget@{UWeaponMenuWidget}!ChildRowWidgets@{ChildRowWidgets}}
+\index{ChildRowWidgets@{ChildRowWidgets}!UWeaponMenuWidget@{UWeaponMenuWidget}}
+\doxysubsubsection{\texorpdfstring{ChildRowWidgets}{ChildRowWidgets}}
+{\footnotesize\ttfamily \label{class_u_weapon_menu_widget_ae34e371adce7d4f6240f8d24676a8b24} 
+TArray$<$\mbox{\hyperlink{class_u_weapon_data_widget}{UWeapon\+Data\+Widget}}\texorpdfstring{$\ast$}{*}$>$ UWeapon\+Menu\+Widget\+::\+Child\+Row\+Widgets\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{class_u_weapon_menu_widget_a803b0e619ab2a8f06b52a3cd052d39bb}\index{UWeaponMenuWidget@{UWeaponMenuWidget}!EditButton@{EditButton}}
+\index{EditButton@{EditButton}!UWeaponMenuWidget@{UWeaponMenuWidget}}
+\doxysubsubsection{\texorpdfstring{EditButton}{EditButton}}
+{\footnotesize\ttfamily \label{class_u_weapon_menu_widget_a803b0e619ab2a8f06b52a3cd052d39bb} 
+UButton\texorpdfstring{$\ast$}{*} UWeapon\+Menu\+Widget\+::\+Edit\+Button\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{class_u_weapon_menu_widget_a6e93890bbe596e4efddf27ad07cad43e}\index{UWeaponMenuWidget@{UWeaponMenuWidget}!EditWidget@{EditWidget}}
+\index{EditWidget@{EditWidget}!UWeaponMenuWidget@{UWeaponMenuWidget}}
+\doxysubsubsection{\texorpdfstring{EditWidget}{EditWidget}}
+{\footnotesize\ttfamily \label{class_u_weapon_menu_widget_a6e93890bbe596e4efddf27ad07cad43e} 
+\mbox{\hyperlink{class_u_weapon_edit_widget}{UWeapon\+Edit\+Widget}}\texorpdfstring{$\ast$}{*} UWeapon\+Menu\+Widget\+::\+Edit\+Widget\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{class_u_weapon_menu_widget_a9ad1b995e08961cbcb679ae074e69b2a}\index{UWeaponMenuWidget@{UWeaponMenuWidget}!FilterComboBox@{FilterComboBox}}
+\index{FilterComboBox@{FilterComboBox}!UWeaponMenuWidget@{UWeaponMenuWidget}}
+\doxysubsubsection{\texorpdfstring{FilterComboBox}{FilterComboBox}}
+{\footnotesize\ttfamily \label{class_u_weapon_menu_widget_a9ad1b995e08961cbcb679ae074e69b2a} 
+UCombo\+Box\+String\texorpdfstring{$\ast$}{*} UWeapon\+Menu\+Widget\+::\+Filter\+Combo\+Box\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{class_u_weapon_menu_widget_a705b26e3704f72274aa0e138f37ed13d}\index{UWeaponMenuWidget@{UWeaponMenuWidget}!FilterTextBox@{FilterTextBox}}
+\index{FilterTextBox@{FilterTextBox}!UWeaponMenuWidget@{UWeaponMenuWidget}}
+\doxysubsubsection{\texorpdfstring{FilterTextBox}{FilterTextBox}}
+{\footnotesize\ttfamily \label{class_u_weapon_menu_widget_a705b26e3704f72274aa0e138f37ed13d} 
+UEditable\+Text\+Box\texorpdfstring{$\ast$}{*} UWeapon\+Menu\+Widget\+::\+Filter\+Text\+Box\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{class_u_weapon_menu_widget_a5d10dfcad4ef166f98942177c8c0ccec}\index{UWeaponMenuWidget@{UWeaponMenuWidget}!SelectedWidget@{SelectedWidget}}
+\index{SelectedWidget@{SelectedWidget}!UWeaponMenuWidget@{UWeaponMenuWidget}}
+\doxysubsubsection{\texorpdfstring{SelectedWidget}{SelectedWidget}}
+{\footnotesize\ttfamily \label{class_u_weapon_menu_widget_a5d10dfcad4ef166f98942177c8c0ccec} 
+\mbox{\hyperlink{class_u_weapon_data_widget}{UWeapon\+Data\+Widget}}\texorpdfstring{$\ast$}{*} UWeapon\+Menu\+Widget\+::\+Selected\+Widget\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{class_u_weapon_menu_widget_a5acdf0a0b2301e4b713f3224268e5ba1}\index{UWeaponMenuWidget@{UWeaponMenuWidget}!SortButton@{SortButton}}
+\index{SortButton@{SortButton}!UWeaponMenuWidget@{UWeaponMenuWidget}}
+\doxysubsubsection{\texorpdfstring{SortButton}{SortButton}}
+{\footnotesize\ttfamily \label{class_u_weapon_menu_widget_a5acdf0a0b2301e4b713f3224268e5ba1} 
+UButton\texorpdfstring{$\ast$}{*} UWeapon\+Menu\+Widget\+::\+Sort\+Button\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{class_u_weapon_menu_widget_a4d44325c2ab7e490742c75d62842cf29}\index{UWeaponMenuWidget@{UWeaponMenuWidget}!WeaponContent@{WeaponContent}}
+\index{WeaponContent@{WeaponContent}!UWeaponMenuWidget@{UWeaponMenuWidget}}
+\doxysubsubsection{\texorpdfstring{WeaponContent}{WeaponContent}}
+{\footnotesize\ttfamily \label{class_u_weapon_menu_widget_a4d44325c2ab7e490742c75d62842cf29} 
+UVertical\+Box\texorpdfstring{$\ast$}{*} UWeapon\+Menu\+Widget\+::\+Weapon\+Content\hspace{0.3cm}{\ttfamily [protected]}}
+
+Link-\/variables for UI \Hypertarget{class_u_weapon_menu_widget_a49a5adeb645ae7a6af1a4f5171b32b57}\index{UWeaponMenuWidget@{UWeaponMenuWidget}!WeaponDataWidgetClass@{WeaponDataWidgetClass}}
+\index{WeaponDataWidgetClass@{WeaponDataWidgetClass}!UWeaponMenuWidget@{UWeaponMenuWidget}}
+\doxysubsubsection{\texorpdfstring{WeaponDataWidgetClass}{WeaponDataWidgetClass}}
+{\footnotesize\ttfamily \label{class_u_weapon_menu_widget_a49a5adeb645ae7a6af1a4f5171b32b57} 
+TSubclass\+Of$<$\mbox{\hyperlink{class_u_weapon_data_widget}{UWeapon\+Data\+Widget}}$>$ UWeapon\+Menu\+Widget\+::\+Weapon\+Data\+Widget\+Class\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{class_u_weapon_menu_widget_af66bd218b465b2b01118aea272b7dc9d}\index{UWeaponMenuWidget@{UWeaponMenuWidget}!WeaponEditWidgetClass@{WeaponEditWidgetClass}}
+\index{WeaponEditWidgetClass@{WeaponEditWidgetClass}!UWeaponMenuWidget@{UWeaponMenuWidget}}
+\doxysubsubsection{\texorpdfstring{WeaponEditWidgetClass}{WeaponEditWidgetClass}}
+{\footnotesize\ttfamily \label{class_u_weapon_menu_widget_af66bd218b465b2b01118aea272b7dc9d} 
+TSubclass\+Of$<$\mbox{\hyperlink{class_u_weapon_edit_widget}{UWeapon\+Edit\+Widget}}$>$ UWeapon\+Menu\+Widget\+::\+Weapon\+Edit\+Widget\+Class\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+UMG/\mbox{\hyperlink{_weapon_menu_widget_8h}{Weapon\+Menu\+Widget.\+h}}\item 
+UMG/\mbox{\hyperlink{_weapon_menu_widget_8cpp}{Weapon\+Menu\+Widget.\+cpp}}\end{DoxyCompactItemize}

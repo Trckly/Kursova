@@ -1,0 +1,7 @@
+<map id="UAdminManagerWidget::SetActiveWidget" name="UAdminManagerWidget::SetActiveWidget">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,39,163,79"/>
+<area shape="rect" id="Node000002" href="$class_u_player_panel_widget.html#a7acf82adc1fd40e772a5794ab5e7efa7" title=" " alt="" coords="211,5,373,46"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="162,44,195,39,195,44,163,49"/>
+<area shape="rect" id="Node000003" href="$class_u_player_panel_widget.html#a185f11831d0220689344ee80cbfe4b39" title=" " alt="" coords="218,71,366,111"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="163,68,203,75,202,80,162,74"/>
+</map>

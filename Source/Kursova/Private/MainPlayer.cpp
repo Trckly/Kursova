@@ -18,9 +18,7 @@
 #include "Kursova/Items/CoolItem.h"
 #include "Kursova/Items/Chain/ArmorHandler.h"
 #include "Kursova/Items/Chain/HealthHandler.h"
-#include "Kursova/ObjectDecorator/BlueCubeDecorator.h"
 #include "Kursova/ObjectDecorator/Cube.h"
-#include "Kursova/ObjectDecorator/GreenCubeDecorator.h"
 
 // Sets default values
 AMainPlayer::AMainPlayer()

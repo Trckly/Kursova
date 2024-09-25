@@ -1,0 +1,32 @@
+<map id="Private/GenericGameInstance.cpp" name="Private/GenericGameInstance.cpp">
+<area shape="rect" id="Node000001" title=" " alt="" coords="270,5,491,31"/>
+<area shape="rect" id="Node000002" href="$_generic_game_instance_8h.html" title=" " alt="" coords="299,79,461,105"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="383,31,383,63,378,63,378,31"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,300,110,326"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="299,105,238,120,173,143,142,159,113,178,87,201,65,228,59,241,55,256,55,285,50,285,50,255,54,239,61,225,83,198,110,174,140,155,171,138,237,114,298,100"/>
+<area shape="rect" id="Node000004" href="$_a_weapon_class_8h.html" title=" " alt="" coords="237,153,358,178"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="368,107,325,144,321,140,364,103"/>
+<area shape="rect" id="Node000013" title=" " alt="" coords="382,153,544,178"/>
+<area shape="poly" id="edge15_Node000002_Node000013" title=" " alt="" coords="396,103,439,140,436,144,392,107"/>
+<area shape="rect" id="Node000014" title=" " alt="" coords="567,153,791,178"/>
+<area shape="poly" id="edge16_Node000002_Node000014" title=" " alt="" coords="432,103,614,146,613,151,431,108"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="237,171,198,176,158,187,119,203,85,228,68,255,61,285,56,284,63,253,81,225,116,199,156,181,197,171,236,166"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="95,226,148,252"/>
+<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="269,181,163,224,161,219,267,176"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="173,226,238,252"/>
+<area shape="poly" id="edge6_Node000004_Node000006" title=" " alt="" coords="284,181,234,219,231,215,280,177"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="262,226,333,252"/>
+<area shape="poly" id="edge7_Node000004_Node000007" title=" " alt="" coords="300,179,300,211,295,211,295,179"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="357,226,425,252"/>
+<area shape="poly" id="edge8_Node000004_Node000008" title=" " alt="" coords="315,177,365,215,362,219,312,181"/>
+<area shape="rect" id="Node000009" href="$_f_weapon_unit_8h.html" title=" " alt="" coords="449,226,559,252"/>
+<area shape="poly" id="edge9_Node000004_Node000009" title=" " alt="" coords="333,176,456,218,454,223,332,181"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="529,300,664,326"/>
+<area shape="poly" id="edge13_Node000004_Node000010" title=" " alt="" coords="359,174,488,198,543,212,572,224,583,238,591,253,598,284,593,285,586,255,579,241,569,228,541,217,487,204,358,179"/>
+<area shape="rect" id="Node000012" title=" " alt="" coords="633,226,815,252"/>
+<area shape="poly" id="edge14_Node000004_Node000012" title=" " alt="" coords="359,174,637,221,636,226,358,180"/>
+<area shape="poly" id="edge10_Node000009_Node000003" title=" " alt="" coords="449,253,438,255,125,304,124,299,437,249,448,248"/>
+<area shape="poly" id="edge11_Node000009_Node000010" title=" " alt="" coords="521,250,571,288,567,293,518,255"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="333,300,505,326"/>
+<area shape="poly" id="edge12_Node000009_Node000011" title=" " alt="" coords="491,255,446,292,443,288,488,250"/>
+</map>

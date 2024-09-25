@@ -1,0 +1,35 @@
+\doxysection{UEnemy\+Interface.\+h}
+\hypertarget{_u_enemy_interface_8h_source}{}\label{_u_enemy_interface_8h_source}\index{AI/UEnemyInterface.h@{AI/UEnemyInterface.h}}
+\mbox{\hyperlink{_u_enemy_interface_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//\ Fill\ out\ your\ copyright\ notice\ in\ the\ Description\ page\ of\ Project\ Settings.}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}CoreMinimal.h"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}BehaviorTree/BehaviorTreeComponent.h"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_enemy_observer_8h}{Kursova/EnemyObserver/EnemyObserver.h}}"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}UObject/Interface.h"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}UEnemyInterface.generated.h"{}}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00014\ UINTERFACE()}
+\DoxyCodeLine{00015\ class\ \mbox{\hyperlink{class_u_enemy_interface}{UEnemyInterface}}\ :\ public\ UInterface}
+\DoxyCodeLine{00016\ \{}
+\DoxyCodeLine{00017\ \ \ \ \ GENERATED\_BODY()}
+\DoxyCodeLine{00018\ \};}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_i_enemy_interface}{IEnemyInterface}}}
+\DoxyCodeLine{00021\ \{}
+\DoxyCodeLine{00022\ \ \ \ \ GENERATED\_BODY()}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ Die()\ =\ 0;}
+\DoxyCodeLine{00025\ \ \ \ \ }
+\DoxyCodeLine{00026\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_i_enemy_interface_a467e7bfc92631104e84024230c262f28}{DealDamage}}()\ =\ 0;}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_i_enemy_interface_ad5c39dd66bd46094a6f2052cc2c5cd51}{GetDamage}}(\textcolor{keywordtype}{int}\ Damage)\ =\ 0;}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keyword}{virtual}\ UBehaviorTree*\ \mbox{\hyperlink{class_i_enemy_interface_aeeb03a567ae3760dad7c5503a6bea28d}{GetBehaviourTree}}()\ =\ 0;}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_i_enemy_interface}{IEnemyInterface}}*\ \mbox{\hyperlink{class_i_enemy_interface_a98d486091ebc148603eb8e2417c45721}{Clone}}(FVector\ Location)\ =\ 0;}
+\DoxyCodeLine{00032\ \};}
+
+\end{DoxyCode}

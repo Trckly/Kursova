@@ -1,0 +1,7 @@
+<map id="ACoolItemDecorator::DealDamage" name="ACoolItemDecorator::DealDamage">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,144,46"/>
+<area shape="rect" id="Node000002" href="$class_a_main_player.html#a8b3a4e70812eb9f53216fa9450447a8b" title=" " alt="" coords="192,13,364,39"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="144,23,176,23,176,28,144,28"/>
+<area shape="rect" id="Node000003" href="$class_u_player_h_u_d.html#a569cdfd09047c1976613dd41a0b28d18" title=" " alt="" coords="412,13,571,39"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="364,23,396,23,396,28,364,28"/>
+</map>

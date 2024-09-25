@@ -1,0 +1,56 @@
+\doxysection{Player\+Editor\+Widget.\+h}
+\hypertarget{_player_editor_widget_8h_source}{}\label{_player_editor_widget_8h_source}\index{MainUI/PlayerEditorWidget.h@{MainUI/PlayerEditorWidget.h}}
+\mbox{\hyperlink{_player_editor_widget_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//\ Fill\ out\ your\ copyright\ notice\ in\ the\ Description\ page\ of\ Project\ Settings.}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}CoreMinimal.h"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}Blueprint/UserWidget.h"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}Components/Button.h"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}Components/CheckBox.h"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}PlayerEditorWidget.generated.h"{}}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \mbox{\hyperlink{_player_editor_widget_8h_a000c0e4c9207360feca3824aaf72ad9b}{DECLARE\_DYNAMIC\_DELEGATE}}(FOnCloseButtonClicked);}
+\DoxyCodeLine{00012\ \mbox{\hyperlink{_player_editor_widget_8h_accb3a02605810f0216c2976ef4003f5b}{DECLARE\_DYNAMIC\_DELEGATE\_ThreeParams}}(FOnSaveButtonClicked,\ \textcolor{keywordtype}{bool},\ PCanMove,\ \textcolor{keywordtype}{bool},\ PCanJump,\ \textcolor{keywordtype}{bool},\ PCanFire);}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00017\ UCLASS()}
+\DoxyCodeLine{00018\ class\ KURSOVA\_API\ \mbox{\hyperlink{class_u_player_editor_widget}{UPlayerEditorWidget}}\ :\ public\ UUserWidget}
+\DoxyCodeLine{00019\ \{}
+\DoxyCodeLine{00020\ \ \ \ \ GENERATED\_BODY()}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00023\ \ \ \ \ UPROPERTY(BlueprintReadWrite,\ meta=(BindWidget))}
+\DoxyCodeLine{00024\ \ \ \ \ UCheckBox*\ CCanMove;}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \ \ \ \ UPROPERTY(BlueprintReadWrite,\ meta=(BindWidget))}
+\DoxyCodeLine{00027\ \ \ \ \ UCheckBox*\ CCanJump;}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \ \ UPROPERTY(BlueprintReadWrite,\ meta=(BindWidget))}
+\DoxyCodeLine{00030\ \ \ \ \ UCheckBox*\ CCanFire;}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \ \ UPROPERTY(BlueprintReadWrite,\ meta=(BindWidget))}
+\DoxyCodeLine{00033\ \ \ \ \ UButton*\ BClose;}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ UPROPERTY(BlueprintReadWrite,\ meta=(BindWidget))}
+\DoxyCodeLine{00036\ \ \ \ \ UButton*\ BSave;}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ public:}
+\DoxyCodeLine{00039\ \ \ \ \ virtual\ \textcolor{keywordtype}{void}\ NativeConstruct()\ override;}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \ \ \ \ FOnCloseButtonClicked\ OnCloseButtonClicked;}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \ \ \ \ FOnSaveButtonClicked\ OnSaveButtonClicked;}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \ \ \ \ UFUNCTION()}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{void}\ SetBehaviorStats(\textcolor{keywordtype}{bool}\ CanMove,\ \textcolor{keywordtype}{bool}\ CanJump,\ \textcolor{keywordtype}{bool}\ CanFire);}
+\DoxyCodeLine{00047\ \ \ \ \ }
+\DoxyCodeLine{00048\ \ \ \ \ UFUNCTION()}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordtype}{void}\ Exit();}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \ \ \ \ UFUNCTION()}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordtype}{void}\ SaveStats();}
+\DoxyCodeLine{00053\ \};}
+
+\end{DoxyCode}

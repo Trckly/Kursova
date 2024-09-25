@@ -1,0 +1,76 @@
+\doxysection{Public/\+Main\+Player.h File Reference}
+\hypertarget{_main_player_8h}{}\label{_main_player_8h}\index{Public/MainPlayer.h@{Public/MainPlayer.h}}
+{\ttfamily \#include "{}Core\+Minimal.\+h"{}}\newline
+{\ttfamily \#include "{}AWeapon\+Class.\+h"{}}\newline
+{\ttfamily \#include "{}Camera/\+Camera\+Component.\+h"{}}\newline
+{\ttfamily \#include "{}Game\+Framework/\+Character.\+h"{}}\newline
+{\ttfamily \#include "{}../\+Server\+Logic/\+Session\+Subsystem.\+h"{}}\newline
+{\ttfamily \#include "{}Generic\+Team\+Agent\+Interface.\+h"{}}\newline
+{\ttfamily \#include "{}Kursova/\+Command/\+Widgets/\+Command\+Widget.\+h"{}}\newline
+{\ttfamily \#include "{}Kursova/\+UMG/\+Weapon\+Menu\+Widget.\+h"{}}\newline
+{\ttfamily \#include "{}Kursova/\+Difficulty\+Factories/\+Mode\+Factory.\+h"{}}\newline
+{\ttfamily \#include "{}Kursova/\+Enemy\+Observer/\+Player\+Notifier.\+h"{}}\newline
+{\ttfamily \#include "{}Kursova/\+Object\+Decorator/\+Cube.\+h"{}}\newline
+{\ttfamily \#include "{}Kursova/\+Object\+Decorator/\+Cube\+Base\+Decorator.\+h"{}}\newline
+{\ttfamily \#include "{}Main\+Player.\+generated.\+h"{}}\newline
+Include dependency graph for Main\+Player.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_main_player_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_main_player_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_f_behavior_set}{FBehavior\+Set}}
+\item 
+class \mbox{\hyperlink{class_a_main_player}{AMain\+Player}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_main_player_8h_ae6c911a7e3fe633cc30086157278f42e}{DECLARE\+\_\+\+DYNAMIC\+\_\+\+MULTICAST\+\_\+\+DELEGATE}} (FAnim\+Notify\+\_\+\+Jump)
+\item 
+\mbox{\hyperlink{_main_player_8h_ab670222281c6ca1bf47e6aad56288537}{DECLARE\+\_\+\+DYNAMIC\+\_\+\+MULTICAST\+\_\+\+DELEGATE\+\_\+\+Two\+Params}} (FOn\+Character\+Join\+Session, FBlueprint\+Session\+Result, Session\+Result, const FString \&, Password)
+\item 
+\mbox{\hyperlink{_main_player_8h_a414f6b6a05341ecc2eccd4ccc07d2f53}{DECLARE\+\_\+\+DYNAMIC\+\_\+\+DELEGATE\+\_\+\+One\+Param}} (FSet\+Stats, \mbox{\hyperlink{class_a_main_player}{AMain\+Player}} \texorpdfstring{$\ast$}{*}, Self)
+\item 
+\mbox{\hyperlink{_main_player_8h_a15fc0e3aed015dec0609f3c66e2a8483}{DECLARE\+\_\+\+DYNAMIC\+\_\+\+DELEGATE\+\_\+\+Ret\+Val\+\_\+\+One\+Param}} (TScript\+Interface$<$ \mbox{\hyperlink{class_i_mode_factory}{IMode\+Factory}} $>$, FDifficulty\+Mode\+Set, const FString \&, Difficulty)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{_main_player_8h_a414f6b6a05341ecc2eccd4ccc07d2f53}\index{MainPlayer.h@{MainPlayer.h}!DECLARE\_DYNAMIC\_DELEGATE\_OneParam@{DECLARE\_DYNAMIC\_DELEGATE\_OneParam}}
+\index{DECLARE\_DYNAMIC\_DELEGATE\_OneParam@{DECLARE\_DYNAMIC\_DELEGATE\_OneParam}!MainPlayer.h@{MainPlayer.h}}
+\doxysubsubsection{\texorpdfstring{DECLARE\_DYNAMIC\_DELEGATE\_OneParam()}{DECLARE\_DYNAMIC\_DELEGATE\_OneParam()}}
+{\footnotesize\ttfamily \label{_main_player_8h_a414f6b6a05341ecc2eccd4ccc07d2f53} 
+DECLARE\+\_\+\+DYNAMIC\+\_\+\+DELEGATE\+\_\+\+One\+Param (\begin{DoxyParamCaption}\item[{FSet\+Stats}]{}{, }\item[{\mbox{\hyperlink{class_a_main_player}{AMain\+Player}} \texorpdfstring{$\ast$}{*}}]{}{, }\item[{Self}]{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{_main_player_8h_a15fc0e3aed015dec0609f3c66e2a8483}\index{MainPlayer.h@{MainPlayer.h}!DECLARE\_DYNAMIC\_DELEGATE\_RetVal\_OneParam@{DECLARE\_DYNAMIC\_DELEGATE\_RetVal\_OneParam}}
+\index{DECLARE\_DYNAMIC\_DELEGATE\_RetVal\_OneParam@{DECLARE\_DYNAMIC\_DELEGATE\_RetVal\_OneParam}!MainPlayer.h@{MainPlayer.h}}
+\doxysubsubsection{\texorpdfstring{DECLARE\_DYNAMIC\_DELEGATE\_RetVal\_OneParam()}{DECLARE\_DYNAMIC\_DELEGATE\_RetVal\_OneParam()}}
+{\footnotesize\ttfamily \label{_main_player_8h_a15fc0e3aed015dec0609f3c66e2a8483} 
+DECLARE\+\_\+\+DYNAMIC\+\_\+\+DELEGATE\+\_\+\+Ret\+Val\+\_\+\+One\+Param (\begin{DoxyParamCaption}\item[{TScript\+Interface$<$ \mbox{\hyperlink{class_i_mode_factory}{IMode\+Factory}} $>$}]{}{, }\item[{FDifficulty\+Mode\+Set}]{}{, }\item[{const FString \&}]{}{, }\item[{Difficulty}]{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{_main_player_8h_ae6c911a7e3fe633cc30086157278f42e}\index{MainPlayer.h@{MainPlayer.h}!DECLARE\_DYNAMIC\_MULTICAST\_DELEGATE@{DECLARE\_DYNAMIC\_MULTICAST\_DELEGATE}}
+\index{DECLARE\_DYNAMIC\_MULTICAST\_DELEGATE@{DECLARE\_DYNAMIC\_MULTICAST\_DELEGATE}!MainPlayer.h@{MainPlayer.h}}
+\doxysubsubsection{\texorpdfstring{DECLARE\_DYNAMIC\_MULTICAST\_DELEGATE()}{DECLARE\_DYNAMIC\_MULTICAST\_DELEGATE()}}
+{\footnotesize\ttfamily \label{_main_player_8h_ae6c911a7e3fe633cc30086157278f42e} 
+DECLARE\+\_\+\+DYNAMIC\+\_\+\+MULTICAST\+\_\+\+DELEGATE (\begin{DoxyParamCaption}\item[{FAnim\+Notify\+\_\+\+Jump}]{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{_main_player_8h_ab670222281c6ca1bf47e6aad56288537}\index{MainPlayer.h@{MainPlayer.h}!DECLARE\_DYNAMIC\_MULTICAST\_DELEGATE\_TwoParams@{DECLARE\_DYNAMIC\_MULTICAST\_DELEGATE\_TwoParams}}
+\index{DECLARE\_DYNAMIC\_MULTICAST\_DELEGATE\_TwoParams@{DECLARE\_DYNAMIC\_MULTICAST\_DELEGATE\_TwoParams}!MainPlayer.h@{MainPlayer.h}}
+\doxysubsubsection{\texorpdfstring{DECLARE\_DYNAMIC\_MULTICAST\_DELEGATE\_TwoParams()}{DECLARE\_DYNAMIC\_MULTICAST\_DELEGATE\_TwoParams()}}
+{\footnotesize\ttfamily \label{_main_player_8h_ab670222281c6ca1bf47e6aad56288537} 
+DECLARE\+\_\+\+DYNAMIC\+\_\+\+MULTICAST\+\_\+\+DELEGATE\+\_\+\+Two\+Params (\begin{DoxyParamCaption}\item[{FOn\+Character\+Join\+Session}]{}{, }\item[{FBlueprint\+Session\+Result}]{}{, }\item[{Session\+Result}]{}{, }\item[{const FString \&}]{}{, }\item[{Password}]{}{}\end{DoxyParamCaption})}
+

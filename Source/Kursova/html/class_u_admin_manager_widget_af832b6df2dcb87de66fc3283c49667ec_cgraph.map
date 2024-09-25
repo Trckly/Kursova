@@ -1,0 +1,19 @@
+<map id="UAdminManagerWidget::SetPlayers" name="UAdminManagerWidget::SetPlayers">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,124,163,165"/>
+<area shape="rect" id="Node000002" href="$class_u_admin_manager_widget.html#a361118e6c9a1c61edac13bc8b33de356" title=" " alt="" coords="211,71,368,111"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="162,121,195,113,196,118,164,126"/>
+<area shape="rect" id="Node000005" href="$class_u_player_panel_widget.html#a26f1e40225320b87e8f2ab9f61bf53b3" title=" " alt="" coords="219,177,360,218"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="164,162,205,173,204,178,162,167"/>
+<area shape="rect" id="Node000003" href="$class_u_player_panel_widget.html#a7acf82adc1fd40e772a5794ab5e7efa7" title=" " alt="" coords="441,5,603,46"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="363,68,431,48,433,53,365,73"/>
+<area shape="rect" id="Node000004" href="$class_u_player_panel_widget.html#a185f11831d0220689344ee80cbfe4b39" title=" " alt="" coords="448,71,596,111"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="368,88,432,88,432,94,368,94"/>
+<area shape="rect" id="Node000006" href="$class_a_main_player.html#a9af4922763eeab2f8f4abc0eb9d02e6a" title=" " alt="" coords="448,136,595,161"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="359,180,443,162,444,168,360,185"/>
+<area shape="rect" id="Node000007" href="$class_a_main_player.html#aa0d296395e08a4e8f279ea9062bf88fe" title=" " alt="" coords="416,185,627,211"/>
+<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="360,195,400,195,400,200,360,200"/>
+<area shape="rect" id="Node000008" href="$class_a_main_player.html#ab8f8ca587e4109a1aaf069ca948dd63c" title=" " alt="" coords="441,234,602,260"/>
+<area shape="poly" id="edge7_Node000005_Node000008" title=" " alt="" coords="360,210,444,228,443,233,359,215"/>
+<area shape="rect" id="Node000009" href="$class_a_main_player.html#a255d726e0153eff5d401e24db2afc547" title=" " alt="" coords="424,284,619,309"/>
+<area shape="poly" id="edge8_Node000005_Node000009" title=" " alt="" coords="321,216,365,244,417,270,435,276,433,281,415,275,363,249,318,221"/>
+</map>

@@ -1,0 +1,7 @@
+<map id="AMainPlayer::RotatePositive" name="AMainPlayer::RotatePositive">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,13,194,39"/>
+<area shape="rect" id="Node000002" href="$class_u_positive_rotation_command.html#a8ed7fa90eb23bb253d07c083ffec65a0" title=" " alt="" coords="242,5,426,46"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="194,23,226,23,226,28,194,28"/>
+<area shape="rect" id="Node000003" href="$class_a_cube.html#afae6e41cf67d3e810baac5e228178c60" title=" " alt="" coords="474,13,660,39"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="426,23,458,23,458,28,426,28"/>
+</map>

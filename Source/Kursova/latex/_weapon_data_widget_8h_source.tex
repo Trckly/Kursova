@@ -1,0 +1,98 @@
+\doxysection{Weapon\+Data\+Widget.\+h}
+\hypertarget{_weapon_data_widget_8h_source}{}\label{_weapon_data_widget_8h_source}\index{UMG/WeaponDataWidget.h@{UMG/WeaponDataWidget.h}}
+\mbox{\hyperlink{_weapon_data_widget_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//\ Fill\ out\ your\ copyright\ notice\ in\ the\ Description\ page\ of\ Project\ Settings.}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}CoreMinimal.h"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_f_weapon_unit_8h}{FWeaponUnit.h}}"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}Blueprint/UserWidget.h"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}Components/Button.h"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}Components/TextBlock.h"{}}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}WeaponDataWidget.generated.h"{}}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{comment}{//\ Maximum\ amount\ of\ symbols\ that}}
+\DoxyCodeLine{00013\ \textcolor{comment}{//\ can\ fit\ onto\ screen\ at\ the\ same\ time}}
+\DoxyCodeLine{00014\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{_weapon_data_widget_8h_ad79500455cf64635a4668b69b60a8642}{GString\_Clipping\_Len}}\ =\ 12;}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{comment}{//\ Declares\ delegate\ with\ one\ parameter}}
+\DoxyCodeLine{00017\ \mbox{\hyperlink{_weapon_data_widget_8h_a7fac5be175cec66d7d60bc4ba19d9941}{DECLARE\_DYNAMIC\_DELEGATE\_OneParam}}(FOnRowClickedEvent,\ \textcolor{keyword}{const}\ FString\&,\ ModelID);}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00023\ UCLASS()}
+\DoxyCodeLine{00024\ class\ KURSOVA\_API\ \mbox{\hyperlink{class_u_weapon_data_widget}{UWeaponDataWidget}}\ :\ public\ UUserWidget}
+\DoxyCodeLine{00025\ \{}
+\DoxyCodeLine{00026\ \ \ \ \ GENERATED\_BODY()}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{comment}{//\ Widget\ constructor\ override}}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ NativeConstruct()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00031\ \ \ \ \ }
+\DoxyCodeLine{00035\ \ \ \ \ }
+\DoxyCodeLine{00036\ \ \ \ \ UPROPERTY(meta=(BindWidget))}
+\DoxyCodeLine{00037\ \ \ \ \ UTextBlock*\ ModelText;}
+\DoxyCodeLine{00038\ \ \ \ \ }
+\DoxyCodeLine{00039\ \ \ \ \ UPROPERTY(meta=(BindWidget))}
+\DoxyCodeLine{00040\ \ \ \ \ UTextBlock*\ MainTypeText;}
+\DoxyCodeLine{00041\ \ \ \ \ }
+\DoxyCodeLine{00042\ \ \ \ \ UPROPERTY(meta=(BindWidget))}
+\DoxyCodeLine{00043\ \ \ \ \ UTextBlock*\ SubtypeText;}
+\DoxyCodeLine{00044\ \ \ \ \ }
+\DoxyCodeLine{00045\ \ \ \ \ UPROPERTY(meta=(BindWidget))}
+\DoxyCodeLine{00046\ \ \ \ \ UTextBlock*\ CapacityText;}
+\DoxyCodeLine{00047\ \ \ \ \ }
+\DoxyCodeLine{00048\ \ \ \ \ UPROPERTY(meta=(BindWidget))}
+\DoxyCodeLine{00049\ \ \ \ \ UTextBlock*\ ManufacturerText;}
+\DoxyCodeLine{00050\ \ \ \ \ }
+\DoxyCodeLine{00051\ \ \ \ \ UPROPERTY(meta=(BindWidget))}
+\DoxyCodeLine{00052\ \ \ \ \ UTextBlock*\ CaliberText;}
+\DoxyCodeLine{00053\ \ \ \ \ }
+\DoxyCodeLine{00054\ \ \ \ \ UPROPERTY(meta=(BindWidget))}
+\DoxyCodeLine{00055\ \ \ \ \ UTextBlock*\ LengthText;}
+\DoxyCodeLine{00056\ \ \ \ \ }
+\DoxyCodeLine{00057\ \ \ \ \ UPROPERTY(meta=(BindWidget))}
+\DoxyCodeLine{00058\ \ \ \ \ UTextBlock*\ WeightText;}
+\DoxyCodeLine{00059\ \ \ \ \ }
+\DoxyCodeLine{00060\ \ \ \ \ UPROPERTY(meta=(BindWidget))}
+\DoxyCodeLine{00061\ \ \ \ \ UTextBlock*\ PriceText;}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \ \ \ \ UPROPERTY(BlueprintReadWrite,\ meta=(BindWidget))}
+\DoxyCodeLine{00064\ \ \ \ \ UButton*\ SelectionButton;}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ public:}
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{comment}{//\ Populates\ widget\ with\ weapon\ instance\ stats}}
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordtype}{void}\ InitWithData(const\ \mbox{\hyperlink{struct_f_weapon_unit}{FWeaponUnit}}\&\ WeaponUnit);}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{comment}{//\ Cosmetic\ function\ for\ animating\ property}}
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{comment}{//\ with\ exceeding\ amount\ of\ characters\ in\ it}}
+\DoxyCodeLine{00072\ \ \ \ \ UFUNCTION(BlueprintImplementableEvent)}
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keywordtype}{void}\ StartAnimation();}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{keywordtype}{float}\ GetCaliber();}
+\DoxyCodeLine{00079\ \ \ \ \ FString\ GetModelName();}
+\DoxyCodeLine{00080\ \ \ \ \ FString\ GetMainTypeName();}
+\DoxyCodeLine{00081\ \ \ \ \ FString\ GetSubtypeName();}
+\DoxyCodeLine{00082\ \ \ \ \ FString\ GetManufacturerName();}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{comment}{//\ Returns\ all\ properties\ properties\ of\ a\ weapon}}
+\DoxyCodeLine{00085\ \ \ \ \ TArray<FText>\ GetAllProperties();}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00087\ \ \ \ \ \textcolor{comment}{//\ Delegate,\ being\ called\ when\ selection\ button}}
+\DoxyCodeLine{00088\ \ \ \ \ \textcolor{comment}{//\ was\ clicked.\ Handles\ row\ selection}}
+\DoxyCodeLine{00089\ \ \ \ \ FOnRowClickedEvent\ OnRowClicked;}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00091\ \ \ \ \ \textcolor{comment}{//Executes\ OnRowClicked\ called}}
+\DoxyCodeLine{00092\ \ \ \ \ UFUNCTION()}
+\DoxyCodeLine{00093\ \ \ \ \ \textcolor{keywordtype}{void}\ RowSelected();}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00095\ \ \ \ \ \textcolor{comment}{//\ Cosmetic.\ Sets\ button\ color\ to\ inactive}}
+\DoxyCodeLine{00096\ \ \ \ \ UFUNCTION(BlueprintImplementableEvent)}
+\DoxyCodeLine{00097\ \ \ \ \ \textcolor{keywordtype}{void}\ SetButtonDisabledColor();}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00099\ \ \ \ \ \textcolor{comment}{//\ Cosmetic.\ Sets\ button\ color\ to\ active}}
+\DoxyCodeLine{00100\ \ \ \ \ UFUNCTION(BlueprintImplementableEvent)}
+\DoxyCodeLine{00101\ \ \ \ \ \textcolor{keywordtype}{void}\ SetButtonEnabledColor();}
+\DoxyCodeLine{00102\ \};}
+
+\end{DoxyCode}

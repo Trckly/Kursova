@@ -1,0 +1,5 @@
+<map id="ASessionGameMode::UpdateEnemies" name="ASessionGameMode::UpdateEnemies">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,199,46"/>
+<area shape="rect" id="Node000002" href="$class_a_main_player.html#a7638962aa57527a2c244c97710e9f862" title=" " alt="" coords="247,13,388,39"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="199,23,231,23,231,28,199,28"/>
+</map>

@@ -1,0 +1,184 @@
+\doxysection{ACube\+Base\+Decorator Class Reference}
+\hypertarget{class_a_cube_base_decorator}{}\label{class_a_cube_base_decorator}\index{ACubeBaseDecorator@{ACubeBaseDecorator}}
+
+
+{\ttfamily \#include $<$Cube\+Base\+Decorator.\+h$>$}
+
+
+
+Inheritance diagram for ACube\+Base\+Decorator\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_a_cube_base_decorator__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for ACube\+Base\+Decorator\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=298pt]{class_a_cube_base_decorator__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_a_cube_base_decorator_aaa0719c51bff64fe3c90113d6e8485b8}{ACube\+Base\+Decorator}} ()
+\item 
+void \mbox{\hyperlink{class_a_cube_base_decorator_ab0b06d427531fcc13890b35e930b32bd}{Wrap}} (\mbox{\hyperlink{class_i_cube_interface}{ICube\+Interface}} \texorpdfstring{$\ast$}{*}Source)
+\item 
+virtual \mbox{\hyperlink{class_i_cube_interface}{ICube\+Interface}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_a_cube_base_decorator_a93b45ab207daf2b3b561c9667c40a302}{Create\+Cube}} (\mbox{\hyperlink{class_i_cube_interface}{ICube\+Interface}} \texorpdfstring{$\ast$}{*}Source, TSubclass\+Of$<$ UObject $>$ Cube\+Class, UWorld \texorpdfstring{$\ast$}{*}World)
+\item 
+virtual void \mbox{\hyperlink{class_a_cube_base_decorator_a0944b17a81727549e7d3a229b8bc3c73}{Destroy\+Cube}} () override
+\item 
+virtual void \mbox{\hyperlink{class_a_cube_base_decorator_aea10af2d81df0a0d3d87ec2918b98c48}{Change\+Color}} () override
+\item 
+virtual UStatic\+Mesh\+Component \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_a_cube_base_decorator_aada371c8f710ac5831e985dd4398cc05}{Get\+Static\+Mesh\+Component}} () override
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{class_a_cube_base_decorator_ad51325da31e4d1c337db2276f2cfb56c}{Begin\+Play}} () override
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_i_cube_interface}{ICube\+Interface}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_a_cube_base_decorator_a127a441c3810eba66aa89ff809a6c6d8}{Wrappee}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_a_cube_base_decorator_aaa0719c51bff64fe3c90113d6e8485b8}\index{ACubeBaseDecorator@{ACubeBaseDecorator}!ACubeBaseDecorator@{ACubeBaseDecorator}}
+\index{ACubeBaseDecorator@{ACubeBaseDecorator}!ACubeBaseDecorator@{ACubeBaseDecorator}}
+\doxysubsubsection{\texorpdfstring{ACubeBaseDecorator()}{ACubeBaseDecorator()}}
+{\footnotesize\ttfamily \label{class_a_cube_base_decorator_aaa0719c51bff64fe3c90113d6e8485b8} 
+ACube\+Base\+Decorator\+::\+ACube\+Base\+Decorator (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_a_cube_base_decorator_ad51325da31e4d1c337db2276f2cfb56c}\index{ACubeBaseDecorator@{ACubeBaseDecorator}!BeginPlay@{BeginPlay}}
+\index{BeginPlay@{BeginPlay}!ACubeBaseDecorator@{ACubeBaseDecorator}}
+\doxysubsubsection{\texorpdfstring{BeginPlay()}{BeginPlay()}}
+{\footnotesize\ttfamily \label{class_a_cube_base_decorator_ad51325da31e4d1c337db2276f2cfb56c} 
+void ACube\+Base\+Decorator\+::\+Begin\+Play (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented in \mbox{\hyperlink{class_a_blue_cube_decorator_a590827e260e812d0e637a02ad2c8f627}{ABlue\+Cube\+Decorator}}, and \mbox{\hyperlink{class_a_green_cube_decorator_a99071e94b230af1e5adf9b445300d245}{AGreen\+Cube\+Decorator}}.
+
+\Hypertarget{class_a_cube_base_decorator_aea10af2d81df0a0d3d87ec2918b98c48}\index{ACubeBaseDecorator@{ACubeBaseDecorator}!ChangeColor@{ChangeColor}}
+\index{ChangeColor@{ChangeColor}!ACubeBaseDecorator@{ACubeBaseDecorator}}
+\doxysubsubsection{\texorpdfstring{ChangeColor()}{ChangeColor()}}
+{\footnotesize\ttfamily \label{class_a_cube_base_decorator_aea10af2d81df0a0d3d87ec2918b98c48} 
+void ACube\+Base\+Decorator\+::\+Change\+Color (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_i_cube_interface_a355a601b0298b75433d664a17c2a5082}{ICube\+Interface}}.
+
+
+
+Reimplemented in \mbox{\hyperlink{class_a_blue_cube_decorator_a09ad0db9e08e4e05734311419bdb3d28}{ABlue\+Cube\+Decorator}}, and \mbox{\hyperlink{class_a_green_cube_decorator_a974a88401b278195d9283ea157790785}{AGreen\+Cube\+Decorator}}.
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_a_cube_base_decorator_aea10af2d81df0a0d3d87ec2918b98c48_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=336pt]{class_a_cube_base_decorator_aea10af2d81df0a0d3d87ec2918b98c48_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_a_cube_base_decorator_a93b45ab207daf2b3b561c9667c40a302}\index{ACubeBaseDecorator@{ACubeBaseDecorator}!CreateCube@{CreateCube}}
+\index{CreateCube@{CreateCube}!ACubeBaseDecorator@{ACubeBaseDecorator}}
+\doxysubsubsection{\texorpdfstring{CreateCube()}{CreateCube()}}
+{\footnotesize\ttfamily \label{class_a_cube_base_decorator_a93b45ab207daf2b3b561c9667c40a302} 
+\mbox{\hyperlink{class_i_cube_interface}{ICube\+Interface}} \texorpdfstring{$\ast$}{*} ACube\+Base\+Decorator\+::\+Create\+Cube (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_i_cube_interface}{ICube\+Interface}} \texorpdfstring{$\ast$}{*}}]{Source}{, }\item[{TSubclass\+Of$<$ UObject $>$}]{Cube\+Class}{, }\item[{UWorld \texorpdfstring{$\ast$}{*}}]{World}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented in \mbox{\hyperlink{class_a_blue_cube_decorator_ae997b227c6cf8d12de2121bc678422f3}{ABlue\+Cube\+Decorator}}, and \mbox{\hyperlink{class_a_green_cube_decorator_ac445dcfa2a826135a276cc725dc1b439}{AGreen\+Cube\+Decorator}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_a_cube_base_decorator_a93b45ab207daf2b3b561c9667c40a302_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_a_cube_base_decorator_a0944b17a81727549e7d3a229b8bc3c73}\index{ACubeBaseDecorator@{ACubeBaseDecorator}!DestroyCube@{DestroyCube}}
+\index{DestroyCube@{DestroyCube}!ACubeBaseDecorator@{ACubeBaseDecorator}}
+\doxysubsubsection{\texorpdfstring{DestroyCube()}{DestroyCube()}}
+{\footnotesize\ttfamily \label{class_a_cube_base_decorator_a0944b17a81727549e7d3a229b8bc3c73} 
+void ACube\+Base\+Decorator\+::\+Destroy\+Cube (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_i_cube_interface_aa26d60198f82a2b3ea1fae77d7113cfd}{ICube\+Interface}}.
+
+
+
+Reimplemented in \mbox{\hyperlink{class_a_blue_cube_decorator_a5310cf43594cb97b0dafb48347c8171a}{ABlue\+Cube\+Decorator}}, and \mbox{\hyperlink{class_a_green_cube_decorator_a535ad2b7775f4c3b40106d031626c793}{AGreen\+Cube\+Decorator}}.
+
+\Hypertarget{class_a_cube_base_decorator_aada371c8f710ac5831e985dd4398cc05}\index{ACubeBaseDecorator@{ACubeBaseDecorator}!GetStaticMeshComponent@{GetStaticMeshComponent}}
+\index{GetStaticMeshComponent@{GetStaticMeshComponent}!ACubeBaseDecorator@{ACubeBaseDecorator}}
+\doxysubsubsection{\texorpdfstring{GetStaticMeshComponent()}{GetStaticMeshComponent()}}
+{\footnotesize\ttfamily \label{class_a_cube_base_decorator_aada371c8f710ac5831e985dd4398cc05} 
+UStatic\+Mesh\+Component \texorpdfstring{$\ast$}{*} ACube\+Base\+Decorator\+::\+Get\+Static\+Mesh\+Component (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_i_cube_interface_a1984545a949b26a62ac42a67b8b7caf2}{ICube\+Interface}}.
+
+
+
+Reimplemented in \mbox{\hyperlink{class_a_blue_cube_decorator_ad5c8daedb871e023049555867d946cb7}{ABlue\+Cube\+Decorator}}, and \mbox{\hyperlink{class_a_green_cube_decorator_ab2f3fdbc23833adc3a55cb83d340c354}{AGreen\+Cube\+Decorator}}.
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_a_cube_base_decorator_aada371c8f710ac5831e985dd4398cc05_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_a_cube_base_decorator_ab0b06d427531fcc13890b35e930b32bd}\index{ACubeBaseDecorator@{ACubeBaseDecorator}!Wrap@{Wrap}}
+\index{Wrap@{Wrap}!ACubeBaseDecorator@{ACubeBaseDecorator}}
+\doxysubsubsection{\texorpdfstring{Wrap()}{Wrap()}}
+{\footnotesize\ttfamily \label{class_a_cube_base_decorator_ab0b06d427531fcc13890b35e930b32bd} 
+void ACube\+Base\+Decorator\+::\+Wrap (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_i_cube_interface}{ICube\+Interface}} \texorpdfstring{$\ast$}{*}}]{Source}{}\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=339pt]{class_a_cube_base_decorator_ab0b06d427531fcc13890b35e930b32bd_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_a_cube_base_decorator_a127a441c3810eba66aa89ff809a6c6d8}\index{ACubeBaseDecorator@{ACubeBaseDecorator}!Wrappee@{Wrappee}}
+\index{Wrappee@{Wrappee}!ACubeBaseDecorator@{ACubeBaseDecorator}}
+\doxysubsubsection{\texorpdfstring{Wrappee}{Wrappee}}
+{\footnotesize\ttfamily \label{class_a_cube_base_decorator_a127a441c3810eba66aa89ff809a6c6d8} 
+\mbox{\hyperlink{class_i_cube_interface}{ICube\+Interface}}\texorpdfstring{$\ast$}{*} ACube\+Base\+Decorator\+::\+Wrappee\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Object\+Decorator/\mbox{\hyperlink{_cube_base_decorator_8h}{Cube\+Base\+Decorator.\+h}}\item 
+Object\+Decorator/\mbox{\hyperlink{_cube_base_decorator_8cpp}{Cube\+Base\+Decorator.\+cpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,5 @@
+<map id="AMainPlayer::Shoot" name="AMainPlayer::Shoot">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,13,143,39"/>
+<area shape="rect" id="Node000002" href="$class_a_main_player.html#a2c8ebb1c6b3453cd283a6d5e3ad39f20" title=" " alt="" coords="191,5,332,46"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="143,23,175,23,175,28,143,28"/>
+</map>

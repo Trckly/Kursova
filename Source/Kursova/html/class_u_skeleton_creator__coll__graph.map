@@ -1,0 +1,7 @@
+<map id="USkeletonCreator" name="USkeletonCreator">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,296,273,768"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="31,94,91,159"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="72,173,96,296,91,297,67,174"/>
+<area shape="rect" id="Node000003" href="$class_i_i_enemy_creator.html" title=" " alt="" coords="115,5,323,248"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="195,263,189,297,183,296,190,262"/>
+</map>

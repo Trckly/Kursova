@@ -1,0 +1,7 @@
+<map id="IEnemyInterface::Clone" name="IEnemyInterface::Clone">
+<area shape="rect" id="Node000001" title=" " alt="" coords="260,35,418,60"/>
+<area shape="rect" id="Node000002" href="$class_u_goblin_creator.html#a82c42bf5536633be7695a49890751cdd" title=" " alt="" coords="5,5,212,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="244,38,212,34,212,29,244,33"/>
+<area shape="rect" id="Node000003" href="$class_u_skeleton_creator.html#af4d1edf5e309a9a834c01bc5ac65b3d7" title=" " alt="" coords="24,55,193,96"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="244,62,194,68,193,63,244,56"/>
+</map>

@@ -1,0 +1,102 @@
+\doxysection{Admin\+Manager\+Widget.\+h}
+\hypertarget{_admin_manager_widget_8h_source}{}\label{_admin_manager_widget_8h_source}\index{MainUI/AdminManagerWidget.h@{MainUI/AdminManagerWidget.h}}
+\mbox{\hyperlink{_admin_manager_widget_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//\ Fill\ out\ your\ copyright\ notice\ in\ the\ Description\ page\ of\ Project\ Settings.}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}CoreMinimal.h"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}Blueprint/UserWidget.h"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}Components/Button.h"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}Components/ComboBoxString.h"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}Components/EditableText.h"{}}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}Components/ScrollBox.h"{}}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}AdminManagerWidget.generated.h"{}}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_u_player_editor_widget}{UPlayerEditorWidget}};}
+\DoxyCodeLine{00014\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_a_main_player}{AMainPlayer}};}
+\DoxyCodeLine{00015\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_u_player_panel_widget}{UPlayerPanelWidget}};}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \mbox{\hyperlink{_admin_manager_widget_8h_a8d62141a76e70cb6acda5c4168a73882}{DECLARE\_DYNAMIC\_DELEGATE}}(FOnAdminCloseButtonClicked);}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00022\ UCLASS()}
+\DoxyCodeLine{00023\ class\ KURSOVA\_API\ \mbox{\hyperlink{class_u_admin_manager_widget}{UAdminManagerWidget}}\ :\ public\ UUserWidget}
+\DoxyCodeLine{00024\ \{}
+\DoxyCodeLine{00025\ \ \ \ \ GENERATED\_BODY()}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00028\ \ \ \ \ UPROPERTY(BlueprintReadWrite,\ meta=(BindWidget))}
+\DoxyCodeLine{00029\ \ \ \ \ UEditableText*\ ESearchBar;}
+\DoxyCodeLine{00030\ \ \ \ \ }
+\DoxyCodeLine{00031\ \ \ \ \ UPROPERTY(BlueprintReadWrite,\ meta=(BindWidget))}
+\DoxyCodeLine{00032\ \ \ \ \ UButton*\ BSort;}
+\DoxyCodeLine{00033\ \ \ \ \ }
+\DoxyCodeLine{00034\ \ \ \ \ UPROPERTY(BlueprintReadWrite,\ meta=(BindWidget))}
+\DoxyCodeLine{00035\ \ \ \ \ UButton*\ BEditBehavior;}
+\DoxyCodeLine{00036\ \ \ \ \ }
+\DoxyCodeLine{00037\ \ \ \ \ UPROPERTY(BlueprintReadWrite,\ meta=(BindWidget))}
+\DoxyCodeLine{00038\ \ \ \ \ UButton*\ BClose;}
+\DoxyCodeLine{00039\ \ \ \ \ }
+\DoxyCodeLine{00040\ \ \ \ \ UPROPERTY(BlueprintReadWrite,\ meta=(BindWidget))}
+\DoxyCodeLine{00041\ \ \ \ \ UScrollBox*\ SListOfPlayers;}
+\DoxyCodeLine{00042\ \ \ \ \ }
+\DoxyCodeLine{00043\ \ \ \ \ UPROPERTY(BlueprintReadWrite,\ meta=(BindWidget))}
+\DoxyCodeLine{00044\ \ \ \ \ UComboBoxString*\ OSearchOption;}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \ \ \ \ UPROPERTY(EditDefaultsOnly,\ BlueprintReadWrite)}
+\DoxyCodeLine{00047\ \ \ \ \ TSubclassOf<\mbox{\hyperlink{class_u_player_panel_widget}{UPlayerPanelWidget}}>\ PlayerPanelWidgetClass;}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \ \ \ \ UPROPERTY(EditDefaultsOnly,\ BlueprintReadWrite)}
+\DoxyCodeLine{00050\ \ \ \ \ TSubclassOf<\mbox{\hyperlink{class_u_player_editor_widget}{UPlayerEditorWidget}}>\ PlayerEditorWidgetClass;}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \ \ \ \ UPROPERTY()}
+\DoxyCodeLine{00053\ \ \ \ \ \mbox{\hyperlink{class_u_player_editor_widget}{UPlayerEditorWidget}}*\ PlayerEditorWidget;}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \ \ \ \ UPROPERTY()}
+\DoxyCodeLine{00056\ \ \ \ \ TMap<\textcolor{keywordtype}{int},\ \mbox{\hyperlink{class_u_player_panel_widget}{UPlayerPanelWidget}}*>\ MapOfPlayers;}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \ \ \ \ UPROPERTY()}
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_u_player_panel_widget_adc50f32dbc86fedeacfede931f3a3725}{PlayerIndex}}\ =\ 1;}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \ \ \ \ UPROPERTY()}
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordtype}{int}\ ActiveWidgetIndex\ =\ 0;}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \ \ \ \ UPROPERTY()}
+\DoxyCodeLine{00065\ \ \ \ \ TArray<\mbox{\hyperlink{class_u_player_panel_widget}{UPlayerPanelWidget}}*>\ SortArray;}
+\DoxyCodeLine{00066\ \ \ \ \ }
+\DoxyCodeLine{00067\ public:}
+\DoxyCodeLine{00068\ \ \ \ \ FOnAdminCloseButtonClicked\ OnAdminCloseButtonClicked;}
+\DoxyCodeLine{00069\ \ \ \ \ }
+\DoxyCodeLine{00070\ \ \ \ \ virtual\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_u_player_panel_widget_ac9307e4345c0624673b05fcf75cc332e}{NativeConstruct}}()\ override;}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00072\ \ \ \ \ UFUNCTION()}
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keywordtype}{void}\ SetPlayers();}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \ \ \ \ UFUNCTION()}
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keywordtype}{void}\ Search(const\ FText\&\ Value);}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ \ \ \ \ UFUNCTION()}
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keywordtype}{void}\ SortByCity();}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00081\ \ \ \ \ UFUNCTION()}
+\DoxyCodeLine{00082\ \ \ \ \ \textcolor{keywordtype}{void}\ EditPlayerBehavior();}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00084\ \ \ \ \ UFUNCTION()}
+\DoxyCodeLine{00085\ \ \ \ \ \textcolor{keywordtype}{void}\ SetActiveWidget(\textcolor{keywordtype}{int}\ Index);}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00087\ \ \ \ \ \textcolor{keywordtype}{void}\ QuickSortA(TArray<\mbox{\hyperlink{class_u_player_panel_widget}{UPlayerPanelWidget}}*>\&\ Array,\ \textcolor{keywordtype}{int}\ Begin,\ \textcolor{keywordtype}{int}\ End);}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00089\ \ \ \ \ \textcolor{keywordtype}{int}\ PartitionA(TArray<\mbox{\hyperlink{class_u_player_panel_widget}{UPlayerPanelWidget}}*>\&\ Array,\ \textcolor{keywordtype}{int}\ Begin,\ \textcolor{keywordtype}{int}\ End);}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00091\ \ \ \ \ UFUNCTION()}
+\DoxyCodeLine{00092\ \ \ \ \ \textcolor{keywordtype}{void}\ ClosePlayerEditor();}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00094\ \ \ \ \ UFUNCTION()}
+\DoxyCodeLine{00095\ \ \ \ \ \textcolor{keywordtype}{void}\ SavePlayerStats(\textcolor{keywordtype}{bool}\ CanMove,\ \textcolor{keywordtype}{bool}\ CanJump,\ \textcolor{keywordtype}{bool}\ CanFire);}
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00097\ \ \ \ \ UFUNCTION()}
+\DoxyCodeLine{00098\ \ \ \ \ \textcolor{keywordtype}{void}\ CloseAdminWidget();}
+\DoxyCodeLine{00099\ \};}
+
+\end{DoxyCode}

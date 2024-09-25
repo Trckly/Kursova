@@ -1,0 +1,95 @@
+\doxysection{Session\+Subsystem.\+h}
+\hypertarget{_session_subsystem_8h_source}{}\label{_session_subsystem_8h_source}\index{ServerLogic/SessionSubsystem.h@{ServerLogic/SessionSubsystem.h}}
+\mbox{\hyperlink{_session_subsystem_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//\ Fill\ out\ your\ copyright\ notice\ in\ the\ Description\ page\ of\ Project\ Settings.}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}CoreMinimal.h"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}Interfaces/OnlineSessionInterface.h"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}FindSessionsCallbackProxy.h"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}Subsystems/GameInstanceSubsystem.h"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}SessionSubsystem.generated.h"{}}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00015\ UENUM(BlueprintType)}
+\DoxyCodeLine{00016\ enum\ class\ \mbox{\hyperlink{_session_subsystem_8h_aba768ba7b976ec0f13a599093463b932}{EBPOnJoinSessionCompleteResult}}\ :\ uint8}
+\DoxyCodeLine{00017\ \{}
+\DoxyCodeLine{00018\ \ \ \ \ \mbox{\hyperlink{_session_subsystem_8h_aba768ba7b976ec0f13a599093463b932a505a83f220c02df2f85c3810cd9ceb38}{Success}},}
+\DoxyCodeLine{00019\ \ \ \ \ \mbox{\hyperlink{_session_subsystem_8h_aba768ba7b976ec0f13a599093463b932ab039a20cea5dd143b640fef61ce8b25c}{SessionIsFull}},}
+\DoxyCodeLine{00020\ \ \ \ \ \mbox{\hyperlink{_session_subsystem_8h_aba768ba7b976ec0f13a599093463b932ab7247ac5e9b8445b164668fdf70affe8}{SessionDoesNotExist}},}
+\DoxyCodeLine{00021\ \ \ \ \ \mbox{\hyperlink{_session_subsystem_8h_aba768ba7b976ec0f13a599093463b932a1701b04002010e05af2b362b1e6d6b2a}{CouldNotRetrieveAddress}},}
+\DoxyCodeLine{00022\ \ \ \ \ \mbox{\hyperlink{_session_subsystem_8h_aba768ba7b976ec0f13a599093463b932afcf6bd775831eb5fbb118dd35fd1588f}{AlreadyInSession}},}
+\DoxyCodeLine{00023\ \ \ \ \ \mbox{\hyperlink{_session_subsystem_8h_aba768ba7b976ec0f13a599093463b932abfaef30f1c8011c5cefa38ae470fb7aa}{UnknownError}}}
+\DoxyCodeLine{00024\ \};}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \mbox{\hyperlink{_session_subsystem_8h_a426ea869c5f6e8416c120fd649bad3df}{DECLARE\_DYNAMIC\_MULTICAST\_DELEGATE\_OneParam}}(FCSOnCreateSessionComplete,\ \textcolor{keywordtype}{bool},\ Successful);}
+\DoxyCodeLine{00027\ \mbox{\hyperlink{_session_subsystem_8h_a426ea869c5f6e8416c120fd649bad3df}{DECLARE\_DYNAMIC\_MULTICAST\_DELEGATE\_OneParam}}(FCSOnUpdateSessionComplete,\ \textcolor{keywordtype}{bool},\ Successful);}
+\DoxyCodeLine{00028\ \mbox{\hyperlink{_session_subsystem_8h_a426ea869c5f6e8416c120fd649bad3df}{DECLARE\_DYNAMIC\_MULTICAST\_DELEGATE\_OneParam}}(FCSOnStartSessionComplete,\ \textcolor{keywordtype}{bool},\ Successful);}
+\DoxyCodeLine{00029\ \mbox{\hyperlink{_session_subsystem_8h_a426ea869c5f6e8416c120fd649bad3df}{DECLARE\_DYNAMIC\_MULTICAST\_DELEGATE\_OneParam}}(FCSOnEndSessionComplete,\ \textcolor{keywordtype}{bool},\ Successful);}
+\DoxyCodeLine{00030\ \mbox{\hyperlink{_session_subsystem_8h_a426ea869c5f6e8416c120fd649bad3df}{DECLARE\_DYNAMIC\_MULTICAST\_DELEGATE\_OneParam}}(FCSOnDestroySessionComplete,\ \textcolor{keywordtype}{bool},\ Successful);}
+\DoxyCodeLine{00031\ \mbox{\hyperlink{_session_subsystem_8h_a21c5c031ae3b75a250f13b5d30760711}{DECLARE\_DYNAMIC\_MULTICAST\_DELEGATE\_TwoParams}}(FCSOnFindSessionsComplete,\ \textcolor{keyword}{const}\ TArray<FBlueprintSessionResult>\&,\ SessionsResult,\ \textcolor{keywordtype}{bool},\ Successful);}
+\DoxyCodeLine{00032\ \mbox{\hyperlink{_session_subsystem_8h_a426ea869c5f6e8416c120fd649bad3df}{DECLARE\_DYNAMIC\_MULTICAST\_DELEGATE\_OneParam}}(FCSOnJoinSessionComplete,\ \mbox{\hyperlink{_session_subsystem_8h_aba768ba7b976ec0f13a599093463b932}{EBPOnJoinSessionCompleteResult}},\ Result);}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ UCLASS()}
+\DoxyCodeLine{00035\ class\ \mbox{\hyperlink{class_u_session_subsystem}{USessionSubsystem}}\ :\ public\ UGameInstanceSubsystem}
+\DoxyCodeLine{00036\ \{}
+\DoxyCodeLine{00037\ \ \ \ \ GENERATED\_BODY()}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00040\ \ \ \ \ \mbox{\hyperlink{class_u_session_subsystem}{USessionSubsystem}}();}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \ \ \ \ UFUNCTION(BlueprintCallable)\ \textcolor{keywordtype}{void}\ CreateSession(int32\ NumPublicConnections,\ \textcolor{keywordtype}{bool}\ IsLANMatch,\ FString\ SessionName,\ \textcolor{keywordtype}{bool}\ IsPrivate\ =\ \textcolor{keyword}{false},\ FString\ SessionPassword\ =\ \textcolor{stringliteral}{"{}"{}},\ FString\ Map\ =\ \textcolor{stringliteral}{"{}Undefined"{}},\ FString\ Difficulty\ =\ \textcolor{stringliteral}{"{}Medium"{}});}
+\DoxyCodeLine{00043\ \ \ \ \ \mbox{\hyperlink{class_u_session_subsystem_ab667fa417ec879757f441476e536075e}{UFUNCTION}}(BlueprintCallable)\ \textcolor{keywordtype}{void}\ UpdateSession();}
+\DoxyCodeLine{00044\ \ \ \ \ \mbox{\hyperlink{class_u_session_subsystem_a80d75dbf1b878fb1fba98cf3fbf91bdf}{UFUNCTION}}(BlueprintCallable)\ \textcolor{keywordtype}{void}\ StartSession();}
+\DoxyCodeLine{00045\ \ \ \ \ \mbox{\hyperlink{class_u_session_subsystem_a432ee23713b10e197b5ac31b7d25de69}{UFUNCTION}}(BlueprintCallable)\ \textcolor{keywordtype}{void}\ EndSession();}
+\DoxyCodeLine{00046\ \ \ \ \ \mbox{\hyperlink{class_u_session_subsystem_a72b7e6f605eafd85fb99d57af8e9f6b7}{UFUNCTION}}(BlueprintCallable)\ \textcolor{keywordtype}{void}\ DestroySession();}
+\DoxyCodeLine{00047\ \ \ \ \ UFUNCTION(BlueprintCallable)\ \textcolor{keywordtype}{void}\ FindSessions(int32\ MaxSearchResults,\ \textcolor{keywordtype}{bool}\ IsLANQuery);}
+\DoxyCodeLine{00048\ \ \ \ \ UFUNCTION(BlueprintCallable)\ \textcolor{keywordtype}{void}\ JoinGameSession(\textcolor{keyword}{const}\ FBlueprintSessionResult\&\ SessionResult,\ \textcolor{keyword}{const}\ FString\&\ Password);}
+\DoxyCodeLine{00049\ \ \ \ \ \mbox{\hyperlink{class_u_session_subsystem_a642a4982bf37fafef5a29647fd162f59}{UFUNCTION}}(BlueprintCallable)\ \textcolor{keywordtype}{bool}\ SessionHasBeenStarted();}
+\DoxyCodeLine{00050\ \ \ \ \ }
+\DoxyCodeLine{00051\ \ \ \ \ \mbox{\hyperlink{class_u_session_subsystem_a299e6b4ce32a2ae53941d32e3e04739d}{UPROPERTY}}(BlueprintAssignable)\ FCSOnCreateSessionComplete\ OnCreateSessionCompleteEvent;}
+\DoxyCodeLine{00052\ \ \ \ \ \mbox{\hyperlink{class_u_session_subsystem_a4d76555dd5582ddf91352f29624ed5fe}{UPROPERTY}}(BlueprintAssignable)\ FCSOnUpdateSessionComplete\ OnUpdateSessionCompleteEvent;}
+\DoxyCodeLine{00053\ \ \ \ \ \mbox{\hyperlink{class_u_session_subsystem_a576ef3d4672735a73eb2fb1b9b569544}{UPROPERTY}}(BlueprintAssignable)\ FCSOnStartSessionComplete\ OnStartSessionCompleteEvent;}
+\DoxyCodeLine{00054\ \ \ \ \ \mbox{\hyperlink{class_u_session_subsystem_a5f15c042502c69085d9d7cc6a8e5d62d}{UPROPERTY}}(BlueprintAssignable)\ FCSOnEndSessionComplete\ OnEndSessionCompleteEvent;}
+\DoxyCodeLine{00055\ \ \ \ \ \mbox{\hyperlink{class_u_session_subsystem_a506625ab9bf405cc02a1d62e2c8d6468}{UPROPERTY}}(BlueprintAssignable)\ FCSOnDestroySessionComplete\ OnDestroySessionCompleteEvent;}
+\DoxyCodeLine{00056\ \ \ \ \ \mbox{\hyperlink{class_u_session_subsystem_a925f53c0c2da561ed469602e51d918fa}{UPROPERTY}}(BlueprintAssignable)\ FCSOnFindSessionsComplete\ OnFindSessionsCompleteEvent;}
+\DoxyCodeLine{00057\ \ \ \ \ \mbox{\hyperlink{class_u_session_subsystem_a2c938f13645c54867dfa6bc8382c5a72}{UPROPERTY}}(BlueprintAssignable)\ FCSOnJoinSessionComplete\ OnJoinGameSessionCompleteEvent;}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordtype}{void}\ OnCreateSessionCompleted(FName\ SessionName,\ \textcolor{keywordtype}{bool}\ Successful);}
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordtype}{void}\ OnUpdateSessionCompleted(FName\ SessionName,\ \textcolor{keywordtype}{bool}\ Successful);}
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordtype}{void}\ OnStartSessionCompleted(FName\ SessionName,\ \textcolor{keywordtype}{bool}\ Successful);}
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keywordtype}{void}\ OnEndSessionCompleted(FName\ SessionName,\ \textcolor{keywordtype}{bool}\ Successful);}
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordtype}{void}\ OnDestroySessionCompleted(FName\ SessionName,\ \textcolor{keywordtype}{bool}\ Successful);}
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordtype}{void}\ OnFindSessionsCompleted(\textcolor{keywordtype}{bool}\ Successful);}
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keywordtype}{void}\ OnJoinSessionCompleted(FName\ SessionName,\ EOnJoinSessionCompleteResult::Type\ Result);}
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keywordtype}{bool}\ TryTravelToCurrentSession();}
+\DoxyCodeLine{00068\ \ \ \ \ }
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00071\ \ \ \ \ FOnCreateSessionCompleteDelegate\ CreateSessionCompleteDelegate;}
+\DoxyCodeLine{00072\ \ \ \ \ FDelegateHandle\ CreateSessionCompleteDelegateHandle;}
+\DoxyCodeLine{00073\ \ \ \ \ TSharedPtr<FOnlineSessionSettings>\ LastSessionSettings;}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \ \ \ \ FOnUpdateSessionCompleteDelegate\ UpdateSessionCompleteDelegate;}
+\DoxyCodeLine{00076\ \ \ \ \ FDelegateHandle\ UpdateSessionCompleteDelegateHandle;}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ \ \ \ \ FOnStartSessionCompleteDelegate\ StartSessionCompleteDelegate;}
+\DoxyCodeLine{00079\ \ \ \ \ FDelegateHandle\ StartSessionCompleteDelegateHandle;}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00081\ \ \ \ \ FOnEndSessionCompleteDelegate\ EndSessionCompleteDelegate;}
+\DoxyCodeLine{00082\ \ \ \ \ FDelegateHandle\ EndSessionCompleteDelegateHandle;}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00084\ \ \ \ \ FOnDestroySessionCompleteDelegate\ DestroySessionCompleteDelegate;}
+\DoxyCodeLine{00085\ \ \ \ \ FDelegateHandle\ DestroySessionCompleteDelegateHandle;}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00087\ \ \ \ \ FOnFindSessionsCompleteDelegate\ FindSessionsCompleteDelegate;}
+\DoxyCodeLine{00088\ \ \ \ \ FDelegateHandle\ FindSessionsCompleteDelegateHandle;}
+\DoxyCodeLine{00089\ \ \ \ \ TSharedPtr<FOnlineSessionSearch>\ LastSessionSearch;}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00091\ \ \ \ \ FOnJoinSessionCompleteDelegate\ JoinSessionCompleteDelegate;}
+\DoxyCodeLine{00092\ \ \ \ \ FDelegateHandle\ JoinSessionCompleteDelegateHandle;}
+\DoxyCodeLine{00093\ \};}
+
+\end{DoxyCode}

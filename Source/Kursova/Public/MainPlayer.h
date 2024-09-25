@@ -13,7 +13,6 @@
 #include "Kursova/DifficultyFactories/ModeFactory.h"
 #include "Kursova/EnemyObserver/PlayerNotifier.h"
 #include "Kursova/ObjectDecorator/Cube.h"
-#include "Kursova/ObjectDecorator/CubeBaseDecorator.h"
 #include "MainPlayer.generated.h"
 
 class IHandler;

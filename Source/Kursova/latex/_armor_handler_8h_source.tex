@@ -1,0 +1,26 @@
+\doxysection{Armor\+Handler.\+h}
+\hypertarget{_armor_handler_8h_source}{}\label{_armor_handler_8h_source}\index{Items/Chain/ArmorHandler.h@{Items/Chain/ArmorHandler.h}}
+\mbox{\hyperlink{_armor_handler_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//\ Fill\ out\ your\ copyright\ notice\ in\ the\ Description\ page\ of\ Project\ Settings.}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}CoreMinimal.h"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_abstract_handler_8h}{AbstractHandler.h}}"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}ArmorHandler.generated.h"{}}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00013\ \mbox{\hyperlink{_armor_handler_8h_ae8e57924a53795e9a1d11e1b06e5e2bc}{DECLARE\_DYNAMIC\_DELEGATE\_OneParam}}(FAddArmor,\ \textcolor{keywordtype}{float},\ ArmorPoints);}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ UCLASS()}
+\DoxyCodeLine{00016\ class\ KURSOVA\_API\ \mbox{\hyperlink{class_u_armor_handler}{UArmorHandler}}\ :\ public\ \mbox{\hyperlink{class_u_abstract_handler}{UAbstractHandler}}}
+\DoxyCodeLine{00017\ \{}
+\DoxyCodeLine{00018\ \ \ \ \ GENERATED\_BODY()}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ Handle(\mbox{\hyperlink{class_a_abstract_item}{AAbstractItem}}*\ PickUpItem)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \ \ \ \ FAddArmor\ \mbox{\hyperlink{class_u_armor_handler_aba42e6ad96d454abe62b93b0e4fbbfae}{AddArmor}};}
+\DoxyCodeLine{00024\ \};}
+
+\end{DoxyCode}

@@ -1,0 +1,7 @@
+<map id="ACube" name="ACube">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,173,217,627"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="6,33,59,98"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="46,112,61,173,55,174,41,113"/>
+<area shape="rect" id="Node000003" href="$class_i_cube_interface.html" title=" " alt="" coords="84,5,296,125"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="175,141,167,174,162,173,170,140"/>
+</map>

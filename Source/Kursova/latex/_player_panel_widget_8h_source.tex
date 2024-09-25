@@ -1,0 +1,93 @@
+\doxysection{Player\+Panel\+Widget.\+h}
+\hypertarget{_player_panel_widget_8h_source}{}\label{_player_panel_widget_8h_source}\index{MainUI/PlayerPanelWidget.h@{MainUI/PlayerPanelWidget.h}}
+\mbox{\hyperlink{_player_panel_widget_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//\ Fill\ out\ your\ copyright\ notice\ in\ the\ Description\ page\ of\ Project\ Settings.}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}CoreMinimal.h"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}Blueprint/UserWidget.h"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}Components/Button.h"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}Components/CheckBox.h"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}Components/TextBlock.h"{}}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}PlayerPanelWidget.generated.h"{}}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_a_main_player}{AMainPlayer}};}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \mbox{\hyperlink{_player_panel_widget_8h_a0fc223890dd4ad1605b8b85320fffaed}{DECLARE\_DYNAMIC\_DELEGATE\_OneParam}}(FSetWidgetActive,\ \textcolor{keywordtype}{int},\ PIndex);}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00019\ UCLASS()}
+\DoxyCodeLine{00020\ class\ KURSOVA\_API\ \mbox{\hyperlink{class_u_player_panel_widget}{UPlayerPanelWidget}}\ :\ public\ UUserWidget}
+\DoxyCodeLine{00021\ \{}
+\DoxyCodeLine{00022\ \ \ \ \ GENERATED\_BODY()}
+\DoxyCodeLine{00023\ \ \ \ \ }
+\DoxyCodeLine{00024\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00025\ \ \ \ \ UPROPERTY(BlueprintReadWrite,\ meta=(BindWidget))}
+\DoxyCodeLine{00026\ \ \ \ \ UTextBlock*\ TName;}
+\DoxyCodeLine{00027\ \ \ \ \ }
+\DoxyCodeLine{00028\ \ \ \ \ UPROPERTY(BlueprintReadWrite,\ meta=(BindWidget))}
+\DoxyCodeLine{00029\ \ \ \ \ UTextBlock*\ TCity;}
+\DoxyCodeLine{00030\ \ \ \ \ }
+\DoxyCodeLine{00031\ \ \ \ \ UPROPERTY(BlueprintReadWrite,\ meta=(BindWidget))}
+\DoxyCodeLine{00032\ \ \ \ \ UTextBlock*\ THitPoints;}
+\DoxyCodeLine{00033\ \ \ \ \ }
+\DoxyCodeLine{00034\ \ \ \ \ UPROPERTY(BlueprintReadWrite,\ meta=(BindWidget))}
+\DoxyCodeLine{00035\ \ \ \ \ UCheckBox*\ CIsInGodMode;}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \ \ \ \ UPROPERTY(BlueprintReadWrite,\ meta=(BindWidget))}
+\DoxyCodeLine{00038\ \ \ \ \ UButton*\ BSetActive;}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \ \ \ UPROPERTY()}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_a_main_player_a63a27c124d66bce325f9cccb538f62a6}{PlayerIndex}};}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \ \ \ \ UPROPERTY()}
+\DoxyCodeLine{00044\ \ \ \ \ \mbox{\hyperlink{class_a_main_player}{AMainPlayer}}*\ Player;}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \ \ \ \ UPROPERTY()}
+\DoxyCodeLine{00047\ \ \ \ \ FLinearColor\ StandardBackgroundColor;}
+\DoxyCodeLine{00048\ \ \ \ \ }
+\DoxyCodeLine{00049\ public:}
+\DoxyCodeLine{00050\ \ \ \ \ UPROPERTY()}
+\DoxyCodeLine{00051\ \ \ \ \ FSetWidgetActive\ SetWidgetActive;}
+\DoxyCodeLine{00052\ \ \ \ \ }
+\DoxyCodeLine{00053\ \ \ \ \ virtual\ \textcolor{keywordtype}{void}\ NativeConstruct()\ override;}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \ \ \ \ UFUNCTION()}
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordtype}{void}\ SetWidget(\mbox{\hyperlink{class_a_main_player}{AMainPlayer}}*\ MainPlayer,\ \textcolor{keywordtype}{int}\ Index);}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \ \ \ \ UFUNCTION()}
+\DoxyCodeLine{00059\ \ \ \ \ FString\ GetName();}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \ \ \ \ UFUNCTION()}
+\DoxyCodeLine{00062\ \ \ \ \ FString\ \mbox{\hyperlink{class_a_main_player_a9af4922763eeab2f8f4abc0eb9d02e6a}{GetCity}}();}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \ \ \ \ UFUNCTION()}
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordtype}{int}\ GetIndex();}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \ \ \ \ UFUNCTION()}
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordtype}{void}\ SetActive();}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \ \ \ \ UFUNCTION()}
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keywordtype}{void}\ SetGodMode(\textcolor{keywordtype}{bool}\ IsGodModeSet);}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \ \ \ \ UFUNCTION()}
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{keywordtype}{void}\ SetBehavior(\textcolor{keywordtype}{bool}\ CanMove,\ \textcolor{keywordtype}{bool}\ CanJump,\ \textcolor{keywordtype}{bool}\ CanFire);}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00076\ \ \ \ \ UFUNCTION()}
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keywordtype}{bool}\ GetAbilityToMove();}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00079\ \ \ \ \ UFUNCTION()}
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keywordtype}{bool}\ GetAbilityToJump();}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00082\ \ \ \ \ UFUNCTION()}
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{keywordtype}{bool}\ GetAbilityToFire();}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00085\ \ \ \ \ UFUNCTION()}
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{keywordtype}{void}\ ResetBackgroundColor();}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00088\ \ \ \ \ UFUNCTION()}
+\DoxyCodeLine{00089\ \ \ \ \ \textcolor{keywordtype}{void}\ SetBackgroundColor();}
+\DoxyCodeLine{00090\ \};}
+
+\end{DoxyCode}

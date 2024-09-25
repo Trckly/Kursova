@@ -1,0 +1,11 @@
+<map id="AMainPlayer::GetPlayerName" name="AMainPlayer::GetPlayerName">
+<area shape="rect" id="Node000001" title=" " alt="" coords="921,13,1116,39"/>
+<area shape="rect" id="Node000002" href="$class_u_player_panel_widget.html#a26f1e40225320b87e8f2ab9f61bf53b3" title=" " alt="" coords="732,5,873,46"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="905,28,873,28,873,23,905,23"/>
+<area shape="rect" id="Node000003" href="$class_u_admin_manager_widget.html#af832b6df2dcb87de66fc3283c49667ec" title=" " alt="" coords="527,5,684,46"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="717,28,685,28,685,23,717,23"/>
+<area shape="rect" id="Node000004" href="$class_u_server_widget.html#a7b0f82f1cd233dd2f6824aa0dc48f837" title=" " alt="" coords="263,13,479,39"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="511,28,480,28,480,23,511,23"/>
+<area shape="rect" id="Node000005" href="$class_u_server_widget.html#a74cd014e883bf130482eee6be68f26b9" title=" " alt="" coords="5,13,215,39"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="247,28,215,28,215,23,247,23"/>
+</map>

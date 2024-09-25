@@ -2,10 +2,14 @@
 
 #include "Radio.h"
 
+#include "Kursova/State/GreenState.h"
+
 ARadio* ARadio::SelfInstance = nullptr;
 
 ARadio::ARadio()
 {
+	State = NewObject<UGreenState>();
+	
 	BoxComponent = CreateDefaultSubobject<UBoxComponent>(TEXT("Capsule Collider"));
 	RootComponent = BoxComponent;
 	
@@ -21,4 +25,12 @@ ARadio* ARadio::GetInstance(UWorld* World, TSubclassOf<ARadio> RadioClass)
 	}
 	
 	return SelfInstance;
+}
+
+void ARadio::ChangeState(IState* OtherState)
+{
+	if(OtherState)
+	{
+		State = OtherState;
+	}
 }

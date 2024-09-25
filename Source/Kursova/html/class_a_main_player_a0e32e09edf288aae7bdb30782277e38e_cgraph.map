@@ -1,0 +1,9 @@
+<map id="AMainPlayer::SetArmor" name="AMainPlayer::SetArmor">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,31,164,56"/>
+<area shape="rect" id="Node000002" href="$class_a_main_player.html#a4101eafc7e7485c775096e3307c8524e" title=" " alt="" coords="212,5,394,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="164,32,196,28,196,33,165,37"/>
+<area shape="rect" id="Node000003" href="$class_a_main_player.html#a058c6a8d9f66416340178a03c535d05a" title=" " alt="" coords="222,55,384,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="165,50,207,54,206,60,164,55"/>
+<area shape="rect" id="Node000004" href="$class_u_player_h_u_d.html#a2dc1e672208c898a90481643a59648f9" title=" " alt="" coords="442,55,599,80"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="384,65,426,65,426,70,384,70"/>
+</map>

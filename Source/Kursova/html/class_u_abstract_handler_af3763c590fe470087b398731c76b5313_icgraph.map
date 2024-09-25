@@ -1,0 +1,7 @@
+<map id="UAbstractHandler::Handle" name="UAbstractHandler::Handle">
+<area shape="rect" id="Node000001" title=" " alt="" coords="213,31,384,56"/>
+<area shape="rect" id="Node000002" href="$class_u_armor_handler.html#a8c1a97cedda8930c19239064055609f1" title=" " alt="" coords="6,5,164,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="197,34,164,30,164,25,198,29"/>
+<area shape="rect" id="Node000003" href="$class_u_health_handler.html#a09489b349a2423b3651c82422d17ced1" title=" " alt="" coords="5,55,165,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="198,58,165,61,165,56,197,52"/>
+</map>

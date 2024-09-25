@@ -1,0 +1,11 @@
+<map id="ATree::Initialize" name="ATree::Initialize">
+<area shape="rect" id="Node000001" title=" " alt="" coords="615,31,728,56"/>
+<area shape="rect" id="Node000002" href="$class_a_tree.html#ad24e8c02d3e28746a71b14bc5ac05bb5" title=" " alt="" coords="439,31,567,56"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="600,46,567,46,567,41,600,41"/>
+<area shape="rect" id="Node000003" href="$class_a_tree.html#a3fb679e7627d46be9c217b42d8265d80" title=" " alt="" coords="261,5,390,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="423,35,389,30,390,25,424,30"/>
+<area shape="rect" id="Node000004" href="$class_u_forest.html#a3b3b907af4510efe7ffa56db73b6e67e" title=" " alt="" coords="260,55,391,80"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="424,57,392,61,391,56,423,52"/>
+<area shape="rect" id="Node000005" href="$class_u_main_map_builder.html#a6f015175f8184ab7b2b793e34c3f4dc6" title=" " alt="" coords="5,55,212,80"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="244,70,212,70,212,65,244,65"/>
+</map>

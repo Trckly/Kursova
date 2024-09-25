@@ -1,0 +1,7 @@
+<map id="AAIBitingEnemy::GetDamage" name="AAIBitingEnemy::GetDamage">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,200,31"/>
+<area shape="rect" id="Node000002" href="$class_a_a_i_biting_enemy.html#a6810a76383257a37d086c8fc5c89c1a1" title=" " alt="" coords="248,5,392,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="200,16,232,16,232,21,200,21"/>
+<area shape="rect" id="Node000003" href="$class_a_main_player.html#a30a804ba9b0dc9bb02aa9217915546e6" title=" " alt="" coords="440,5,584,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="392,16,425,16,425,21,392,21"/>
+</map>

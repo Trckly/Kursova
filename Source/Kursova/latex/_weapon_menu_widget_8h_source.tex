@@ -1,0 +1,130 @@
+\doxysection{Weapon\+Menu\+Widget.\+h}
+\hypertarget{_weapon_menu_widget_8h_source}{}\label{_weapon_menu_widget_8h_source}\index{UMG/WeaponMenuWidget.h@{UMG/WeaponMenuWidget.h}}
+\mbox{\hyperlink{_weapon_menu_widget_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//\ Fill\ out\ your\ copyright\ notice\ in\ the\ Description\ page\ of\ Project\ Settings.}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}CoreMinimal.h"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_a_weapon_class_8h}{AWeaponClass.h}}"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_weapon_data_widget_8h}{WeaponDataWidget.h}}"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}Blueprint/UserWidget.h"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}Components/Button.h"{}}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}Components/ComboBoxString.h"{}}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}Components/VerticalBox.h"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_weapon_edit_widget_8h}{Kursova/UMG/WeaponEditWidget.h}}"{}}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}WeaponMenuWidget.generated.h"{}}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00019\ UCLASS()}
+\DoxyCodeLine{00020\ class\ KURSOVA\_API\ \mbox{\hyperlink{class_u_weapon_menu_widget}{UWeaponMenuWidget}}\ :\ public\ UUserWidget}
+\DoxyCodeLine{00021\ \{}
+\DoxyCodeLine{00022\ \ \ \ \ GENERATED\_BODY()}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{comment}{//\ Defines\ type\ of\ filtering}}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keyword}{enum}\ \mbox{\hyperlink{class_u_weapon_menu_widget_a66732b99205662ffc1b773590face9a4}{EComboBoxValues}}}
+\DoxyCodeLine{00027\ \ \ \ \ \{}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_u_weapon_menu_widget_a66732b99205662ffc1b773590face9a4a9753d53106438872fa4838f0faab0c47}{ModelFilter}},}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_u_weapon_menu_widget_a66732b99205662ffc1b773590face9a4a0935479cb9fecfb6324c6339f9d4e69d}{MainTypeFilter}},}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_u_weapon_menu_widget_a66732b99205662ffc1b773590face9a4a4a0a8bf86d397d1348d245b24dda1616}{SubtypeFilter}},}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ ManufacturerFilter}
+\DoxyCodeLine{00032\ \ \ \ \ \};}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{comment}{//\ Overrode\ widget\ constructor}}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ NativeConstruct()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00041\ \ \ \ \ UPROPERTY(meta=(BindWidget))}
+\DoxyCodeLine{00042\ \ \ \ \ UVerticalBox*\ WeaponContent;}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \ \ \ UPROPERTY(BlueprintReadWrite,\ meta=(BindWidget))}
+\DoxyCodeLine{00045\ \ \ \ \ UButton*\ SortButton;}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \ \ \ \ UPROPERTY(BlueprintReadWrite,\ meta=(BindWidget))}
+\DoxyCodeLine{00048\ \ \ \ \ UButton*\ EditButton;}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \ \ \ \ UPROPERTY(meta=(BindWidget))}
+\DoxyCodeLine{00051\ \ \ \ \ UComboBoxString*\ FilterComboBox;}
+\DoxyCodeLine{00052\ \ \ \ \ }
+\DoxyCodeLine{00053\ \ \ \ \ UPROPERTY(meta=(BindWidget))}
+\DoxyCodeLine{00054\ \ \ \ \ UEditableTextBox*\ FilterTextBox;}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{comment}{//\ Gets\ blueprint\ UWeaponDataWidget\ child\ class}}
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{comment}{//\ for\ creating\ widget}}
+\DoxyCodeLine{00058\ \ \ \ \ UPROPERTY(EditDefaultsOnly)}
+\DoxyCodeLine{00059\ \ \ \ \ TSubclassOf<\mbox{\hyperlink{class_u_weapon_data_widget}{UWeaponDataWidget}}>\ WeaponDataWidgetClass;}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{comment}{//\ Gets\ blueprint\ UWeaponEditWidget\ child\ class}}
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{comment}{//\ for\ creating\ widget}}
+\DoxyCodeLine{00063\ \ \ \ \ UPROPERTY(EditDefaultsOnly)}
+\DoxyCodeLine{00064\ \ \ \ \ TSubclassOf<\mbox{\hyperlink{class_u_weapon_edit_widget}{UWeaponEditWidget}}>\ WeaponEditWidgetClass;}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{comment}{//\ Stores\ pointers\ to\ all\ instances\ of\ UWeaponDataWidget\ created\ widgets}}
+\DoxyCodeLine{00067\ \ \ \ \ UPROPERTY()}
+\DoxyCodeLine{00068\ \ \ \ \ TArray<\mbox{\hyperlink{class_u_weapon_data_widget}{UWeaponDataWidget}}*>\ ChildRowWidgets;}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{comment}{//\ Stores\ pointer\ to\ selected\ row}}
+\DoxyCodeLine{00071\ \ \ \ \ UPROPERTY()}
+\DoxyCodeLine{00072\ \ \ \ \ \mbox{\hyperlink{class_u_weapon_data_widget}{UWeaponDataWidget}}*\ SelectedWidget;}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{comment}{//\ Stores\ pointer\ to\ created\ UWeaponEditWidget}}
+\DoxyCodeLine{00075\ \ \ \ \ UPROPERTY()}
+\DoxyCodeLine{00076\ \ \ \ \ \mbox{\hyperlink{class_u_weapon_edit_widget}{UWeaponEditWidget}}*\ EditWidget;}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{comment}{//\ Stores\ pointer\ to\ all\ weapon\ instances\ picked\ by\ player}}
+\DoxyCodeLine{00079\ \ \ \ \ UPROPERTY()}
+\DoxyCodeLine{00080\ \ \ \ \ TArray<\mbox{\hyperlink{class_a_weapon_class}{AWeaponClass}}*>\ ActorPickedWeapons;}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00082\ \ \ \ \ \textcolor{comment}{//\ Makes\ sort\ function\ work\ in\ ascending\ and}}
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{comment}{//\ descending\ order\ by\ repeatedly\ clicking\ button}}
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{keywordtype}{bool}\ bSortFlipFlop;}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00086\ public:}
+\DoxyCodeLine{00087\ \ \ \ \ \textcolor{comment}{//\ Overrode\ Widget\ destruction\ method.}}
+\DoxyCodeLine{00088\ \ \ \ \ \textcolor{comment}{//\ Destroys\ Properties\ editor\ if\ it\ is\ opened}}
+\DoxyCodeLine{00089\ \ \ \ \ virtual\ \textcolor{keywordtype}{void}\ RemoveFromParent()\ override;}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00091\ \ \ \ \ \textcolor{comment}{//\ Bound\ to\ SortButton.\ Performs\ sorting}}
+\DoxyCodeLine{00092\ \ \ \ \ UFUNCTION()}
+\DoxyCodeLine{00093\ \ \ \ \ \textcolor{keywordtype}{void}\ SortByCaliber();}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00095\ \ \ \ \ \textcolor{comment}{//\ Creating\ widget\ for\ weapon\ properties\ edit}}
+\DoxyCodeLine{00096\ \ \ \ \ UFUNCTION()}
+\DoxyCodeLine{00097\ \ \ \ \ \textcolor{keywordtype}{void}\ CreatePropertiesEditor();}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00099\ \ \ \ \ \textcolor{comment}{//\ Delegate\ function.\ Edits\ weapon\ properties\ values}}
+\DoxyCodeLine{00100\ \ \ \ \ UFUNCTION()}
+\DoxyCodeLine{00101\ \ \ \ \ \textcolor{keywordtype}{void}\ EditWeaponUnitProperties(const\ TArray<FText>\&\ ChangedValues,\ const\ FString\&\ OriginalModelName);}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00103\ \ \ \ \ \textcolor{comment}{//\ Cosmetic.\ Visually\ describes\ selected\ row}}
+\DoxyCodeLine{00104\ \ \ \ \ UFUNCTION()}
+\DoxyCodeLine{00105\ \ \ \ \ \textcolor{keywordtype}{void}\ HandleSelectedRowWidget(const\ FString\&\ ModelName);}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00107\ \ \ \ \ \textcolor{comment}{//\ Filters\ weapons\ by\ properties\ available\ in\ EComboBoxValues}}
+\DoxyCodeLine{00108\ \ \ \ \ UFUNCTION()}
+\DoxyCodeLine{00109\ \ \ \ \ \textcolor{keywordtype}{void}\ FilterFunc(const\ FText\&\ TypedText);}
+\DoxyCodeLine{00110\ }
+\DoxyCodeLine{00111\ \ \ \ \ \textcolor{comment}{//\ Shell's\ sorting\ algorithm\ remade\ for\ widgets}}
+\DoxyCodeLine{00112\ \ \ \ \ \textcolor{keywordtype}{void}\ ShellSort(TArray<\mbox{\hyperlink{class_u_weapon_data_widget}{UWeaponDataWidget}}*>\&\ Children,\ \textcolor{keywordtype}{bool}\&\ bAscending);}
+\DoxyCodeLine{00113\ }
+\DoxyCodeLine{00114\ \ \ \ \ \textcolor{comment}{//\ Writes\ player's\ picked\ weapon\ to\ further\ work\ with\ them}}
+\DoxyCodeLine{00115\ \ \ \ \ \textcolor{keywordtype}{void}\ SetActorPickedWeapons(const\ TArray<\mbox{\hyperlink{class_a_weapon_class}{AWeaponClass}}*>\&\ PickedWeapons);}
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00117\ \ \ \ \ \textcolor{comment}{//\ Filter\ algorithm\ (by\ model)}}
+\DoxyCodeLine{00118\ \ \ \ \ \textcolor{keywordtype}{void}\ FilterByModel(const\ FText\&\ NewModelName);}
+\DoxyCodeLine{00119\ }
+\DoxyCodeLine{00120\ \ \ \ \ \textcolor{comment}{//\ Filter\ algorithm\ (by\ main\ type)}}
+\DoxyCodeLine{00121\ \ \ \ \ \textcolor{keywordtype}{void}\ FilterByMainType(const\ FText\&\ NewMainTypeName);}
+\DoxyCodeLine{00122\ }
+\DoxyCodeLine{00123\ \ \ \ \ \textcolor{comment}{//\ Filter\ algorithm\ (by\ subtype)}}
+\DoxyCodeLine{00124\ \ \ \ \ \textcolor{keywordtype}{void}\ FilterBySubtype(const\ FText\&\ NewSubtypeName);}
+\DoxyCodeLine{00125\ }
+\DoxyCodeLine{00126\ \ \ \ \ \textcolor{comment}{//\ Filter\ algorithm\ (by\ manufacturer)}}
+\DoxyCodeLine{00127\ \ \ \ \ \textcolor{keywordtype}{void}\ FilterByManufacturer(const\ FText\&\ NewManufacturerName);}
+\DoxyCodeLine{00128\ }
+\DoxyCodeLine{00129\ \ \ \ \ \textcolor{comment}{//\ Getter\ for\ active/selected\ widget}}
+\DoxyCodeLine{00130\ \ \ \ \ \mbox{\hyperlink{class_u_weapon_data_widget}{UWeaponDataWidget}}*\ GetSelectedWidget();}
+\DoxyCodeLine{00131\ \};}
+\DoxyCodeLine{00132\ }
+
+\end{DoxyCode}
