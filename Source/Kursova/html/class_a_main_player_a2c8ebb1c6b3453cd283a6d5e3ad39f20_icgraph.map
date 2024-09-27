@@ -1,7 +1,0 @@
-<map id="AMainPlayer::Server_Shoot" name="AMainPlayer::Server_Shoot">
-<area shape="rect" id="Node000001" title=" " alt="" coords="413,5,554,46"/>
-<area shape="rect" id="Node000002" href="$class_a_main_player.html#ab3f7a5523db5fafc852b360e517f3d30" title=" " alt="" coords="228,13,365,39"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="397,28,365,28,365,23,397,23"/>
-<area shape="rect" id="Node000003" href="$class_a_main_player.html#a0d9256922d3a3746cd3be9275ea6253e" title=" " alt="" coords="5,5,180,46"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="212,28,180,28,180,23,212,23"/>
-</map>

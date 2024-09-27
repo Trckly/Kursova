@@ -1,7 +1,0 @@
-<map id="AKursovaGameModeBase" name="AKursovaGameModeBase">
-<area shape="rect" id="Node000001" title=" " alt="" coords="26,119,230,233"/>
-<area shape="rect" id="Node000003" href="$class_a_session_game_mode.html" title=" " alt="" coords="5,281,251,1244"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="131,249,131,282,125,282,125,249"/>
-<area shape="rect" id="Node000002" title=" " alt="" coords="69,5,187,71"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="131,85,131,119,125,119,125,85"/>
-</map>

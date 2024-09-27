@@ -1,7 +1,0 @@
-<map id="UGoblinCreator" name="UGoblinCreator">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,296,259,768"/>
-<area shape="rect" id="Node000002" title=" " alt="" coords="23,94,83,159"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="65,173,89,296,84,297,60,174"/>
-<area shape="rect" id="Node000003" href="$class_i_i_enemy_creator.html" title=" " alt="" coords="108,5,316,248"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="188,263,181,297,176,296,183,262"/>
-</map>

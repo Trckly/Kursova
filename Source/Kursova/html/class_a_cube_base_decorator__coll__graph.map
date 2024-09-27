@@ -1,8 +1,0 @@
-<map id="ACubeBaseDecorator" name="ACubeBaseDecorator">
-<area shape="rect" id="Node000001" title=" " alt="" coords="51,188,267,507"/>
-<area shape="rect" id="Node000002" title=" " alt="" coords="5,33,59,98"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="55,110,90,188,85,190,50,112"/>
-<area shape="rect" id="Node000003" href="$class_i_cube_interface.html" title=" " alt="" coords="83,5,295,125"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="176,140,175,150,170,189,165,188,169,149,171,140"/>
-<area shape="poly" id="edge3_Node000001_Node000003" title=" " alt="" coords="186,126,180,172,175,171,180,125"/>
-</map>

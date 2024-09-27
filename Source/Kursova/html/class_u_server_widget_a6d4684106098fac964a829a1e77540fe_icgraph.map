@@ -1,7 +1,0 @@
-<map id="UServerWidget::ShowErrorMessage" name="UServerWidget::ShowErrorMessage">
-<area shape="rect" id="Node000001" title=" " alt="" coords="465,5,641,46"/>
-<area shape="rect" id="Node000002" href="$class_u_server_widget.html#a9baae27d00f8e7726fcb8ead7e0781d2" title=" " alt="" coords="263,13,417,39"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="450,28,417,28,417,23,450,23"/>
-<area shape="rect" id="Node000003" href="$class_u_server_widget.html#a74cd014e883bf130482eee6be68f26b9" title=" " alt="" coords="5,13,215,39"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="247,28,215,28,215,23,247,23"/>
-</map>

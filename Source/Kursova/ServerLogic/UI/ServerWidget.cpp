@@ -32,7 +32,7 @@ void UServerWidget::CloseWidget()
 {
 	GetOwningPlayer()->SetShowMouseCursor(false);
 	GetOwningPlayer()->SetInputMode(FInputModeGameOnly());
-	RemoveFromViewport();
+	RemoveFromParent();
 }
 
 void UServerWidget::Create()
@@ -43,7 +43,7 @@ void UServerWidget::Create()
 	FString Name;
 	if(W_Name->GetText().IsEmpty())
 	{
-		Name = W_Name->HintText.ToString();
+		Name = W_Name->GetHintText().ToString();
 	}else{
 		Name = W_Name->GetText().ToString();
 	}
@@ -131,5 +131,5 @@ void UServerWidget::OpenAdminMenu()
 void UServerWidget::CloseAdminMenu()
 {
 	AdminManagerWidget->OnAdminCloseButtonClicked.Unbind();
-	AdminManagerWidget->RemoveFromViewport();
+	AdminManagerWidget->RemoveFromParent();
 }

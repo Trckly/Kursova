@@ -347,9 +347,8 @@ void AMainPlayer::ProcessHitRack()
 	
 	bContinuable = true;
 	
-	CrosshairWidget->RemoveFromViewport();
-	auto CreatedWeaponMenu = CreateWidget<UWeaponMenuWidget>(GetWorld(), WeaponMenuWidgetClass);
-	if(CreatedWeaponMenu)
+	CrosshairWidget->RemoveFromParent();
+	if(const auto CreatedWeaponMenu = CreateWidget<UWeaponMenuWidget>(GetWorld(), WeaponMenuWidgetClass))
 	{
 		WeaponMenuWidget = CreatedWeaponMenu;
 		WeaponMenuWidget->SetActorPickedWeapons(PickedWeapons);
@@ -670,7 +669,7 @@ void AMainPlayer::CreateSession(FString Name, bool Privacy, FString Password, in
 {
 	if(ServerWidget && ServerWidget->IsInViewport())
 	{
-		ServerWidget->RemoveFromViewport();
+		ServerWidget->RemoveFromParent();
 	}
 	GetController<APlayerController>()->SetShowMouseCursor(false);
 	GetController<APlayerController>()->SetInputMode(FInputModeGameOnly());
@@ -700,7 +699,7 @@ void AMainPlayer::JoinSession(FBlueprintSessionResult SessionResult, const FStri
 {
 	if (ServerWidget && ServerWidget->IsInViewport())
 	{
-		ServerWidget->RemoveFromViewport();
+		ServerWidget->RemoveFromParent();
 	}
 	GetController<APlayerController>()->SetShowMouseCursor(false);
 	GetController<APlayerController>()->SetInputMode(FInputModeGameOnly());
@@ -786,7 +785,7 @@ void AMainPlayer::SetNameAndCity(FString const& Name, FString const& City)
 	ACustomPlayerController* PController = Cast<ACustomPlayerController>(GetOwner());
 	if(PController)
 	{
-		MainMenuWidget->RemoveFromViewport();
+		MainMenuWidget->RemoveFromParent();
 
 		if(PlayerHUDWidget)
 		{

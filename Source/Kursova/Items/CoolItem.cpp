@@ -2,12 +2,14 @@
 
 
 #include "CoolItem.h"
+#include "NiagaraComponent.h"
 #include "MainPlayer.h"
 
 ACoolItem* ACoolItem::Instance = nullptr;
 
-ACoolItem::ACoolItem()
+ACoolItem::ACoolItem(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer)
 {
+	
 	SphereComp = CreateDefaultSubobject<USphereComponent>(TEXT("Sphere"));
 	SphereComp->SetupAttachment(GetNiagaraComponent());
 

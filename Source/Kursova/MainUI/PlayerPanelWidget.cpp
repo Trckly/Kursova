@@ -18,7 +18,7 @@ void UPlayerPanelWidget::NativeConstruct()
 		CIsInGodMode->OnCheckStateChanged.AddDynamic(this, &UPlayerPanelWidget::SetGodMode);
 	}
 
-	StandardBackgroundColor = BSetActive->BackgroundColor;
+	StandardBackgroundColor = BSetActive->GetBackgroundColor();
 }
 
 void UPlayerPanelWidget::SetWidget(AMainPlayer* MainPlayer, int Index)

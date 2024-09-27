@@ -4,9 +4,6 @@
 
 #include "CoreMinimal.h"
 #include "NiagaraActor.h"
-#include "NiagaraComponent.h"
-#include "NiagaraFunctionLibrary.h"
-#include "Chaos/Private/Chaos/Collision/CollisionSolver.h"
 #include "Components/SphereComponent.h"
 #include "CoolItem.generated.h"
 
@@ -25,7 +22,7 @@ class KURSOVA_API ACoolItem : public ANiagaraActor
 
 	FTimerHandle TimerHandle;
 
-	ACoolItem();
+	ACoolItem(const FObjectInitializer& ObjectInitializer);
 protected:
 	
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)

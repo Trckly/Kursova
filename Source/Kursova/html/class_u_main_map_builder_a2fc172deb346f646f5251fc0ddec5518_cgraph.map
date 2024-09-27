@@ -1,7 +1,0 @@
-<map id="UMainMapBuilder::BuildGeneralWalls" name="UMainMapBuilder::BuildGeneralWalls">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,35,211,75"/>
-<area shape="rect" id="Node000002" href="$class_u_main_map_builder.html#a48052bfc78c775179e4d2323e604ade5" title=" " alt="" coords="259,5,444,46"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="211,40,243,36,244,41,211,45"/>
-<area shape="rect" id="Node000003" href="$class_u_main_map_builder.html#a63a7c96c17a76f73aba9829008aa0603" title=" " alt="" coords="261,70,442,96"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="211,64,246,68,246,74,211,69"/>
-</map>

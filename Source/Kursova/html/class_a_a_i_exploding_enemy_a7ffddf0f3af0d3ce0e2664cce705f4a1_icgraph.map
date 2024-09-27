@@ -1,9 +1,0 @@
-<map id="AAIExplodingEnemy::Die" name="AAIExplodingEnemy::Die">
-<area shape="rect" id="Node000001" title=" " alt="" coords="400,46,568,72"/>
-<area shape="rect" id="Node000002" href="$class_a_a_i_exploding_enemy.html#a53a7a4a355e183be1ce6ea173a6aa0a7" title=" " alt="" coords="203,5,352,46"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="385,46,352,40,353,35,386,40"/>
-<area shape="rect" id="Node000003" href="$class_a_a_i_exploding_enemy.html#a6953dd0c5ad9c9988ac92db18a892350" title=" " alt="" coords="203,71,352,111"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="385,77,353,82,352,77,385,72"/>
-<area shape="rect" id="Node000004" href="$class_a_a_i_exploding_enemy.html#a8b1110d8b16fbe7dfa468fd9afad64bf" title=" " alt="" coords="5,71,155,111"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="187,94,155,94,155,88,187,88"/>
-</map>

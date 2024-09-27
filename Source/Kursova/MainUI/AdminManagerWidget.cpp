@@ -198,7 +198,7 @@ void UAdminManagerWidget::ClosePlayerEditor()
 	PlayerEditorWidget->OnCloseButtonClicked.Unbind();
 	PlayerEditorWidget->OnSaveButtonClicked.Unbind();
 
-	PlayerEditorWidget->RemoveFromViewport();
+	PlayerEditorWidget->RemoveFromParent();
 }
 
 void UAdminManagerWidget::SavePlayerStats(bool CanMove, bool CanJump, bool CanFire)

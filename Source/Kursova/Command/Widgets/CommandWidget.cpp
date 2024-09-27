@@ -61,7 +61,7 @@ void UCommandWidget::GreenState()
 
 void UCommandWidget::CloseWidget()
 {
-	RemoveFromViewport();
+	RemoveFromParent();
 	if(WidgetClosed.IsBound())
 	{
 		WidgetClosed.Execute();

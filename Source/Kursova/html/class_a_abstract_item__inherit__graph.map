@@ -1,9 +1,0 @@
-<map id="AAbstractItem" name="AAbstractItem">
-<area shape="rect" id="Node000001" title=" " alt="" coords="227,119,420,299"/>
-<area shape="rect" id="Node000003" href="$class_a_armor_item.html" title=" " alt="" coords="5,347,303,671"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="268,313,248,348,243,346,263,310"/>
-<area shape="rect" id="Node000004" href="$class_a_health_item.html" title=" " alt="" coords="327,354,659,663"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="383,310,408,353,403,355,379,313"/>
-<area shape="rect" id="Node000002" title=" " alt="" coords="275,5,372,71"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="326,86,326,119,321,119,321,86"/>
-</map>

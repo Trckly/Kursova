@@ -77,3 +77,8 @@ DerivedDataCache/*
 Plugins/*/RiderLink/*
 
 .idea/*
+
+Kursova.uproject.DotSettings.user
+
+*/__ExternalActors__
+*/__ExternalObjects__

@@ -1,7 +1,0 @@
-<map id="ATree::CreateTree" name="ATree::CreateTree">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,31,134,56"/>
-<area shape="rect" id="Node000002" href="$class_u_tree_type.html#afa7e0966b68d3d3b7f5a270734bd1e07" title=" " alt="" coords="182,5,355,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="134,33,166,29,167,34,134,38"/>
-<area shape="rect" id="Node000003" href="$class_a_tree.html#aac7326c6891f097f97766355ef00f2ab" title=" " alt="" coords="212,55,325,80"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="134,49,198,56,197,62,134,54"/>
-</map>

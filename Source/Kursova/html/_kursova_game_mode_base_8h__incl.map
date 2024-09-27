@@ -1,9 +1,0 @@
-<map id="KursovaGameModeBase.h" name="KursovaGameModeBase.h">
-<area shape="rect" id="Node000001" title=" " alt="" coords="161,5,338,31"/>
-<area shape="rect" id="Node000002" title=" " alt="" coords="5,79,110,105"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="218,34,105,76,103,71,216,29"/>
-<area shape="rect" id="Node000003" title=" " alt="" coords="133,79,366,105"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="252,31,252,63,247,63,247,31"/>
-<area shape="rect" id="Node000004" title=" " alt="" coords="390,79,629,105"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="294,29,451,72,450,77,293,34"/>
-</map>

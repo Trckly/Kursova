@@ -1,9 +1,0 @@
-<map id="AMainPlayer::OnFindSessionCompleted" name="AMainPlayer::OnFindSessionCompleted">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,198,46"/>
-<area shape="rect" id="Node000002" href="$class_a_main_player.html#a21621d56b6ce49785ae20a1f0a049d52" title=" " alt="" coords="246,5,423,46"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="198,23,230,23,230,28,198,28"/>
-<area shape="rect" id="Node000003" href="$class_u_server_widget.html#abdf7bd4b3187571ccdccf69ef6d97db1" title=" " alt="" coords="471,13,661,39"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="424,23,456,23,456,28,424,28"/>
-<area shape="rect" id="Node000004" href="$class_u_server_widget.html#ad8ee867ec392163ecb0c116a6ab916a3" title=" " alt="" coords="709,13,850,39"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="662,23,694,23,694,28,662,28"/>
-</map>

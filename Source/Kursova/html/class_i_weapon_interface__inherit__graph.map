@@ -1,9 +1,0 @@
-<map id="IWeaponInterface" name="IWeaponInterface">
-<area shape="rect" id="Node000001" title=" " alt="" coords="295,5,571,235"/>
-<area shape="rect" id="Node000002" href="$class_a_easy_weapon.html" title=" " alt="" coords="5,291,275,659"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="320,247,289,284,277,299,272,296,285,281,316,244"/>
-<area shape="rect" id="Node000003" href="$class_a_hard_weapon.html" title=" " alt="" coords="299,291,568,659"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="436,250,436,291,431,291,431,250"/>
-<area shape="rect" id="Node000004" href="$class_a_medium_weapon.html" title=" " alt="" coords="592,283,861,667"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="550,244,582,281,594,296,590,299,578,284,546,247"/>
-</map>

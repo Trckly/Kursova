@@ -1,9 +1,0 @@
-<map id="AMainPlayer::ServerSetNameAndCity" name="AMainPlayer::ServerSetNameAndCity">
-<area shape="rect" id="Node000001" title=" " alt="" coords="716,5,912,46"/>
-<area shape="rect" id="Node000002" href="$class_a_main_player.html#a64f2de54b6a986e899e7b4d7c157f2b8" title=" " alt="" coords="465,13,668,39"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="701,28,669,28,669,23,701,23"/>
-<area shape="rect" id="Node000003" href="$class_a_main_player.html#aefd570cc1232eb214f82b08f15915687" title=" " alt="" coords="216,5,417,46"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="450,28,418,28,418,23,450,23"/>
-<area shape="rect" id="Node000004" href="$class_a_main_player.html#aeb19d2fc8b049da2875a1a7fe2640be6" title=" " alt="" coords="5,13,168,39"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="200,28,168,28,168,23,200,23"/>
-</map>
