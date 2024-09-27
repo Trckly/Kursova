@@ -30,7 +30,7 @@ void UServerPannelWidget::Set(const FString& ServerName, bool IsPrivate, const F
 
 void UServerPannelWidget::SendPassword(const FString& Password)
 {
-	PasswordWidget->RemoveFromViewport();
+	PasswordWidget->RemoveFromParent();
 	OnSessionJoin.ExecuteIfBound(SessionResult, Password);
 }
 

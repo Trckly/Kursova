@@ -1,7 +1,0 @@
-<map id="UNegativeRotationCommand" name="UNegativeRotationCommand">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,232,185,327"/>
-<area shape="rect" id="Node000002" href="$class_u_command.html" title=" " alt="" coords="55,119,136,184"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="98,199,98,232,93,232,93,199"/>
-<area shape="rect" id="Node000003" title=" " alt="" coords="65,5,125,71"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="98,85,98,119,93,119,93,85"/>
-</map>

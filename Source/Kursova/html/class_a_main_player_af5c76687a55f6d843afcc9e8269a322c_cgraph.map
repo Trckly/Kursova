@@ -1,9 +1,0 @@
-<map id="AMainPlayer::ProcessHitRack" name="AMainPlayer::ProcessHitRack">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,13,203,39"/>
-<area shape="rect" id="Node000002" href="$class_u_weapon_menu_widget.html#abb856539e5d427e048cd3e9a4788a37e" title=" " alt="" coords="251,5,417,46"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="203,23,235,23,235,28,203,28"/>
-<area shape="rect" id="Node000003" href="$class_u_weapon_menu_widget.html#ac466e5b323afcd5fa32e35e7faa320c5" title=" " alt="" coords="465,5,642,46"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="417,23,449,23,449,28,417,28"/>
-<area shape="rect" id="Node000004" href="$class_u_weapon_data_widget.html#a0eacc17377606b02167479678e4b55da" title=" " alt="" coords="690,5,847,46"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="643,23,674,23,674,28,643,28"/>
-</map>

@@ -1,9 +1,0 @@
-<map id="EnemyObserver/EnemyObserver.h" name="EnemyObserver/EnemyObserver.h">
-<area shape="rect" id="Node000001" title=" " alt="" coords="89,5,314,31"/>
-<area shape="rect" id="Node000002" title=" " alt="" coords="5,79,110,105"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="178,34,97,74,94,69,176,29"/>
-<area shape="rect" id="Node000003" title=" " alt="" coords="134,79,269,105"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="204,31,204,63,199,63,199,31"/>
-<area shape="rect" id="Node000004" title=" " alt="" coords="293,79,481,105"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="234,29,342,71,340,75,232,34"/>
-</map>

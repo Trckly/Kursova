@@ -1,9 +1,0 @@
-<map id="AMainPlayer" name="AMainPlayer">
-<area shape="rect" id="Node000001" title=" " alt="" coords="65,188,330,2632"/>
-<area shape="rect" id="Node000002" title=" " alt="" coords="5,40,83,105"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="52,120,67,254,62,255,47,120"/>
-<area shape="rect" id="Node000003" title=" " alt="" coords="107,40,287,105"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="200,120,200,188,195,188,195,120"/>
-<area shape="rect" id="Node000004" href="$class_i_player_notifier.html" title=" " alt="" coords="312,5,557,140"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="423,155,333,663,327,662,418,154"/>
-</map>

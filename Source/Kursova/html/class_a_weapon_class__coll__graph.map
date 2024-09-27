@@ -1,9 +1,0 @@
-<map id="AWeaponClass" name="AWeaponClass">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,407,208,799"/>
-<area shape="rect" id="Node000002" title=" " alt="" coords="65,199,119,264"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="96,278,102,407,96,407,91,279"/>
-<area shape="rect" id="Node000003" href="$struct_f_weapon_unit.html" title=" " alt="" coords="143,119,289,344"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="186,345,172,392,167,390,180,343"/>
-<area shape="rect" id="Node000004" title=" " alt="" coords="162,5,270,71"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="219,86,219,119,213,119,213,86"/>
-</map>

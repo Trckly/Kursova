@@ -1,9 +1,0 @@
-<map id="ACubeBaseDecorator::Wrap" name="ACubeBaseDecorator::Wrap">
-<area shape="rect" id="Node000001" title=" " alt="" coords="205,71,351,111"/>
-<area shape="rect" id="Node000002" href="$class_a_blue_cube_decorator.html#ae997b227c6cf8d12de2121bc678422f3" title=" " alt="" coords="10,5,152,46"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="199,68,144,49,145,44,201,63"/>
-<area shape="rect" id="Node000003" href="$class_a_cube_base_decorator.html#a93b45ab207daf2b3b561c9667c40a302" title=" " alt="" coords="8,71,154,111"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="189,94,155,94,155,88,189,88"/>
-<area shape="rect" id="Node000004" href="$class_a_green_cube_decorator.html#ac445dcfa2a826135a276cc725dc1b439" title=" " alt="" coords="5,136,157,177"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="201,119,145,138,144,133,199,114"/>
-</map>

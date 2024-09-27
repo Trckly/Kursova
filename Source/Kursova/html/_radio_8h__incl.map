@@ -1,9 +1,0 @@
-<map id="Singletones/Radio.h" name="Singletones/Radio.h">
-<area shape="rect" id="Node000001" title=" " alt="" coords="165,5,302,31"/>
-<area shape="rect" id="Node000002" title=" " alt="" coords="5,79,110,105"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="205,34,102,75,100,70,203,29"/>
-<area shape="rect" id="Node000003" title=" " alt="" coords="134,79,333,105"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="236,31,236,63,231,63,231,31"/>
-<area shape="rect" id="Node000004" title=" " alt="" coords="357,79,483,105"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="266,29,375,70,373,75,264,34"/>
-</map>

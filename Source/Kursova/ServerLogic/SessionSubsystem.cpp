@@ -59,7 +59,7 @@ void USessionSubsystem::CreateSession(int32 NumPublicConnections, bool IsLANMatc
 	LastSessionSettings->Set(FName(TEXT("IsPrivate")), bool(IsPrivate), EOnlineDataAdvertisementType::ViaOnlineService);
 	LastSessionSettings->Set(FName(TEXT("Password")), FString(SessionPassword), EOnlineDataAdvertisementType::ViaOnlineService);
 
-	LastSessionSettings->Set(SETTING_MAPNAME, FString(Map), EOnlineDataAdvertisementType::ViaOnlineService);
+	LastSessionSettings->Set(FName(TEXT("MAPNAME")), FString(Map), EOnlineDataAdvertisementType::ViaOnlineService);
 
 	LastSessionSettings->Set(FName(TEXT("Difficulty")), FString(Difficulty), EOnlineDataAdvertisementType::ViaOnlineService);
 
@@ -95,7 +95,7 @@ void USessionSubsystem::UpdateSession()
 	}
 
 	TSharedPtr<FOnlineSessionSettings> UpdatedSessionSettings = MakeShared<FOnlineSessionSettings>(*LastSessionSettings);
-	UpdatedSessionSettings->Set(SETTING_MAPNAME, FString("Updated Level Name"), EOnlineDataAdvertisementType::ViaOnlineService);
+	UpdatedSessionSettings->Set("MAPNAME", FString("Updated Level Name"), EOnlineDataAdvertisementType::ViaOnlineService);
 
 	UpdateSessionCompleteDelegateHandle =
 		SessionInterface->AddOnUpdateSessionCompleteDelegate_Handle(UpdateSessionCompleteDelegate);
@@ -154,7 +154,7 @@ void USessionSubsystem::OnStartSessionCompleted(FName SessionName, bool Successf
 	if (Successful)
 	{
 		FString MapName;
-		SessionInterface->GetSessionSettings(SessionName)->Get(SETTING_MAPNAME, MapName);
+		SessionInterface->GetSessionSettings(SessionName)->Get("MAPNAME", MapName);
 		if(MapName != "Undefined")
 		{
 			FString ConnectString = MapName + FString("Map?listen");
@@ -249,7 +249,7 @@ void USessionSubsystem::FindSessions(int32 MaxSearchResults, bool IsLANQuery)
 	LastSessionSearch->MaxSearchResults = MaxSearchResults;
 	LastSessionSearch->bIsLanQuery = IsLANQuery;
 
-	LastSessionSearch->QuerySettings.Set(SEARCH_PRESENCE, true, EOnlineComparisonOp::Equals);
+	LastSessionSearch->QuerySettings.Set(FName(TEXT("PRESENCESEARCH")), true, EOnlineComparisonOp::Equals);
 
 	const ULocalPlayer* localPlayer = GetWorld()->GetFirstLocalPlayerFromController();
 	if (!SessionInterface->FindSessions(*localPlayer->GetPreferredUniqueNetId(), LastSessionSearch.ToSharedRef()))

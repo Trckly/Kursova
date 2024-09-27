@@ -1,7 +1,0 @@
-<map id="AMainPlayer::RotateNegative" name="AMainPlayer::RotateNegative">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,13,198,39"/>
-<area shape="rect" id="Node000002" href="$class_u_negative_rotation_command.html#a11d46b1ea70b3f7709ca6d22bb4e3b4b" title=" " alt="" coords="246,5,434,46"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="198,23,230,23,230,28,198,28"/>
-<area shape="rect" id="Node000003" href="$class_a_cube.html#aaf45c70a99373cac26ef4be121f064f1" title=" " alt="" coords="482,13,672,39"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="435,23,467,23,467,28,435,28"/>
-</map>

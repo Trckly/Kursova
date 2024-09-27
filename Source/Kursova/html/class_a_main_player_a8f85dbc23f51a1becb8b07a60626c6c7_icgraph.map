@@ -1,7 +1,0 @@
-<map id="AMainPlayer::Multicast_SetGodMode" name="AMainPlayer::Multicast_SetGodMode">
-<area shape="rect" id="Node000001" title=" " alt="" coords="382,5,538,46"/>
-<area shape="rect" id="Node000002" href="$class_u_player_panel_widget.html#a7f6f1bc9b4da51c90e87f766126a4837" title=" " alt="" coords="194,5,334,46"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="367,28,334,28,334,23,367,23"/>
-<area shape="rect" id="Node000003" href="$class_u_player_panel_widget.html#ac9307e4345c0624673b05fcf75cc332e" title=" " alt="" coords="5,5,146,46"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="178,28,146,28,146,23,178,23"/>
-</map>

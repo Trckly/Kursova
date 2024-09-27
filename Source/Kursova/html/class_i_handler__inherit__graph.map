@@ -1,9 +1,0 @@
-<map id="IHandler" name="IHandler">
-<area shape="rect" id="Node000001" title=" " alt="" coords="105,5,313,120"/>
-<area shape="rect" id="Node000002" href="$class_u_abstract_handler.html" title=" " alt="" coords="113,168,305,312"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="212,135,212,168,207,168,207,135"/>
-<area shape="rect" id="Node000003" href="$class_u_armor_handler.html" title=" " alt="" coords="5,360,197,455"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="157,326,134,362,129,359,153,323"/>
-<area shape="rect" id="Node000004" href="$class_u_health_handler.html" title=" " alt="" coords="221,360,413,455"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="266,323,290,359,285,362,262,326"/>
-</map>
